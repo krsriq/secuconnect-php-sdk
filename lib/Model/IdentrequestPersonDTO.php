@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * IdentrequestPersonDTO
@@ -19,13 +28,13 @@ class IdentrequestPersonDTO extends Contact
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'IdentrequestPersonDTO';
+    protected static string $swaggerModelName = 'IdentrequestPersonDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'custom1' => 'string',
         'custom2' => 'string',
         'custom3' => 'string',
@@ -37,7 +46,7 @@ class IdentrequestPersonDTO extends Contact
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'custom1' => null,
         'custom2' => null,
         'custom3' => null,
@@ -45,12 +54,12 @@ class IdentrequestPersonDTO extends Contact
         'custom5' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -59,7 +68,7 @@ class IdentrequestPersonDTO extends Contact
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'custom1' => 'custom1',
         'custom2' => 'custom2',
         'custom3' => 'custom3',
@@ -71,7 +80,7 @@ class IdentrequestPersonDTO extends Contact
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'custom1' => 'setCustom1',
         'custom2' => 'setCustom2',
         'custom3' => 'setCustom3',
@@ -83,7 +92,7 @@ class IdentrequestPersonDTO extends Contact
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'custom1' => 'getCustom1',
         'custom2' => 'getCustom2',
         'custom3' => 'getCustom3',
@@ -91,34 +100,34 @@ class IdentrequestPersonDTO extends Contact
         'custom5' => 'getCustom5'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['custom1'] = isset($data['custom1']) ? $data['custom1'] : null;
-        $this->container['custom2'] = isset($data['custom2']) ? $data['custom2'] : null;
-        $this->container['custom3'] = isset($data['custom3']) ? $data['custom3'] : null;
-        $this->container['custom4'] = isset($data['custom4']) ? $data['custom4'] : null;
-        $this->container['custom5'] = isset($data['custom5']) ? $data['custom5'] : null;
+        $this->container['custom1'] = $data['custom1'] ?? null;
+        $this->container['custom2'] = $data['custom2'] ?? null;
+        $this->container['custom3'] = $data['custom3'] ?? null;
+        $this->container['custom4'] = $data['custom4'] ?? null;
+        $this->container['custom5'] = $data['custom5'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class IdentrequestPersonDTO extends Contact
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -139,7 +148,7 @@ class IdentrequestPersonDTO extends Contact
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom1
      * @return string
      */
-    public function getCustom1()
+    public function getCustom1(): string
     {
         return $this->container['custom1'];
     }
 
     /**
      * Sets custom1
-     * @param string $custom1 Some custom fields which can be individually used to store information
+     * @param string|null $custom1 Some custom fields which can be individually used to store information
      * @return $this
      */
-    public function setCustom1($custom1)
+    public function setCustom1(?string $custom1): static
     {
         $this->container['custom1'] = $custom1;
 
@@ -170,17 +179,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom2
      * @return string
      */
-    public function getCustom2()
+    public function getCustom2(): string
     {
         return $this->container['custom2'];
     }
 
     /**
      * Sets custom2
-     * @param string $custom2 Some custom fields which can be individually used to store information
+     * @param string|null $custom2 Some custom fields which can be individually used to store information
      * @return $this
      */
-    public function setCustom2($custom2)
+    public function setCustom2(?string $custom2): static
     {
         $this->container['custom2'] = $custom2;
 
@@ -191,17 +200,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom3
      * @return string
      */
-    public function getCustom3()
+    public function getCustom3(): string
     {
         return $this->container['custom3'];
     }
 
     /**
      * Sets custom3
-     * @param string $custom3 Some custom fields which can be individually used to store information
+     * @param string|null $custom3 Some custom fields which can be individually used to store information
      * @return $this
      */
-    public function setCustom3($custom3)
+    public function setCustom3(?string $custom3): static
     {
         $this->container['custom3'] = $custom3;
 
@@ -212,17 +221,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom4
      * @return string
      */
-    public function getCustom4()
+    public function getCustom4(): string
     {
         return $this->container['custom4'];
     }
 
     /**
      * Sets custom4
-     * @param string $custom4 Some custom fields which can be individually used to store information
+     * @param string|null $custom4 Some custom fields which can be individually used to store information
      * @return $this
      */
-    public function setCustom4($custom4)
+    public function setCustom4(?string $custom4): static
     {
         $this->container['custom4'] = $custom4;
 
@@ -233,17 +242,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom5
      * @return string
      */
-    public function getCustom5()
+    public function getCustom5(): string
     {
         return $this->container['custom5'];
     }
 
     /**
      * Sets custom5
-     * @param string $custom5 Some custom fields which can be individually used to store information
+     * @param string|null $custom5 Some custom fields which can be individually used to store information
      * @return $this
      */
-    public function setCustom5($custom5)
+    public function setCustom5(?string $custom5): static
     {
         $this->container['custom5'] = $custom5;
 
@@ -255,7 +264,7 @@ class IdentrequestPersonDTO extends Contact
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -265,9 +274,9 @@ class IdentrequestPersonDTO extends Contact
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -276,7 +285,7 @@ class IdentrequestPersonDTO extends Contact
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -290,7 +299,7 @@ class IdentrequestPersonDTO extends Contact
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -299,13 +308,17 @@ class IdentrequestPersonDTO extends Contact
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

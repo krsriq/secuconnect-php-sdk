@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyCustomersDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyCustomersDTO implements ArrayAccess
+class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyCustomersDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyCustomersDTO';
+    protected static string $swaggerModelName = 'LoyaltyCustomersDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'merchant' => 'string',
         'merchant_contact' => '\Secuconnect\Client\Model\Contact',
         'age' => 'int',
@@ -41,7 +50,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'merchant' => null,
         'merchant_contact' => null,
         'age' => null,
@@ -51,12 +60,12 @@ class LoyaltyCustomersDTO implements ArrayAccess
         'additional_data' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'merchant' => 'merchant',
         'merchant_contact' => 'merchant_contact',
         'age' => 'age',
@@ -79,7 +88,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'merchant' => 'setMerchant',
         'merchant_contact' => 'setMerchantContact',
         'age' => 'setAge',
@@ -93,7 +102,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'merchant' => 'getMerchant',
         'merchant_contact' => 'getMerchantContact',
         'age' => 'getAge',
@@ -103,40 +112,40 @@ class LoyaltyCustomersDTO implements ArrayAccess
         'additional_data' => 'getAdditionalData'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['merchant_contact'] = isset($data['merchant_contact']) ? $data['merchant_contact'] : null;
-        $this->container['age'] = isset($data['age']) ? $data['age'] : null;
-        $this->container['days_until_birthday'] = isset($data['days_until_birthday']) ? $data['days_until_birthday'] : null;
-        $this->container['customernumber'] = isset($data['customernumber']) ? $data['customernumber'] : null;
-        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
-        $this->container['additional_data'] = isset($data['additional_data']) ? $data['additional_data'] : null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['merchant_contact'] = $data['merchant_contact'] ?? null;
+        $this->container['age'] = $data['age'] ?? null;
+        $this->container['days_until_birthday'] = $data['days_until_birthday'] ?? null;
+        $this->container['customernumber'] = $data['customernumber'] ?? null;
+        $this->container['note'] = $data['note'] ?? null;
+        $this->container['additional_data'] = $data['additional_data'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets merchant
      * @return string
      */
-    public function getMerchant()
+    public function getMerchant(): string
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param string $merchant merchant
+     * @param string|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?string $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -188,17 +197,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets merchant_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getMerchantContact()
+    public function getMerchantContact(): Contact
     {
         return $this->container['merchant_contact'];
     }
 
     /**
      * Sets merchant_contact
-     * @param \Secuconnect\Client\Model\Contact $merchant_contact merchant_contact
+     * @param \Secuconnect\Client\Model\Contact|null $merchant_contact merchant_contact
      * @return $this
      */
-    public function setMerchantContact($merchant_contact)
+    public function setMerchantContact(?Contact $merchant_contact): static
     {
         $this->container['merchant_contact'] = $merchant_contact;
 
@@ -209,17 +218,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets age
      * @return int
      */
-    public function getAge()
+    public function getAge(): int
     {
         return $this->container['age'];
     }
 
     /**
      * Sets age
-     * @param int $age Age
+     * @param int|null $age Age
      * @return $this
      */
-    public function setAge($age)
+    public function setAge(?int $age): static
     {
         $this->container['age'] = $age;
 
@@ -230,17 +239,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets days_until_birthday
      * @return int
      */
-    public function getDaysUntilBirthday()
+    public function getDaysUntilBirthday(): int
     {
         return $this->container['days_until_birthday'];
     }
 
     /**
      * Sets days_until_birthday
-     * @param int $days_until_birthday Number of days until birthday
+     * @param int|null $days_until_birthday Number of days until birthday
      * @return $this
      */
-    public function setDaysUntilBirthday($days_until_birthday)
+    public function setDaysUntilBirthday(?int $days_until_birthday): static
     {
         $this->container['days_until_birthday'] = $days_until_birthday;
 
@@ -251,17 +260,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets customernumber
      * @return string
      */
-    public function getCustomernumber()
+    public function getCustomernumber(): string
     {
         return $this->container['customernumber'];
     }
 
     /**
      * Sets customernumber
-     * @param string $customernumber Customer number
+     * @param string|null $customernumber Customer number
      * @return $this
      */
-    public function setCustomernumber($customernumber)
+    public function setCustomernumber(?string $customernumber): static
     {
         $this->container['customernumber'] = $customernumber;
 
@@ -272,17 +281,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets note
      * @return string
      */
-    public function getNote()
+    public function getNote(): string
     {
         return $this->container['note'];
     }
 
     /**
      * Sets note
-     * @param string $note note
+     * @param string|null $note note
      * @return $this
      */
-    public function setNote($note)
+    public function setNote(?string $note): static
     {
         $this->container['note'] = $note;
 
@@ -293,17 +302,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets additional_data
      * @return object
      */
-    public function getAdditionalData()
+    public function getAdditionalData(): object
     {
         return $this->container['additional_data'];
     }
 
     /**
      * Sets additional_data
-     * @param object $additional_data Consent for communication
+     * @param object|null $additional_data Consent for communication
      * @return $this
      */
-    public function setAdditionalData($additional_data)
+    public function setAdditionalData(?object $additional_data): static
     {
         $this->container['additional_data'] = $additional_data;
 
@@ -315,7 +324,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class LoyaltyCustomersDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

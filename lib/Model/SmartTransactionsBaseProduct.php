@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsBaseProduct
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsBaseProduct implements ArrayAccess
+class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsBaseProduct implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsBaseProduct';
+    protected static string $swaggerModelName = 'SmartTransactionsBaseProduct';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id' => 'int',
         'tax' => 'int',
         'price_one' => 'int',
@@ -41,7 +50,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id' => null,
         'tax' => null,
         'price_one' => null,
@@ -51,12 +60,12 @@ class SmartTransactionsBaseProduct implements ArrayAccess
         'ean' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id' => 'id',
         'tax' => 'tax',
         'price_one' => 'priceOne',
@@ -79,7 +88,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id' => 'setId',
         'tax' => 'setTax',
         'price_one' => 'setPriceOne',
@@ -93,7 +102,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id' => 'getId',
         'tax' => 'getTax',
         'price_one' => 'getPriceOne',
@@ -103,40 +112,40 @@ class SmartTransactionsBaseProduct implements ArrayAccess
         'ean' => 'getEan'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['tax'] = isset($data['tax']) ? $data['tax'] : null;
-        $this->container['price_one'] = isset($data['price_one']) ? $data['price_one'] : null;
-        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
-        $this->container['desc'] = isset($data['desc']) ? $data['desc'] : null;
-        $this->container['article_number'] = isset($data['article_number']) ? $data['article_number'] : null;
-        $this->container['ean'] = isset($data['ean']) ? $data['ean'] : null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['tax'] = $data['tax'] ?? null;
+        $this->container['price_one'] = $data['price_one'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['desc'] = $data['desc'] ?? null;
+        $this->container['article_number'] = $data['article_number'] ?? null;
+        $this->container['ean'] = $data['ean'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets id
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param int $id Bonus Product ID
+     * @param int|null $id Bonus Product ID
      * @return $this
      */
-    public function setId($id)
+    public function setId(?int $id): static
     {
         $this->container['id'] = $id;
 
@@ -188,17 +197,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets tax
      * @return int
      */
-    public function getTax()
+    public function getTax(): int
     {
         return $this->container['tax'];
     }
 
     /**
      * Sets tax
-     * @param int $tax tax
+     * @param int|null $tax tax
      * @return $this
      */
-    public function setTax($tax)
+    public function setTax(?int $tax): static
     {
         $this->container['tax'] = $tax;
 
@@ -209,17 +218,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets price_one
      * @return int
      */
-    public function getPriceOne()
+    public function getPriceOne(): int
     {
         return $this->container['price_one'];
     }
 
     /**
      * Sets price_one
-     * @param int $price_one price_one
+     * @param int|null $price_one price_one
      * @return $this
      */
-    public function setPriceOne($price_one)
+    public function setPriceOne(?int $price_one): static
     {
         $this->container['price_one'] = $price_one;
 
@@ -230,17 +239,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets quantity
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
 
     /**
      * Sets quantity
-     * @param int $quantity amount of bonus products
+     * @param int|null $quantity amount of bonus products
      * @return $this
      */
-    public function setQuantity($quantity)
+    public function setQuantity(?int $quantity): static
     {
         $this->container['quantity'] = $quantity;
 
@@ -251,17 +260,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets desc
      * @return string
      */
-    public function getDesc()
+    public function getDesc(): string
     {
         return $this->container['desc'];
     }
 
     /**
      * Sets desc
-     * @param string $desc description
+     * @param string|null $desc description
      * @return $this
      */
-    public function setDesc($desc)
+    public function setDesc(?string $desc): static
     {
         $this->container['desc'] = $desc;
 
@@ -272,17 +281,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets article_number
      * @return string
      */
-    public function getArticleNumber()
+    public function getArticleNumber(): string
     {
         return $this->container['article_number'];
     }
 
     /**
      * Sets article_number
-     * @param string $article_number article Number
+     * @param string|null $article_number article Number
      * @return $this
      */
-    public function setArticleNumber($article_number)
+    public function setArticleNumber(?string $article_number): static
     {
         $this->container['article_number'] = $article_number;
 
@@ -293,17 +302,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets ean
      * @return string
      */
-    public function getEan()
+    public function getEan(): string
     {
         return $this->container['ean'];
     }
 
     /**
      * Sets ean
-     * @param string $ean ean
+     * @param string|null $ean ean
      * @return $this
      */
-    public function setEan($ean)
+    public function setEan(?string $ean): static
     {
         $this->container['ean'] = $ean;
 
@@ -315,7 +324,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class SmartTransactionsBaseProduct implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

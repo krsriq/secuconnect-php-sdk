@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionProductDTOOptData
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionProductDTOOptData implements ArrayAccess
+class SecupayTransactionProductDTOOptData implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionProductDTO_opt_data';
+    protected static string $swaggerModelName = 'SecupayTransactionProductDTO_opt_data';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'has_accepted_disclaimer' => 'string',
         'language' => 'string'
     ];
@@ -36,17 +45,17 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'has_accepted_disclaimer' => null,
         'language' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'has_accepted_disclaimer' => 'has_accepted_disclaimer',
         'language' => 'language'
     ];
@@ -64,7 +73,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'has_accepted_disclaimer' => 'setHasAcceptedDisclaimer',
         'language' => 'setLanguage'
     ];
@@ -73,40 +82,40 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'has_accepted_disclaimer' => 'getHasAcceptedDisclaimer',
         'language' => 'getLanguage'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['has_accepted_disclaimer'] = isset($data['has_accepted_disclaimer']) ? $data['has_accepted_disclaimer'] : null;
-        $this->container['language'] = isset($data['language']) ? $data['language'] : null;
+        $this->container['has_accepted_disclaimer'] = $data['has_accepted_disclaimer'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Gets has_accepted_disclaimer
      * @return string
      */
-    public function getHasAcceptedDisclaimer()
+    public function getHasAcceptedDisclaimer(): string
     {
         return $this->container['has_accepted_disclaimer'];
     }
 
     /**
      * Sets has_accepted_disclaimer
-     * @param string $has_accepted_disclaimer Customer accepted disclaimer
+     * @param string|null $has_accepted_disclaimer Customer accepted disclaimer
      * @return $this
      */
-    public function setHasAcceptedDisclaimer($has_accepted_disclaimer)
+    public function setHasAcceptedDisclaimer(?string $has_accepted_disclaimer): static
     {
         $this->container['has_accepted_disclaimer'] = $has_accepted_disclaimer;
 
@@ -158,17 +167,17 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Gets language
      * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->container['language'];
     }
 
     /**
      * Sets language
-     * @param string $language Client language
+     * @param string|null $language Client language
      * @return $this
      */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): static
     {
         $this->container['language'] = $language;
 
@@ -180,7 +189,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

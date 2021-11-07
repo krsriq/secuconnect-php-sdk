@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionSetShippingInformationDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
+class SecupayTransactionSetShippingInformationDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionSetShippingInformationDTO';
+    protected static string $swaggerModelName = 'SecupayTransactionSetShippingInformationDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'carrier' => 'string',
         'tracking_id' => 'string',
         'invoice_number' => 'string'
@@ -37,18 +46,18 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'carrier' => null,
         'tracking_id' => null,
         'invoice_number' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'carrier' => 'carrier',
         'tracking_id' => 'tracking_id',
         'invoice_number' => 'invoice_number'
@@ -67,7 +76,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'carrier' => 'setCarrier',
         'tracking_id' => 'setTrackingId',
         'invoice_number' => 'setInvoiceNumber'
@@ -77,42 +86,42 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'carrier' => 'getCarrier',
         'tracking_id' => 'getTrackingId',
         'invoice_number' => 'getInvoiceNumber'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier'] = isset($data['carrier']) ? $data['carrier'] : null;
-        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
-        $this->container['invoice_number'] = isset($data['invoice_number']) ? $data['invoice_number'] : null;
+        $this->container['carrier'] = $data['carrier'] ?? null;
+        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
+        $this->container['invoice_number'] = $data['invoice_number'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Gets carrier
      * @return string
      */
-    public function getCarrier()
+    public function getCarrier(): string
     {
         return $this->container['carrier'];
     }
 
     /**
      * Sets carrier
-     * @param string $carrier Shipping provider name
+     * @param string|null $carrier Shipping provider name
      * @return $this
      */
-    public function setCarrier($carrier)
+    public function setCarrier(?string $carrier): static
     {
         $this->container['carrier'] = $carrier;
 
@@ -164,17 +173,17 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Gets tracking_id
      * @return string
      */
-    public function getTrackingId()
+    public function getTrackingId(): string
     {
         return $this->container['tracking_id'];
     }
 
     /**
      * Sets tracking_id
-     * @param string $tracking_id Tracking-ID
+     * @param string|null $tracking_id Tracking-ID
      * @return $this
      */
-    public function setTrackingId($tracking_id)
+    public function setTrackingId(?string $tracking_id): static
     {
         $this->container['tracking_id'] = $tracking_id;
 
@@ -185,17 +194,17 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Gets invoice_number
      * @return string
      */
-    public function getInvoiceNumber()
+    public function getInvoiceNumber(): string
     {
         return $this->container['invoice_number'];
     }
 
     /**
      * Sets invoice_number
-     * @param string $invoice_number Merchants invoice number
+     * @param string|null $invoice_number Merchants invoice number
      * @return $this
      */
-    public function setInvoiceNumber($invoice_number)
+    public function setInvoiceNumber(?string $invoice_number): static
     {
         $this->container['invoice_number'] = $invoice_number;
 
@@ -207,7 +216,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PrepaidSalesSmartDevice
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PrepaidSalesSmartDevice implements ArrayAccess
+class PrepaidSalesSmartDevice implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PrepaidSalesSmartDevice implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PrepaidSalesSmartDevice';
+    protected static string $swaggerModelName = 'PrepaidSalesSmartDevice';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'object' => 'string',
         'id' => 'string',
         'description' => 'string',
@@ -38,19 +47,19 @@ class PrepaidSalesSmartDevice implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'object' => null,
         'id' => null,
         'description' => null,
         'vendor_uid' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'object' => 'object',
         'id' => 'id',
         'description' => 'description',
@@ -70,7 +79,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'object' => 'setObject',
         'id' => 'setId',
         'description' => 'setDescription',
@@ -81,44 +90,44 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'object' => 'getObject',
         'id' => 'getId',
         'description' => 'getDescription',
         'vendor_uid' => 'getVendorUid'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['vendor_uid'] = isset($data['vendor_uid']) ? $data['vendor_uid'] : null;
+        $this->container['object'] = $data['object'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['vendor_uid'] = $data['vendor_uid'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Gets object
      * @return string
      */
-    public function getObject()
+    public function getObject(): string
     {
         return $this->container['object'];
     }
 
     /**
      * Sets object
-     * @param string $object Object of smart device
+     * @param string|null $object Object of smart device
      * @return $this
      */
-    public function setObject($object)
+    public function setObject(?string $object): static
     {
         $this->container['object'] = $object;
 
@@ -170,17 +179,17 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id Id of smart device
+     * @param string|null $id Id of smart device
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -191,17 +200,17 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Smart device description
+     * @param string|null $description Smart device description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -212,17 +221,17 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid()
+    public function getVendorUid(): string
     {
         return $this->container['vendor_uid'];
     }
 
     /**
      * Sets vendor_uid
-     * @param string $vendor_uid Smart device vendor uid
+     * @param string|null $vendor_uid Smart device vendor uid
      * @return $this
      */
-    public function setVendorUid($vendor_uid)
+    public function setVendorUid(?string $vendor_uid): static
     {
         $this->container['vendor_uid'] = $vendor_uid;
 
@@ -234,7 +243,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class PrepaidSalesSmartDevice implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

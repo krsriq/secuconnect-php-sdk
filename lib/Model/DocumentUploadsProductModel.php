@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * DocumentUploadsProductModel
@@ -19,13 +28,13 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'DocumentUploadsProductModel';
+    protected static string $swaggerModelName = 'DocumentUploadsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'type' => 'string',
         'name' => 'string',
         'size' => 'int'
@@ -35,18 +44,18 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'type' => null,
         'name' => null,
         'size' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -55,7 +64,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'type' => 'type',
         'name' => 'name',
         'size' => 'size'
@@ -65,7 +74,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'type' => 'setType',
         'name' => 'setName',
         'size' => 'setSize'
@@ -75,38 +84,38 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'type' => 'getType',
         'name' => 'getName',
         'size' => 'getSize'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -127,7 +136,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -158,17 +167,17 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Name
+     * @param string|null $name Name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -179,17 +188,17 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets size
      * @return int
      */
-    public function getSize()
+    public function getSize(): int
     {
         return $this->container['size'];
     }
 
     /**
      * Sets size
-     * @param int $size Size
+     * @param int|null $size Size
      * @return $this
      */
-    public function setSize($size)
+    public function setSize(?int $size): static
     {
         $this->container['size'] = $size;
 
@@ -201,7 +210,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -211,9 +220,9 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -222,7 +231,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -236,7 +245,7 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -245,13 +254,17 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

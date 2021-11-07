@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * Address
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Address implements ArrayAccess
+class Address implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class Address implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Address';
+    protected static string $swaggerModelName = 'Address';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'type' => 'string',
         'street' => 'string',
         'street_number' => 'string',
@@ -41,7 +50,7 @@ class Address implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'type' => null,
         'street' => null,
         'street_number' => null,
@@ -51,12 +60,12 @@ class Address implements ArrayAccess
         'additional_address_data' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class Address implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'type' => 'type',
         'street' => 'street',
         'street_number' => 'street_number',
@@ -79,7 +88,7 @@ class Address implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'type' => 'setType',
         'street' => 'setStreet',
         'street_number' => 'setStreetNumber',
@@ -93,7 +102,7 @@ class Address implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'type' => 'getType',
         'street' => 'getStreet',
         'street_number' => 'getStreetNumber',
@@ -103,40 +112,40 @@ class Address implements ArrayAccess
         'additional_address_data' => 'getAdditionalAddressData'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['street'] = isset($data['street']) ? $data['street'] : null;
-        $this->container['street_number'] = isset($data['street_number']) ? $data['street_number'] : null;
-        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
-        $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['additional_address_data'] = isset($data['additional_address_data']) ? $data['additional_address_data'] : null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['street'] = $data['street'] ?? null;
+        $this->container['street_number'] = $data['street_number'] ?? null;
+        $this->container['city'] = $data['city'] ?? null;
+        $this->container['postal_code'] = $data['postal_code'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['additional_address_data'] = $data['additional_address_data'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class Address implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class Address implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class Address implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -188,17 +197,17 @@ class Address implements ArrayAccess
      * Gets street
      * @return string
      */
-    public function getStreet()
+    public function getStreet(): string
     {
         return $this->container['street'];
     }
 
     /**
      * Sets street
-     * @param string $street Street name without house number
+     * @param string|null $street Street name without house number
      * @return $this
      */
-    public function setStreet($street)
+    public function setStreet(?string $street): static
     {
         $this->container['street'] = $street;
 
@@ -209,17 +218,17 @@ class Address implements ArrayAccess
      * Gets street_number
      * @return string
      */
-    public function getStreetNumber()
+    public function getStreetNumber(): string
     {
         return $this->container['street_number'];
     }
 
     /**
      * Sets street_number
-     * @param string $street_number House number incl. supplement
+     * @param string|null $street_number House number incl. supplement
      * @return $this
      */
-    public function setStreetNumber($street_number)
+    public function setStreetNumber(?string $street_number): static
     {
         $this->container['street_number'] = $street_number;
 
@@ -230,17 +239,17 @@ class Address implements ArrayAccess
      * Gets city
      * @return string
      */
-    public function getCity()
+    public function getCity(): string
     {
         return $this->container['city'];
     }
 
     /**
      * Sets city
-     * @param string $city City
+     * @param string|null $city City
      * @return $this
      */
-    public function setCity($city)
+    public function setCity(?string $city): static
     {
         $this->container['city'] = $city;
 
@@ -251,17 +260,17 @@ class Address implements ArrayAccess
      * Gets postal_code
      * @return string
      */
-    public function getPostalCode()
+    public function getPostalCode(): string
     {
         return $this->container['postal_code'];
     }
 
     /**
      * Sets postal_code
-     * @param string $postal_code Postal code / ZIP code
+     * @param string|null $postal_code Postal code / ZIP code
      * @return $this
      */
-    public function setPostalCode($postal_code)
+    public function setPostalCode(?string $postal_code): static
     {
         $this->container['postal_code'] = $postal_code;
 
@@ -272,17 +281,17 @@ class Address implements ArrayAccess
      * Gets country
      * @return string
      */
-    public function getCountry()
+    public function getCountry(): string
     {
         return $this->container['country'];
     }
 
     /**
      * Sets country
-     * @param string $country country
+     * @param string|null $country country
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountry(?string $country): static
     {
         $this->container['country'] = $country;
 
@@ -293,17 +302,17 @@ class Address implements ArrayAccess
      * Gets additional_address_data
      * @return string
      */
-    public function getAdditionalAddressData()
+    public function getAdditionalAddressData(): string
     {
         return $this->container['additional_address_data'];
     }
 
     /**
      * Sets additional_address_data
-     * @param string $additional_address_data Additional address line, like c/o, or an appartment number
+     * @param string|null $additional_address_data Additional address line, like c/o, or an appartment number
      * @return $this
      */
-    public function setAdditionalAddressData($additional_address_data)
+    public function setAdditionalAddressData(?string $additional_address_data): static
     {
         $this->container['additional_address_data'] = $additional_address_data;
 
@@ -315,7 +324,7 @@ class Address implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class Address implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class Address implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class Address implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class Address implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

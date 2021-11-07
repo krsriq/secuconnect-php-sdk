@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentContext
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentContext implements ArrayAccess
+class PaymentContext implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentContext implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentContext';
+    protected static string $swaggerModelName = 'PaymentContext';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'auto_capture' => 'bool',
         'payment_methods' => 'string[]',
         'merchant_initiated' => 'bool'
@@ -37,18 +46,18 @@ class PaymentContext implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'auto_capture' => null,
         'payment_methods' => null,
         'merchant_initiated' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class PaymentContext implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'auto_capture' => 'auto_capture',
         'payment_methods' => 'payment_methods',
         'merchant_initiated' => 'merchant_initiated'
@@ -67,7 +76,7 @@ class PaymentContext implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'auto_capture' => 'setAutoCapture',
         'payment_methods' => 'setPaymentMethods',
         'merchant_initiated' => 'setMerchantInitiated'
@@ -77,42 +86,42 @@ class PaymentContext implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'auto_capture' => 'getAutoCapture',
         'payment_methods' => 'getPaymentMethods',
         'merchant_initiated' => 'getMerchantInitiated'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['auto_capture'] = isset($data['auto_capture']) ? $data['auto_capture'] : false;
-        $this->container['payment_methods'] = isset($data['payment_methods']) ? $data['payment_methods'] : null;
-        $this->container['merchant_initiated'] = isset($data['merchant_initiated']) ? $data['merchant_initiated'] : false;
+        $this->container['auto_capture'] = $data['auto_capture'] ?? false;
+        $this->container['payment_methods'] = $data['payment_methods'] ?? null;
+        $this->container['merchant_initiated'] = $data['merchant_initiated'] ?? false;
     }
 
     /**
@@ -120,7 +129,7 @@ class PaymentContext implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class PaymentContext implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class PaymentContext implements ArrayAccess
      * Gets auto_capture
      * @return bool
      */
-    public function getAutoCapture()
+    public function getAutoCapture(): bool
     {
         return $this->container['auto_capture'];
     }
 
     /**
      * Sets auto_capture
-     * @param bool $auto_capture auto capture the smart transaction
+     * @param bool|null $auto_capture auto capture the smart transaction
      * @return $this
      */
-    public function setAutoCapture($auto_capture)
+    public function setAutoCapture(?bool $auto_capture): static
     {
         $this->container['auto_capture'] = $auto_capture;
 
@@ -164,17 +173,17 @@ class PaymentContext implements ArrayAccess
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods()
+    public function getPaymentMethods(): array
     {
         return $this->container['payment_methods'];
     }
 
     /**
      * Sets payment_methods
-     * @param string[] $payment_methods payment_methods
+     * @param string[]|null $payment_methods payment_methods
      * @return $this
      */
-    public function setPaymentMethods($payment_methods)
+    public function setPaymentMethods(?array $payment_methods): static
     {
         $this->container['payment_methods'] = $payment_methods;
 
@@ -185,17 +194,17 @@ class PaymentContext implements ArrayAccess
      * Gets merchant_initiated
      * @return bool
      */
-    public function getMerchantInitiated()
+    public function getMerchantInitiated(): bool
     {
         return $this->container['merchant_initiated'];
     }
 
     /**
      * Sets merchant_initiated
-     * @param bool $merchant_initiated is this smart transaction created automatically by the merchant (process without customer interaction)
+     * @param bool|null $merchant_initiated is this smart transaction created automatically by the merchant (process without customer interaction)
      * @return $this
      */
-    public function setMerchantInitiated($merchant_initiated)
+    public function setMerchantInitiated(?bool $merchant_initiated): static
     {
         $this->container['merchant_initiated'] = $merchant_initiated;
 
@@ -207,7 +216,7 @@ class PaymentContext implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class PaymentContext implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class PaymentContext implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class PaymentContext implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class PaymentContext implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

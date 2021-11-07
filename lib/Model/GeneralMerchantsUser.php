@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsUser
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeneralMerchantsUser implements ArrayAccess
+class GeneralMerchantsUser implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeneralMerchantsUser implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsUser';
+    protected static string $swaggerModelName = 'GeneralMerchantsUser';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'object' => 'string',
         'id' => 'string',
         'name' => 'string',
@@ -39,7 +48,7 @@ class GeneralMerchantsUser implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'object' => null,
         'id' => null,
         'name' => null,
@@ -47,12 +56,12 @@ class GeneralMerchantsUser implements ArrayAccess
         'address' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'object' => 'object',
         'id' => 'id',
         'name' => 'name',
@@ -73,7 +82,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'object' => 'setObject',
         'id' => 'setId',
         'name' => 'setName',
@@ -85,7 +94,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'object' => 'getObject',
         'id' => 'getId',
         'name' => 'getName',
@@ -93,38 +102,38 @@ class GeneralMerchantsUser implements ArrayAccess
         'address' => 'getAddress'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['companyname'] = isset($data['companyname']) ? $data['companyname'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['object'] = $data['object'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['companyname'] = $data['companyname'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class GeneralMerchantsUser implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class GeneralMerchantsUser implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets object
      * @return string
      */
-    public function getObject()
+    public function getObject(): string
     {
         return $this->container['object'];
     }
 
     /**
      * Sets object
-     * @param string $object Object of General Merchant user
+     * @param string|null $object Object of General Merchant user
      * @return $this
      */
-    public function setObject($object)
+    public function setObject(?string $object): static
     {
         $this->container['object'] = $object;
 
@@ -176,17 +185,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id ID of General Merchant user
+     * @param string|null $id ID of General Merchant user
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -197,17 +206,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Name of General Merchant user
+     * @param string|null $name Name of General Merchant user
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -218,17 +227,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets companyname
      * @return string
      */
-    public function getCompanyname()
+    public function getCompanyname(): string
     {
         return $this->container['companyname'];
     }
 
     /**
      * Sets companyname
-     * @param string $companyname Company name of General Merchant user
+     * @param string|null $companyname Company name of General Merchant user
      * @return $this
      */
-    public function setCompanyname($companyname)
+    public function setCompanyname(?string $companyname): static
     {
         $this->container['companyname'] = $companyname;
 
@@ -239,17 +248,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\GeoAddress[]
      */
-    public function getAddress()
+    public function getAddress(): array
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\GeoAddress[] $address Address of General Merchant user
+     * @param \Secuconnect\Client\Model\GeoAddress[]|null $address Address of General Merchant user
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?array $address): static
     {
         $this->container['address'] = $address;
 
@@ -261,7 +270,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class GeneralMerchantsUser implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class GeneralMerchantsUser implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class GeneralMerchantsUser implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsPreTransactionModel
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsPreTransactionModel implements ArrayAccess
+class SmartTransactionsPreTransactionModel implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsPreTransactionModel';
+    protected static string $swaggerModelName = 'SmartTransactionsPreTransactionModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'missing_sum' => 'int',
         'bonus_products' => '\Secuconnect\Client\Model\SmartTransactionsBonusProducts[]'
     ];
@@ -36,17 +45,17 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'missing_sum' => null,
         'bonus_products' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'missing_sum' => 'missing_sum',
         'bonus_products' => 'bonus_products'
     ];
@@ -64,7 +73,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'missing_sum' => 'setMissingSum',
         'bonus_products' => 'setBonusProducts'
     ];
@@ -73,40 +82,40 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'missing_sum' => 'getMissingSum',
         'bonus_products' => 'getBonusProducts'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['missing_sum'] = isset($data['missing_sum']) ? $data['missing_sum'] : null;
-        $this->container['bonus_products'] = isset($data['bonus_products']) ? $data['bonus_products'] : null;
+        $this->container['missing_sum'] = $data['missing_sum'] ?? null;
+        $this->container['bonus_products'] = $data['bonus_products'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Gets missing_sum
      * @return int
      */
-    public function getMissingSum()
+    public function getMissingSum(): int
     {
         return $this->container['missing_sum'];
     }
 
     /**
      * Sets missing_sum
-     * @param int $missing_sum missing sum
+     * @param int|null $missing_sum missing sum
      * @return $this
      */
-    public function setMissingSum($missing_sum)
+    public function setMissingSum(?int $missing_sum): static
     {
         $this->container['missing_sum'] = $missing_sum;
 
@@ -158,17 +167,17 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Gets bonus_products
      * @return \Secuconnect\Client\Model\SmartTransactionsBonusProducts[]
      */
-    public function getBonusProducts()
+    public function getBonusProducts(): array
     {
         return $this->container['bonus_products'];
     }
 
     /**
      * Sets bonus_products
-     * @param \Secuconnect\Client\Model\SmartTransactionsBonusProducts[] $bonus_products bonus_products
+     * @param \Secuconnect\Client\Model\SmartTransactionsBonusProducts[]|null $bonus_products bonus_products
      * @return $this
      */
-    public function setBonusProducts($bonus_products)
+    public function setBonusProducts(?array $bonus_products): static
     {
         $this->container['bonus_products'] = $bonus_products;
 
@@ -180,7 +189,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

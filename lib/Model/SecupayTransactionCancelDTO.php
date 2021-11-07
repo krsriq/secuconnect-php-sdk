@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionCancelDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionCancelDTO implements ArrayAccess
+class SecupayTransactionCancelDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionCancelDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionCancelDTO';
+    protected static string $swaggerModelName = 'SecupayTransactionCancelDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'contract' => '\Secuconnect\Client\Model\PaymentContractsProductModel',
         'amount' => 'int',
         'reduce_stakeholder_payment' => 'bool'
@@ -37,18 +46,18 @@ class SecupayTransactionCancelDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'contract' => null,
         'amount' => null,
         'reduce_stakeholder_payment' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'contract' => 'contract',
         'amount' => 'amount',
         'reduce_stakeholder_payment' => 'reduce_stakeholder_payment'
@@ -67,7 +76,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'contract' => 'setContract',
         'amount' => 'setAmount',
         'reduce_stakeholder_payment' => 'setReduceStakeholderPayment'
@@ -77,42 +86,42 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'contract' => 'getContract',
         'amount' => 'getAmount',
         'reduce_stakeholder_payment' => 'getReduceStakeholderPayment'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['reduce_stakeholder_payment'] = isset($data['reduce_stakeholder_payment']) ? $data['reduce_stakeholder_payment'] : false;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['reduce_stakeholder_payment'] = $data['reduce_stakeholder_payment'] ?? false;
     }
 
     /**
@@ -120,7 +129,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract()
+    public function getContract(): PaymentContractsProductModel
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\PaymentContractsProductModel $contract contract
+     * @param \Secuconnect\Client\Model\PaymentContractsProductModel|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?PaymentContractsProductModel $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -164,17 +173,17 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -185,17 +194,17 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Gets reduce_stakeholder_payment
      * @return bool
      */
-    public function getReduceStakeholderPayment()
+    public function getReduceStakeholderPayment(): bool
     {
         return $this->container['reduce_stakeholder_payment'];
     }
 
     /**
      * Sets reduce_stakeholder_payment
-     * @param bool $reduce_stakeholder_payment Mixed-Basket: (percentage) reduce the stakeholder amount too
+     * @param bool|null $reduce_stakeholder_payment Mixed-Basket: (percentage) reduce the stakeholder amount too
      * @return $this
      */
-    public function setReduceStakeholderPayment($reduce_stakeholder_payment)
+    public function setReduceStakeholderPayment(?bool $reduce_stakeholder_payment): static
     {
         $this->container['reduce_stakeholder_payment'] = $reduce_stakeholder_payment;
 
@@ -207,7 +216,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class SecupayTransactionCancelDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

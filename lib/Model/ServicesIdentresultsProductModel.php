@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * ServicesIdentresultsProductModel
@@ -19,13 +28,13 @@ class ServicesIdentresultsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ServicesIdentresultsProductModel';
+    protected static string $swaggerModelName = 'ServicesIdentresultsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'request' => '\Secuconnect\Client\Model\ProductInstanceUID',
         'contract' => '\Secuconnect\Client\Model\ProductInstanceUID',
@@ -38,7 +47,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'request' => null,
         'contract' => null,
@@ -47,12 +56,12 @@ class ServicesIdentresultsProductModel extends BaseProductModel
         'person' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -61,7 +70,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'request' => 'request',
         'contract' => 'contract',
@@ -74,7 +83,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'request' => 'setRequest',
         'contract' => 'setContract',
@@ -87,7 +96,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'request' => 'getRequest',
         'contract' => 'getContract',
@@ -96,35 +105,35 @@ class ServicesIdentresultsProductModel extends BaseProductModel
         'person' => 'getPerson'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['request'] = isset($data['request']) ? $data['request'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['demo'] = isset($data['demo']) ? $data['demo'] : null;
-        $this->container['person'] = isset($data['person']) ? $data['person'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['request'] = $data['request'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['demo'] = $data['demo'] ?? null;
+        $this->container['person'] = $data['person'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -145,7 +154,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -176,17 +185,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets request
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getRequest()
+    public function getRequest(): ProductInstanceUID
     {
         return $this->container['request'];
     }
 
     /**
      * Sets request
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $request request
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $request request
      * @return $this
      */
-    public function setRequest($request)
+    public function setRequest(?ProductInstanceUID $request): static
     {
         $this->container['request'] = $request;
 
@@ -197,17 +206,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract()
+    public function getContract(): ProductInstanceUID
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $contract contract
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?ProductInstanceUID $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -218,17 +227,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status The status of the identrequest
+     * @param string|null $status The status of the identrequest
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -239,17 +248,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo()
+    public function getDemo(): bool
     {
         return $this->container['demo'];
     }
 
     /**
      * Sets demo
-     * @param bool $demo Demo Flag
+     * @param bool|null $demo Demo Flag
      * @return $this
      */
-    public function setDemo($demo)
+    public function setDemo(?bool $demo): static
     {
         $this->container['demo'] = $demo;
 
@@ -260,17 +269,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets person
      * @return \Secuconnect\Client\Model\IdentresultPerson[]
      */
-    public function getPerson()
+    public function getPerson(): array
     {
         return $this->container['person'];
     }
 
     /**
      * Sets person
-     * @param \Secuconnect\Client\Model\IdentresultPerson[] $person The details from identification process about identified person
+     * @param \Secuconnect\Client\Model\IdentresultPerson[]|null $person The details from identification process about identified person
      * @return $this
      */
-    public function setPerson($person)
+    public function setPerson(?array $person): static
     {
         $this->container['person'] = $person;
 
@@ -282,7 +291,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,9 +301,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -303,7 +312,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -317,7 +326,7 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -326,13 +335,17 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

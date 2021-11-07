@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsLegalDetails
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeneralMerchantsLegalDetails implements ArrayAccess
+class GeneralMerchantsLegalDetails implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsLegalDetails';
+    protected static string $swaggerModelName = 'GeneralMerchantsLegalDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'url' => 'string',
         'type' => 'string',
         'content_type' => 'string',
@@ -38,19 +47,19 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'url' => null,
         'type' => null,
         'content_type' => null,
         'language' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'url' => 'url',
         'type' => 'type',
         'content_type' => 'content_type',
@@ -70,7 +79,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'url' => 'setUrl',
         'type' => 'setType',
         'content_type' => 'setContentType',
@@ -81,44 +90,44 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'url' => 'getUrl',
         'type' => 'getType',
         'content_type' => 'getContentType',
         'language' => 'getLanguage'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
-        $this->container['language'] = isset($data['language']) ? $data['language'] : null;
+        $this->container['url'] = $data['url'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['content_type'] = $data['content_type'] ?? null;
+        $this->container['language'] = $data['language'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Gets url
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->container['url'];
     }
 
     /**
      * Sets url
-     * @param string $url URL
+     * @param string|null $url URL
      * @return $this
      */
-    public function setUrl($url)
+    public function setUrl(?string $url): static
     {
         $this->container['url'] = $url;
 
@@ -170,17 +179,17 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Document type: 'imprint', 'revocation' (cancellation policy), 'terms' (terms of use), 'policy' (privacy policy), or 'logo'
+     * @param string|null $type Document type: 'imprint', 'revocation' (cancellation policy), 'terms' (terms of use), 'policy' (privacy policy), or 'logo'
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -191,17 +200,17 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Gets content_type
      * @return string
      */
-    public function getContentType()
+    public function getContentType(): string
     {
         return $this->container['content_type'];
     }
 
     /**
      * Sets content_type
-     * @param string $content_type MIME type
+     * @param string|null $content_type MIME type
      * @return $this
      */
-    public function setContentType($content_type)
+    public function setContentType(?string $content_type): static
     {
         $this->container['content_type'] = $content_type;
 
@@ -212,17 +221,17 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Gets language
      * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->container['language'];
     }
 
     /**
      * Sets language
-     * @param string $language Language code {'de', 'en', ...}
+     * @param string|null $language Language code {'de', 'en', ...}
      * @return $this
      */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): static
     {
         $this->container['language'] = $language;
 
@@ -234,7 +243,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class GeneralMerchantsLegalDetails implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionProductModelUsedPaymentInstrument
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
+class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionProductModel_used_payment_instrument';
+    protected static string $swaggerModelName = 'SecupayTransactionProductModel_used_payment_instrument';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'type' => 'string',
         'data' => '\Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate'
     ];
@@ -36,17 +45,17 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'type' => null,
         'data' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'type' => 'type',
         'data' => 'data'
     ];
@@ -64,7 +73,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'type' => 'setType',
         'data' => 'setData'
     ];
@@ -73,40 +82,40 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'type' => 'getType',
         'data' => 'getData'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type The type of the payment instrument data, like: 'bank_account' or 'credit_card'
+     * @param string|null $type The type of the payment instrument data, like: 'bank_account' or 'credit_card'
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -158,17 +167,17 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Gets data
      * @return \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate
      */
-    public function getData()
+    public function getData(): OneOfPaymentContainersDTOModelPrivate
     {
         return $this->container['data'];
     }
 
     /**
      * Sets data
-     * @param \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate $data data
+     * @param \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate|null $data data
      * @return $this
      */
-    public function setData($data)
+    public function setData(?OneOfPaymentContainersDTOModelPrivate $data): static
     {
         $this->container['data'] = $data;
 
@@ -180,7 +189,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

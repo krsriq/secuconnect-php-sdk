@@ -2,7 +2,7 @@
 
 namespace Secuconnect\Client;
 
-use \Exception;
+use Exception;
 
 /**
  * ApiException
@@ -20,21 +20,21 @@ class ApiException extends Exception
      *
      * @var mixed
      */
-    protected $responseBody;
+    protected mixed $responseBody;
 
     /**
      * The HTTP header of the server response.
      *
      * @var string[]|null
      */
-    protected $responseHeaders;
+    protected ?array $responseHeaders;
 
     /**
      * The deserialized response object
      *
-     * @var $responseObject;
+     * @var mixed $responseObject;
      */
-    protected $responseObject;
+    protected mixed $responseObject;
 
     /**
      * Constructor
@@ -42,9 +42,9 @@ class ApiException extends Exception
      * @param string        $message         Error message
      * @param int           $code            HTTP status code
      * @param string[]|null $responseHeaders HTTP response header
-     * @param mixed         $responseBody    HTTP decoded body of the server response either as \stdClass or string
+     * @param mixed|null    $responseBody    HTTP decoded body of the server response either as \stdClass or string
      */
-    public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = null)
+    public function __construct($message = "", $code = 0, $responseHeaders = [], mixed $responseBody = null)
     {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
@@ -66,30 +66,30 @@ class ApiException extends Exception
      *
      * @return mixed HTTP body of the server response either as \stdClass or string
      */
-    public function getResponseBody()
+    public function getResponseBody(): mixed
     {
         return $this->responseBody;
     }
 
     /**
-     * Sets the deseralized response object (during deserialization)
-     *
-     * @param mixed $obj Deserialized response object
-     *
-     * @return void
-     */
-    public function setResponseObject($obj)
-    {
-        $this->responseObject = $obj;
-    }
-
-    /**
-     * Gets the deseralized response object (during deserialization)
+     * Gets the deserialized response object (during deserialization)
      *
      * @return mixed the deserialized response object
      */
-    public function getResponseObject()
+    public function getResponseObject(): mixed
     {
         return $this->responseObject;
+    }
+
+    /**
+     * Sets the deserialized response object (during deserialization)
+     *
+     * @param mixed $obj Deserialized response object
+     * @return ApiException
+     */
+    public function setResponseObject(mixed $obj): static
+    {
+        $this->responseObject = $obj;
+        return $this;
     }
 }

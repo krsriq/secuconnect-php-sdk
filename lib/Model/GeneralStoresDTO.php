@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralStoresDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeneralStoresDTO implements ArrayAccess
+class GeneralStoresDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeneralStoresDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralStoresDTO';
+    protected static string $swaggerModelName = 'GeneralStoresDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'name' => 'string',
         'merchant' => 'string',
         'address' => '\Secuconnect\Client\Model\Address',
@@ -43,7 +52,7 @@ class GeneralStoresDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'name' => null,
         'merchant' => null,
         'address' => null,
@@ -55,12 +64,12 @@ class GeneralStoresDTO implements ArrayAccess
         'open_hours' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -69,7 +78,7 @@ class GeneralStoresDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'name' => 'name',
         'merchant' => 'merchant',
         'address' => 'address',
@@ -85,7 +94,7 @@ class GeneralStoresDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'name' => 'setName',
         'merchant' => 'setMerchant',
         'address' => 'setAddress',
@@ -101,7 +110,7 @@ class GeneralStoresDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'name' => 'getName',
         'merchant' => 'getMerchant',
         'address' => 'getAddress',
@@ -113,42 +122,42 @@ class GeneralStoresDTO implements ArrayAccess
         'open_hours' => 'getOpenHours'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['facebook_id'] = isset($data['facebook_id']) ? $data['facebook_id'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['url_website'] = isset($data['url_website']) ? $data['url_website'] : null;
-        $this->container['photo_main'] = isset($data['photo_main']) ? $data['photo_main'] : null;
-        $this->container['photo'] = isset($data['photo']) ? $data['photo'] : null;
-        $this->container['open_hours'] = isset($data['open_hours']) ? $data['open_hours'] : null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['facebook_id'] = $data['facebook_id'] ?? null;
+        $this->container['phone'] = $data['phone'] ?? null;
+        $this->container['url_website'] = $data['url_website'] ?? null;
+        $this->container['photo_main'] = $data['photo_main'] ?? null;
+        $this->container['photo'] = $data['photo'] ?? null;
+        $this->container['open_hours'] = $data['open_hours'] ?? null;
     }
 
     /**
@@ -156,7 +165,7 @@ class GeneralStoresDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -169,7 +178,7 @@ class GeneralStoresDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -179,17 +188,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Name
+     * @param string|null $name Name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -200,17 +209,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets merchant
      * @return string
      */
-    public function getMerchant()
+    public function getMerchant(): string
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param string $merchant Merchant
+     * @param string|null $merchant Merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?string $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -221,17 +230,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\Address $address address
+     * @param \Secuconnect\Client\Model\Address|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?Address $address): static
     {
         $this->container['address'] = $address;
 
@@ -242,17 +251,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets facebook_id
      * @return string
      */
-    public function getFacebookId()
+    public function getFacebookId(): string
     {
         return $this->container['facebook_id'];
     }
 
     /**
      * Sets facebook_id
-     * @param string $facebook_id New facebook ID
+     * @param string|null $facebook_id New facebook ID
      * @return $this
      */
-    public function setFacebookId($facebook_id)
+    public function setFacebookId(?string $facebook_id): static
     {
         $this->container['facebook_id'] = $facebook_id;
 
@@ -263,17 +272,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets phone
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->container['phone'];
     }
 
     /**
      * Sets phone
-     * @param string $phone New phone number
+     * @param string|null $phone New phone number
      * @return $this
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
         $this->container['phone'] = $phone;
 
@@ -284,17 +293,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite()
+    public function getUrlWebsite(): string
     {
         return $this->container['url_website'];
     }
 
     /**
      * Sets url_website
-     * @param string $url_website New URL to general store website
+     * @param string|null $url_website New URL to general store website
      * @return $this
      */
-    public function setUrlWebsite($url_website)
+    public function setUrlWebsite(?string $url_website): static
     {
         $this->container['url_website'] = $url_website;
 
@@ -305,17 +314,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets photo_main
      * @return string
      */
-    public function getPhotoMain()
+    public function getPhotoMain(): string
     {
         return $this->container['photo_main'];
     }
 
     /**
      * Sets photo_main
-     * @param string $photo_main New main photo
+     * @param string|null $photo_main New main photo
      * @return $this
      */
-    public function setPhotoMain($photo_main)
+    public function setPhotoMain(?string $photo_main): static
     {
         $this->container['photo_main'] = $photo_main;
 
@@ -326,17 +335,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets photo
      * @return string[]
      */
-    public function getPhoto()
+    public function getPhoto(): array
     {
         return $this->container['photo'];
     }
 
     /**
      * Sets photo
-     * @param string[] $photo New photos
+     * @param string[]|null $photo New photos
      * @return $this
      */
-    public function setPhoto($photo)
+    public function setPhoto(?array $photo): static
     {
         $this->container['photo'] = $photo;
 
@@ -347,17 +356,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets open_hours
      * @return \Secuconnect\Client\Model\OpenHours[]
      */
-    public function getOpenHours()
+    public function getOpenHours(): array
     {
         return $this->container['open_hours'];
     }
 
     /**
      * Sets open_hours
-     * @param \Secuconnect\Client\Model\OpenHours[] $open_hours Opening hours per weekday
+     * @param \Secuconnect\Client\Model\OpenHours[]|null $open_hours Opening hours per weekday
      * @return $this
      */
-    public function setOpenHours($open_hours)
+    public function setOpenHours(?array $open_hours): static
     {
         $this->container['open_hours'] = $open_hours;
 
@@ -369,7 +378,7 @@ class GeneralStoresDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -379,9 +388,9 @@ class GeneralStoresDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -390,7 +399,7 @@ class GeneralStoresDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -404,7 +413,7 @@ class GeneralStoresDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -413,13 +422,17 @@ class GeneralStoresDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

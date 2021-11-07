@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * Contact
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class Contact implements ArrayAccess
+class Contact implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class Contact implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Contact';
+    protected static string $swaggerModelName = 'Contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'forename' => 'string',
         'surname' => 'string',
         'companyname' => 'string',
@@ -50,7 +59,7 @@ class Contact implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'forename' => null,
         'surname' => null,
         'companyname' => null,
@@ -69,12 +78,12 @@ class Contact implements ArrayAccess
         'address' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -83,7 +92,7 @@ class Contact implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'forename' => 'forename',
         'surname' => 'surname',
         'companyname' => 'companyname',
@@ -106,7 +115,7 @@ class Contact implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'forename' => 'setForename',
         'surname' => 'setSurname',
         'companyname' => 'setCompanyname',
@@ -129,7 +138,7 @@ class Contact implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'forename' => 'getForename',
         'surname' => 'getSurname',
         'companyname' => 'getCompanyname',
@@ -148,49 +157,49 @@ class Contact implements ArrayAccess
         'address' => 'getAddress'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['forename'] = isset($data['forename']) ? $data['forename'] : null;
-        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['companyname'] = isset($data['companyname']) ? $data['companyname'] : null;
-        $this->container['salutation'] = isset($data['salutation']) ? $data['salutation'] : null;
-        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['mobile'] = isset($data['mobile']) ? $data['mobile'] : null;
-        $this->container['fax'] = isset($data['fax']) ? $data['fax'] : null;
-        $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
-        $this->container['picture'] = isset($data['picture']) ? $data['picture'] : null;
-        $this->container['url_website'] = isset($data['url_website']) ? $data['url_website'] : null;
-        $this->container['birthplace'] = isset($data['birthplace']) ? $data['birthplace'] : null;
-        $this->container['nationality'] = isset($data['nationality']) ? $data['nationality'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['forename'] = $data['forename'] ?? null;
+        $this->container['surname'] = $data['surname'] ?? null;
+        $this->container['companyname'] = $data['companyname'] ?? null;
+        $this->container['salutation'] = $data['salutation'] ?? null;
+        $this->container['gender'] = $data['gender'] ?? null;
+        $this->container['title'] = $data['title'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['phone'] = $data['phone'] ?? null;
+        $this->container['mobile'] = $data['mobile'] ?? null;
+        $this->container['fax'] = $data['fax'] ?? null;
+        $this->container['dob'] = $data['dob'] ?? null;
+        $this->container['picture'] = $data['picture'] ?? null;
+        $this->container['url_website'] = $data['url_website'] ?? null;
+        $this->container['birthplace'] = $data['birthplace'] ?? null;
+        $this->container['nationality'] = $data['nationality'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
     }
 
     /**
@@ -198,7 +207,7 @@ class Contact implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -211,7 +220,7 @@ class Contact implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -221,17 +230,17 @@ class Contact implements ArrayAccess
      * Gets forename
      * @return string
      */
-    public function getForename()
+    public function getForename(): string
     {
         return $this->container['forename'];
     }
 
     /**
      * Sets forename
-     * @param string $forename First name
+     * @param string|null $forename First name
      * @return $this
      */
-    public function setForename($forename)
+    public function setForename(?string $forename): static
     {
         $this->container['forename'] = $forename;
 
@@ -242,17 +251,17 @@ class Contact implements ArrayAccess
      * Gets surname
      * @return string
      */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->container['surname'];
     }
 
     /**
      * Sets surname
-     * @param string $surname Last name
+     * @param string|null $surname Last name
      * @return $this
      */
-    public function setSurname($surname)
+    public function setSurname(?string $surname): static
     {
         $this->container['surname'] = $surname;
 
@@ -263,17 +272,17 @@ class Contact implements ArrayAccess
      * Gets companyname
      * @return string
      */
-    public function getCompanyname()
+    public function getCompanyname(): string
     {
         return $this->container['companyname'];
     }
 
     /**
      * Sets companyname
-     * @param string $companyname Company name
+     * @param string|null $companyname Company name
      * @return $this
      */
-    public function setCompanyname($companyname)
+    public function setCompanyname(?string $companyname): static
     {
         $this->container['companyname'] = $companyname;
 
@@ -284,17 +293,17 @@ class Contact implements ArrayAccess
      * Gets salutation
      * @return string
      */
-    public function getSalutation()
+    public function getSalutation(): string
     {
         return $this->container['salutation'];
     }
 
     /**
      * Sets salutation
-     * @param string $salutation Salutation
+     * @param string|null $salutation Salutation
      * @return $this
      */
-    public function setSalutation($salutation)
+    public function setSalutation(?string $salutation): static
     {
         $this->container['salutation'] = $salutation;
 
@@ -305,17 +314,17 @@ class Contact implements ArrayAccess
      * Gets gender
      * @return string
      */
-    public function getGender()
+    public function getGender(): string
     {
         return $this->container['gender'];
     }
 
     /**
      * Sets gender
-     * @param string $gender Gender
+     * @param string|null $gender Gender
      * @return $this
      */
-    public function setGender($gender)
+    public function setGender(?string $gender): static
     {
         $this->container['gender'] = $gender;
 
@@ -326,17 +335,17 @@ class Contact implements ArrayAccess
      * Gets title
      * @return string
      */
-    public function getTitle()
+    public function getTitle(): string
     {
         return $this->container['title'];
     }
 
     /**
      * Sets title
-     * @param string $title Title or academic degree
+     * @param string|null $title Title or academic degree
      * @return $this
      */
-    public function setTitle($title)
+    public function setTitle(?string $title): static
     {
         $this->container['title'] = $title;
 
@@ -347,17 +356,17 @@ class Contact implements ArrayAccess
      * Gets email
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->container['email'];
     }
 
     /**
      * Sets email
-     * @param string $email E-mail address
+     * @param string|null $email E-mail address
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail(?string $email): static
     {
         $this->container['email'] = $email;
 
@@ -368,17 +377,17 @@ class Contact implements ArrayAccess
      * Gets phone
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->container['phone'];
     }
 
     /**
      * Sets phone
-     * @param string $phone Landline number
+     * @param string|null $phone Landline number
      * @return $this
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
         $this->container['phone'] = $phone;
 
@@ -389,17 +398,17 @@ class Contact implements ArrayAccess
      * Gets mobile
      * @return string
      */
-    public function getMobile()
+    public function getMobile(): string
     {
         return $this->container['mobile'];
     }
 
     /**
      * Sets mobile
-     * @param string $mobile Mobile phone number
+     * @param string|null $mobile Mobile phone number
      * @return $this
      */
-    public function setMobile($mobile)
+    public function setMobile(?string $mobile): static
     {
         $this->container['mobile'] = $mobile;
 
@@ -410,17 +419,17 @@ class Contact implements ArrayAccess
      * Gets fax
      * @return string
      */
-    public function getFax()
+    public function getFax(): string
     {
         return $this->container['fax'];
     }
 
     /**
      * Sets fax
-     * @param string $fax Fax number
+     * @param string|null $fax Fax number
      * @return $this
      */
-    public function setFax($fax)
+    public function setFax(?string $fax): static
     {
         $this->container['fax'] = $fax;
 
@@ -431,17 +440,17 @@ class Contact implements ArrayAccess
      * Gets dob
      * @return string
      */
-    public function getDob()
+    public function getDob(): string
     {
         return $this->container['dob'];
     }
 
     /**
      * Sets dob
-     * @param string $dob Date of birth
+     * @param string|null $dob Date of birth
      * @return $this
      */
-    public function setDob($dob)
+    public function setDob(?string $dob): static
     {
         $this->container['dob'] = $dob;
 
@@ -452,17 +461,17 @@ class Contact implements ArrayAccess
      * Gets picture
      * @return string
      */
-    public function getPicture()
+    public function getPicture(): string
     {
         return $this->container['picture'];
     }
 
     /**
      * Sets picture
-     * @param string $picture The document ID of an user picture; s. Document service
+     * @param string|null $picture The document ID of an user picture; s. Document service
      * @return $this
      */
-    public function setPicture($picture)
+    public function setPicture(?string $picture): static
     {
         $this->container['picture'] = $picture;
 
@@ -473,17 +482,17 @@ class Contact implements ArrayAccess
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite()
+    public function getUrlWebsite(): string
     {
         return $this->container['url_website'];
     }
 
     /**
      * Sets url_website
-     * @param string $url_website URL to company website
+     * @param string|null $url_website URL to company website
      * @return $this
      */
-    public function setUrlWebsite($url_website)
+    public function setUrlWebsite(?string $url_website): static
     {
         $this->container['url_website'] = $url_website;
 
@@ -494,17 +503,17 @@ class Contact implements ArrayAccess
      * Gets birthplace
      * @return string
      */
-    public function getBirthplace()
+    public function getBirthplace(): string
     {
         return $this->container['birthplace'];
     }
 
     /**
      * Sets birthplace
-     * @param string $birthplace Birthplace
+     * @param string|null $birthplace Birthplace
      * @return $this
      */
-    public function setBirthplace($birthplace)
+    public function setBirthplace(?string $birthplace): static
     {
         $this->container['birthplace'] = $birthplace;
 
@@ -515,17 +524,17 @@ class Contact implements ArrayAccess
      * Gets nationality
      * @return string
      */
-    public function getNationality()
+    public function getNationality(): string
     {
         return $this->container['nationality'];
     }
 
     /**
      * Sets nationality
-     * @param string $nationality nationality
+     * @param string|null $nationality nationality
      * @return $this
      */
-    public function setNationality($nationality)
+    public function setNationality(?string $nationality): static
     {
         $this->container['nationality'] = $nationality;
 
@@ -536,17 +545,17 @@ class Contact implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\Address $address address
+     * @param \Secuconnect\Client\Model\Address|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?Address $address): static
     {
         $this->container['address'] = $address;
 
@@ -558,7 +567,7 @@ class Contact implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -568,9 +577,9 @@ class Contact implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -579,7 +588,7 @@ class Contact implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -593,7 +602,7 @@ class Contact implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -602,13 +611,17 @@ class Contact implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

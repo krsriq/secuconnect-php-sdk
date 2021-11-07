@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyTransactionsProductModel
@@ -19,13 +28,13 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyTransactionsProductModel';
+    protected static string $swaggerModelName = 'LoyaltyTransactionsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'merchant' => '\Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchant',
         'cardgroup' => '\Secuconnect\Client\Model\LoyaltyTransactionsDTOCardgroup',
@@ -49,7 +58,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'merchant' => null,
         'cardgroup' => null,
@@ -69,12 +78,12 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
         'is_cancelling' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -83,7 +92,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'merchant' => 'merchant',
         'cardgroup' => 'cardgroup',
@@ -107,7 +116,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'merchant' => 'setMerchant',
         'cardgroup' => 'setCardgroup',
@@ -131,7 +140,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'merchant' => 'getMerchant',
         'cardgroup' => 'getCardgroup',
@@ -151,46 +160,46 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
         'is_cancelling' => 'getIsCancelling'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['cardgroup'] = isset($data['cardgroup']) ? $data['cardgroup'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['merchantcard'] = isset($data['merchantcard']) ? $data['merchantcard'] : null;
-        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
-        $this->container['parents'] = isset($data['parents']) ? $data['parents'] : null;
-        $this->container['children'] = isset($data['children']) ? $data['children'] : null;
-        $this->container['tid'] = isset($data['tid']) ? $data['tid'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['last_changee'] = isset($data['last_changee']) ? $data['last_changee'] : null;
-        $this->container['receipt'] = isset($data['receipt']) ? $data['receipt'] : null;
-        $this->container['is_cancelling'] = isset($data['is_cancelling']) ? $data['is_cancelling'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['cardgroup'] = $data['cardgroup'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['merchantcard'] = $data['merchantcard'] ?? null;
+        $this->container['card'] = $data['card'] ?? null;
+        $this->container['parents'] = $data['parents'] ?? null;
+        $this->container['children'] = $data['children'] ?? null;
+        $this->container['tid'] = $data['tid'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['balance'] = $data['balance'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['last_changee'] = $data['last_changee'] ?? null;
+        $this->container['receipt'] = $data['receipt'] ?? null;
+        $this->container['is_cancelling'] = $data['is_cancelling'] ?? null;
     }
 
     /**
@@ -198,7 +207,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -211,7 +220,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -221,17 +230,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -242,17 +251,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchant
      */
-    public function getMerchant()
+    public function getMerchant(): LoyaltyTransactionsDTOMerchant
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchant $merchant merchant
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchant|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?LoyaltyTransactionsDTOMerchant $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -263,17 +272,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets cardgroup
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOCardgroup
      */
-    public function getCardgroup()
+    public function getCardgroup(): LoyaltyTransactionsDTOCardgroup
     {
         return $this->container['cardgroup'];
     }
 
     /**
      * Sets cardgroup
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOCardgroup $cardgroup cardgroup
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOCardgroup|null $cardgroup cardgroup
      * @return $this
      */
-    public function setCardgroup($cardgroup)
+    public function setCardgroup(?LoyaltyTransactionsDTOCardgroup $cardgroup): static
     {
         $this->container['cardgroup'] = $cardgroup;
 
@@ -284,17 +293,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOStore
      */
-    public function getStore()
+    public function getStore(): LoyaltyTransactionsDTOStore
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOStore $store store
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOStore|null $store store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?LoyaltyTransactionsDTOStore $store): static
     {
         $this->container['store'] = $store;
 
@@ -305,17 +314,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets merchantcard
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchantcard
      */
-    public function getMerchantcard()
+    public function getMerchantcard(): LoyaltyTransactionsDTOMerchantcard
     {
         return $this->container['merchantcard'];
     }
 
     /**
      * Sets merchantcard
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchantcard $merchantcard merchantcard
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchantcard|null $merchantcard merchantcard
      * @return $this
      */
-    public function setMerchantcard($merchantcard)
+    public function setMerchantcard(?LoyaltyTransactionsDTOMerchantcard $merchantcard): static
     {
         $this->container['merchantcard'] = $merchantcard;
 
@@ -326,17 +335,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets card
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOCard
      */
-    public function getCard()
+    public function getCard(): LoyaltyTransactionsDTOCard
     {
         return $this->container['card'];
     }
 
     /**
      * Sets card
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOCard $card card
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTOCard|null $card card
      * @return $this
      */
-    public function setCard($card)
+    public function setCard(?LoyaltyTransactionsDTOCard $card): static
     {
         $this->container['card'] = $card;
 
@@ -347,17 +356,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets parents
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]
      */
-    public function getParents()
+    public function getParents(): array
     {
         return $this->container['parents'];
     }
 
     /**
      * Sets parents
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[] $parents parents
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]|null $parents parents
      * @return $this
      */
-    public function setParents($parents)
+    public function setParents(?array $parents): static
     {
         $this->container['parents'] = $parents;
 
@@ -368,17 +377,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets children
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]
      */
-    public function getChildren()
+    public function getChildren(): array
     {
         return $this->container['children'];
     }
 
     /**
      * Sets children
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[] $children children
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]|null $children children
      * @return $this
      */
-    public function setChildren($children)
+    public function setChildren(?array $children): static
     {
         $this->container['children'] = $children;
 
@@ -389,17 +398,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid()
+    public function getTid(): string
     {
         return $this->container['tid'];
     }
 
     /**
      * Sets tid
-     * @param string $tid The TID of the processed Smart Device
+     * @param string|null $tid The TID of the processed Smart Device
      * @return $this
      */
-    public function setTid($tid)
+    public function setTid(?string $tid): static
     {
         $this->container['tid'] = $tid;
 
@@ -410,17 +419,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status The status text of the Loyalty Transaction
+     * @param string|null $status The status text of the Loyalty Transaction
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -431,17 +440,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -452,17 +461,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency currency
+     * @param string|null $currency currency
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -473,17 +482,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets balance
      * @return int
      */
-    public function getBalance()
+    public function getBalance(): int
     {
         return $this->container['balance'];
     }
 
     /**
      * Sets balance
-     * @param int $balance The balance of the merchantcard after this Loyalty Transaction
+     * @param int|null $balance The balance of the merchantcard after this Loyalty Transaction
      * @return $this
      */
-    public function setBalance($balance)
+    public function setBalance(?int $balance): static
     {
         $this->container['balance'] = $balance;
 
@@ -494,17 +503,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Loyalty Transaction type
+     * @param string|null $description Loyalty Transaction type
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -515,17 +524,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets last_changee
      * @return string
      */
-    public function getLastChangee()
+    public function getLastChangee(): string
     {
         return $this->container['last_changee'];
     }
 
     /**
      * Sets last_changee
-     * @param string $last_changee Last change oif this transaction, most like a status change
+     * @param string|null $last_changee Last change oif this transaction, most like a status change
      * @return $this
      */
-    public function setLastChangee($last_changee)
+    public function setLastChangee(?string $last_changee): static
     {
         $this->container['last_changee'] = $last_changee;
 
@@ -536,17 +545,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt()
+    public function getReceipt(): array
     {
         return $this->container['receipt'];
     }
 
     /**
      * Sets receipt
-     * @param \Secuconnect\Client\Model\ReceiptTypeValue[] $receipt Receipt
+     * @param \Secuconnect\Client\Model\ReceiptTypeValue[]|null $receipt Receipt
      * @return $this
      */
-    public function setReceipt($receipt)
+    public function setReceipt(?array $receipt): static
     {
         $this->container['receipt'] = $receipt;
 
@@ -557,17 +566,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets is_cancelling
      * @return int
      */
-    public function getIsCancelling()
+    public function getIsCancelling(): int
     {
         return $this->container['is_cancelling'];
     }
 
     /**
      * Sets is_cancelling
-     * @param int $is_cancelling Indicator for a cancelling transaction (1 = full-cancel, 3 = partial-cancel)
+     * @param int|null $is_cancelling Indicator for a cancelling transaction (1 = full-cancel, 3 = partial-cancel)
      * @return $this
      */
-    public function setIsCancelling($is_cancelling)
+    public function setIsCancelling(?int $is_cancelling): static
     {
         $this->container['is_cancelling'] = $is_cancelling;
 
@@ -579,7 +588,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -589,9 +598,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -600,7 +609,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -614,7 +623,7 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -623,13 +632,17 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

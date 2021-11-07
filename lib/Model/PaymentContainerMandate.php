@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentContainerMandate
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentContainerMandate implements ArrayAccess
+class PaymentContainerMandate implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentContainerMandate implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentContainerMandate';
+    protected static string $swaggerModelName = 'PaymentContainerMandate';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'sepa_mandate_id' => 'string',
         'iban' => 'string',
         'bic' => 'string',
@@ -41,7 +50,7 @@ class PaymentContainerMandate implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'sepa_mandate_id' => null,
         'iban' => null,
         'bic' => null,
@@ -51,12 +60,12 @@ class PaymentContainerMandate implements ArrayAccess
         'creditor_id' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class PaymentContainerMandate implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'sepa_mandate_id' => 'sepa_mandate_id',
         'iban' => 'iban',
         'bic' => 'bic',
@@ -79,7 +88,7 @@ class PaymentContainerMandate implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'sepa_mandate_id' => 'setSepaMandateId',
         'iban' => 'setIban',
         'bic' => 'setBic',
@@ -93,7 +102,7 @@ class PaymentContainerMandate implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'sepa_mandate_id' => 'getSepaMandateId',
         'iban' => 'getIban',
         'bic' => 'getBic',
@@ -103,40 +112,40 @@ class PaymentContainerMandate implements ArrayAccess
         'creditor_id' => 'getCreditorId'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['sepa_mandate_id'] = isset($data['sepa_mandate_id']) ? $data['sepa_mandate_id'] : null;
-        $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
-        $this->container['bic'] = isset($data['bic']) ? $data['bic'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['identification'] = isset($data['identification']) ? $data['identification'] : null;
-        $this->container['creditor_id'] = isset($data['creditor_id']) ? $data['creditor_id'] : null;
+        $this->container['sepa_mandate_id'] = $data['sepa_mandate_id'] ?? null;
+        $this->container['iban'] = $data['iban'] ?? null;
+        $this->container['bic'] = $data['bic'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['identification'] = $data['identification'] ?? null;
+        $this->container['creditor_id'] = $data['creditor_id'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class PaymentContainerMandate implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class PaymentContainerMandate implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets sepa_mandate_id
      * @return string
      */
-    public function getSepaMandateId()
+    public function getSepaMandateId(): string
     {
         return $this->container['sepa_mandate_id'];
     }
 
     /**
      * Sets sepa_mandate_id
-     * @param string $sepa_mandate_id Sepa mandate id
+     * @param string|null $sepa_mandate_id Sepa mandate id
      * @return $this
      */
-    public function setSepaMandateId($sepa_mandate_id)
+    public function setSepaMandateId(?string $sepa_mandate_id): static
     {
         $this->container['sepa_mandate_id'] = $sepa_mandate_id;
 
@@ -188,17 +197,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets iban
      * @return string
      */
-    public function getIban()
+    public function getIban(): string
     {
         return $this->container['iban'];
     }
 
     /**
      * Sets iban
-     * @param string $iban IBAN
+     * @param string|null $iban IBAN
      * @return $this
      */
-    public function setIban($iban)
+    public function setIban(?string $iban): static
     {
         $this->container['iban'] = $iban;
 
@@ -209,17 +218,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets bic
      * @return string
      */
-    public function getBic()
+    public function getBic(): string
     {
         return $this->container['bic'];
     }
 
     /**
      * Sets bic
-     * @param string $bic BIC
+     * @param string|null $bic BIC
      * @return $this
      */
-    public function setBic($bic)
+    public function setBic(?string $bic): static
     {
         $this->container['bic'] = $bic;
 
@@ -230,17 +239,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -251,17 +260,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status Status
+     * @param string|null $status Status
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -272,17 +281,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets identification
      * @return string
      */
-    public function getIdentification()
+    public function getIdentification(): string
     {
         return $this->container['identification'];
     }
 
     /**
      * Sets identification
-     * @param string $identification Identification
+     * @param string|null $identification Identification
      * @return $this
      */
-    public function setIdentification($identification)
+    public function setIdentification(?string $identification): static
     {
         $this->container['identification'] = $identification;
 
@@ -293,17 +302,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets creditor_id
      * @return string
      */
-    public function getCreditorId()
+    public function getCreditorId(): string
     {
         return $this->container['creditor_id'];
     }
 
     /**
      * Sets creditor_id
-     * @param string $creditor_id Creditor ID
+     * @param string|null $creditor_id Creditor ID
      * @return $this
      */
-    public function setCreditorId($creditor_id)
+    public function setCreditorId(?string $creditor_id): static
     {
         $this->container['creditor_id'] = $creditor_id;
 
@@ -315,7 +324,7 @@ class PaymentContainerMandate implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class PaymentContainerMandate implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class PaymentContainerMandate implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class PaymentContainerMandate implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class PaymentContainerMandate implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

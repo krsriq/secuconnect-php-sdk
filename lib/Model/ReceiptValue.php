@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * ReceiptValue
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ReceiptValue implements ArrayAccess
+class ReceiptValue implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class ReceiptValue implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ReceiptValue';
+    protected static string $swaggerModelName = 'ReceiptValue';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'caption' => 'string',
         'name' => 'string',
         'value' => 'string',
@@ -39,7 +48,7 @@ class ReceiptValue implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'caption' => null,
         'name' => null,
         'value' => null,
@@ -47,12 +56,12 @@ class ReceiptValue implements ArrayAccess
         'decoration' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class ReceiptValue implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'caption' => 'caption',
         'name' => 'name',
         'value' => 'value',
@@ -73,7 +82,7 @@ class ReceiptValue implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'caption' => 'setCaption',
         'name' => 'setName',
         'value' => 'setValue',
@@ -85,7 +94,7 @@ class ReceiptValue implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'caption' => 'getCaption',
         'name' => 'getName',
         'value' => 'getValue',
@@ -93,38 +102,38 @@ class ReceiptValue implements ArrayAccess
         'decoration' => 'getDecoration'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['caption'] = isset($data['caption']) ? $data['caption'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
-        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
-        $this->container['decoration'] = isset($data['decoration']) ? $data['decoration'] : null;
+        $this->container['caption'] = $data['caption'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['value'] = $data['value'] ?? null;
+        $this->container['text'] = $data['text'] ?? null;
+        $this->container['decoration'] = $data['decoration'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class ReceiptValue implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class ReceiptValue implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class ReceiptValue implements ArrayAccess
      * Gets caption
      * @return string
      */
-    public function getCaption()
+    public function getCaption(): string
     {
         return $this->container['caption'];
     }
 
     /**
      * Sets caption
-     * @param string $caption Caption
+     * @param string|null $caption Caption
      * @return $this
      */
-    public function setCaption($caption)
+    public function setCaption(?string $caption): static
     {
         $this->container['caption'] = $caption;
 
@@ -176,17 +185,17 @@ class ReceiptValue implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Name
+     * @param string|null $name Name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -197,17 +206,17 @@ class ReceiptValue implements ArrayAccess
      * Gets value
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->container['value'];
     }
 
     /**
      * Sets value
-     * @param string $value Value
+     * @param string|null $value Value
      * @return $this
      */
-    public function setValue($value)
+    public function setValue(?string $value): static
     {
         $this->container['value'] = $value;
 
@@ -218,17 +227,17 @@ class ReceiptValue implements ArrayAccess
      * Gets text
      * @return string
      */
-    public function getText()
+    public function getText(): string
     {
         return $this->container['text'];
     }
 
     /**
      * Sets text
-     * @param string $text Text
+     * @param string|null $text Text
      * @return $this
      */
-    public function setText($text)
+    public function setText(?string $text): static
     {
         $this->container['text'] = $text;
 
@@ -239,17 +248,17 @@ class ReceiptValue implements ArrayAccess
      * Gets decoration
      * @return string[]
      */
-    public function getDecoration()
+    public function getDecoration(): array
     {
         return $this->container['decoration'];
     }
 
     /**
      * Sets decoration
-     * @param string[] $decoration Decoration
+     * @param string[]|null $decoration Decoration
      * @return $this
      */
-    public function setDecoration($decoration)
+    public function setDecoration(?array $decoration): static
     {
         $this->container['decoration'] = $decoration;
 
@@ -261,7 +270,7 @@ class ReceiptValue implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class ReceiptValue implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class ReceiptValue implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class ReceiptValue implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class ReceiptValue implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

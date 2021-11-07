@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PrepaidSalesProductModel
@@ -19,13 +28,13 @@ class PrepaidSalesProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PrepaidSalesProductModel';
+    protected static string $swaggerModelName = 'PrepaidSalesProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'status' => 'string',
         'stock' => '\Secuconnect\Client\Model\ProductInstanceUID',
@@ -57,7 +66,7 @@ class PrepaidSalesProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'status' => null,
         'stock' => null,
@@ -85,12 +94,12 @@ class PrepaidSalesProductModel extends BaseProductModel
         'vtc_tid' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -99,7 +108,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'status' => 'status',
         'stock' => 'stock',
@@ -131,7 +140,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'status' => 'setStatus',
         'stock' => 'setStock',
@@ -163,7 +172,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'status' => 'getStatus',
         'stock' => 'getStock',
@@ -191,54 +200,54 @@ class PrepaidSalesProductModel extends BaseProductModel
         'vtc_tid' => 'getVtcTid'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['stock'] = isset($data['stock']) ? $data['stock'] : null;
-        $this->container['item'] = isset($data['item']) ? $data['item'] : null;
-        $this->container['itemgroup'] = isset($data['itemgroup']) ? $data['itemgroup'] : null;
-        $this->container['smart_device'] = isset($data['smart_device']) ? $data['smart_device'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['demo'] = isset($data['demo']) ? $data['demo'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['commission'] = isset($data['commission']) ? $data['commission'] : null;
-        $this->container['commission_currency'] = isset($data['commission_currency']) ? $data['commission_currency'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['serial'] = isset($data['serial']) ? $data['serial'] : null;
-        $this->container['cardnumber'] = isset($data['cardnumber']) ? $data['cardnumber'] : null;
-        $this->container['expire_date'] = isset($data['expire_date']) ? $data['expire_date'] : null;
-        $this->container['provider_delivery_number'] = isset($data['provider_delivery_number']) ? $data['provider_delivery_number'] : null;
-        $this->container['receipt_header'] = isset($data['receipt_header']) ? $data['receipt_header'] : null;
-        $this->container['receipt_customer'] = isset($data['receipt_customer']) ? $data['receipt_customer'] : null;
-        $this->container['receipt_zvt'] = isset($data['receipt_zvt']) ? $data['receipt_zvt'] : null;
-        $this->container['receipt_dealer'] = isset($data['receipt_dealer']) ? $data['receipt_dealer'] : null;
-        $this->container['vtc_tid'] = isset($data['vtc_tid']) ? $data['vtc_tid'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['stock'] = $data['stock'] ?? null;
+        $this->container['item'] = $data['item'] ?? null;
+        $this->container['itemgroup'] = $data['itemgroup'] ?? null;
+        $this->container['smart_device'] = $data['smart_device'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['demo'] = $data['demo'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['commission'] = $data['commission'] ?? null;
+        $this->container['commission_currency'] = $data['commission_currency'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
+        $this->container['serial'] = $data['serial'] ?? null;
+        $this->container['cardnumber'] = $data['cardnumber'] ?? null;
+        $this->container['expire_date'] = $data['expire_date'] ?? null;
+        $this->container['provider_delivery_number'] = $data['provider_delivery_number'] ?? null;
+        $this->container['receipt_header'] = $data['receipt_header'] ?? null;
+        $this->container['receipt_customer'] = $data['receipt_customer'] ?? null;
+        $this->container['receipt_zvt'] = $data['receipt_zvt'] ?? null;
+        $this->container['receipt_dealer'] = $data['receipt_dealer'] ?? null;
+        $this->container['vtc_tid'] = $data['vtc_tid'] ?? null;
     }
 
     /**
@@ -246,7 +255,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -259,7 +268,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -269,17 +278,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -290,17 +299,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status Status
+     * @param string|null $status Status
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -311,17 +320,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets stock
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getStock()
+    public function getStock(): ProductInstanceUID
     {
         return $this->container['stock'];
     }
 
     /**
      * Sets stock
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $stock stock
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $stock stock
      * @return $this
      */
-    public function setStock($stock)
+    public function setStock(?ProductInstanceUID $stock): static
     {
         $this->container['stock'] = $stock;
 
@@ -332,17 +341,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets item
      * @return \Secuconnect\Client\Model\PrepaidSalesItem
      */
-    public function getItem()
+    public function getItem(): PrepaidSalesItem
     {
         return $this->container['item'];
     }
 
     /**
      * Sets item
-     * @param \Secuconnect\Client\Model\PrepaidSalesItem $item item
+     * @param \Secuconnect\Client\Model\PrepaidSalesItem|null $item item
      * @return $this
      */
-    public function setItem($item)
+    public function setItem(?PrepaidSalesItem $item): static
     {
         $this->container['item'] = $item;
 
@@ -353,17 +362,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets itemgroup
      * @return \Secuconnect\Client\Model\ItemGroup
      */
-    public function getItemgroup()
+    public function getItemgroup(): ItemGroup
     {
         return $this->container['itemgroup'];
     }
 
     /**
      * Sets itemgroup
-     * @param \Secuconnect\Client\Model\ItemGroup $itemgroup itemgroup
+     * @param \Secuconnect\Client\Model\ItemGroup|null $itemgroup itemgroup
      * @return $this
      */
-    public function setItemgroup($itemgroup)
+    public function setItemgroup(?ItemGroup $itemgroup): static
     {
         $this->container['itemgroup'] = $itemgroup;
 
@@ -374,17 +383,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets smart_device
      * @return \Secuconnect\Client\Model\PrepaidSalesSmartDevice
      */
-    public function getSmartDevice()
+    public function getSmartDevice(): PrepaidSalesSmartDevice
     {
         return $this->container['smart_device'];
     }
 
     /**
      * Sets smart_device
-     * @param \Secuconnect\Client\Model\PrepaidSalesSmartDevice $smart_device smart_device
+     * @param \Secuconnect\Client\Model\PrepaidSalesSmartDevice|null $smart_device smart_device
      * @return $this
      */
-    public function setSmartDevice($smart_device)
+    public function setSmartDevice(?PrepaidSalesSmartDevice $smart_device): static
     {
         $this->container['smart_device'] = $smart_device;
 
@@ -395,17 +404,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant()
+    public function getMerchant(): ProductInstanceUID
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $merchant merchant
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?ProductInstanceUID $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -416,17 +425,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore()
+    public function getStore(): Store
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param \Secuconnect\Client\Model\Store $store store
+     * @param \Secuconnect\Client\Model\Store|null $store store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?Store $store): static
     {
         $this->container['store'] = $store;
 
@@ -437,17 +446,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract()
+    public function getContract(): ProductInstanceUID
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $contract contract
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?ProductInstanceUID $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -458,17 +467,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo()
+    public function getDemo(): bool
     {
         return $this->container['demo'];
     }
 
     /**
      * Sets demo
-     * @param bool $demo Demo
+     * @param bool|null $demo Demo
      * @return $this
      */
-    public function setDemo($demo)
+    public function setDemo(?bool $demo): static
     {
         $this->container['demo'] = $demo;
 
@@ -479,17 +488,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Description
+     * @param string|null $description Description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -500,17 +509,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -521,17 +530,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency currency
+     * @param string|null $currency currency
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -542,17 +551,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets commission
      * @return int
      */
-    public function getCommission()
+    public function getCommission(): int
     {
         return $this->container['commission'];
     }
 
     /**
      * Sets commission
-     * @param int $commission Commission
+     * @param int|null $commission Commission
      * @return $this
      */
-    public function setCommission($commission)
+    public function setCommission(?int $commission): static
     {
         $this->container['commission'] = $commission;
 
@@ -563,17 +572,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets commission_currency
      * @return string
      */
-    public function getCommissionCurrency()
+    public function getCommissionCurrency(): string
     {
         return $this->container['commission_currency'];
     }
 
     /**
      * Sets commission_currency
-     * @param string $commission_currency Commission currency
+     * @param string|null $commission_currency Commission currency
      * @return $this
      */
-    public function setCommissionCurrency($commission_currency)
+    public function setCommissionCurrency(?string $commission_currency): static
     {
         $this->container['commission_currency'] = $commission_currency;
 
@@ -584,17 +593,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets code
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->container['code'];
     }
 
     /**
      * Sets code
-     * @param string $code Code
+     * @param string|null $code Code
      * @return $this
      */
-    public function setCode($code)
+    public function setCode(?string $code): static
     {
         $this->container['code'] = $code;
 
@@ -605,17 +614,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets serial
      * @return string
      */
-    public function getSerial()
+    public function getSerial(): string
     {
         return $this->container['serial'];
     }
 
     /**
      * Sets serial
-     * @param string $serial Serial
+     * @param string|null $serial Serial
      * @return $this
      */
-    public function setSerial($serial)
+    public function setSerial(?string $serial): static
     {
         $this->container['serial'] = $serial;
 
@@ -626,17 +635,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets cardnumber
      * @return string
      */
-    public function getCardnumber()
+    public function getCardnumber(): string
     {
         return $this->container['cardnumber'];
     }
 
     /**
      * Sets cardnumber
-     * @param string $cardnumber Card number
+     * @param string|null $cardnumber Card number
      * @return $this
      */
-    public function setCardnumber($cardnumber)
+    public function setCardnumber(?string $cardnumber): static
     {
         $this->container['cardnumber'] = $cardnumber;
 
@@ -647,17 +656,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets expire_date
      * @return string
      */
-    public function getExpireDate()
+    public function getExpireDate(): string
     {
         return $this->container['expire_date'];
     }
 
     /**
      * Sets expire_date
-     * @param string $expire_date Expire date
+     * @param string|null $expire_date Expire date
      * @return $this
      */
-    public function setExpireDate($expire_date)
+    public function setExpireDate(?string $expire_date): static
     {
         $this->container['expire_date'] = $expire_date;
 
@@ -668,17 +677,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets provider_delivery_number
      * @return string
      */
-    public function getProviderDeliveryNumber()
+    public function getProviderDeliveryNumber(): string
     {
         return $this->container['provider_delivery_number'];
     }
 
     /**
      * Sets provider_delivery_number
-     * @param string $provider_delivery_number Provider delivery number
+     * @param string|null $provider_delivery_number Provider delivery number
      * @return $this
      */
-    public function setProviderDeliveryNumber($provider_delivery_number)
+    public function setProviderDeliveryNumber(?string $provider_delivery_number): static
     {
         $this->container['provider_delivery_number'] = $provider_delivery_number;
 
@@ -689,17 +698,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_header
      * @return string
      */
-    public function getReceiptHeader()
+    public function getReceiptHeader(): string
     {
         return $this->container['receipt_header'];
     }
 
     /**
      * Sets receipt_header
-     * @param string $receipt_header Receipt header
+     * @param string|null $receipt_header Receipt header
      * @return $this
      */
-    public function setReceiptHeader($receipt_header)
+    public function setReceiptHeader(?string $receipt_header): static
     {
         $this->container['receipt_header'] = $receipt_header;
 
@@ -710,17 +719,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_customer
      * @return string
      */
-    public function getReceiptCustomer()
+    public function getReceiptCustomer(): string
     {
         return $this->container['receipt_customer'];
     }
 
     /**
      * Sets receipt_customer
-     * @param string $receipt_customer Receipt customer
+     * @param string|null $receipt_customer Receipt customer
      * @return $this
      */
-    public function setReceiptCustomer($receipt_customer)
+    public function setReceiptCustomer(?string $receipt_customer): static
     {
         $this->container['receipt_customer'] = $receipt_customer;
 
@@ -731,17 +740,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_zvt
      * @return string
      */
-    public function getReceiptZvt()
+    public function getReceiptZvt(): string
     {
         return $this->container['receipt_zvt'];
     }
 
     /**
      * Sets receipt_zvt
-     * @param string $receipt_zvt Receipt zvt
+     * @param string|null $receipt_zvt Receipt zvt
      * @return $this
      */
-    public function setReceiptZvt($receipt_zvt)
+    public function setReceiptZvt(?string $receipt_zvt): static
     {
         $this->container['receipt_zvt'] = $receipt_zvt;
 
@@ -752,17 +761,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_dealer
      * @return string
      */
-    public function getReceiptDealer()
+    public function getReceiptDealer(): string
     {
         return $this->container['receipt_dealer'];
     }
 
     /**
      * Sets receipt_dealer
-     * @param string $receipt_dealer Receipt dealer
+     * @param string|null $receipt_dealer Receipt dealer
      * @return $this
      */
-    public function setReceiptDealer($receipt_dealer)
+    public function setReceiptDealer(?string $receipt_dealer): static
     {
         $this->container['receipt_dealer'] = $receipt_dealer;
 
@@ -773,17 +782,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets vtc_tid
      * @return string
      */
-    public function getVtcTid()
+    public function getVtcTid(): string
     {
         return $this->container['vtc_tid'];
     }
 
     /**
      * Sets vtc_tid
-     * @param string $vtc_tid Vtc tid
+     * @param string|null $vtc_tid Vtc tid
      * @return $this
      */
-    public function setVtcTid($vtc_tid)
+    public function setVtcTid(?string $vtc_tid): static
     {
         $this->container['vtc_tid'] = $vtc_tid;
 
@@ -795,7 +804,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -805,9 +814,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -816,7 +825,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -830,7 +839,7 @@ class PrepaidSalesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -839,13 +848,17 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

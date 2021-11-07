@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyCustomersContactDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyCustomersContactDTO implements ArrayAccess
+class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyCustomersContactDTO';
+    protected static string $swaggerModelName = 'LoyaltyCustomersContactDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'forename' => 'string',
         'surname' => 'string',
         'name' => 'string',
@@ -39,7 +48,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'forename' => null,
         'surname' => null,
         'name' => null,
@@ -47,12 +56,12 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
         'address' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'forename' => 'forename',
         'surname' => 'surname',
         'name' => 'name',
@@ -73,7 +82,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'forename' => 'setForename',
         'surname' => 'setSurname',
         'name' => 'setName',
@@ -85,7 +94,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'forename' => 'getForename',
         'surname' => 'getSurname',
         'name' => 'getName',
@@ -93,38 +102,38 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
         'address' => 'getAddress'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['forename'] = isset($data['forename']) ? $data['forename'] : null;
-        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['forename'] = $data['forename'] ?? null;
+        $this->container['surname'] = $data['surname'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['phone'] = $data['phone'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets forename
      * @return string
      */
-    public function getForename()
+    public function getForename(): string
     {
         return $this->container['forename'];
     }
 
     /**
      * Sets forename
-     * @param string $forename Forename
+     * @param string|null $forename Forename
      * @return $this
      */
-    public function setForename($forename)
+    public function setForename(?string $forename): static
     {
         $this->container['forename'] = $forename;
 
@@ -176,17 +185,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets surname
      * @return string
      */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->container['surname'];
     }
 
     /**
      * Sets surname
-     * @param string $surname Surname
+     * @param string|null $surname Surname
      * @return $this
      */
-    public function setSurname($surname)
+    public function setSurname(?string $surname): static
     {
         $this->container['surname'] = $surname;
 
@@ -197,17 +206,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Name
+     * @param string|null $name Name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -218,17 +227,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets phone
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->container['phone'];
     }
 
     /**
      * Sets phone
-     * @param string $phone Phone
+     * @param string|null $phone Phone
      * @return $this
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
         $this->container['phone'] = $phone;
 
@@ -239,17 +248,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\Address $address address
+     * @param \Secuconnect\Client\Model\Address|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?Address $address): static
     {
         $this->container['address'] = $address;
 
@@ -261,7 +270,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class LoyaltyCustomersContactDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

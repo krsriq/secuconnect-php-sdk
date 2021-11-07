@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayBaseBasketItem
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayBaseBasketItem implements ArrayAccess
+class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayBaseBasketItem implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayBaseBasketItem';
+    protected static string $swaggerModelName = 'SecupayBaseBasketItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'item_type' => 'string',
         'article_number' => 'string',
         'quantity' => 'int',
@@ -49,7 +58,7 @@ class SecupayBaseBasketItem implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'item_type' => null,
         'article_number' => null,
         'quantity' => null,
@@ -67,12 +76,12 @@ class SecupayBaseBasketItem implements ArrayAccess
         'reference_id' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -81,7 +90,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'item_type' => 'item_type',
         'article_number' => 'article_number',
         'quantity' => 'quantity',
@@ -103,7 +112,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'item_type' => 'setItemType',
         'article_number' => 'setArticleNumber',
         'quantity' => 'setQuantity',
@@ -125,7 +134,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'item_type' => 'getItemType',
         'article_number' => 'getArticleNumber',
         'quantity' => 'getQuantity',
@@ -143,48 +152,48 @@ class SecupayBaseBasketItem implements ArrayAccess
         'reference_id' => 'getReferenceId'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_type'] = isset($data['item_type']) ? $data['item_type'] : 'article';
-        $this->container['article_number'] = isset($data['article_number']) ? $data['article_number'] : null;
-        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['model'] = isset($data['model']) ? $data['model'] : null;
-        $this->container['ean'] = isset($data['ean']) ? $data['ean'] : null;
-        $this->container['tax'] = isset($data['tax']) ? $data['tax'] : null;
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
-        $this->container['apikey'] = isset($data['apikey']) ? $data['apikey'] : null;
-        $this->container['plan_id'] = isset($data['plan_id']) ? $data['plan_id'] : null;
-        $this->container['start_at'] = isset($data['start_at']) ? $data['start_at'] : null;
-        $this->container['transaction_hash'] = isset($data['transaction_hash']) ? $data['transaction_hash'] : null;
-        $this->container['contract_id'] = isset($data['contract_id']) ? $data['contract_id'] : null;
-        $this->container['reference_id'] = isset($data['reference_id']) ? $data['reference_id'] : null;
+        $this->container['item_type'] = $data['item_type'] ?? 'article';
+        $this->container['article_number'] = $data['article_number'] ?? null;
+        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['model'] = $data['model'] ?? null;
+        $this->container['ean'] = $data['ean'] ?? null;
+        $this->container['tax'] = $data['tax'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
+        $this->container['price'] = $data['price'] ?? null;
+        $this->container['apikey'] = $data['apikey'] ?? null;
+        $this->container['plan_id'] = $data['plan_id'] ?? null;
+        $this->container['start_at'] = $data['start_at'] ?? null;
+        $this->container['transaction_hash'] = $data['transaction_hash'] ?? null;
+        $this->container['contract_id'] = $data['contract_id'] ?? null;
+        $this->container['reference_id'] = $data['reference_id'] ?? null;
     }
 
     /**
@@ -192,7 +201,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -205,7 +214,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -215,17 +224,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets item_type
      * @return string
      */
-    public function getItemType()
+    public function getItemType(): string
     {
         return $this->container['item_type'];
     }
 
     /**
      * Sets item_type
-     * @param string $item_type Line type {'article', 'sub_transaction', 'stakeholder_payment', 'shipping', 'subscription'}
+     * @param string|null $item_type Line type {'article', 'sub_transaction', 'stakeholder_payment', 'shipping', 'subscription'}
      * @return $this
      */
-    public function setItemType($item_type)
+    public function setItemType(?string $item_type): static
     {
         $this->container['item_type'] = $item_type;
 
@@ -236,17 +245,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets article_number
      * @return string
      */
-    public function getArticleNumber()
+    public function getArticleNumber(): string
     {
         return $this->container['article_number'];
     }
 
     /**
      * Sets article_number
-     * @param string $article_number Your article number, storage key unit (SKU)
+     * @param string|null $article_number Your article number, storage key unit (SKU)
      * @return $this
      */
-    public function setArticleNumber($article_number)
+    public function setArticleNumber(?string $article_number): static
     {
         $this->container['article_number'] = $article_number;
 
@@ -257,17 +266,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets quantity
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->container['quantity'];
     }
 
     /**
      * Sets quantity
-     * @param int $quantity Quantity of articles in item
+     * @param int|null $quantity Quantity of articles in item
      * @return $this
      */
-    public function setQuantity($quantity)
+    public function setQuantity(?int $quantity): static
     {
         $this->container['quantity'] = $quantity;
 
@@ -278,17 +287,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Descriptive article name
+     * @param string|null $name Descriptive article name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -299,17 +308,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets model
      * @return string
      */
-    public function getModel()
+    public function getModel(): string
     {
         return $this->container['model'];
     }
 
     /**
      * Sets model
-     * @param string $model Model of item
+     * @param string|null $model Model of item
      * @return $this
      */
-    public function setModel($model)
+    public function setModel(?string $model): static
     {
         $this->container['model'] = $model;
 
@@ -320,17 +329,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets ean
      * @return string
      */
-    public function getEan()
+    public function getEan(): string
     {
         return $this->container['ean'];
     }
 
     /**
      * Sets ean
-     * @param string $ean ean
+     * @param string|null $ean ean
      * @return $this
      */
-    public function setEan($ean)
+    public function setEan(?string $ean): static
     {
         $this->container['ean'] = $ean;
 
@@ -341,17 +350,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets tax
      * @return string
      */
-    public function getTax()
+    public function getTax(): string
     {
         return $this->container['tax'];
     }
 
     /**
      * Sets tax
-     * @param string $tax Tax rate in percent (integer values only)
+     * @param string|null $tax Tax rate in percent (integer values only)
      * @return $this
      */
-    public function setTax($tax)
+    public function setTax(?string $tax): static
     {
         $this->container['tax'] = $tax;
 
@@ -362,17 +371,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets total
      * @return int
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return $this->container['total'];
     }
 
     /**
      * Sets total
-     * @param int $total total
+     * @param int|null $total total
      * @return $this
      */
-    public function setTotal($total)
+    public function setTotal(?int $total): static
     {
         $this->container['total'] = $total;
 
@@ -383,17 +392,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets price
      * @return int
      */
-    public function getPrice()
+    public function getPrice(): int
     {
         return $this->container['price'];
     }
 
     /**
      * Sets price
-     * @param int $price price
+     * @param int|null $price price
      * @return $this
      */
-    public function setPrice($price)
+    public function setPrice(?int $price): static
     {
         $this->container['price'] = $price;
 
@@ -404,17 +413,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets apikey
      * @return string
      */
-    public function getApikey()
+    public function getApikey(): string
     {
         return $this->container['apikey'];
     }
 
     /**
      * Sets apikey
-     * @param string $apikey API key (only for stakeholder payments)
+     * @param string|null $apikey API key (only for stakeholder payments)
      * @return $this
      */
-    public function setApikey($apikey)
+    public function setApikey(?string $apikey): static
     {
         $this->container['apikey'] = $apikey;
 
@@ -425,17 +434,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets plan_id
      * @return string
      */
-    public function getPlanId()
+    public function getPlanId(): string
     {
         return $this->container['plan_id'];
     }
 
     /**
      * Sets plan_id
-     * @param string $plan_id Subscription plan id
+     * @param string|null $plan_id Subscription plan id
      * @return $this
      */
-    public function setPlanId($plan_id)
+    public function setPlanId(?string $plan_id): static
     {
         $this->container['plan_id'] = $plan_id;
 
@@ -446,17 +455,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets start_at
      * @return string
      */
-    public function getStartAt()
+    public function getStartAt(): string
     {
         return $this->container['start_at'];
     }
 
     /**
      * Sets start_at
-     * @param string $start_at Subscription start at date
+     * @param string|null $start_at Subscription start at date
      * @return $this
      */
-    public function setStartAt($start_at)
+    public function setStartAt(?string $start_at): static
     {
         $this->container['start_at'] = $start_at;
 
@@ -467,17 +476,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash()
+    public function getTransactionHash(): string
     {
         return $this->container['transaction_hash'];
     }
 
     /**
      * Sets transaction_hash
-     * @param string $transaction_hash Original transaction hash (only for payouts)
+     * @param string|null $transaction_hash Original transaction hash (only for payouts)
      * @return $this
      */
-    public function setTransactionHash($transaction_hash)
+    public function setTransactionHash(?string $transaction_hash): static
     {
         $this->container['transaction_hash'] = $transaction_hash;
 
@@ -488,17 +497,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets contract_id
      * @return string
      */
-    public function getContractId()
+    public function getContractId(): string
     {
         return $this->container['contract_id'];
     }
 
     /**
      * Sets contract_id
-     * @param string $contract_id Contract ID (only for stakeholder payments)
+     * @param string|null $contract_id Contract ID (only for stakeholder payments)
      * @return $this
      */
-    public function setContractId($contract_id)
+    public function setContractId(?string $contract_id): static
     {
         $this->container['contract_id'] = $contract_id;
 
@@ -509,17 +518,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId()
+    public function getReferenceId(): string
     {
         return $this->container['reference_id'];
     }
 
     /**
      * Sets reference_id
-     * @param string $reference_id Unique line identifier, used to maintain the basket before the transaction is executed
+     * @param string|null $reference_id Unique line identifier, used to maintain the basket before the transaction is executed
      * @return $this
      */
-    public function setReferenceId($reference_id)
+    public function setReferenceId(?string $reference_id): static
     {
         $this->container['reference_id'] = $reference_id;
 
@@ -531,7 +540,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -541,9 +550,9 @@ class SecupayBaseBasketItem implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -552,7 +561,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -566,7 +575,7 @@ class SecupayBaseBasketItem implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -575,13 +584,17 @@ class SecupayBaseBasketItem implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

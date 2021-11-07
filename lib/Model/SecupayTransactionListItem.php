@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionListItem
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionListItem implements ArrayAccess
+class SecupayTransactionListItem implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionListItem implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionListItem';
+    protected static string $swaggerModelName = 'SecupayTransactionListItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'item_type' => 'string',
         'reference_id' => 'string',
         'name' => 'string',
@@ -41,7 +50,7 @@ class SecupayTransactionListItem implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'item_type' => null,
         'reference_id' => null,
         'name' => null,
@@ -51,12 +60,12 @@ class SecupayTransactionListItem implements ArrayAccess
         'total' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'item_type' => 'item_type',
         'reference_id' => 'reference_id',
         'name' => 'name',
@@ -79,7 +88,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'item_type' => 'setItemType',
         'reference_id' => 'setReferenceId',
         'name' => 'setName',
@@ -93,7 +102,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'item_type' => 'getItemType',
         'reference_id' => 'getReferenceId',
         'name' => 'getName',
@@ -103,40 +112,40 @@ class SecupayTransactionListItem implements ArrayAccess
         'total' => 'getTotal'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_type'] = isset($data['item_type']) ? $data['item_type'] : 'transaction_payout';
-        $this->container['reference_id'] = isset($data['reference_id']) ? $data['reference_id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['transaction_hash'] = isset($data['transaction_hash']) ? $data['transaction_hash'] : null;
-        $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
-        $this->container['container_id'] = isset($data['container_id']) ? $data['container_id'] : null;
-        $this->container['total'] = isset($data['total']) ? $data['total'] : null;
+        $this->container['item_type'] = $data['item_type'] ?? 'transaction_payout';
+        $this->container['reference_id'] = $data['reference_id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['transaction_hash'] = $data['transaction_hash'] ?? null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
+        $this->container['container_id'] = $data['container_id'] ?? null;
+        $this->container['total'] = $data['total'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class SecupayTransactionListItem implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class SecupayTransactionListItem implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets item_type
      * @return string
      */
-    public function getItemType()
+    public function getItemType(): string
     {
         return $this->container['item_type'];
     }
 
     /**
      * Sets item_type
-     * @param string $item_type Category of item
+     * @param string|null $item_type Category of item
      * @return $this
      */
-    public function setItemType($item_type)
+    public function setItemType(?string $item_type): static
     {
         $this->container['item_type'] = $item_type;
 
@@ -188,17 +197,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId()
+    public function getReferenceId(): string
     {
         return $this->container['reference_id'];
     }
 
     /**
      * Sets reference_id
-     * @param string $reference_id Reference id - must be unique for the entire basket
+     * @param string|null $reference_id Reference id - must be unique for the entire basket
      * @return $this
      */
-    public function setReferenceId($reference_id)
+    public function setReferenceId(?string $reference_id): static
     {
         $this->container['reference_id'] = $reference_id;
 
@@ -209,17 +218,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Item name
+     * @param string|null $name Item name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -230,17 +239,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash()
+    public function getTransactionHash(): string
     {
         return $this->container['transaction_hash'];
     }
 
     /**
      * Sets transaction_hash
-     * @param string $transaction_hash Id of transaction
+     * @param string|null $transaction_hash Id of transaction
      * @return $this
      */
-    public function setTransactionHash($transaction_hash)
+    public function setTransactionHash(?string $transaction_hash): static
     {
         $this->container['transaction_hash'] = $transaction_hash;
 
@@ -251,17 +260,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets transaction_id
      * @return string
      */
-    public function getTransactionId()
+    public function getTransactionId(): string
     {
         return $this->container['transaction_id'];
     }
 
     /**
      * Sets transaction_id
-     * @param string $transaction_id Id of transaction
+     * @param string|null $transaction_id Id of transaction
      * @return $this
      */
-    public function setTransactionId($transaction_id)
+    public function setTransactionId(?string $transaction_id): static
     {
         $this->container['transaction_id'] = $transaction_id;
 
@@ -272,17 +281,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets container_id
      * @return string
      */
-    public function getContainerId()
+    public function getContainerId(): string
     {
         return $this->container['container_id'];
     }
 
     /**
      * Sets container_id
-     * @param string $container_id Payment Container ID
+     * @param string|null $container_id Payment Container ID
      * @return $this
      */
-    public function setContainerId($container_id)
+    public function setContainerId(?string $container_id): static
     {
         $this->container['container_id'] = $container_id;
 
@@ -293,17 +302,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets total
      * @return int
      */
-    public function getTotal()
+    public function getTotal(): int
     {
         return $this->container['total'];
     }
 
     /**
      * Sets total
-     * @param int $total total
+     * @param int|null $total total
      * @return $this
      */
-    public function setTotal($total)
+    public function setTotal(?int $total): static
     {
         $this->container['total'] = $total;
 
@@ -315,7 +324,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class SecupayTransactionListItem implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class SecupayTransactionListItem implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class SecupayTransactionListItem implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

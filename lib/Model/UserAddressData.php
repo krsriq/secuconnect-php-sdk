@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * UserAddressData
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UserAddressData implements ArrayAccess
+class UserAddressData implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class UserAddressData implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'UserAddressData';
+    protected static string $swaggerModelName = 'UserAddressData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'street' => '\Secuconnect\Client\Model\ValueField',
         'street_number' => '\Secuconnect\Client\Model\ValueField',
         'city' => '\Secuconnect\Client\Model\ValueField',
@@ -39,7 +48,7 @@ class UserAddressData implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'street' => null,
         'street_number' => null,
         'city' => null,
@@ -47,12 +56,12 @@ class UserAddressData implements ArrayAccess
         'country' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class UserAddressData implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'street' => 'street',
         'street_number' => 'street_number',
         'city' => 'city',
@@ -73,7 +82,7 @@ class UserAddressData implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'street' => 'setStreet',
         'street_number' => 'setStreetNumber',
         'city' => 'setCity',
@@ -85,7 +94,7 @@ class UserAddressData implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'street' => 'getStreet',
         'street_number' => 'getStreetNumber',
         'city' => 'getCity',
@@ -93,38 +102,38 @@ class UserAddressData implements ArrayAccess
         'country' => 'getCountry'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['street'] = isset($data['street']) ? $data['street'] : null;
-        $this->container['street_number'] = isset($data['street_number']) ? $data['street_number'] : null;
-        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
-        $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
+        $this->container['street'] = $data['street'] ?? null;
+        $this->container['street_number'] = $data['street_number'] ?? null;
+        $this->container['city'] = $data['city'] ?? null;
+        $this->container['postal_code'] = $data['postal_code'] ?? null;
+        $this->container['country'] = $data['country'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class UserAddressData implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class UserAddressData implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class UserAddressData implements ArrayAccess
      * Gets street
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getStreet()
+    public function getStreet(): ValueField
     {
         return $this->container['street'];
     }
 
     /**
      * Sets street
-     * @param \Secuconnect\Client\Model\ValueField $street street
+     * @param \Secuconnect\Client\Model\ValueField|null $street street
      * @return $this
      */
-    public function setStreet($street)
+    public function setStreet(?ValueField $street): static
     {
         $this->container['street'] = $street;
 
@@ -176,17 +185,17 @@ class UserAddressData implements ArrayAccess
      * Gets street_number
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getStreetNumber()
+    public function getStreetNumber(): ValueField
     {
         return $this->container['street_number'];
     }
 
     /**
      * Sets street_number
-     * @param \Secuconnect\Client\Model\ValueField $street_number street_number
+     * @param \Secuconnect\Client\Model\ValueField|null $street_number street_number
      * @return $this
      */
-    public function setStreetNumber($street_number)
+    public function setStreetNumber(?ValueField $street_number): static
     {
         $this->container['street_number'] = $street_number;
 
@@ -197,17 +206,17 @@ class UserAddressData implements ArrayAccess
      * Gets city
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCity()
+    public function getCity(): ValueField
     {
         return $this->container['city'];
     }
 
     /**
      * Sets city
-     * @param \Secuconnect\Client\Model\ValueField $city city
+     * @param \Secuconnect\Client\Model\ValueField|null $city city
      * @return $this
      */
-    public function setCity($city)
+    public function setCity(?ValueField $city): static
     {
         $this->container['city'] = $city;
 
@@ -218,17 +227,17 @@ class UserAddressData implements ArrayAccess
      * Gets postal_code
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getPostalCode()
+    public function getPostalCode(): ValueField
     {
         return $this->container['postal_code'];
     }
 
     /**
      * Sets postal_code
-     * @param \Secuconnect\Client\Model\ValueField $postal_code postal_code
+     * @param \Secuconnect\Client\Model\ValueField|null $postal_code postal_code
      * @return $this
      */
-    public function setPostalCode($postal_code)
+    public function setPostalCode(?ValueField $postal_code): static
     {
         $this->container['postal_code'] = $postal_code;
 
@@ -239,17 +248,17 @@ class UserAddressData implements ArrayAccess
      * Gets country
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCountry()
+    public function getCountry(): ValueField
     {
         return $this->container['country'];
     }
 
     /**
      * Sets country
-     * @param \Secuconnect\Client\Model\ValueField $country country
+     * @param \Secuconnect\Client\Model\ValueField|null $country country
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountry(?ValueField $country): static
     {
         $this->container['country'] = $country;
 
@@ -261,7 +270,7 @@ class UserAddressData implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class UserAddressData implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class UserAddressData implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class UserAddressData implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class UserAddressData implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

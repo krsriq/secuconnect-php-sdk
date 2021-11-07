@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionExternalInvoicePdfDocument
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
+class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionExternalInvoicePdf_document';
+    protected static string $swaggerModelName = 'SecupayTransactionExternalInvoicePdf_document';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id' => 'string',
         'mime_type' => 'string',
         'name' => 'string',
@@ -39,7 +48,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id' => null,
         'mime_type' => null,
         'name' => null,
@@ -47,12 +56,12 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
         'url' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id' => 'id',
         'mime_type' => 'mime_type',
         'name' => 'name',
@@ -73,7 +82,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id' => 'setId',
         'mime_type' => 'setMimeType',
         'name' => 'setName',
@@ -85,7 +94,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id' => 'getId',
         'mime_type' => 'getMimeType',
         'name' => 'getName',
@@ -93,38 +102,38 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
         'url' => 'getUrl'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['mime_type'] = isset($data['mime_type']) ? $data['mime_type'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
-        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['mime_type'] = $data['mime_type'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
+        $this->container['url'] = $data['url'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id The Document File ID
+     * @param string|null $id The Document File ID
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -176,17 +185,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets mime_type
      * @return string
      */
-    public function getMimeType()
+    public function getMimeType(): string
     {
         return $this->container['mime_type'];
     }
 
     /**
      * Sets mime_type
-     * @param string $mime_type The MIME Type
+     * @param string|null $mime_type The MIME Type
      * @return $this
      */
-    public function setMimeType($mime_type)
+    public function setMimeType(?string $mime_type): static
     {
         $this->container['mime_type'] = $mime_type;
 
@@ -197,17 +206,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name The file name
+     * @param string|null $name The file name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -218,17 +227,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets size
      * @return int
      */
-    public function getSize()
+    public function getSize(): int
     {
         return $this->container['size'];
     }
 
     /**
      * Sets size
-     * @param int $size The size of the file in bytes
+     * @param int|null $size The size of the file in bytes
      * @return $this
      */
-    public function setSize($size)
+    public function setSize(?int $size): static
     {
         $this->container['size'] = $size;
 
@@ -239,17 +248,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets url
      * @return string
      */
-    public function getUrl()
+    public function getUrl(): string
     {
         return $this->container['url'];
     }
 
     /**
      * Sets url
-     * @param string $url The download-url to this file
+     * @param string|null $url The download-url to this file
      * @return $this
      */
-    public function setUrl($url)
+    public function setUrl(?string $url): static
     {
         $this->container['url'] = $url;
 
@@ -261,7 +270,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

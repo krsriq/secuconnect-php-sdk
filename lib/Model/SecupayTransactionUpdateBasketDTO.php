@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionUpdateBasketDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionUpdateBasketDTO implements ArrayAccess
+class SecupayTransactionUpdateBasketDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionUpdateBasketDTO';
+    protected static string $swaggerModelName = 'SecupayTransactionUpdateBasketDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'contract' => '\Secuconnect\Client\Model\PaymentContractsProductModel',
         'basket' => '\Secuconnect\Client\Model\SecupayBasketItem[]'
     ];
@@ -36,17 +45,17 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'contract' => null,
         'basket' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'contract' => 'contract',
         'basket' => 'basket'
     ];
@@ -64,7 +73,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'contract' => 'setContract',
         'basket' => 'setBasket'
     ];
@@ -73,40 +82,40 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'contract' => 'getContract',
         'basket' => 'getBasket'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['basket'] = isset($data['basket']) ? $data['basket'] : null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['basket'] = $data['basket'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract()
+    public function getContract(): PaymentContractsProductModel
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\PaymentContractsProductModel $contract contract
+     * @param \Secuconnect\Client\Model\PaymentContractsProductModel|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?PaymentContractsProductModel $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -158,17 +167,17 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Gets basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getBasket()
+    public function getBasket(): array
     {
         return $this->container['basket'];
     }
 
     /**
      * Sets basket
-     * @param \Secuconnect\Client\Model\SecupayBasketItem[] $basket A list of items that are being purchased.
+     * @param \Secuconnect\Client\Model\SecupayBasketItem[]|null $basket A list of items that are being purchased.
      * @return $this
      */
-    public function setBasket($basket)
+    public function setBasket(?array $basket): static
     {
         $this->container['basket'] = $basket;
 
@@ -180,7 +189,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

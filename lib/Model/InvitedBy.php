@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * InvitedBy
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class InvitedBy implements ArrayAccess
+class InvitedBy implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class InvitedBy implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'InvitedBy';
+    protected static string $swaggerModelName = 'InvitedBy';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'object' => 'string',
         'id' => 'string',
         'invited' => 'string'
@@ -37,18 +46,18 @@ class InvitedBy implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'object' => null,
         'id' => null,
         'invited' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class InvitedBy implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'object' => 'object',
         'id' => 'id',
         'invited' => 'invited'
@@ -67,7 +76,7 @@ class InvitedBy implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'object' => 'setObject',
         'id' => 'setId',
         'invited' => 'setInvited'
@@ -77,42 +86,42 @@ class InvitedBy implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'object' => 'getObject',
         'id' => 'getId',
         'invited' => 'getInvited'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['invited'] = isset($data['invited']) ? $data['invited'] : null;
+        $this->container['object'] = $data['object'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['invited'] = $data['invited'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class InvitedBy implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class InvitedBy implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class InvitedBy implements ArrayAccess
      * Gets object
      * @return string
      */
-    public function getObject()
+    public function getObject(): string
     {
         return $this->container['object'];
     }
 
     /**
      * Sets object
-     * @param string $object object
+     * @param string|null $object object
      * @return $this
      */
-    public function setObject($object)
+    public function setObject(?string $object): static
     {
         $this->container['object'] = $object;
 
@@ -164,17 +173,17 @@ class InvitedBy implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id id
+     * @param string|null $id id
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -185,17 +194,17 @@ class InvitedBy implements ArrayAccess
      * Gets invited
      * @return string
      */
-    public function getInvited()
+    public function getInvited(): string
     {
         return $this->container['invited'];
     }
 
     /**
      * Sets invited
-     * @param string $invited Invited
+     * @param string|null $invited Invited
      * @return $this
      */
-    public function setInvited($invited)
+    public function setInvited(?string $invited): static
     {
         $this->container['invited'] = $invited;
 
@@ -207,7 +216,7 @@ class InvitedBy implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class InvitedBy implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class InvitedBy implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class InvitedBy implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class InvitedBy implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

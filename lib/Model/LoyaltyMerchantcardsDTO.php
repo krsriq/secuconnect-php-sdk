@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyMerchantcardsDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyMerchantcardsDTO implements ArrayAccess
+class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyMerchantcardsDTO';
+    protected static string $swaggerModelName = 'LoyaltyMerchantcardsDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'merchant' => 'string',
         'card' => 'string',
         'payment_container' => 'string',
@@ -39,7 +48,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'merchant' => null,
         'card' => null,
         'payment_container' => null,
@@ -47,12 +56,12 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
         'used_by_merchant' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'merchant' => 'merchant',
         'card' => 'card',
         'payment_container' => 'payment_container',
@@ -73,7 +82,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'merchant' => 'setMerchant',
         'card' => 'setCard',
         'payment_container' => 'setPaymentContainer',
@@ -85,7 +94,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'merchant' => 'getMerchant',
         'card' => 'getCard',
         'payment_container' => 'getPaymentContainer',
@@ -93,38 +102,38 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
         'used_by_merchant' => 'getUsedByMerchant'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['card'] = isset($data['card']) ? $data['card'] : null;
-        $this->container['payment_container'] = isset($data['payment_container']) ? $data['payment_container'] : null;
-        $this->container['created_by_merchant'] = isset($data['created_by_merchant']) ? $data['created_by_merchant'] : null;
-        $this->container['used_by_merchant'] = isset($data['used_by_merchant']) ? $data['used_by_merchant'] : null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['card'] = $data['card'] ?? null;
+        $this->container['payment_container'] = $data['payment_container'] ?? null;
+        $this->container['created_by_merchant'] = $data['created_by_merchant'] ?? null;
+        $this->container['used_by_merchant'] = $data['used_by_merchant'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets merchant
      * @return string
      */
-    public function getMerchant()
+    public function getMerchant(): string
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param string $merchant General merchant id
+     * @param string|null $merchant General merchant id
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?string $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -176,17 +185,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets card
      * @return string
      */
-    public function getCard()
+    public function getCard(): string
     {
         return $this->container['card'];
     }
 
     /**
      * Sets card
-     * @param string $card Loyalty card id
+     * @param string|null $card Loyalty card id
      * @return $this
      */
-    public function setCard($card)
+    public function setCard(?string $card): static
     {
         $this->container['card'] = $card;
 
@@ -197,17 +206,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets payment_container
      * @return string
      */
-    public function getPaymentContainer()
+    public function getPaymentContainer(): string
     {
         return $this->container['payment_container'];
     }
 
     /**
      * Sets payment_container
-     * @param string $payment_container Loyalty payment container id
+     * @param string|null $payment_container Loyalty payment container id
      * @return $this
      */
-    public function setPaymentContainer($payment_container)
+    public function setPaymentContainer(?string $payment_container): static
     {
         $this->container['payment_container'] = $payment_container;
 
@@ -218,17 +227,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets created_by_merchant
      * @return bool
      */
-    public function getCreatedByMerchant()
+    public function getCreatedByMerchant(): bool
     {
         return $this->container['created_by_merchant'];
     }
 
     /**
      * Sets created_by_merchant
-     * @param bool $created_by_merchant Created by general merchant or not
+     * @param bool|null $created_by_merchant Created by general merchant or not
      * @return $this
      */
-    public function setCreatedByMerchant($created_by_merchant)
+    public function setCreatedByMerchant(?bool $created_by_merchant): static
     {
         $this->container['created_by_merchant'] = $created_by_merchant;
 
@@ -239,17 +248,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets used_by_merchant
      * @return bool
      */
-    public function getUsedByMerchant()
+    public function getUsedByMerchant(): bool
     {
         return $this->container['used_by_merchant'];
     }
 
     /**
      * Sets used_by_merchant
-     * @param bool $used_by_merchant Used by general merchant or not
+     * @param bool|null $used_by_merchant Used by general merchant or not
      * @return $this
      */
-    public function setUsedByMerchant($used_by_merchant)
+    public function setUsedByMerchant(?bool $used_by_merchant): static
     {
         $this->container['used_by_merchant'] = $used_by_merchant;
 
@@ -261,7 +270,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

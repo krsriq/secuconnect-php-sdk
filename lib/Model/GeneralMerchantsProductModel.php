@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsProductModel
@@ -19,13 +28,13 @@ class GeneralMerchantsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsProductModel';
+    protected static string $swaggerModelName = 'GeneralMerchantsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id_old' => 'int',
         'type' => 'string',
         'user' => '\Secuconnect\Client\Model\GeneralMerchantsUser',
@@ -41,7 +50,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id_old' => 'id',
         'type' => null,
         'user' => null,
@@ -53,12 +62,12 @@ class GeneralMerchantsProductModel extends BaseProductModel
         'store_name' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -67,7 +76,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id_old' => 'id_old',
         'type' => 'type',
         'user' => 'user',
@@ -83,7 +92,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id_old' => 'setIdOld',
         'type' => 'setType',
         'user' => 'setUser',
@@ -99,7 +108,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id_old' => 'getIdOld',
         'type' => 'getType',
         'user' => 'getUser',
@@ -111,38 +120,38 @@ class GeneralMerchantsProductModel extends BaseProductModel
         'store_name' => 'getStoreName'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['id_old'] = isset($data['id_old']) ? $data['id_old'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
-        $this->container['assigned_by'] = isset($data['assigned_by']) ? $data['assigned_by'] : null;
-        $this->container['invited_by'] = isset($data['invited_by']) ? $data['invited_by'] : null;
-        $this->container['legal_details'] = isset($data['legal_details']) ? $data['legal_details'] : null;
-        $this->container['urls'] = isset($data['urls']) ? $data['urls'] : null;
-        $this->container['store_name'] = isset($data['store_name']) ? $data['store_name'] : null;
+        $this->container['id_old'] = $data['id_old'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['user'] = $data['user'] ?? null;
+        $this->container['parent'] = $data['parent'] ?? null;
+        $this->container['assigned_by'] = $data['assigned_by'] ?? null;
+        $this->container['invited_by'] = $data['invited_by'] ?? null;
+        $this->container['legal_details'] = $data['legal_details'] ?? null;
+        $this->container['urls'] = $data['urls'] ?? null;
+        $this->container['store_name'] = $data['store_name'] ?? null;
     }
 
     /**
@@ -150,7 +159,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -163,7 +172,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -173,17 +182,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets id_old
      * @return int
      */
-    public function getIdOld()
+    public function getIdOld(): int
     {
         return $this->container['id_old'];
     }
 
     /**
      * Sets id_old
-     * @param int $id_old ID in secupay Frontend
+     * @param int|null $id_old ID in secupay Frontend
      * @return $this
      */
-    public function setIdOld($id_old)
+    public function setIdOld(?int $id_old): static
     {
         $this->container['id_old'] = $id_old;
 
@@ -194,17 +203,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type User type ID - unverified shop (1); internet shop (11); kaufmännischer Netzbetrieb (KNB, 45); secucard merchant (46); App Center user (63), checkout provider (64)
+     * @param string|null $type User type ID - unverified shop (1); internet shop (11); kaufmännischer Netzbetrieb (KNB, 45); secucard merchant (46); App Center user (63), checkout provider (64)
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -215,17 +224,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets user
      * @return \Secuconnect\Client\Model\GeneralMerchantsUser
      */
-    public function getUser()
+    public function getUser(): GeneralMerchantsUser
     {
         return $this->container['user'];
     }
 
     /**
      * Sets user
-     * @param \Secuconnect\Client\Model\GeneralMerchantsUser $user user
+     * @param \Secuconnect\Client\Model\GeneralMerchantsUser|null $user user
      * @return $this
      */
-    public function setUser($user)
+    public function setUser(?GeneralMerchantsUser $user): static
     {
         $this->container['user'] = $user;
 
@@ -236,17 +245,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets parent
      * @return \Secuconnect\Client\Model\ParentModel
      */
-    public function getParent()
+    public function getParent(): ParentModel
     {
         return $this->container['parent'];
     }
 
     /**
      * Sets parent
-     * @param \Secuconnect\Client\Model\ParentModel $parent parent
+     * @param \Secuconnect\Client\Model\ParentModel|null $parent parent
      * @return $this
      */
-    public function setParent($parent)
+    public function setParent(?ParentModel $parent): static
     {
         $this->container['parent'] = $parent;
 
@@ -257,17 +266,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets assigned_by
      * @return \Secuconnect\Client\Model\AssignedBy[]
      */
-    public function getAssignedBy()
+    public function getAssignedBy(): array
     {
         return $this->container['assigned_by'];
     }
 
     /**
      * Sets assigned_by
-     * @param \Secuconnect\Client\Model\AssignedBy[] $assigned_by Assigned by
+     * @param \Secuconnect\Client\Model\AssignedBy[]|null $assigned_by Assigned by
      * @return $this
      */
-    public function setAssignedBy($assigned_by)
+    public function setAssignedBy(?array $assigned_by): static
     {
         $this->container['assigned_by'] = $assigned_by;
 
@@ -278,17 +287,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets invited_by
      * @return \Secuconnect\Client\Model\InvitedBy[]
      */
-    public function getInvitedBy()
+    public function getInvitedBy(): array
     {
         return $this->container['invited_by'];
     }
 
     /**
      * Sets invited_by
-     * @param \Secuconnect\Client\Model\InvitedBy[] $invited_by Invited by
+     * @param \Secuconnect\Client\Model\InvitedBy[]|null $invited_by Invited by
      * @return $this
      */
-    public function setInvitedBy($invited_by)
+    public function setInvitedBy(?array $invited_by): static
     {
         $this->container['invited_by'] = $invited_by;
 
@@ -299,17 +308,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails()
+    public function getLegalDetails(): array
     {
         return $this->container['legal_details'];
     }
 
     /**
      * Sets legal_details
-     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[] $legal_details Legal details like terms of use, privacy policy, or imprint
+     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]|null $legal_details Legal details like terms of use, privacy policy, or imprint
      * @return $this
      */
-    public function setLegalDetails($legal_details)
+    public function setLegalDetails(?array $legal_details): static
     {
         $this->container['legal_details'] = $legal_details;
 
@@ -320,17 +329,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getUrls()
+    public function getUrls(): array
     {
         return $this->container['urls'];
     }
 
     /**
      * Sets urls
-     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[] $urls URLs
+     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[]|null $urls URLs
      * @return $this
      */
-    public function setUrls($urls)
+    public function setUrls(?array $urls): static
     {
         $this->container['urls'] = $urls;
 
@@ -341,17 +350,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName()
+    public function getStoreName(): string
     {
         return $this->container['store_name'];
     }
 
     /**
      * Sets store_name
-     * @param string $store_name Store name
+     * @param string|null $store_name Store name
      * @return $this
      */
-    public function setStoreName($store_name)
+    public function setStoreName(?string $store_name): static
     {
         $this->container['store_name'] = $store_name;
 
@@ -363,7 +372,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -373,9 +382,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -384,7 +393,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -398,7 +407,7 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -407,13 +416,17 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

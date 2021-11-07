@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * UserData
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UserData implements ArrayAccess
+class UserData implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class UserData implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'UserData';
+    protected static string $swaggerModelName = 'UserData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'dob' => '\Secuconnect\Client\Model\ValueField',
         'birthplace' => '\Secuconnect\Client\Model\ValueField',
         'forename' => '\Secuconnect\Client\Model\ValueField',
@@ -41,7 +50,7 @@ class UserData implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'dob' => null,
         'birthplace' => null,
         'forename' => null,
@@ -51,12 +60,12 @@ class UserData implements ArrayAccess
         'address' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class UserData implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'dob' => 'dob',
         'birthplace' => 'birthplace',
         'forename' => 'forename',
@@ -79,7 +88,7 @@ class UserData implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'dob' => 'setDob',
         'birthplace' => 'setBirthplace',
         'forename' => 'setForename',
@@ -93,7 +102,7 @@ class UserData implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'dob' => 'getDob',
         'birthplace' => 'getBirthplace',
         'forename' => 'getForename',
@@ -103,40 +112,40 @@ class UserData implements ArrayAccess
         'address' => 'getAddress'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
-        $this->container['birthplace'] = isset($data['birthplace']) ? $data['birthplace'] : null;
-        $this->container['forename'] = isset($data['forename']) ? $data['forename'] : null;
-        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['nationality'] = isset($data['nationality']) ? $data['nationality'] : null;
-        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['dob'] = $data['dob'] ?? null;
+        $this->container['birthplace'] = $data['birthplace'] ?? null;
+        $this->container['forename'] = $data['forename'] ?? null;
+        $this->container['surname'] = $data['surname'] ?? null;
+        $this->container['nationality'] = $data['nationality'] ?? null;
+        $this->container['gender'] = $data['gender'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class UserData implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class UserData implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class UserData implements ArrayAccess
      * Gets dob
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getDob()
+    public function getDob(): ValueField
     {
         return $this->container['dob'];
     }
 
     /**
      * Sets dob
-     * @param \Secuconnect\Client\Model\ValueField $dob dob
+     * @param \Secuconnect\Client\Model\ValueField|null $dob dob
      * @return $this
      */
-    public function setDob($dob)
+    public function setDob(?ValueField $dob): static
     {
         $this->container['dob'] = $dob;
 
@@ -188,17 +197,17 @@ class UserData implements ArrayAccess
      * Gets birthplace
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getBirthplace()
+    public function getBirthplace(): ValueField
     {
         return $this->container['birthplace'];
     }
 
     /**
      * Sets birthplace
-     * @param \Secuconnect\Client\Model\ValueField $birthplace birthplace
+     * @param \Secuconnect\Client\Model\ValueField|null $birthplace birthplace
      * @return $this
      */
-    public function setBirthplace($birthplace)
+    public function setBirthplace(?ValueField $birthplace): static
     {
         $this->container['birthplace'] = $birthplace;
 
@@ -209,17 +218,17 @@ class UserData implements ArrayAccess
      * Gets forename
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getForename()
+    public function getForename(): ValueField
     {
         return $this->container['forename'];
     }
 
     /**
      * Sets forename
-     * @param \Secuconnect\Client\Model\ValueField $forename forename
+     * @param \Secuconnect\Client\Model\ValueField|null $forename forename
      * @return $this
      */
-    public function setForename($forename)
+    public function setForename(?ValueField $forename): static
     {
         $this->container['forename'] = $forename;
 
@@ -230,17 +239,17 @@ class UserData implements ArrayAccess
      * Gets surname
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getSurname()
+    public function getSurname(): ValueField
     {
         return $this->container['surname'];
     }
 
     /**
      * Sets surname
-     * @param \Secuconnect\Client\Model\ValueField $surname surname
+     * @param \Secuconnect\Client\Model\ValueField|null $surname surname
      * @return $this
      */
-    public function setSurname($surname)
+    public function setSurname(?ValueField $surname): static
     {
         $this->container['surname'] = $surname;
 
@@ -251,17 +260,17 @@ class UserData implements ArrayAccess
      * Gets nationality
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getNationality()
+    public function getNationality(): ValueField
     {
         return $this->container['nationality'];
     }
 
     /**
      * Sets nationality
-     * @param \Secuconnect\Client\Model\ValueField $nationality nationality
+     * @param \Secuconnect\Client\Model\ValueField|null $nationality nationality
      * @return $this
      */
-    public function setNationality($nationality)
+    public function setNationality(?ValueField $nationality): static
     {
         $this->container['nationality'] = $nationality;
 
@@ -272,17 +281,17 @@ class UserData implements ArrayAccess
      * Gets gender
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getGender()
+    public function getGender(): ValueField
     {
         return $this->container['gender'];
     }
 
     /**
      * Sets gender
-     * @param \Secuconnect\Client\Model\ValueField $gender gender
+     * @param \Secuconnect\Client\Model\ValueField|null $gender gender
      * @return $this
      */
-    public function setGender($gender)
+    public function setGender(?ValueField $gender): static
     {
         $this->container['gender'] = $gender;
 
@@ -293,17 +302,17 @@ class UserData implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\UserAddressData
      */
-    public function getAddress()
+    public function getAddress(): UserAddressData
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\UserAddressData $address address
+     * @param \Secuconnect\Client\Model\UserAddressData|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?UserAddressData $address): static
     {
         $this->container['address'] = $address;
 
@@ -315,7 +324,7 @@ class UserData implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class UserData implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class UserData implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class UserData implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class UserData implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

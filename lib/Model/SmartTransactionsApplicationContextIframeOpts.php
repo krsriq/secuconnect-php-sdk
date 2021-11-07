@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsApplicationContextIframeOpts
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
+class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsApplicationContextIframeOpts';
+    protected static string $swaggerModelName = 'SmartTransactionsApplicationContextIframeOpts';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'payment_hint_title' => 'string',
         'payment_hint' => '\Secuconnect\Client\Model\SmartTransactionsReceipt[]',
         'project_title' => 'string',
@@ -43,7 +52,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'payment_hint_title' => null,
         'payment_hint' => null,
         'project_title' => null,
@@ -55,12 +64,12 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
         'has_accepted_disclaimer' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -69,7 +78,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'payment_hint_title' => 'payment_hint_title',
         'payment_hint' => 'payment_hint',
         'project_title' => 'project_title',
@@ -85,7 +94,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'payment_hint_title' => 'setPaymentHintTitle',
         'payment_hint' => 'setPaymentHint',
         'project_title' => 'setProjectTitle',
@@ -101,7 +110,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'payment_hint_title' => 'getPaymentHintTitle',
         'payment_hint' => 'getPaymentHint',
         'project_title' => 'getProjectTitle',
@@ -113,42 +122,42 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
         'has_accepted_disclaimer' => 'getHasAcceptedDisclaimer'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['payment_hint_title'] = isset($data['payment_hint_title']) ? $data['payment_hint_title'] : null;
-        $this->container['payment_hint'] = isset($data['payment_hint']) ? $data['payment_hint'] : null;
-        $this->container['project_title'] = isset($data['project_title']) ? $data['project_title'] : null;
-        $this->container['submit_button_title'] = isset($data['submit_button_title']) ? $data['submit_button_title'] : null;
-        $this->container['cancel_button_title'] = isset($data['cancel_button_title']) ? $data['cancel_button_title'] : null;
-        $this->container['language'] = isset($data['language']) ? $data['language'] : 'de_DE';
-        $this->container['basket_title'] = isset($data['basket_title']) ? $data['basket_title'] : null;
-        $this->container['hide_disclaimer'] = isset($data['hide_disclaimer']) ? $data['hide_disclaimer'] : false;
-        $this->container['has_accepted_disclaimer'] = isset($data['has_accepted_disclaimer']) ? $data['has_accepted_disclaimer'] : false;
+        $this->container['payment_hint_title'] = $data['payment_hint_title'] ?? null;
+        $this->container['payment_hint'] = $data['payment_hint'] ?? null;
+        $this->container['project_title'] = $data['project_title'] ?? null;
+        $this->container['submit_button_title'] = $data['submit_button_title'] ?? null;
+        $this->container['cancel_button_title'] = $data['cancel_button_title'] ?? null;
+        $this->container['language'] = $data['language'] ?? 'de_DE';
+        $this->container['basket_title'] = $data['basket_title'] ?? null;
+        $this->container['hide_disclaimer'] = $data['hide_disclaimer'] ?? false;
+        $this->container['has_accepted_disclaimer'] = $data['has_accepted_disclaimer'] ?? false;
     }
 
     /**
@@ -156,7 +165,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -169,7 +178,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -179,17 +188,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets payment_hint_title
      * @return string
      */
-    public function getPaymentHintTitle()
+    public function getPaymentHintTitle(): string
     {
         return $this->container['payment_hint_title'];
     }
 
     /**
      * Sets payment_hint_title
-     * @param string $payment_hint_title payment hint title
+     * @param string|null $payment_hint_title payment hint title
      * @return $this
      */
-    public function setPaymentHintTitle($payment_hint_title)
+    public function setPaymentHintTitle(?string $payment_hint_title): static
     {
         $this->container['payment_hint_title'] = $payment_hint_title;
 
@@ -200,17 +209,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets payment_hint
      * @return \Secuconnect\Client\Model\SmartTransactionsReceipt[]
      */
-    public function getPaymentHint()
+    public function getPaymentHint(): array
     {
         return $this->container['payment_hint'];
     }
 
     /**
      * Sets payment_hint
-     * @param \Secuconnect\Client\Model\SmartTransactionsReceipt[] $payment_hint payment hint
+     * @param \Secuconnect\Client\Model\SmartTransactionsReceipt[]|null $payment_hint payment hint
      * @return $this
      */
-    public function setPaymentHint($payment_hint)
+    public function setPaymentHint(?array $payment_hint): static
     {
         $this->container['payment_hint'] = $payment_hint;
 
@@ -221,17 +230,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets project_title
      * @return string
      */
-    public function getProjectTitle()
+    public function getProjectTitle(): string
     {
         return $this->container['project_title'];
     }
 
     /**
      * Sets project_title
-     * @param string $project_title project name
+     * @param string|null $project_title project name
      * @return $this
      */
-    public function setProjectTitle($project_title)
+    public function setProjectTitle(?string $project_title): static
     {
         $this->container['project_title'] = $project_title;
 
@@ -242,17 +251,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets submit_button_title
      * @return string
      */
-    public function getSubmitButtonTitle()
+    public function getSubmitButtonTitle(): string
     {
         return $this->container['submit_button_title'];
     }
 
     /**
      * Sets submit_button_title
-     * @param string $submit_button_title title of the submit button
+     * @param string|null $submit_button_title title of the submit button
      * @return $this
      */
-    public function setSubmitButtonTitle($submit_button_title)
+    public function setSubmitButtonTitle(?string $submit_button_title): static
     {
         $this->container['submit_button_title'] = $submit_button_title;
 
@@ -263,17 +272,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets cancel_button_title
      * @return string
      */
-    public function getCancelButtonTitle()
+    public function getCancelButtonTitle(): string
     {
         return $this->container['cancel_button_title'];
     }
 
     /**
      * Sets cancel_button_title
-     * @param string $cancel_button_title title of the cancel button
+     * @param string|null $cancel_button_title title of the cancel button
      * @return $this
      */
-    public function setCancelButtonTitle($cancel_button_title)
+    public function setCancelButtonTitle(?string $cancel_button_title): static
     {
         $this->container['cancel_button_title'] = $cancel_button_title;
 
@@ -284,17 +293,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets language
      * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->container['language'];
     }
 
     /**
      * Sets language
-     * @param string $language language
+     * @param string|null $language language
      * @return $this
      */
-    public function setLanguage($language)
+    public function setLanguage(?string $language): static
     {
         $this->container['language'] = $language;
 
@@ -305,17 +314,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets basket_title
      * @return string
      */
-    public function getBasketTitle()
+    public function getBasketTitle(): string
     {
         return $this->container['basket_title'];
     }
 
     /**
      * Sets basket_title
-     * @param string $basket_title basket title
+     * @param string|null $basket_title basket title
      * @return $this
      */
-    public function setBasketTitle($basket_title)
+    public function setBasketTitle(?string $basket_title): static
     {
         $this->container['basket_title'] = $basket_title;
 
@@ -326,17 +335,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets hide_disclaimer
      * @return bool
      */
-    public function getHideDisclaimer()
+    public function getHideDisclaimer(): bool
     {
         return $this->container['hide_disclaimer'];
     }
 
     /**
      * Sets hide_disclaimer
-     * @param bool $hide_disclaimer hide disclaimer
+     * @param bool|null $hide_disclaimer hide disclaimer
      * @return $this
      */
-    public function setHideDisclaimer($hide_disclaimer)
+    public function setHideDisclaimer(?bool $hide_disclaimer): static
     {
         $this->container['hide_disclaimer'] = $hide_disclaimer;
 
@@ -347,17 +356,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets has_accepted_disclaimer
      * @return bool
      */
-    public function getHasAcceptedDisclaimer()
+    public function getHasAcceptedDisclaimer(): bool
     {
         return $this->container['has_accepted_disclaimer'];
     }
 
     /**
      * Sets has_accepted_disclaimer
-     * @param bool $has_accepted_disclaimer has accepted disclaimer
+     * @param bool|null $has_accepted_disclaimer has accepted disclaimer
      * @return $this
      */
-    public function setHasAcceptedDisclaimer($has_accepted_disclaimer)
+    public function setHasAcceptedDisclaimer(?bool $has_accepted_disclaimer): static
     {
         $this->container['has_accepted_disclaimer'] = $has_accepted_disclaimer;
 
@@ -369,7 +378,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -379,9 +388,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -390,7 +399,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -404,7 +413,7 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -413,13 +422,17 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

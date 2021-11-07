@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsPaymentLinks
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsPaymentLinks implements ArrayAccess
+class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsPaymentLinks';
+    protected static string $swaggerModelName = 'SmartTransactionsPaymentLinks';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'prepaid' => 'string',
         'debit' => 'string',
         'creditcard' => 'string',
@@ -41,7 +50,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'prepaid' => null,
         'debit' => null,
         'creditcard' => null,
@@ -51,12 +60,12 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
         'general' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'prepaid' => 'prepaid',
         'debit' => 'debit',
         'creditcard' => 'creditcard',
@@ -79,7 +88,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'prepaid' => 'setPrepaid',
         'debit' => 'setDebit',
         'creditcard' => 'setCreditcard',
@@ -93,7 +102,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'prepaid' => 'getPrepaid',
         'debit' => 'getDebit',
         'creditcard' => 'getCreditcard',
@@ -103,40 +112,40 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
         'general' => 'getGeneral'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['prepaid'] = isset($data['prepaid']) ? $data['prepaid'] : null;
-        $this->container['debit'] = isset($data['debit']) ? $data['debit'] : null;
-        $this->container['creditcard'] = isset($data['creditcard']) ? $data['creditcard'] : null;
-        $this->container['invoice'] = isset($data['invoice']) ? $data['invoice'] : null;
-        $this->container['paypal'] = isset($data['paypal']) ? $data['paypal'] : null;
-        $this->container['sofort'] = isset($data['sofort']) ? $data['sofort'] : null;
-        $this->container['general'] = isset($data['general']) ? $data['general'] : null;
+        $this->container['prepaid'] = $data['prepaid'] ?? null;
+        $this->container['debit'] = $data['debit'] ?? null;
+        $this->container['creditcard'] = $data['creditcard'] ?? null;
+        $this->container['invoice'] = $data['invoice'] ?? null;
+        $this->container['paypal'] = $data['paypal'] ?? null;
+        $this->container['sofort'] = $data['sofort'] ?? null;
+        $this->container['general'] = $data['general'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets prepaid
      * @return string
      */
-    public function getPrepaid()
+    public function getPrepaid(): string
     {
         return $this->container['prepaid'];
     }
 
     /**
      * Sets prepaid
-     * @param string $prepaid process with pay in advance
+     * @param string|null $prepaid process with pay in advance
      * @return $this
      */
-    public function setPrepaid($prepaid)
+    public function setPrepaid(?string $prepaid): static
     {
         $this->container['prepaid'] = $prepaid;
 
@@ -188,17 +197,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets debit
      * @return string
      */
-    public function getDebit()
+    public function getDebit(): string
     {
         return $this->container['debit'];
     }
 
     /**
      * Sets debit
-     * @param string $debit process with SEPA direct debit
+     * @param string|null $debit process with SEPA direct debit
      * @return $this
      */
-    public function setDebit($debit)
+    public function setDebit(?string $debit): static
     {
         $this->container['debit'] = $debit;
 
@@ -209,17 +218,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets creditcard
      * @return string
      */
-    public function getCreditcard()
+    public function getCreditcard(): string
     {
         return $this->container['creditcard'];
     }
 
     /**
      * Sets creditcard
-     * @param string $creditcard process with credit card
+     * @param string|null $creditcard process with credit card
      * @return $this
      */
-    public function setCreditcard($creditcard)
+    public function setCreditcard(?string $creditcard): static
     {
         $this->container['creditcard'] = $creditcard;
 
@@ -230,17 +239,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets invoice
      * @return string
      */
-    public function getInvoice()
+    public function getInvoice(): string
     {
         return $this->container['invoice'];
     }
 
     /**
      * Sets invoice
-     * @param string $invoice process with pay on invoice
+     * @param string|null $invoice process with pay on invoice
      * @return $this
      */
-    public function setInvoice($invoice)
+    public function setInvoice(?string $invoice): static
     {
         $this->container['invoice'] = $invoice;
 
@@ -251,17 +260,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets paypal
      * @return string
      */
-    public function getPaypal()
+    public function getPaypal(): string
     {
         return $this->container['paypal'];
     }
 
     /**
      * Sets paypal
-     * @param string $paypal process with PayPal
+     * @param string|null $paypal process with PayPal
      * @return $this
      */
-    public function setPaypal($paypal)
+    public function setPaypal(?string $paypal): static
     {
         $this->container['paypal'] = $paypal;
 
@@ -272,17 +281,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets sofort
      * @return string
      */
-    public function getSofort()
+    public function getSofort(): string
     {
         return $this->container['sofort'];
     }
 
     /**
      * Sets sofort
-     * @param string $sofort process with Sofort
+     * @param string|null $sofort process with Sofort
      * @return $this
      */
-    public function setSofort($sofort)
+    public function setSofort(?string $sofort): static
     {
         $this->container['sofort'] = $sofort;
 
@@ -293,17 +302,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets general
      * @return string
      */
-    public function getGeneral()
+    public function getGeneral(): string
     {
         return $this->container['general'];
     }
 
     /**
      * Sets general
-     * @param string $general process with selecting a payment method
+     * @param string|null $general process with selecting a payment method
      * @return $this
      */
-    public function setGeneral($general)
+    public function setGeneral(?string $general): static
     {
         $this->container['general'] = $general;
 
@@ -315,7 +324,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class SmartTransactionsPaymentLinks implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

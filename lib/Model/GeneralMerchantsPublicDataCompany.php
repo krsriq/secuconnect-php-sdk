@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsPublicDataCompany
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeneralMerchantsPublicDataCompany implements ArrayAccess
+class GeneralMerchantsPublicDataCompany implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsPublicDataCompany';
+    protected static string $swaggerModelName = 'GeneralMerchantsPublicDataCompany';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'companyname' => 'string',
         'address' => '\Secuconnect\Client\Model\GeoAddress'
     ];
@@ -36,17 +45,17 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'companyname' => null,
         'address' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'companyname' => 'companyname',
         'address' => 'address'
     ];
@@ -64,7 +73,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'companyname' => 'setCompanyname',
         'address' => 'setAddress'
     ];
@@ -73,40 +82,40 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'companyname' => 'getCompanyname',
         'address' => 'getAddress'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['companyname'] = isset($data['companyname']) ? $data['companyname'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['companyname'] = $data['companyname'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Gets companyname
      * @return string
      */
-    public function getCompanyname()
+    public function getCompanyname(): string
     {
         return $this->container['companyname'];
     }
 
     /**
      * Sets companyname
-     * @param string $companyname Company name of General Merchant user
+     * @param string|null $companyname Company name of General Merchant user
      * @return $this
      */
-    public function setCompanyname($companyname)
+    public function setCompanyname(?string $companyname): static
     {
         $this->container['companyname'] = $companyname;
 
@@ -158,17 +167,17 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\GeoAddress
      */
-    public function getAddress()
+    public function getAddress(): GeoAddress
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\GeoAddress $address address
+     * @param \Secuconnect\Client\Model\GeoAddress|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?GeoAddress $address): static
     {
         $this->container['address'] = $address;
 
@@ -180,7 +189,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

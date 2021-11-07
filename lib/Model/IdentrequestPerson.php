@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * IdentrequestPerson
@@ -19,13 +28,13 @@ class IdentrequestPerson extends IdentrequestPersonDTO
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'IdentrequestPerson';
+    protected static string $swaggerModelName = 'IdentrequestPerson';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'transaction_id' => 'string',
         'redirect_url' => 'string',
         'status' => 'string',
@@ -36,19 +45,19 @@ class IdentrequestPerson extends IdentrequestPersonDTO
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'transaction_id' => null,
         'redirect_url' => null,
         'status' => null,
         'provider' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -57,7 +66,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'transaction_id' => 'transaction_id',
         'redirect_url' => 'redirect_url',
         'status' => 'status',
@@ -68,7 +77,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'transaction_id' => 'setTransactionId',
         'redirect_url' => 'setRedirectUrl',
         'status' => 'setStatus',
@@ -79,40 +88,40 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'transaction_id' => 'getTransactionId',
         'redirect_url' => 'getRedirectUrl',
         'status' => 'getStatus',
         'provider' => 'getProvider'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['transaction_id'] = isset($data['transaction_id']) ? $data['transaction_id'] : null;
-        $this->container['redirect_url'] = isset($data['redirect_url']) ? $data['redirect_url'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['provider'] = isset($data['provider']) ? $data['provider'] : null;
+        $this->container['transaction_id'] = $data['transaction_id'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['provider'] = $data['provider'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -133,7 +142,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets transaction_id
      * @return string
      */
-    public function getTransactionId()
+    public function getTransactionId(): string
     {
         return $this->container['transaction_id'];
     }
 
     /**
      * Sets transaction_id
-     * @param string $transaction_id An internal transaction_id to identify the person inside and identrequest
+     * @param string|null $transaction_id An internal transaction_id to identify the person inside and identrequest
      * @return $this
      */
-    public function setTransactionId($transaction_id)
+    public function setTransactionId(?string $transaction_id): static
     {
         $this->container['transaction_id'] = $transaction_id;
 
@@ -164,17 +173,17 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets redirect_url
      * @return string
      */
-    public function getRedirectUrl()
+    public function getRedirectUrl(): string
     {
         return $this->container['redirect_url'];
     }
 
     /**
      * Sets redirect_url
-     * @param string $redirect_url The url the person should visit to be forwarded to identification provider
+     * @param string|null $redirect_url The url the person should visit to be forwarded to identification provider
      * @return $this
      */
-    public function setRedirectUrl($redirect_url)
+    public function setRedirectUrl(?string $redirect_url): static
     {
         $this->container['redirect_url'] = $redirect_url;
 
@@ -185,17 +194,17 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status The status of the person identification request
+     * @param string|null $status The status of the person identification request
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -206,17 +215,17 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets provider
      * @return string
      */
-    public function getProvider()
+    public function getProvider(): string
     {
         return $this->container['provider'];
     }
 
     /**
      * Sets provider
-     * @param string $provider The generated ID of the provider for this identrequest - can be null on creation
+     * @param string|null $provider The generated ID of the provider for this identrequest - can be null on creation
      * @return $this
      */
-    public function setProvider($provider)
+    public function setProvider(?string $provider): static
     {
         $this->container['provider'] = $provider;
 
@@ -228,7 +237,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -238,9 +247,9 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -249,7 +258,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -263,7 +272,7 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -272,13 +281,17 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

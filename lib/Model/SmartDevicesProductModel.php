@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartDevicesProductModel
@@ -19,13 +28,13 @@ class SmartDevicesProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartDevicesProductModel';
+    protected static string $swaggerModelName = 'SmartDevicesProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'merchant' => '\Secuconnect\Client\Model\ProductInstanceUID',
         'store' => '\Secuconnect\Client\Model\Store',
@@ -51,7 +60,7 @@ class SmartDevicesProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'merchant' => null,
         'store' => null,
@@ -73,12 +82,12 @@ class SmartDevicesProductModel extends BaseProductModel
         'base_version' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -87,7 +96,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'merchant' => 'merchant',
         'store' => 'store',
@@ -113,7 +122,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'merchant' => 'setMerchant',
         'store' => 'setStore',
@@ -139,7 +148,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'merchant' => 'getMerchant',
         'store' => 'getStore',
@@ -161,48 +170,48 @@ class SmartDevicesProductModel extends BaseProductModel
         'base_version' => 'getBaseVersion'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['vendor'] = isset($data['vendor']) ? $data['vendor'] : null;
-        $this->container['vendor_uid'] = isset($data['vendor_uid']) ? $data['vendor_uid'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['device'] = isset($data['device']) ? $data['device'] : null;
-        $this->container['routing'] = isset($data['routing']) ? $data['routing'] : null;
-        $this->container['user_pin'] = isset($data['user_pin']) ? $data['user_pin'] : null;
-        $this->container['products'] = isset($data['products']) ? $data['products'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['tid'] = isset($data['tid']) ? $data['tid'] : null;
-        $this->container['idle_screen_register'] = isset($data['idle_screen_register']) ? $data['idle_screen_register'] : null;
-        $this->container['idle_screen_terminal'] = isset($data['idle_screen_terminal']) ? $data['idle_screen_terminal'] : null;
-        $this->container['online'] = isset($data['online']) ? $data['online'] : null;
-        $this->container['refresh'] = isset($data['refresh']) ? $data['refresh'] : null;
-        $this->container['terminal_type'] = isset($data['terminal_type']) ? $data['terminal_type'] : null;
-        $this->container['base_version'] = isset($data['base_version']) ? $data['base_version'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['vendor'] = $data['vendor'] ?? null;
+        $this->container['vendor_uid'] = $data['vendor_uid'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['device'] = $data['device'] ?? null;
+        $this->container['routing'] = $data['routing'] ?? null;
+        $this->container['user_pin'] = $data['user_pin'] ?? null;
+        $this->container['products'] = $data['products'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['tid'] = $data['tid'] ?? null;
+        $this->container['idle_screen_register'] = $data['idle_screen_register'] ?? null;
+        $this->container['idle_screen_terminal'] = $data['idle_screen_terminal'] ?? null;
+        $this->container['online'] = $data['online'] ?? null;
+        $this->container['refresh'] = $data['refresh'] ?? null;
+        $this->container['terminal_type'] = $data['terminal_type'] ?? null;
+        $this->container['base_version'] = $data['base_version'] ?? null;
     }
 
     /**
@@ -210,7 +219,7 @@ class SmartDevicesProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -223,7 +232,7 @@ class SmartDevicesProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -233,17 +242,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -254,17 +263,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant()
+    public function getMerchant(): ProductInstanceUID
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $merchant merchant
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?ProductInstanceUID $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -275,17 +284,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore()
+    public function getStore(): Store
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param \Secuconnect\Client\Model\Store $store store
+     * @param \Secuconnect\Client\Model\Store|null $store store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?Store $store): static
     {
         $this->container['store'] = $store;
 
@@ -296,17 +305,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract()
+    public function getContract(): ProductInstanceUID
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $contract contract
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?ProductInstanceUID $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -317,17 +326,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets vendor
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): string
     {
         return $this->container['vendor'];
     }
 
     /**
      * Sets vendor
-     * @param string $vendor Vendor
+     * @param string|null $vendor Vendor
      * @return $this
      */
-    public function setVendor($vendor)
+    public function setVendor(?string $vendor): static
     {
         $this->container['vendor'] = $vendor;
 
@@ -338,17 +347,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid()
+    public function getVendorUid(): string
     {
         return $this->container['vendor_uid'];
     }
 
     /**
      * Sets vendor_uid
-     * @param string $vendor_uid Vendor uid
+     * @param string|null $vendor_uid Vendor uid
      * @return $this
      */
-    public function setVendorUid($vendor_uid)
+    public function setVendorUid(?string $vendor_uid): static
     {
         $this->container['vendor_uid'] = $vendor_uid;
 
@@ -359,17 +368,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -380,17 +389,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets device
      * @return \Secuconnect\Client\Model\SmartDevicesDevice
      */
-    public function getDevice()
+    public function getDevice(): SmartDevicesDevice
     {
         return $this->container['device'];
     }
 
     /**
      * Sets device
-     * @param \Secuconnect\Client\Model\SmartDevicesDevice $device device
+     * @param \Secuconnect\Client\Model\SmartDevicesDevice|null $device device
      * @return $this
      */
-    public function setDevice($device)
+    public function setDevice(?SmartDevicesDevice $device): static
     {
         $this->container['device'] = $device;
 
@@ -401,17 +410,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets routing
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getRouting()
+    public function getRouting(): ProductInstanceUID
     {
         return $this->container['routing'];
     }
 
     /**
      * Sets routing
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $routing routing
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $routing routing
      * @return $this
      */
-    public function setRouting($routing)
+    public function setRouting(?ProductInstanceUID $routing): static
     {
         $this->container['routing'] = $routing;
 
@@ -422,17 +431,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets user_pin
      * @return string
      */
-    public function getUserPin()
+    public function getUserPin(): string
     {
         return $this->container['user_pin'];
     }
 
     /**
      * Sets user_pin
-     * @param string $user_pin User pin
+     * @param string|null $user_pin User pin
      * @return $this
      */
-    public function setUserPin($user_pin)
+    public function setUserPin(?string $user_pin): static
     {
         $this->container['user_pin'] = $user_pin;
 
@@ -443,17 +452,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets products
      * @return \Secuconnect\Client\Model\SmartDevicesProducts
      */
-    public function getProducts()
+    public function getProducts(): SmartDevicesProducts
     {
         return $this->container['products'];
     }
 
     /**
      * Sets products
-     * @param \Secuconnect\Client\Model\SmartDevicesProducts $products products
+     * @param \Secuconnect\Client\Model\SmartDevicesProducts|null $products products
      * @return $this
      */
-    public function setProducts($products)
+    public function setProducts(?SmartDevicesProducts $products): static
     {
         $this->container['products'] = $products;
 
@@ -464,17 +473,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Description
+     * @param string|null $description Description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -485,17 +494,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid()
+    public function getTid(): string
     {
         return $this->container['tid'];
     }
 
     /**
      * Sets tid
-     * @param string $tid TID
+     * @param string|null $tid TID
      * @return $this
      */
-    public function setTid($tid)
+    public function setTid(?string $tid): static
     {
         $this->container['tid'] = $tid;
 
@@ -506,17 +515,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets idle_screen_register
      * @return string
      */
-    public function getIdleScreenRegister()
+    public function getIdleScreenRegister(): string
     {
         return $this->container['idle_screen_register'];
     }
 
     /**
      * Sets idle_screen_register
-     * @param string $idle_screen_register Idle screen register
+     * @param string|null $idle_screen_register Idle screen register
      * @return $this
      */
-    public function setIdleScreenRegister($idle_screen_register)
+    public function setIdleScreenRegister(?string $idle_screen_register): static
     {
         $this->container['idle_screen_register'] = $idle_screen_register;
 
@@ -527,17 +536,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets idle_screen_terminal
      * @return string
      */
-    public function getIdleScreenTerminal()
+    public function getIdleScreenTerminal(): string
     {
         return $this->container['idle_screen_terminal'];
     }
 
     /**
      * Sets idle_screen_terminal
-     * @param string $idle_screen_terminal Idle screen terminal
+     * @param string|null $idle_screen_terminal Idle screen terminal
      * @return $this
      */
-    public function setIdleScreenTerminal($idle_screen_terminal)
+    public function setIdleScreenTerminal(?string $idle_screen_terminal): static
     {
         $this->container['idle_screen_terminal'] = $idle_screen_terminal;
 
@@ -548,17 +557,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets online
      * @return bool
      */
-    public function getOnline()
+    public function getOnline(): bool
     {
         return $this->container['online'];
     }
 
     /**
      * Sets online
-     * @param bool $online Online
+     * @param bool|null $online Online
      * @return $this
      */
-    public function setOnline($online)
+    public function setOnline(?bool $online): static
     {
         $this->container['online'] = $online;
 
@@ -569,17 +578,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets refresh
      * @return int
      */
-    public function getRefresh()
+    public function getRefresh(): int
     {
         return $this->container['refresh'];
     }
 
     /**
      * Sets refresh
-     * @param int $refresh Last refresh timestamp
+     * @param int|null $refresh Last refresh timestamp
      * @return $this
      */
-    public function setRefresh($refresh)
+    public function setRefresh(?int $refresh): static
     {
         $this->container['refresh'] = $refresh;
 
@@ -590,17 +599,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets terminal_type
      * @return string
      */
-    public function getTerminalType()
+    public function getTerminalType(): string
     {
         return $this->container['terminal_type'];
     }
 
     /**
      * Sets terminal_type
-     * @param string $terminal_type Terminal type
+     * @param string|null $terminal_type Terminal type
      * @return $this
      */
-    public function setTerminalType($terminal_type)
+    public function setTerminalType(?string $terminal_type): static
     {
         $this->container['terminal_type'] = $terminal_type;
 
@@ -611,17 +620,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets base_version
      * @return string
      */
-    public function getBaseVersion()
+    public function getBaseVersion(): string
     {
         return $this->container['base_version'];
     }
 
     /**
      * Sets base_version
-     * @param string $base_version Base version
+     * @param string|null $base_version Base version
      * @return $this
      */
-    public function setBaseVersion($base_version)
+    public function setBaseVersion(?string $base_version): static
     {
         $this->container['base_version'] = $base_version;
 
@@ -633,7 +642,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -643,9 +652,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -654,7 +663,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -668,7 +677,7 @@ class SmartDevicesProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -677,13 +686,17 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

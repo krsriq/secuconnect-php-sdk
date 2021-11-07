@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyCustomersProductModel
@@ -19,13 +28,13 @@ class LoyaltyCustomersProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyCustomersProductModel';
+    protected static string $swaggerModelName = 'LoyaltyCustomersProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'merchant' => '\Secuconnect\Client\Model\ProductInstanceUID',
         'contact' => '\Secuconnect\Client\Model\Contact',
@@ -40,7 +49,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'merchant' => null,
         'contact' => null,
@@ -51,12 +60,12 @@ class LoyaltyCustomersProductModel extends BaseProductModel
         'note' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -65,7 +74,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'merchant' => 'merchant',
         'contact' => 'contact',
@@ -80,7 +89,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'merchant' => 'setMerchant',
         'contact' => 'setContact',
@@ -95,7 +104,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'merchant' => 'getMerchant',
         'contact' => 'getContact',
@@ -106,37 +115,37 @@ class LoyaltyCustomersProductModel extends BaseProductModel
         'note' => 'getNote'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
-        $this->container['merchant_contact'] = isset($data['merchant_contact']) ? $data['merchant_contact'] : null;
-        $this->container['account_contact'] = isset($data['account_contact']) ? $data['account_contact'] : null;
-        $this->container['payment_container'] = isset($data['payment_container']) ? $data['payment_container'] : null;
-        $this->container['customernumber'] = isset($data['customernumber']) ? $data['customernumber'] : null;
-        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['contact'] = $data['contact'] ?? null;
+        $this->container['merchant_contact'] = $data['merchant_contact'] ?? null;
+        $this->container['account_contact'] = $data['account_contact'] ?? null;
+        $this->container['payment_container'] = $data['payment_container'] ?? null;
+        $this->container['customernumber'] = $data['customernumber'] ?? null;
+        $this->container['note'] = $data['note'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -157,7 +166,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -188,17 +197,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant()
+    public function getMerchant(): ProductInstanceUID
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $merchant merchant
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?ProductInstanceUID $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -209,17 +218,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact()
+    public function getContact(): Contact
     {
         return $this->container['contact'];
     }
 
     /**
      * Sets contact
-     * @param \Secuconnect\Client\Model\Contact $contact contact
+     * @param \Secuconnect\Client\Model\Contact|null $contact contact
      * @return $this
      */
-    public function setContact($contact)
+    public function setContact(?Contact $contact): static
     {
         $this->container['contact'] = $contact;
 
@@ -230,17 +239,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets merchant_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getMerchantContact()
+    public function getMerchantContact(): Contact
     {
         return $this->container['merchant_contact'];
     }
 
     /**
      * Sets merchant_contact
-     * @param \Secuconnect\Client\Model\Contact $merchant_contact merchant_contact
+     * @param \Secuconnect\Client\Model\Contact|null $merchant_contact merchant_contact
      * @return $this
      */
-    public function setMerchantContact($merchant_contact)
+    public function setMerchantContact(?Contact $merchant_contact): static
     {
         $this->container['merchant_contact'] = $merchant_contact;
 
@@ -251,17 +260,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets account_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getAccountContact()
+    public function getAccountContact(): Contact
     {
         return $this->container['account_contact'];
     }
 
     /**
      * Sets account_contact
-     * @param \Secuconnect\Client\Model\Contact $account_contact account_contact
+     * @param \Secuconnect\Client\Model\Contact|null $account_contact account_contact
      * @return $this
      */
-    public function setAccountContact($account_contact)
+    public function setAccountContact(?Contact $account_contact): static
     {
         $this->container['account_contact'] = $account_contact;
 
@@ -272,17 +281,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets payment_container
      * @return \Secuconnect\Client\Model\LoyaltyCustomersPaymentContainerModel[]
      */
-    public function getPaymentContainer()
+    public function getPaymentContainer(): array
     {
         return $this->container['payment_container'];
     }
 
     /**
      * Sets payment_container
-     * @param \Secuconnect\Client\Model\LoyaltyCustomersPaymentContainerModel[] $payment_container payment container
+     * @param \Secuconnect\Client\Model\LoyaltyCustomersPaymentContainerModel[]|null $payment_container payment container
      * @return $this
      */
-    public function setPaymentContainer($payment_container)
+    public function setPaymentContainer(?array $payment_container): static
     {
         $this->container['payment_container'] = $payment_container;
 
@@ -293,17 +302,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets customernumber
      * @return string
      */
-    public function getCustomernumber()
+    public function getCustomernumber(): string
     {
         return $this->container['customernumber'];
     }
 
     /**
      * Sets customernumber
-     * @param string $customernumber Customer number
+     * @param string|null $customernumber Customer number
      * @return $this
      */
-    public function setCustomernumber($customernumber)
+    public function setCustomernumber(?string $customernumber): static
     {
         $this->container['customernumber'] = $customernumber;
 
@@ -314,17 +323,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets note
      * @return string
      */
-    public function getNote()
+    public function getNote(): string
     {
         return $this->container['note'];
     }
 
     /**
      * Sets note
-     * @param string $note Customer number
+     * @param string|null $note Customer number
      * @return $this
      */
-    public function setNote($note)
+    public function setNote(?string $note): static
     {
         $this->container['note'] = $note;
 
@@ -336,7 +345,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -346,9 +355,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -357,7 +366,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -371,7 +380,7 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -380,13 +389,17 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsDTO implements ArrayAccess
+class SmartTransactionsDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsDTO';
+    protected static string $swaggerModelName = 'SmartTransactionsDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'merchant' => 'string',
         'provider_contract' => '\Secuconnect\Client\Model\ProductInstanceUID',
         'transaction_ref' => 'string',
@@ -62,7 +71,7 @@ class SmartTransactionsDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'merchant' => null,
         'provider_contract' => null,
         'transaction_ref' => null,
@@ -93,12 +102,12 @@ class SmartTransactionsDTO implements ArrayAccess
         'payment_context' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -107,7 +116,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'merchant' => 'merchant',
         'provider_contract' => 'provider_contract',
         'transaction_ref' => 'transactionRef',
@@ -142,7 +151,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'merchant' => 'setMerchant',
         'provider_contract' => 'setProviderContract',
         'transaction_ref' => 'setTransactionRef',
@@ -177,7 +186,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'merchant' => 'getMerchant',
         'provider_contract' => 'getProviderContract',
         'transaction_ref' => 'getTransactionRef',
@@ -208,61 +217,61 @@ class SmartTransactionsDTO implements ArrayAccess
         'payment_context' => 'getPaymentContext'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['provider_contract'] = isset($data['provider_contract']) ? $data['provider_contract'] : null;
-        $this->container['transaction_ref'] = isset($data['transaction_ref']) ? $data['transaction_ref'] : null;
-        $this->container['merchant_ref'] = isset($data['merchant_ref']) ? $data['merchant_ref'] : null;
-        $this->container['basket'] = isset($data['basket']) ? $data['basket'] : null;
-        $this->container['basket_info'] = isset($data['basket_info']) ? $data['basket_info'] : null;
-        $this->container['idents'] = isset($data['idents']) ? $data['idents'] : null;
-        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
-        $this->container['tax_rate'] = isset($data['tax_rate']) ? $data['tax_rate'] : null;
-        $this->container['market'] = isset($data['market']) ? $data['market'] : null;
-        $this->container['cashier'] = isset($data['cashier']) ? $data['cashier'] : null;
-        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
-        $this->container['device_source'] = isset($data['device_source']) ? $data['device_source'] : null;
-        $this->container['trans_id'] = isset($data['trans_id']) ? $data['trans_id'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['last_visited_page'] = isset($data['last_visited_page']) ? $data['last_visited_page'] : null;
-        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
-        $this->container['shipping_address'] = isset($data['shipping_address']) ? $data['shipping_address'] : null;
-        $this->container['container'] = isset($data['container']) ? $data['container'] : null;
-        $this->container['checkin'] = isset($data['checkin']) ? $data['checkin'] : null;
-        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
-        $this->container['is_demo'] = isset($data['is_demo']) ? $data['is_demo'] : null;
-        $this->container['intent'] = isset($data['intent']) ? $data['intent'] : null;
-        $this->container['checkout_links'] = isset($data['checkout_links']) ? $data['checkout_links'] : null;
-        $this->container['delivery_options'] = isset($data['delivery_options']) ? $data['delivery_options'] : null;
-        $this->container['communications'] = isset($data['communications']) ? $data['communications'] : null;
-        $this->container['application_context'] = isset($data['application_context']) ? $data['application_context'] : null;
-        $this->container['payment_context'] = isset($data['payment_context']) ? $data['payment_context'] : null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['provider_contract'] = $data['provider_contract'] ?? null;
+        $this->container['transaction_ref'] = $data['transaction_ref'] ?? null;
+        $this->container['merchant_ref'] = $data['merchant_ref'] ?? null;
+        $this->container['basket'] = $data['basket'] ?? null;
+        $this->container['basket_info'] = $data['basket_info'] ?? null;
+        $this->container['idents'] = $data['idents'] ?? null;
+        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
+        $this->container['tax_rate'] = $data['tax_rate'] ?? null;
+        $this->container['market'] = $data['market'] ?? null;
+        $this->container['cashier'] = $data['cashier'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
+        $this->container['device_source'] = $data['device_source'] ?? null;
+        $this->container['trans_id'] = $data['trans_id'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['last_visited_page'] = $data['last_visited_page'] ?? null;
+        $this->container['customer'] = $data['customer'] ?? null;
+        $this->container['shipping_address'] = $data['shipping_address'] ?? null;
+        $this->container['container'] = $data['container'] ?? null;
+        $this->container['checkin'] = $data['checkin'] ?? null;
+        $this->container['payment_method'] = $data['payment_method'] ?? null;
+        $this->container['is_demo'] = $data['is_demo'] ?? null;
+        $this->container['intent'] = $data['intent'] ?? null;
+        $this->container['checkout_links'] = $data['checkout_links'] ?? null;
+        $this->container['delivery_options'] = $data['delivery_options'] ?? null;
+        $this->container['communications'] = $data['communications'] ?? null;
+        $this->container['application_context'] = $data['application_context'] ?? null;
+        $this->container['payment_context'] = $data['payment_context'] ?? null;
     }
 
     /**
@@ -270,7 +279,7 @@ class SmartTransactionsDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -283,7 +292,7 @@ class SmartTransactionsDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -293,17 +302,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets merchant
      * @return string
      */
-    public function getMerchant()
+    public function getMerchant(): string
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param string $merchant Merchant
+     * @param string|null $merchant Merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?string $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -314,17 +323,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets provider_contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getProviderContract()
+    public function getProviderContract(): ProductInstanceUID
     {
         return $this->container['provider_contract'];
     }
 
     /**
      * Sets provider_contract
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $provider_contract provider_contract
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $provider_contract provider_contract
      * @return $this
      */
-    public function setProviderContract($provider_contract)
+    public function setProviderContract(?ProductInstanceUID $provider_contract): static
     {
         $this->container['provider_contract'] = $provider_contract;
 
@@ -335,17 +344,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets transaction_ref
      * @return string
      */
-    public function getTransactionRef()
+    public function getTransactionRef(): string
     {
         return $this->container['transaction_ref'];
     }
 
     /**
      * Sets transaction_ref
-     * @param string $transaction_ref Transaction reference
+     * @param string|null $transaction_ref Transaction reference
      * @return $this
      */
-    public function setTransactionRef($transaction_ref)
+    public function setTransactionRef(?string $transaction_ref): static
     {
         $this->container['transaction_ref'] = $transaction_ref;
 
@@ -356,17 +365,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets merchant_ref
      * @return string
      */
-    public function getMerchantRef()
+    public function getMerchantRef(): string
     {
         return $this->container['merchant_ref'];
     }
 
     /**
      * Sets merchant_ref
-     * @param string $merchant_ref Merchant reference
+     * @param string|null $merchant_ref Merchant reference
      * @return $this
      */
-    public function setMerchantRef($merchant_ref)
+    public function setMerchantRef(?string $merchant_ref): static
     {
         $this->container['merchant_ref'] = $merchant_ref;
 
@@ -377,17 +386,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets basket
      * @return \Secuconnect\Client\Model\SmartTransactionsBasket
      */
-    public function getBasket()
+    public function getBasket(): SmartTransactionsBasket
     {
         return $this->container['basket'];
     }
 
     /**
      * Sets basket
-     * @param \Secuconnect\Client\Model\SmartTransactionsBasket $basket basket
+     * @param \Secuconnect\Client\Model\SmartTransactionsBasket|null $basket basket
      * @return $this
      */
-    public function setBasket($basket)
+    public function setBasket(?SmartTransactionsBasket $basket): static
     {
         $this->container['basket'] = $basket;
 
@@ -398,17 +407,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets basket_info
      * @return \Secuconnect\Client\Model\SmartTransactionsBasketInfo
      */
-    public function getBasketInfo()
+    public function getBasketInfo(): SmartTransactionsBasketInfo
     {
         return $this->container['basket_info'];
     }
 
     /**
      * Sets basket_info
-     * @param \Secuconnect\Client\Model\SmartTransactionsBasketInfo $basket_info basket_info
+     * @param \Secuconnect\Client\Model\SmartTransactionsBasketInfo|null $basket_info basket_info
      * @return $this
      */
-    public function setBasketInfo($basket_info)
+    public function setBasketInfo(?SmartTransactionsBasketInfo $basket_info): static
     {
         $this->container['basket_info'] = $basket_info;
 
@@ -419,17 +428,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets idents
      * @return \Secuconnect\Client\Model\SmartTransactionsIdent[]
      */
-    public function getIdents()
+    public function getIdents(): array
     {
         return $this->container['idents'];
     }
 
     /**
      * Sets idents
-     * @param \Secuconnect\Client\Model\SmartTransactionsIdent[] $idents Idents
+     * @param \Secuconnect\Client\Model\SmartTransactionsIdent[]|null $idents Idents
      * @return $this
      */
-    public function setIdents($idents)
+    public function setIdents(?array $idents): static
     {
         $this->container['idents'] = $idents;
 
@@ -440,17 +449,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets tax_amount
      * @return int
      */
-    public function getTaxAmount()
+    public function getTaxAmount(): int
     {
         return $this->container['tax_amount'];
     }
 
     /**
      * Sets tax_amount
-     * @param int $tax_amount tax_amount
+     * @param int|null $tax_amount tax_amount
      * @return $this
      */
-    public function setTaxAmount($tax_amount)
+    public function setTaxAmount(?int $tax_amount): static
     {
         $this->container['tax_amount'] = $tax_amount;
 
@@ -461,17 +470,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets tax_rate
      * @return int
      */
-    public function getTaxRate()
+    public function getTaxRate(): int
     {
         return $this->container['tax_rate'];
     }
 
     /**
      * Sets tax_rate
-     * @param int $tax_rate tax_rate
+     * @param int|null $tax_rate tax_rate
      * @return $this
      */
-    public function setTaxRate($tax_rate)
+    public function setTaxRate(?int $tax_rate): static
     {
         $this->container['tax_rate'] = $tax_rate;
 
@@ -482,17 +491,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets market
      * @return string
      */
-    public function getMarket()
+    public function getMarket(): string
     {
         return $this->container['market'];
     }
 
     /**
      * Sets market
-     * @param string $market Market
+     * @param string|null $market Market
      * @return $this
      */
-    public function setMarket($market)
+    public function setMarket(?string $market): static
     {
         $this->container['market'] = $market;
 
@@ -503,17 +512,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets cashier
      * @return string
      */
-    public function getCashier()
+    public function getCashier(): string
     {
         return $this->container['cashier'];
     }
 
     /**
      * Sets cashier
-     * @param string $cashier Cashier
+     * @param string|null $cashier Cashier
      * @return $this
      */
-    public function setCashier($cashier)
+    public function setCashier(?string $cashier): static
     {
         $this->container['cashier'] = $cashier;
 
@@ -524,17 +533,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets product
      * @return string
      */
-    public function getProduct()
+    public function getProduct(): string
     {
         return $this->container['product'];
     }
 
     /**
      * Sets product
-     * @param string $product Product
+     * @param string|null $product Product
      * @return $this
      */
-    public function setProduct($product)
+    public function setProduct(?string $product): static
     {
         $this->container['product'] = $product;
 
@@ -545,17 +554,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets device_source
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getDeviceSource()
+    public function getDeviceSource(): ProductInstanceUID
     {
         return $this->container['device_source'];
     }
 
     /**
      * Sets device_source
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $device_source device_source
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $device_source device_source
      * @return $this
      */
-    public function setDeviceSource($device_source)
+    public function setDeviceSource(?ProductInstanceUID $device_source): static
     {
         $this->container['device_source'] = $device_source;
 
@@ -566,17 +575,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets trans_id
      * @return int
      */
-    public function getTransId()
+    public function getTransId(): int
     {
         return $this->container['trans_id'];
     }
 
     /**
      * Sets trans_id
-     * @param int $trans_id Transaction id
+     * @param int|null $trans_id Transaction id
      * @return $this
      */
-    public function setTransId($trans_id)
+    public function setTransId(?int $trans_id): static
     {
         $this->container['trans_id'] = $trans_id;
 
@@ -587,17 +596,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceID
      */
-    public function getContract()
+    public function getContract(): ProductInstanceID
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\ProductInstanceID $contract contract
+     * @param \Secuconnect\Client\Model\ProductInstanceID|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?ProductInstanceID $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -608,17 +617,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets last_visited_page
      * @return string
      */
-    public function getLastVisitedPage()
+    public function getLastVisitedPage(): string
     {
         return $this->container['last_visited_page'];
     }
 
     /**
      * Sets last_visited_page
-     * @param string $last_visited_page Last visited page
+     * @param string|null $last_visited_page Last visited page
      * @return $this
      */
-    public function setLastVisitedPage($last_visited_page)
+    public function setLastVisitedPage(?string $last_visited_page): static
     {
         $this->container['last_visited_page'] = $last_visited_page;
 
@@ -629,17 +638,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer()
+    public function getCustomer(): PaymentCustomersProductModel
     {
         return $this->container['customer'];
     }
 
     /**
      * Sets customer
-     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel $customer customer
+     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel|null $customer customer
      * @return $this
      */
-    public function setCustomer($customer)
+    public function setCustomer(?PaymentCustomersProductModel $customer): static
     {
         $this->container['customer'] = $customer;
 
@@ -650,17 +659,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets shipping_address
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getShippingAddress()
+    public function getShippingAddress(): PaymentCustomersProductModel
     {
         return $this->container['shipping_address'];
     }
 
     /**
      * Sets shipping_address
-     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel $shipping_address shipping_address
+     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel|null $shipping_address shipping_address
      * @return $this
      */
-    public function setShippingAddress($shipping_address)
+    public function setShippingAddress(?PaymentCustomersProductModel $shipping_address): static
     {
         $this->container['shipping_address'] = $shipping_address;
 
@@ -671,17 +680,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets container
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContainer()
+    public function getContainer(): ProductInstanceUID
     {
         return $this->container['container'];
     }
 
     /**
      * Sets container
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $container container
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $container container
      * @return $this
      */
-    public function setContainer($container)
+    public function setContainer(?ProductInstanceUID $container): static
     {
         $this->container['container'] = $container;
 
@@ -692,17 +701,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets checkin
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckin
      */
-    public function getCheckin()
+    public function getCheckin(): SmartTransactionsCheckin
     {
         return $this->container['checkin'];
     }
 
     /**
      * Sets checkin
-     * @param \Secuconnect\Client\Model\SmartTransactionsCheckin $checkin checkin
+     * @param \Secuconnect\Client\Model\SmartTransactionsCheckin|null $checkin checkin
      * @return $this
      */
-    public function setCheckin($checkin)
+    public function setCheckin(?SmartTransactionsCheckin $checkin): static
     {
         $this->container['checkin'] = $checkin;
 
@@ -713,17 +722,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets payment_method
      * @return string
      */
-    public function getPaymentMethod()
+    public function getPaymentMethod(): string
     {
         return $this->container['payment_method'];
     }
 
     /**
      * Sets payment_method
-     * @param string $payment_method Payment method
+     * @param string|null $payment_method Payment method
      * @return $this
      */
-    public function setPaymentMethod($payment_method)
+    public function setPaymentMethod(?string $payment_method): static
     {
         $this->container['payment_method'] = $payment_method;
 
@@ -734,17 +743,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets is_demo
      * @return bool
      */
-    public function getIsDemo()
+    public function getIsDemo(): bool
     {
         return $this->container['is_demo'];
     }
 
     /**
      * Sets is_demo
-     * @param bool $is_demo Demo payment
+     * @param bool|null $is_demo Demo payment
      * @return $this
      */
-    public function setIsDemo($is_demo)
+    public function setIsDemo(?bool $is_demo): static
     {
         $this->container['is_demo'] = $is_demo;
 
@@ -755,17 +764,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets intent
      * @return string
      */
-    public function getIntent()
+    public function getIntent(): string
     {
         return $this->container['intent'];
     }
 
     /**
      * Sets intent
-     * @param string $intent intent of transaction
+     * @param string|null $intent intent of transaction
      * @return $this
      */
-    public function setIntent($intent)
+    public function setIntent(?string $intent): static
     {
         $this->container['intent'] = $intent;
 
@@ -776,17 +785,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets checkout_links
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckoutLinks
      */
-    public function getCheckoutLinks()
+    public function getCheckoutLinks(): SmartTransactionsCheckoutLinks
     {
         return $this->container['checkout_links'];
     }
 
     /**
      * Sets checkout_links
-     * @param \Secuconnect\Client\Model\SmartTransactionsCheckoutLinks $checkout_links checkout_links
+     * @param \Secuconnect\Client\Model\SmartTransactionsCheckoutLinks|null $checkout_links checkout_links
      * @return $this
      */
-    public function setCheckoutLinks($checkout_links)
+    public function setCheckoutLinks(?SmartTransactionsCheckoutLinks $checkout_links): static
     {
         $this->container['checkout_links'] = $checkout_links;
 
@@ -797,17 +806,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets delivery_options
      * @return \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel
      */
-    public function getDeliveryOptions()
+    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel
     {
         return $this->container['delivery_options'];
     }
 
     /**
      * Sets delivery_options
-     * @param \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel $delivery_options delivery_options
+     * @param \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel|null $delivery_options delivery_options
      * @return $this
      */
-    public function setDeliveryOptions($delivery_options)
+    public function setDeliveryOptions(?OneOfSmartTransactionsDeliveryOptionsModel $delivery_options): static
     {
         $this->container['delivery_options'] = $delivery_options;
 
@@ -818,17 +827,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets communications
      * @return \Secuconnect\Client\Model\SmartTransactionsCommunication
      */
-    public function getCommunications()
+    public function getCommunications(): SmartTransactionsCommunication
     {
         return $this->container['communications'];
     }
 
     /**
      * Sets communications
-     * @param \Secuconnect\Client\Model\SmartTransactionsCommunication $communications communications
+     * @param \Secuconnect\Client\Model\SmartTransactionsCommunication|null $communications communications
      * @return $this
      */
-    public function setCommunications($communications)
+    public function setCommunications(?SmartTransactionsCommunication $communications): static
     {
         $this->container['communications'] = $communications;
 
@@ -839,17 +848,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets application_context
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContext
      */
-    public function getApplicationContext()
+    public function getApplicationContext(): SmartTransactionsApplicationContext
     {
         return $this->container['application_context'];
     }
 
     /**
      * Sets application_context
-     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContext $application_context application_context
+     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContext|null $application_context application_context
      * @return $this
      */
-    public function setApplicationContext($application_context)
+    public function setApplicationContext(?SmartTransactionsApplicationContext $application_context): static
     {
         $this->container['application_context'] = $application_context;
 
@@ -860,17 +869,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets payment_context
      * @return \Secuconnect\Client\Model\PaymentContext
      */
-    public function getPaymentContext()
+    public function getPaymentContext(): PaymentContext
     {
         return $this->container['payment_context'];
     }
 
     /**
      * Sets payment_context
-     * @param \Secuconnect\Client\Model\PaymentContext $payment_context payment_context
+     * @param \Secuconnect\Client\Model\PaymentContext|null $payment_context payment_context
      * @return $this
      */
-    public function setPaymentContext($payment_context)
+    public function setPaymentContext(?PaymentContext $payment_context): static
     {
         $this->container['payment_context'] = $payment_context;
 
@@ -882,7 +891,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -892,9 +901,9 @@ class SmartTransactionsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -903,7 +912,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -917,7 +926,7 @@ class SmartTransactionsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -926,13 +935,17 @@ class SmartTransactionsDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

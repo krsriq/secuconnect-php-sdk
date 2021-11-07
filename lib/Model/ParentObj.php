@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * ParentObj
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ParentObj implements ArrayAccess
+class ParentObj implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class ParentObj implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ParentObj';
+    protected static string $swaggerModelName = 'ParentObj';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'object' => 'string',
         'id' => 'string',
         'trans_id' => 'int',
@@ -39,7 +48,7 @@ class ParentObj implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'object' => null,
         'id' => 'id',
         'trans_id' => null,
@@ -47,12 +56,12 @@ class ParentObj implements ArrayAccess
         'relation_type' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class ParentObj implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'object' => 'object',
         'id' => 'id',
         'trans_id' => 'trans_id',
@@ -73,7 +82,7 @@ class ParentObj implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'object' => 'setObject',
         'id' => 'setId',
         'trans_id' => 'setTransId',
@@ -85,7 +94,7 @@ class ParentObj implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'object' => 'getObject',
         'id' => 'getId',
         'trans_id' => 'getTransId',
@@ -93,38 +102,38 @@ class ParentObj implements ArrayAccess
         'relation_type' => 'getRelationType'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['trans_id'] = isset($data['trans_id']) ? $data['trans_id'] : null;
-        $this->container['ref_type_id'] = isset($data['ref_type_id']) ? $data['ref_type_id'] : null;
-        $this->container['relation_type'] = isset($data['relation_type']) ? $data['relation_type'] : null;
+        $this->container['object'] = $data['object'] ?? null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['trans_id'] = $data['trans_id'] ?? null;
+        $this->container['ref_type_id'] = $data['ref_type_id'] ?? null;
+        $this->container['relation_type'] = $data['relation_type'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class ParentObj implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class ParentObj implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class ParentObj implements ArrayAccess
      * Gets object
      * @return string
      */
-    public function getObject()
+    public function getObject(): string
     {
         return $this->container['object'];
     }
 
     /**
      * Sets object
-     * @param string $object Parent object type
+     * @param string|null $object Parent object type
      * @return $this
      */
-    public function setObject($object)
+    public function setObject(?string $object): static
     {
         $this->container['object'] = $object;
 
@@ -176,17 +185,17 @@ class ParentObj implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id Parent object ID
+     * @param string|null $id Parent object ID
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -197,17 +206,17 @@ class ParentObj implements ArrayAccess
      * Gets trans_id
      * @return int
      */
-    public function getTransId()
+    public function getTransId(): int
     {
         return $this->container['trans_id'];
     }
 
     /**
      * Sets trans_id
-     * @param int $trans_id Transaction ID
+     * @param int|null $trans_id Transaction ID
      * @return $this
      */
-    public function setTransId($trans_id)
+    public function setTransId(?int $trans_id): static
     {
         $this->container['trans_id'] = $trans_id;
 
@@ -218,17 +227,17 @@ class ParentObj implements ArrayAccess
      * Gets ref_type_id
      * @return int
      */
-    public function getRefTypeId()
+    public function getRefTypeId(): int
     {
         return $this->container['ref_type_id'];
     }
 
     /**
      * Sets ref_type_id
-     * @param int $ref_type_id Ref type ID
+     * @param int|null $ref_type_id Ref type ID
      * @return $this
      */
-    public function setRefTypeId($ref_type_id)
+    public function setRefTypeId(?int $ref_type_id): static
     {
         $this->container['ref_type_id'] = $ref_type_id;
 
@@ -239,17 +248,17 @@ class ParentObj implements ArrayAccess
      * Gets relation_type
      * @return string
      */
-    public function getRelationType()
+    public function getRelationType(): string
     {
         return $this->container['relation_type'];
     }
 
     /**
      * Sets relation_type
-     * @param string $relation_type Relation type
+     * @param string|null $relation_type Relation type
      * @return $this
      */
-    public function setRelationType($relation_type)
+    public function setRelationType(?string $relation_type): static
     {
         $this->container['relation_type'] = $relation_type;
 
@@ -261,7 +270,7 @@ class ParentObj implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class ParentObj implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class ParentObj implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class ParentObj implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class ParentObj implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

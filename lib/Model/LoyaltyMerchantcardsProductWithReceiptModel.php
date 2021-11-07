@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyMerchantcardsProductWithReceiptModel
@@ -19,13 +28,13 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyMerchantcardsProductWithReceiptModel';
+    protected static string $swaggerModelName = 'LoyaltyMerchantcardsProductWithReceiptModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'receipt_header' => '\Secuconnect\Client\Model\ReceiptType[]',
         'receipt' => '\Secuconnect\Client\Model\ReceiptTypeValue[]',
         'trans_id' => 'int',
@@ -36,19 +45,19 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'receipt_header' => null,
         'receipt' => null,
         'trans_id' => null,
         'amount' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -57,7 +66,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'receipt_header' => 'receipt_header',
         'receipt' => 'receipt',
         'trans_id' => 'trans_id',
@@ -68,7 +77,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'receipt_header' => 'setReceiptHeader',
         'receipt' => 'setReceipt',
         'trans_id' => 'setTransId',
@@ -79,40 +88,40 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'receipt_header' => 'getReceiptHeader',
         'receipt' => 'getReceipt',
         'trans_id' => 'getTransId',
         'amount' => 'getAmount'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['receipt_header'] = isset($data['receipt_header']) ? $data['receipt_header'] : null;
-        $this->container['receipt'] = isset($data['receipt']) ? $data['receipt'] : null;
-        $this->container['trans_id'] = isset($data['trans_id']) ? $data['trans_id'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['receipt_header'] = $data['receipt_header'] ?? null;
+        $this->container['receipt'] = $data['receipt'] ?? null;
+        $this->container['trans_id'] = $data['trans_id'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -133,7 +142,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets receipt_header
      * @return \Secuconnect\Client\Model\ReceiptType[]
      */
-    public function getReceiptHeader()
+    public function getReceiptHeader(): array
     {
         return $this->container['receipt_header'];
     }
 
     /**
      * Sets receipt_header
-     * @param \Secuconnect\Client\Model\ReceiptType[] $receipt_header Receipt header
+     * @param \Secuconnect\Client\Model\ReceiptType[]|null $receipt_header Receipt header
      * @return $this
      */
-    public function setReceiptHeader($receipt_header)
+    public function setReceiptHeader(?array $receipt_header): static
     {
         $this->container['receipt_header'] = $receipt_header;
 
@@ -164,17 +173,17 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt()
+    public function getReceipt(): array
     {
         return $this->container['receipt'];
     }
 
     /**
      * Sets receipt
-     * @param \Secuconnect\Client\Model\ReceiptTypeValue[] $receipt Receipt
+     * @param \Secuconnect\Client\Model\ReceiptTypeValue[]|null $receipt Receipt
      * @return $this
      */
-    public function setReceipt($receipt)
+    public function setReceipt(?array $receipt): static
     {
         $this->container['receipt'] = $receipt;
 
@@ -185,17 +194,17 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets trans_id
      * @return int
      */
-    public function getTransId()
+    public function getTransId(): int
     {
         return $this->container['trans_id'];
     }
 
     /**
      * Sets trans_id
-     * @param int $trans_id Created TransactionId
+     * @param int|null $trans_id Created TransactionId
      * @return $this
      */
-    public function setTransId($trans_id)
+    public function setTransId(?int $trans_id): static
     {
         $this->container['trans_id'] = $trans_id;
 
@@ -206,17 +215,17 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -228,7 +237,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -238,9 +247,9 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -249,7 +258,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -263,7 +272,7 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -272,13 +281,17 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

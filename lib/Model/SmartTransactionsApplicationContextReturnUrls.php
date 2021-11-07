@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsApplicationContextReturnUrls
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
+class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsApplicationContextReturnUrls';
+    protected static string $swaggerModelName = 'SmartTransactionsApplicationContextReturnUrls';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'url_success' => 'string',
         'url_abort' => 'string',
         'url_error' => 'string'
@@ -37,18 +46,18 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'url_success' => null,
         'url_abort' => null,
         'url_error' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'url_success' => 'url_success',
         'url_abort' => 'url_abort',
         'url_error' => 'url_error'
@@ -67,7 +76,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'url_success' => 'setUrlSuccess',
         'url_abort' => 'setUrlAbort',
         'url_error' => 'setUrlError'
@@ -77,42 +86,42 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'url_success' => 'getUrlSuccess',
         'url_abort' => 'getUrlAbort',
         'url_error' => 'getUrlError'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['url_success'] = isset($data['url_success']) ? $data['url_success'] : null;
-        $this->container['url_abort'] = isset($data['url_abort']) ? $data['url_abort'] : null;
-        $this->container['url_error'] = isset($data['url_error']) ? $data['url_error'] : null;
+        $this->container['url_success'] = $data['url_success'] ?? null;
+        $this->container['url_abort'] = $data['url_abort'] ?? null;
+        $this->container['url_error'] = $data['url_error'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Gets url_success
      * @return string
      */
-    public function getUrlSuccess()
+    public function getUrlSuccess(): string
     {
         return $this->container['url_success'];
     }
 
     /**
      * Sets url_success
-     * @param string $url_success Success URL
+     * @param string|null $url_success Success URL
      * @return $this
      */
-    public function setUrlSuccess($url_success)
+    public function setUrlSuccess(?string $url_success): static
     {
         $this->container['url_success'] = $url_success;
 
@@ -164,17 +173,17 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Gets url_abort
      * @return string
      */
-    public function getUrlAbort()
+    public function getUrlAbort(): string
     {
         return $this->container['url_abort'];
     }
 
     /**
      * Sets url_abort
-     * @param string $url_abort Abort URL
+     * @param string|null $url_abort Abort URL
      * @return $this
      */
-    public function setUrlAbort($url_abort)
+    public function setUrlAbort(?string $url_abort): static
     {
         $this->container['url_abort'] = $url_abort;
 
@@ -185,17 +194,17 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Gets url_error
      * @return string
      */
-    public function getUrlError()
+    public function getUrlError(): string
     {
         return $this->container['url_error'];
     }
 
     /**
      * Sets url_error
-     * @param string $url_error Error URL
+     * @param string|null $url_error Error URL
      * @return $this
      */
-    public function setUrlError($url_error)
+    public function setUrlError(?string $url_error): static
     {
         $this->container['url_error'] = $url_error;
 
@@ -207,7 +216,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

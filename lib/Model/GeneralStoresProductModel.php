@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralStoresProductModel
@@ -19,13 +28,13 @@ class GeneralStoresProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralStoresProductModel';
+    protected static string $swaggerModelName = 'GeneralStoresProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id_old' => 'string',
         'merchant' => '\Secuconnect\Client\Model\ProductInstanceUID',
         'store_name' => 'string',
@@ -59,7 +68,7 @@ class GeneralStoresProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id_old' => 'id',
         'merchant' => null,
         'store_name' => null,
@@ -89,12 +98,12 @@ class GeneralStoresProductModel extends BaseProductModel
         'acceptance_point' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -103,7 +112,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id_old' => 'id_old',
         'merchant' => 'merchant',
         'store_name' => 'store_name',
@@ -137,7 +146,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id_old' => 'setIdOld',
         'merchant' => 'setMerchant',
         'store_name' => 'setStoreName',
@@ -171,7 +180,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id_old' => 'getIdOld',
         'merchant' => 'getMerchant',
         'store_name' => 'getStoreName',
@@ -201,56 +210,56 @@ class GeneralStoresProductModel extends BaseProductModel
         'acceptance_point' => 'getAcceptancePoint'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['id_old'] = isset($data['id_old']) ? $data['id_old'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store_name'] = isset($data['store_name']) ? $data['store_name'] : null;
-        $this->container['facebook_id'] = isset($data['facebook_id']) ? $data['facebook_id'] : null;
-        $this->container['source'] = isset($data['source']) ? $data['source'] : null;
-        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
-        $this->container['hash'] = isset($data['hash']) ? $data['hash'] : null;
-        $this->container['address_components'] = isset($data['address_components']) ? $data['address_components'] : null;
-        $this->container['address_formatted'] = isset($data['address_formatted']) ? $data['address_formatted'] : null;
-        $this->container['phone_number_formatted'] = isset($data['phone_number_formatted']) ? $data['phone_number_formatted'] : null;
-        $this->container['geometry'] = isset($data['geometry']) ? $data['geometry'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['name_raw'] = isset($data['name_raw']) ? $data['name_raw'] : null;
-        $this->container['photo_main'] = isset($data['photo_main']) ? $data['photo_main'] : null;
-        $this->container['photo'] = isset($data['photo']) ? $data['photo'] : null;
-        $this->container['category_main'] = isset($data['category_main']) ? $data['category_main'] : null;
-        $this->container['category'] = isset($data['category']) ? $data['category'] : null;
-        $this->container['url_googleplus'] = isset($data['url_googleplus']) ? $data['url_googleplus'] : null;
-        $this->container['url_website'] = isset($data['url_website']) ? $data['url_website'] : null;
-        $this->container['open_hours'] = isset($data['open_hours']) ? $data['open_hours'] : null;
-        $this->container['open_now'] = isset($data['open_now']) ? $data['open_now'] : null;
-        $this->container['open_time'] = isset($data['open_time']) ? $data['open_time'] : null;
-        $this->container['utc_offset'] = isset($data['utc_offset']) ? $data['utc_offset'] : null;
-        $this->container['assigned_by'] = isset($data['assigned_by']) ? $data['assigned_by'] : null;
-        $this->container['invited_by'] = isset($data['invited_by']) ? $data['invited_by'] : null;
-        $this->container['has_beacon'] = isset($data['has_beacon']) ? $data['has_beacon'] : null;
-        $this->container['acceptance_point'] = isset($data['acceptance_point']) ? $data['acceptance_point'] : null;
+        $this->container['id_old'] = $data['id_old'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store_name'] = $data['store_name'] ?? null;
+        $this->container['facebook_id'] = $data['facebook_id'] ?? null;
+        $this->container['source'] = $data['source'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['hash'] = $data['hash'] ?? null;
+        $this->container['address_components'] = $data['address_components'] ?? null;
+        $this->container['address_formatted'] = $data['address_formatted'] ?? null;
+        $this->container['phone_number_formatted'] = $data['phone_number_formatted'] ?? null;
+        $this->container['geometry'] = $data['geometry'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['name_raw'] = $data['name_raw'] ?? null;
+        $this->container['photo_main'] = $data['photo_main'] ?? null;
+        $this->container['photo'] = $data['photo'] ?? null;
+        $this->container['category_main'] = $data['category_main'] ?? null;
+        $this->container['category'] = $data['category'] ?? null;
+        $this->container['url_googleplus'] = $data['url_googleplus'] ?? null;
+        $this->container['url_website'] = $data['url_website'] ?? null;
+        $this->container['open_hours'] = $data['open_hours'] ?? null;
+        $this->container['open_now'] = $data['open_now'] ?? null;
+        $this->container['open_time'] = $data['open_time'] ?? null;
+        $this->container['utc_offset'] = $data['utc_offset'] ?? null;
+        $this->container['assigned_by'] = $data['assigned_by'] ?? null;
+        $this->container['invited_by'] = $data['invited_by'] ?? null;
+        $this->container['has_beacon'] = $data['has_beacon'] ?? null;
+        $this->container['acceptance_point'] = $data['acceptance_point'] ?? null;
     }
 
     /**
@@ -258,7 +267,7 @@ class GeneralStoresProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -271,7 +280,7 @@ class GeneralStoresProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -281,17 +290,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets id_old
      * @return string
      */
-    public function getIdOld()
+    public function getIdOld(): string
     {
         return $this->container['id_old'];
     }
 
     /**
      * Sets id_old
-     * @param string $id_old ID in secupay Frontend
+     * @param string|null $id_old ID in secupay Frontend
      * @return $this
      */
-    public function setIdOld($id_old)
+    public function setIdOld(?string $id_old): static
     {
         $this->container['id_old'] = $id_old;
 
@@ -302,17 +311,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant()
+    public function getMerchant(): ProductInstanceUID
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $merchant merchant
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?ProductInstanceUID $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -323,17 +332,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName()
+    public function getStoreName(): string
     {
         return $this->container['store_name'];
     }
 
     /**
      * Sets store_name
-     * @param string $store_name Store name
+     * @param string|null $store_name Store name
      * @return $this
      */
-    public function setStoreName($store_name)
+    public function setStoreName(?string $store_name): static
     {
         $this->container['store_name'] = $store_name;
 
@@ -344,17 +353,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets facebook_id
      * @return string
      */
-    public function getFacebookId()
+    public function getFacebookId(): string
     {
         return $this->container['facebook_id'];
     }
 
     /**
      * Sets facebook_id
-     * @param string $facebook_id Facebook ID
+     * @param string|null $facebook_id Facebook ID
      * @return $this
      */
-    public function setFacebookId($facebook_id)
+    public function setFacebookId(?string $facebook_id): static
     {
         $this->container['facebook_id'] = $facebook_id;
 
@@ -365,17 +374,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets source
      * @return string
      */
-    public function getSource()
+    public function getSource(): string
     {
         return $this->container['source'];
     }
 
     /**
      * Sets source
-     * @param string $source Source
+     * @param string|null $source Source
      * @return $this
      */
-    public function setSource($source)
+    public function setSource(?string $source): static
     {
         $this->container['source'] = $source;
 
@@ -386,17 +395,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets key
      * @return string
      */
-    public function getKey()
+    public function getKey(): string
     {
         return $this->container['key'];
     }
 
     /**
      * Sets key
-     * @param string $key Key
+     * @param string|null $key Key
      * @return $this
      */
-    public function setKey($key)
+    public function setKey(?string $key): static
     {
         $this->container['key'] = $key;
 
@@ -407,17 +416,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets hash
      * @return string
      */
-    public function getHash()
+    public function getHash(): string
     {
         return $this->container['hash'];
     }
 
     /**
      * Sets hash
-     * @param string $hash Hash
+     * @param string|null $hash Hash
      * @return $this
      */
-    public function setHash($hash)
+    public function setHash(?string $hash): static
     {
         $this->container['hash'] = $hash;
 
@@ -428,17 +437,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets address_components
      * @return \Secuconnect\Client\Model\AddressComponents[]
      */
-    public function getAddressComponents()
+    public function getAddressComponents(): array
     {
         return $this->container['address_components'];
     }
 
     /**
      * Sets address_components
-     * @param \Secuconnect\Client\Model\AddressComponents[] $address_components Address components
+     * @param \Secuconnect\Client\Model\AddressComponents[]|null $address_components Address components
      * @return $this
      */
-    public function setAddressComponents($address_components)
+    public function setAddressComponents(?array $address_components): static
     {
         $this->container['address_components'] = $address_components;
 
@@ -449,17 +458,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets address_formatted
      * @return string
      */
-    public function getAddressFormatted()
+    public function getAddressFormatted(): string
     {
         return $this->container['address_formatted'];
     }
 
     /**
      * Sets address_formatted
-     * @param string $address_formatted Formatted address
+     * @param string|null $address_formatted Formatted address
      * @return $this
      */
-    public function setAddressFormatted($address_formatted)
+    public function setAddressFormatted(?string $address_formatted): static
     {
         $this->container['address_formatted'] = $address_formatted;
 
@@ -470,17 +479,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets phone_number_formatted
      * @return string
      */
-    public function getPhoneNumberFormatted()
+    public function getPhoneNumberFormatted(): string
     {
         return $this->container['phone_number_formatted'];
     }
 
     /**
      * Sets phone_number_formatted
-     * @param string $phone_number_formatted Formatted phone number
+     * @param string|null $phone_number_formatted Formatted phone number
      * @return $this
      */
-    public function setPhoneNumberFormatted($phone_number_formatted)
+    public function setPhoneNumberFormatted(?string $phone_number_formatted): static
     {
         $this->container['phone_number_formatted'] = $phone_number_formatted;
 
@@ -491,17 +500,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets geometry
      * @return \Secuconnect\Client\Model\GeoAddressGeometry
      */
-    public function getGeometry()
+    public function getGeometry(): GeoAddressGeometry
     {
         return $this->container['geometry'];
     }
 
     /**
      * Sets geometry
-     * @param \Secuconnect\Client\Model\GeoAddressGeometry $geometry geometry
+     * @param \Secuconnect\Client\Model\GeoAddressGeometry|null $geometry geometry
      * @return $this
      */
-    public function setGeometry($geometry)
+    public function setGeometry(?GeoAddressGeometry $geometry): static
     {
         $this->container['geometry'] = $geometry;
 
@@ -512,17 +521,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name Store name
+     * @param string|null $name Store name
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -533,17 +542,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets name_raw
      * @return string
      */
-    public function getNameRaw()
+    public function getNameRaw(): string
     {
         return $this->container['name_raw'];
     }
 
     /**
      * Sets name_raw
-     * @param string $name_raw Raw store name
+     * @param string|null $name_raw Raw store name
      * @return $this
      */
-    public function setNameRaw($name_raw)
+    public function setNameRaw(?string $name_raw): static
     {
         $this->container['name_raw'] = $name_raw;
 
@@ -554,17 +563,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets photo_main
      * @return string
      */
-    public function getPhotoMain()
+    public function getPhotoMain(): string
     {
         return $this->container['photo_main'];
     }
 
     /**
      * Sets photo_main
-     * @param string $photo_main Main photo
+     * @param string|null $photo_main Main photo
      * @return $this
      */
-    public function setPhotoMain($photo_main)
+    public function setPhotoMain(?string $photo_main): static
     {
         $this->container['photo_main'] = $photo_main;
 
@@ -575,17 +584,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets photo
      * @return string[]
      */
-    public function getPhoto()
+    public function getPhoto(): array
     {
         return $this->container['photo'];
     }
 
     /**
      * Sets photo
-     * @param string[] $photo All photos
+     * @param string[]|null $photo All photos
      * @return $this
      */
-    public function setPhoto($photo)
+    public function setPhoto(?array $photo): static
     {
         $this->container['photo'] = $photo;
 
@@ -596,17 +605,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets category_main
      * @return string
      */
-    public function getCategoryMain()
+    public function getCategoryMain(): string
     {
         return $this->container['category_main'];
     }
 
     /**
      * Sets category_main
-     * @param string $category_main Main category
+     * @param string|null $category_main Main category
      * @return $this
      */
-    public function setCategoryMain($category_main)
+    public function setCategoryMain(?string $category_main): static
     {
         $this->container['category_main'] = $category_main;
 
@@ -617,17 +626,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets category
      * @return string[]
      */
-    public function getCategory()
+    public function getCategory(): array
     {
         return $this->container['category'];
     }
 
     /**
      * Sets category
-     * @param string[] $category All categories
+     * @param string[]|null $category All categories
      * @return $this
      */
-    public function setCategory($category)
+    public function setCategory(?array $category): static
     {
         $this->container['category'] = $category;
 
@@ -638,17 +647,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets url_googleplus
      * @return string
      */
-    public function getUrlGoogleplus()
+    public function getUrlGoogleplus(): string
     {
         return $this->container['url_googleplus'];
     }
 
     /**
      * Sets url_googleplus
-     * @param string $url_googleplus Google+ URL of the store
+     * @param string|null $url_googleplus Google+ URL of the store
      * @return $this
      */
-    public function setUrlGoogleplus($url_googleplus)
+    public function setUrlGoogleplus(?string $url_googleplus): static
     {
         $this->container['url_googleplus'] = $url_googleplus;
 
@@ -659,17 +668,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite()
+    public function getUrlWebsite(): string
     {
         return $this->container['url_website'];
     }
 
     /**
      * Sets url_website
-     * @param string $url_website Store website URL (e. g. a webpage of yours with the details of this store)
+     * @param string|null $url_website Store website URL (e. g. a webpage of yours with the details of this store)
      * @return $this
      */
-    public function setUrlWebsite($url_website)
+    public function setUrlWebsite(?string $url_website): static
     {
         $this->container['url_website'] = $url_website;
 
@@ -680,17 +689,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_hours
      * @return \Secuconnect\Client\Model\OpenHours[]
      */
-    public function getOpenHours()
+    public function getOpenHours(): array
     {
         return $this->container['open_hours'];
     }
 
     /**
      * Sets open_hours
-     * @param \Secuconnect\Client\Model\OpenHours[] $open_hours Opening hours per weekday
+     * @param \Secuconnect\Client\Model\OpenHours[]|null $open_hours Opening hours per weekday
      * @return $this
      */
-    public function setOpenHours($open_hours)
+    public function setOpenHours(?array $open_hours): static
     {
         $this->container['open_hours'] = $open_hours;
 
@@ -701,17 +710,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_now
      * @return bool
      */
-    public function getOpenNow()
+    public function getOpenNow(): bool
     {
         return $this->container['open_now'];
     }
 
     /**
      * Sets open_now
-     * @param bool $open_now Whether the store is just open
+     * @param bool|null $open_now Whether the store is just open
      * @return $this
      */
-    public function setOpenNow($open_now)
+    public function setOpenNow(?bool $open_now): static
     {
         $this->container['open_now'] = $open_now;
 
@@ -722,17 +731,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_time
      * @return string
      */
-    public function getOpenTime()
+    public function getOpenTime(): string
     {
         return $this->container['open_time'];
     }
 
     /**
      * Sets open_time
-     * @param string $open_time Opening time
+     * @param string|null $open_time Opening time
      * @return $this
      */
-    public function setOpenTime($open_time)
+    public function setOpenTime(?string $open_time): static
     {
         $this->container['open_time'] = $open_time;
 
@@ -743,17 +752,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets utc_offset
      * @return string
      */
-    public function getUtcOffset()
+    public function getUtcOffset(): string
     {
         return $this->container['utc_offset'];
     }
 
     /**
      * Sets utc_offset
-     * @param string $utc_offset UTC offset
+     * @param string|null $utc_offset UTC offset
      * @return $this
      */
-    public function setUtcOffset($utc_offset)
+    public function setUtcOffset(?string $utc_offset): static
     {
         $this->container['utc_offset'] = $utc_offset;
 
@@ -764,17 +773,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets assigned_by
      * @return \Secuconnect\Client\Model\AssignedBy[]
      */
-    public function getAssignedBy()
+    public function getAssignedBy(): array
     {
         return $this->container['assigned_by'];
     }
 
     /**
      * Sets assigned_by
-     * @param \Secuconnect\Client\Model\AssignedBy[] $assigned_by Assigned by
+     * @param \Secuconnect\Client\Model\AssignedBy[]|null $assigned_by Assigned by
      * @return $this
      */
-    public function setAssignedBy($assigned_by)
+    public function setAssignedBy(?array $assigned_by): static
     {
         $this->container['assigned_by'] = $assigned_by;
 
@@ -785,17 +794,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets invited_by
      * @return \Secuconnect\Client\Model\InvitedBy[]
      */
-    public function getInvitedBy()
+    public function getInvitedBy(): array
     {
         return $this->container['invited_by'];
     }
 
     /**
      * Sets invited_by
-     * @param \Secuconnect\Client\Model\InvitedBy[] $invited_by Invited by
+     * @param \Secuconnect\Client\Model\InvitedBy[]|null $invited_by Invited by
      * @return $this
      */
-    public function setInvitedBy($invited_by)
+    public function setInvitedBy(?array $invited_by): static
     {
         $this->container['invited_by'] = $invited_by;
 
@@ -806,17 +815,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets has_beacon
      * @return bool
      */
-    public function getHasBeacon()
+    public function getHasBeacon(): bool
     {
         return $this->container['has_beacon'];
     }
 
     /**
      * Sets has_beacon
-     * @param bool $has_beacon Whether the store has a WiFi beacon
+     * @param bool|null $has_beacon Whether the store has a WiFi beacon
      * @return $this
      */
-    public function setHasBeacon($has_beacon)
+    public function setHasBeacon(?bool $has_beacon): static
     {
         $this->container['has_beacon'] = $has_beacon;
 
@@ -827,17 +836,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets acceptance_point
      * @return bool
      */
-    public function getAcceptancePoint()
+    public function getAcceptancePoint(): bool
     {
         return $this->container['acceptance_point'];
     }
 
     /**
      * Sets acceptance_point
-     * @param bool $acceptance_point Whether the store is a secucard acceptance point
+     * @param bool|null $acceptance_point Whether the store is a secucard acceptance point
      * @return $this
      */
-    public function setAcceptancePoint($acceptance_point)
+    public function setAcceptancePoint(?bool $acceptance_point): static
     {
         $this->container['acceptance_point'] = $acceptance_point;
 
@@ -849,7 +858,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -859,9 +868,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -870,7 +879,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -884,7 +893,7 @@ class GeneralStoresProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -893,13 +902,17 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

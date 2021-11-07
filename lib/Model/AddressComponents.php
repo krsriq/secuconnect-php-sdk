@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * AddressComponents
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class AddressComponents implements ArrayAccess
+class AddressComponents implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class AddressComponents implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'AddressComponents';
+    protected static string $swaggerModelName = 'AddressComponents';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'long_name' => 'string',
         'short_name' => 'string',
         'types' => 'string[]'
@@ -37,18 +46,18 @@ class AddressComponents implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'long_name' => null,
         'short_name' => null,
         'types' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class AddressComponents implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'long_name' => 'long_name',
         'short_name' => 'short_name',
         'types' => 'types'
@@ -67,7 +76,7 @@ class AddressComponents implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'long_name' => 'setLongName',
         'short_name' => 'setShortName',
         'types' => 'setTypes'
@@ -77,42 +86,42 @@ class AddressComponents implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'long_name' => 'getLongName',
         'short_name' => 'getShortName',
         'types' => 'getTypes'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['long_name'] = isset($data['long_name']) ? $data['long_name'] : null;
-        $this->container['short_name'] = isset($data['short_name']) ? $data['short_name'] : null;
-        $this->container['types'] = isset($data['types']) ? $data['types'] : null;
+        $this->container['long_name'] = $data['long_name'] ?? null;
+        $this->container['short_name'] = $data['short_name'] ?? null;
+        $this->container['types'] = $data['types'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class AddressComponents implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class AddressComponents implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class AddressComponents implements ArrayAccess
      * Gets long_name
      * @return string
      */
-    public function getLongName()
+    public function getLongName(): string
     {
         return $this->container['long_name'];
     }
 
     /**
      * Sets long_name
-     * @param string $long_name Long name
+     * @param string|null $long_name Long name
      * @return $this
      */
-    public function setLongName($long_name)
+    public function setLongName(?string $long_name): static
     {
         $this->container['long_name'] = $long_name;
 
@@ -164,17 +173,17 @@ class AddressComponents implements ArrayAccess
      * Gets short_name
      * @return string
      */
-    public function getShortName()
+    public function getShortName(): string
     {
         return $this->container['short_name'];
     }
 
     /**
      * Sets short_name
-     * @param string $short_name Short name
+     * @param string|null $short_name Short name
      * @return $this
      */
-    public function setShortName($short_name)
+    public function setShortName(?string $short_name): static
     {
         $this->container['short_name'] = $short_name;
 
@@ -185,17 +194,17 @@ class AddressComponents implements ArrayAccess
      * Gets types
      * @return string[]
      */
-    public function getTypes()
+    public function getTypes(): array
     {
         return $this->container['types'];
     }
 
     /**
      * Sets types
-     * @param string[] $types Types
+     * @param string[]|null $types Types
      * @return $this
      */
-    public function setTypes($types)
+    public function setTypes(?array $types): static
     {
         $this->container['types'] = $types;
 
@@ -207,7 +216,7 @@ class AddressComponents implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class AddressComponents implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class AddressComponents implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class AddressComponents implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class AddressComponents implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * VirtualTerminalDataModel
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class VirtualTerminalDataModel implements ArrayAccess
+class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class VirtualTerminalDataModel implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'VirtualTerminalDataModel';
+    protected static string $swaggerModelName = 'VirtualTerminalDataModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'store' => 'object',
         'tid' => 'string',
         'actions' => 'string[]',
@@ -40,7 +49,7 @@ class VirtualTerminalDataModel implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'store' => null,
         'tid' => null,
         'actions' => null,
@@ -49,12 +58,12 @@ class VirtualTerminalDataModel implements ArrayAccess
         'disabled' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -63,7 +72,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'store' => 'store',
         'tid' => 'tid',
         'actions' => 'actions',
@@ -76,7 +85,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'store' => 'setStore',
         'tid' => 'setTid',
         'actions' => 'setActions',
@@ -89,7 +98,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'store' => 'getStore',
         'tid' => 'getTid',
         'actions' => 'getActions',
@@ -98,39 +107,39 @@ class VirtualTerminalDataModel implements ArrayAccess
         'disabled' => 'getDisabled'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['tid'] = isset($data['tid']) ? $data['tid'] : null;
-        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
-        $this->container['gift_terminal'] = isset($data['gift_terminal']) ? $data['gift_terminal'] : null;
-        $this->container['amount_split_enabled'] = isset($data['amount_split_enabled']) ? $data['amount_split_enabled'] : null;
-        $this->container['disabled'] = isset($data['disabled']) ? $data['disabled'] : null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['tid'] = $data['tid'] ?? null;
+        $this->container['actions'] = $data['actions'] ?? null;
+        $this->container['gift_terminal'] = $data['gift_terminal'] ?? null;
+        $this->container['amount_split_enabled'] = $data['amount_split_enabled'] ?? null;
+        $this->container['disabled'] = $data['disabled'] ?? null;
     }
 
     /**
@@ -138,7 +147,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -151,7 +160,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -161,17 +170,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets store
      * @return object
      */
-    public function getStore()
+    public function getStore(): object
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param object $store Store
+     * @param object|null $store Store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?object $store): static
     {
         $this->container['store'] = $store;
 
@@ -182,17 +191,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets tid
      * @return string
      */
-    public function getTid()
+    public function getTid(): string
     {
         return $this->container['tid'];
     }
 
     /**
      * Sets tid
-     * @param string $tid Terminal id
+     * @param string|null $tid Terminal id
      * @return $this
      */
-    public function setTid($tid)
+    public function setTid(?string $tid): static
     {
         $this->container['tid'] = $tid;
 
@@ -203,17 +212,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets actions
      * @return string[]
      */
-    public function getActions()
+    public function getActions(): array
     {
         return $this->container['actions'];
     }
 
     /**
      * Sets actions
-     * @param string[] $actions Actions
+     * @param string[]|null $actions Actions
      * @return $this
      */
-    public function setActions($actions)
+    public function setActions(?array $actions): static
     {
         $this->container['actions'] = $actions;
 
@@ -224,17 +233,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets gift_terminal
      * @return int
      */
-    public function getGiftTerminal()
+    public function getGiftTerminal(): int
     {
         return $this->container['gift_terminal'];
     }
 
     /**
      * Sets gift_terminal
-     * @param int $gift_terminal Gift terminal
+     * @param int|null $gift_terminal Gift terminal
      * @return $this
      */
-    public function setGiftTerminal($gift_terminal)
+    public function setGiftTerminal(?int $gift_terminal): static
     {
         $this->container['gift_terminal'] = $gift_terminal;
 
@@ -245,17 +254,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets amount_split_enabled
      * @return int
      */
-    public function getAmountSplitEnabled()
+    public function getAmountSplitEnabled(): int
     {
         return $this->container['amount_split_enabled'];
     }
 
     /**
      * Sets amount_split_enabled
-     * @param int $amount_split_enabled Amount split enabled
+     * @param int|null $amount_split_enabled Amount split enabled
      * @return $this
      */
-    public function setAmountSplitEnabled($amount_split_enabled)
+    public function setAmountSplitEnabled(?int $amount_split_enabled): static
     {
         $this->container['amount_split_enabled'] = $amount_split_enabled;
 
@@ -266,17 +275,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets disabled
      * @return int
      */
-    public function getDisabled()
+    public function getDisabled(): int
     {
         return $this->container['disabled'];
     }
 
     /**
      * Sets disabled
-     * @param int $disabled Disabled
+     * @param int|null $disabled Disabled
      * @return $this
      */
-    public function setDisabled($disabled)
+    public function setDisabled(?int $disabled): static
     {
         $this->container['disabled'] = $disabled;
 
@@ -288,7 +297,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -298,9 +307,9 @@ class VirtualTerminalDataModel implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -309,7 +318,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -323,7 +332,7 @@ class VirtualTerminalDataModel implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -332,13 +341,17 @@ class VirtualTerminalDataModel implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

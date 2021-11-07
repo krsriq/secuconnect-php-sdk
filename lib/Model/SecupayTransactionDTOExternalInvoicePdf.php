@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionDTOExternalInvoicePdf
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
+class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionDTOExternalInvoicePdf';
+    protected static string $swaggerModelName = 'SecupayTransactionDTOExternalInvoicePdf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'update_existing' => 'bool'
     ];
 
@@ -35,16 +44,16 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'update_existing' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -53,7 +62,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'update_existing' => 'update_existing'
     ];
 
@@ -61,7 +70,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'update_existing' => 'setUpdateExisting'
     ];
 
@@ -69,38 +78,38 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'update_existing' => 'getUpdateExisting'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['update_existing'] = isset($data['update_existing']) ? $data['update_existing'] : null;
+        $this->container['update_existing'] = $data['update_existing'] ?? null;
     }
 
     /**
@@ -108,7 +117,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -121,7 +130,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -131,17 +140,17 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * Gets update_existing
      * @return bool
      */
-    public function getUpdateExisting()
+    public function getUpdateExisting(): bool
     {
         return $this->container['update_existing'];
     }
 
     /**
      * Sets update_existing
-     * @param bool $update_existing Update existing invoice PDF
+     * @param bool|null $update_existing Update existing invoice PDF
      * @return $this
      */
-    public function setUpdateExisting($update_existing)
+    public function setUpdateExisting(?bool $update_existing): static
     {
         $this->container['update_existing'] = $update_existing;
 
@@ -153,7 +162,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -163,9 +172,9 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -174,7 +183,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -188,7 +197,7 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -197,13 +206,17 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

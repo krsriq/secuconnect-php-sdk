@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentContractsDTOIFrameOpts
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentContractsDTOIFrameOpts implements ArrayAccess
+class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentContractsDTOIFrameOpts';
+    protected static string $swaggerModelName = 'PaymentContractsDTOIFrameOpts';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'show_basket' => 'bool',
         'basket_title' => 'string',
         'submit_button_title' => 'string',
@@ -39,7 +48,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'show_basket' => null,
         'basket_title' => null,
         'submit_button_title' => null,
@@ -47,12 +56,12 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
         'cession' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'show_basket' => 'show_basket',
         'basket_title' => 'basket_title',
         'submit_button_title' => 'submit_button_title',
@@ -73,7 +82,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'show_basket' => 'setShowBasket',
         'basket_title' => 'setBasketTitle',
         'submit_button_title' => 'setSubmitButtonTitle',
@@ -85,7 +94,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'show_basket' => 'getShowBasket',
         'basket_title' => 'getBasketTitle',
         'submit_button_title' => 'getSubmitButtonTitle',
@@ -93,38 +102,38 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
         'cession' => 'getCession'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['show_basket'] = isset($data['show_basket']) ? $data['show_basket'] : null;
-        $this->container['basket_title'] = isset($data['basket_title']) ? $data['basket_title'] : null;
-        $this->container['submit_button_title'] = isset($data['submit_button_title']) ? $data['submit_button_title'] : null;
-        $this->container['logo_base64'] = isset($data['logo_base64']) ? $data['logo_base64'] : null;
-        $this->container['cession'] = isset($data['cession']) ? $data['cession'] : 'personal';
+        $this->container['show_basket'] = $data['show_basket'] ?? null;
+        $this->container['basket_title'] = $data['basket_title'] ?? null;
+        $this->container['submit_button_title'] = $data['submit_button_title'] ?? null;
+        $this->container['logo_base64'] = $data['logo_base64'] ?? null;
+        $this->container['cession'] = $data['cession'] ?? 'personal';
     }
 
     /**
@@ -132,7 +141,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets show_basket
      * @return bool
      */
-    public function getShowBasket()
+    public function getShowBasket(): bool
     {
         return $this->container['show_basket'];
     }
 
     /**
      * Sets show_basket
-     * @param bool $show_basket Display the basket items to the customer during the checkout
+     * @param bool|null $show_basket Display the basket items to the customer during the checkout
      * @return $this
      */
-    public function setShowBasket($show_basket)
+    public function setShowBasket(?bool $show_basket): static
     {
         $this->container['show_basket'] = $show_basket;
 
@@ -176,17 +185,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets basket_title
      * @return string
      */
-    public function getBasketTitle()
+    public function getBasketTitle(): string
     {
         return $this->container['basket_title'];
     }
 
     /**
      * Sets basket_title
-     * @param string $basket_title Default headline of the checkout page
+     * @param string|null $basket_title Default headline of the checkout page
      * @return $this
      */
-    public function setBasketTitle($basket_title)
+    public function setBasketTitle(?string $basket_title): static
     {
         $this->container['basket_title'] = $basket_title;
 
@@ -197,17 +206,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets submit_button_title
      * @return string
      */
-    public function getSubmitButtonTitle()
+    public function getSubmitButtonTitle(): string
     {
         return $this->container['submit_button_title'];
     }
 
     /**
      * Sets submit_button_title
-     * @param string $submit_button_title Default naming of the Submit-Button
+     * @param string|null $submit_button_title Default naming of the Submit-Button
      * @return $this
      */
-    public function setSubmitButtonTitle($submit_button_title)
+    public function setSubmitButtonTitle(?string $submit_button_title): static
     {
         $this->container['submit_button_title'] = $submit_button_title;
 
@@ -218,17 +227,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets logo_base64
      * @return string
      */
-    public function getLogoBase64()
+    public function getLogoBase64(): string
     {
         return $this->container['logo_base64'];
     }
 
     /**
      * Sets logo_base64
-     * @param string $logo_base64 Logo base64-enconded
+     * @param string|null $logo_base64 Logo base64-enconded
      * @return $this
      */
-    public function setLogoBase64($logo_base64)
+    public function setLogoBase64(?string $logo_base64): static
     {
         $this->container['logo_base64'] = $logo_base64;
 
@@ -239,17 +248,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets cession
      * @return string
      */
-    public function getCession()
+    public function getCession(): string
     {
         return $this->container['cession'];
     }
 
     /**
      * Sets cession
-     * @param string $cession Cession ('formal', 'personal')
+     * @param string|null $cession Cession ('formal', 'personal')
      * @return $this
      */
-    public function setCession($cession)
+    public function setCession(?string $cession): static
     {
         $this->container['cession'] = $cession;
 
@@ -261,7 +270,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

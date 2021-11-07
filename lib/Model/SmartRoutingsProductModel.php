@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartRoutingsProductModel
@@ -19,13 +28,13 @@ class SmartRoutingsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartRoutingsProductModel';
+    protected static string $swaggerModelName = 'SmartRoutingsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'updated' => 'string',
         'merchant' => '\Secuconnect\Client\Model\ProductInstanceUID',
@@ -38,7 +47,7 @@ class SmartRoutingsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'updated' => null,
         'merchant' => null,
@@ -47,12 +56,12 @@ class SmartRoutingsProductModel extends BaseProductModel
         'assign' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -61,7 +70,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'updated' => 'updated',
         'merchant' => 'merchant',
@@ -74,7 +83,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'updated' => 'setUpdated',
         'merchant' => 'setMerchant',
@@ -87,7 +96,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'updated' => 'getUpdated',
         'merchant' => 'getMerchant',
@@ -96,35 +105,35 @@ class SmartRoutingsProductModel extends BaseProductModel
         'assign' => 'getAssign'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['assign'] = isset($data['assign']) ? $data['assign'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['assign'] = $data['assign'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -145,7 +154,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -176,17 +185,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated()
+    public function getUpdated(): string
     {
         return $this->container['updated'];
     }
 
     /**
      * Sets updated
-     * @param string $updated updated
+     * @param string|null $updated updated
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setUpdated(?string $updated): static
     {
         $this->container['updated'] = $updated;
 
@@ -197,17 +206,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant()
+    public function getMerchant(): ProductInstanceUID
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $merchant merchant
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?ProductInstanceUID $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -218,17 +227,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore()
+    public function getStore(): Store
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param \Secuconnect\Client\Model\Store $store store
+     * @param \Secuconnect\Client\Model\Store|null $store store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?Store $store): static
     {
         $this->container['store'] = $store;
 
@@ -239,17 +248,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Description
+     * @param string|null $description Description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -260,17 +269,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets assign
      * @return \Secuconnect\Client\Model\SmartRoutingsAssign[]
      */
-    public function getAssign()
+    public function getAssign(): array
     {
         return $this->container['assign'];
     }
 
     /**
      * Sets assign
-     * @param \Secuconnect\Client\Model\SmartRoutingsAssign[] $assign Assign
+     * @param \Secuconnect\Client\Model\SmartRoutingsAssign[]|null $assign Assign
      * @return $this
      */
-    public function setAssign($assign)
+    public function setAssign(?array $assign): static
     {
         $this->container['assign'] = $assign;
 
@@ -282,7 +291,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,9 +301,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -303,7 +312,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -317,7 +326,7 @@ class SmartRoutingsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -326,13 +335,17 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

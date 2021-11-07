@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentInformation
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentInformation implements ArrayAccess
+class PaymentInformation implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentInformation implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentInformation';
+    protected static string $swaggerModelName = 'PaymentInformation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'iban' => 'string',
         'bic' => 'string',
         'owner' => 'string',
@@ -38,19 +47,19 @@ class PaymentInformation implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'iban' => null,
         'bic' => null,
         'owner' => null,
         'bankname' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class PaymentInformation implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'iban' => 'iban',
         'bic' => 'bic',
         'owner' => 'owner',
@@ -70,7 +79,7 @@ class PaymentInformation implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'iban' => 'setIban',
         'bic' => 'setBic',
         'owner' => 'setOwner',
@@ -81,44 +90,44 @@ class PaymentInformation implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'iban' => 'getIban',
         'bic' => 'getBic',
         'owner' => 'getOwner',
         'bankname' => 'getBankname'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['iban'] = isset($data['iban']) ? $data['iban'] : null;
-        $this->container['bic'] = isset($data['bic']) ? $data['bic'] : null;
-        $this->container['owner'] = isset($data['owner']) ? $data['owner'] : null;
-        $this->container['bankname'] = isset($data['bankname']) ? $data['bankname'] : null;
+        $this->container['iban'] = $data['iban'] ?? null;
+        $this->container['bic'] = $data['bic'] ?? null;
+        $this->container['owner'] = $data['owner'] ?? null;
+        $this->container['bankname'] = $data['bankname'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class PaymentInformation implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class PaymentInformation implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class PaymentInformation implements ArrayAccess
      * Gets iban
      * @return string
      */
-    public function getIban()
+    public function getIban(): string
     {
         return $this->container['iban'];
     }
 
     /**
      * Sets iban
-     * @param string $iban International Bank Account Number (IBAN)
+     * @param string|null $iban International Bank Account Number (IBAN)
      * @return $this
      */
-    public function setIban($iban)
+    public function setIban(?string $iban): static
     {
         $this->container['iban'] = $iban;
 
@@ -170,17 +179,17 @@ class PaymentInformation implements ArrayAccess
      * Gets bic
      * @return string
      */
-    public function getBic()
+    public function getBic(): string
     {
         return $this->container['bic'];
     }
 
     /**
      * Sets bic
-     * @param string $bic Bank Identifier Code (BIC), or formerly SWIFT code
+     * @param string|null $bic Bank Identifier Code (BIC), or formerly SWIFT code
      * @return $this
      */
-    public function setBic($bic)
+    public function setBic(?string $bic): static
     {
         $this->container['bic'] = $bic;
 
@@ -191,17 +200,17 @@ class PaymentInformation implements ArrayAccess
      * Gets owner
      * @return string
      */
-    public function getOwner()
+    public function getOwner(): string
     {
         return $this->container['owner'];
     }
 
     /**
      * Sets owner
-     * @param string $owner Account owner name
+     * @param string|null $owner Account owner name
      * @return $this
      */
-    public function setOwner($owner)
+    public function setOwner(?string $owner): static
     {
         $this->container['owner'] = $owner;
 
@@ -212,17 +221,17 @@ class PaymentInformation implements ArrayAccess
      * Gets bankname
      * @return string
      */
-    public function getBankname()
+    public function getBankname(): string
     {
         return $this->container['bankname'];
     }
 
     /**
      * Sets bankname
-     * @param string $bankname Bank name
+     * @param string|null $bankname Bank name
      * @return $this
      */
-    public function setBankname($bankname)
+    public function setBankname(?string $bankname): static
     {
         $this->container['bankname'] = $bankname;
 
@@ -234,7 +243,7 @@ class PaymentInformation implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class PaymentInformation implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class PaymentInformation implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class PaymentInformation implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class PaymentInformation implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

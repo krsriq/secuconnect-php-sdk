@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentTransactionsInstructions
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentTransactionsInstructions implements ArrayAccess
+class PaymentTransactionsInstructions implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentTransactionsInstructions implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentTransactionsInstructions';
+    protected static string $swaggerModelName = 'PaymentTransactionsInstructions';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'lang' => 'string',
         'amount' => 'int',
         'currency' => 'string',
@@ -38,19 +47,19 @@ class PaymentTransactionsInstructions implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'lang' => null,
         'amount' => null,
         'currency' => null,
         'payment' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'lang' => 'lang',
         'amount' => 'amount',
         'currency' => 'currency',
@@ -70,7 +79,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'lang' => 'setLang',
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
@@ -81,44 +90,44 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'lang' => 'getLang',
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
         'payment' => 'getPayment'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['lang'] = isset($data['lang']) ? $data['lang'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['payment'] = isset($data['payment']) ? $data['payment'] : null;
+        $this->container['lang'] = $data['lang'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['payment'] = $data['payment'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Gets lang
      * @return string
      */
-    public function getLang()
+    public function getLang(): string
     {
         return $this->container['lang'];
     }
 
     /**
      * Sets lang
-     * @param string $lang Language
+     * @param string|null $lang Language
      * @return $this
      */
-    public function setLang($lang)
+    public function setLang(?string $lang): static
     {
         $this->container['lang'] = $lang;
 
@@ -170,17 +179,17 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -191,17 +200,17 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency currency
+     * @param string|null $currency currency
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -212,17 +221,17 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Gets payment
      * @return \Secuconnect\Client\Model\BankAccountDescriptor
      */
-    public function getPayment()
+    public function getPayment(): BankAccountDescriptor
     {
         return $this->container['payment'];
     }
 
     /**
      * Sets payment
-     * @param \Secuconnect\Client\Model\BankAccountDescriptor $payment payment
+     * @param \Secuconnect\Client\Model\BankAccountDescriptor|null $payment payment
      * @return $this
      */
-    public function setPayment($payment)
+    public function setPayment(?BankAccountDescriptor $payment): static
     {
         $this->container['payment'] = $payment;
 
@@ -234,7 +243,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class PaymentTransactionsInstructions implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

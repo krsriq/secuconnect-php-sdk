@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyMerchantcardsCardBalanceReceipt
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
+class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyMerchantcardsCardBalanceReceipt';
+    protected static string $swaggerModelName = 'LoyaltyMerchantcardsCardBalanceReceipt';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'valid' => 'bool',
         'balance' => 'int',
         'points' => 'int',
@@ -44,7 +53,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'valid' => null,
         'balance' => null,
         'points' => null,
@@ -57,12 +66,12 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
         'limit' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -71,7 +80,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'valid' => 'valid',
         'balance' => 'balance',
         'points' => 'points',
@@ -88,7 +97,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'valid' => 'setValid',
         'balance' => 'setBalance',
         'points' => 'setPoints',
@@ -105,7 +114,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'valid' => 'getValid',
         'balance' => 'getBalance',
         'points' => 'getPoints',
@@ -118,43 +127,43 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
         'limit' => 'getLimit'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['valid'] = isset($data['valid']) ? $data['valid'] : null;
-        $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
-        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
-        $this->container['new_passcode'] = isset($data['new_passcode']) ? $data['new_passcode'] : null;
-        $this->container['receipt_header'] = isset($data['receipt_header']) ? $data['receipt_header'] : null;
-        $this->container['receipt'] = isset($data['receipt']) ? $data['receipt'] : null;
-        $this->container['amount_split_enabled'] = isset($data['amount_split_enabled']) ? $data['amount_split_enabled'] : null;
-        $this->container['limit_allowed'] = isset($data['limit_allowed']) ? $data['limit_allowed'] : null;
-        $this->container['limit_str'] = isset($data['limit_str']) ? $data['limit_str'] : null;
-        $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
+        $this->container['valid'] = $data['valid'] ?? null;
+        $this->container['balance'] = $data['balance'] ?? null;
+        $this->container['points'] = $data['points'] ?? null;
+        $this->container['new_passcode'] = $data['new_passcode'] ?? null;
+        $this->container['receipt_header'] = $data['receipt_header'] ?? null;
+        $this->container['receipt'] = $data['receipt'] ?? null;
+        $this->container['amount_split_enabled'] = $data['amount_split_enabled'] ?? null;
+        $this->container['limit_allowed'] = $data['limit_allowed'] ?? null;
+        $this->container['limit_str'] = $data['limit_str'] ?? null;
+        $this->container['limit'] = $data['limit'] ?? null;
     }
 
     /**
@@ -162,7 +171,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -175,7 +184,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -185,17 +194,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets valid
      * @return bool
      */
-    public function getValid()
+    public function getValid(): bool
     {
         return $this->container['valid'];
     }
 
     /**
      * Sets valid
-     * @param bool $valid Result has true or false value
+     * @param bool|null $valid Result has true or false value
      * @return $this
      */
-    public function setValid($valid)
+    public function setValid(?bool $valid): static
     {
         $this->container['valid'] = $valid;
 
@@ -206,17 +215,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets balance
      * @return int
      */
-    public function getBalance()
+    public function getBalance(): int
     {
         return $this->container['balance'];
     }
 
     /**
      * Sets balance
-     * @param int $balance The total cash balance of the card
+     * @param int|null $balance The total cash balance of the card
      * @return $this
      */
-    public function setBalance($balance)
+    public function setBalance(?int $balance): static
     {
         $this->container['balance'] = $balance;
 
@@ -227,17 +236,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets points
      * @return int
      */
-    public function getPoints()
+    public function getPoints(): int
     {
         return $this->container['points'];
     }
 
     /**
      * Sets points
-     * @param int $points The total points balance of the card
+     * @param int|null $points The total points balance of the card
      * @return $this
      */
-    public function setPoints($points)
+    public function setPoints(?int $points): static
     {
         $this->container['points'] = $points;
 
@@ -248,17 +257,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets new_passcode
      * @return bool
      */
-    public function getNewPasscode()
+    public function getNewPasscode(): bool
     {
         return $this->container['new_passcode'];
     }
 
     /**
      * Sets new_passcode
-     * @param bool $new_passcode Result has true or false value
+     * @param bool|null $new_passcode Result has true or false value
      * @return $this
      */
-    public function setNewPasscode($new_passcode)
+    public function setNewPasscode(?bool $new_passcode): static
     {
         $this->container['new_passcode'] = $new_passcode;
 
@@ -269,17 +278,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets receipt_header
      * @return \Secuconnect\Client\Model\ReceiptType[]
      */
-    public function getReceiptHeader()
+    public function getReceiptHeader(): array
     {
         return $this->container['receipt_header'];
     }
 
     /**
      * Sets receipt_header
-     * @param \Secuconnect\Client\Model\ReceiptType[] $receipt_header Receipt header
+     * @param \Secuconnect\Client\Model\ReceiptType[]|null $receipt_header Receipt header
      * @return $this
      */
-    public function setReceiptHeader($receipt_header)
+    public function setReceiptHeader(?array $receipt_header): static
     {
         $this->container['receipt_header'] = $receipt_header;
 
@@ -290,17 +299,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt()
+    public function getReceipt(): array
     {
         return $this->container['receipt'];
     }
 
     /**
      * Sets receipt
-     * @param \Secuconnect\Client\Model\ReceiptTypeValue[] $receipt Receipt
+     * @param \Secuconnect\Client\Model\ReceiptTypeValue[]|null $receipt Receipt
      * @return $this
      */
-    public function setReceipt($receipt)
+    public function setReceipt(?array $receipt): static
     {
         $this->container['receipt'] = $receipt;
 
@@ -311,17 +320,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets amount_split_enabled
      * @return bool
      */
-    public function getAmountSplitEnabled()
+    public function getAmountSplitEnabled(): bool
     {
         return $this->container['amount_split_enabled'];
     }
 
     /**
      * Sets amount_split_enabled
-     * @param bool $amount_split_enabled Result has true or false value
+     * @param bool|null $amount_split_enabled Result has true or false value
      * @return $this
      */
-    public function setAmountSplitEnabled($amount_split_enabled)
+    public function setAmountSplitEnabled(?bool $amount_split_enabled): static
     {
         $this->container['amount_split_enabled'] = $amount_split_enabled;
 
@@ -332,17 +341,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets limit_allowed
      * @return bool
      */
-    public function getLimitAllowed()
+    public function getLimitAllowed(): bool
     {
         return $this->container['limit_allowed'];
     }
 
     /**
      * Sets limit_allowed
-     * @param bool $limit_allowed Result has true or false value
+     * @param bool|null $limit_allowed Result has true or false value
      * @return $this
      */
-    public function setLimitAllowed($limit_allowed)
+    public function setLimitAllowed(?bool $limit_allowed): static
     {
         $this->container['limit_allowed'] = $limit_allowed;
 
@@ -353,17 +362,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets limit_str
      * @return string
      */
-    public function getLimitStr()
+    public function getLimitStr(): string
     {
         return $this->container['limit_str'];
     }
 
     /**
      * Sets limit_str
-     * @param string $limit_str A formatted string of the limit in euro with currency code
+     * @param string|null $limit_str A formatted string of the limit in euro with currency code
      * @return $this
      */
-    public function setLimitStr($limit_str)
+    public function setLimitStr(?string $limit_str): static
     {
         $this->container['limit_str'] = $limit_str;
 
@@ -374,17 +383,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets limit
      * @return int
      */
-    public function getLimit()
+    public function getLimit(): int
     {
         return $this->container['limit'];
     }
 
     /**
      * Sets limit
-     * @param int $limit How much the card balance can be negative, zero means unlimited in case limit_allowed is true
+     * @param int|null $limit How much the card balance can be negative, zero means unlimited in case limit_allowed is true
      * @return $this
      */
-    public function setLimit($limit)
+    public function setLimit(?int $limit): static
     {
         $this->container['limit'] = $limit;
 
@@ -396,7 +405,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -406,9 +415,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -417,7 +426,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -431,7 +440,7 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -440,13 +449,17 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

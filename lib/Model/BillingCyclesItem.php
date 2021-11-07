@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * BillingCyclesItem
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class BillingCyclesItem implements ArrayAccess
+class BillingCyclesItem implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class BillingCyclesItem implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'BillingCyclesItem';
+    protected static string $swaggerModelName = 'BillingCyclesItem';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'sequence' => 'int',
         'interval' => '\Secuconnect\Client\Model\PaymentPlanInterval',
         'tenure_type' => 'string',
@@ -39,7 +48,7 @@ class BillingCyclesItem implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'sequence' => null,
         'interval' => null,
         'tenure_type' => null,
@@ -47,12 +56,12 @@ class BillingCyclesItem implements ArrayAccess
         'price' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class BillingCyclesItem implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'sequence' => 'sequence',
         'interval' => 'interval',
         'tenure_type' => 'tenure_type',
@@ -73,7 +82,7 @@ class BillingCyclesItem implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'sequence' => 'setSequence',
         'interval' => 'setInterval',
         'tenure_type' => 'setTenureType',
@@ -85,7 +94,7 @@ class BillingCyclesItem implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'sequence' => 'getSequence',
         'interval' => 'getInterval',
         'tenure_type' => 'getTenureType',
@@ -93,38 +102,38 @@ class BillingCyclesItem implements ArrayAccess
         'price' => 'getPrice'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['sequence'] = isset($data['sequence']) ? $data['sequence'] : null;
-        $this->container['interval'] = isset($data['interval']) ? $data['interval'] : null;
-        $this->container['tenure_type'] = isset($data['tenure_type']) ? $data['tenure_type'] : null;
-        $this->container['total_cycles'] = isset($data['total_cycles']) ? $data['total_cycles'] : null;
-        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['sequence'] = $data['sequence'] ?? null;
+        $this->container['interval'] = $data['interval'] ?? null;
+        $this->container['tenure_type'] = $data['tenure_type'] ?? null;
+        $this->container['total_cycles'] = $data['total_cycles'] ?? null;
+        $this->container['price'] = $data['price'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class BillingCyclesItem implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class BillingCyclesItem implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets sequence
      * @return int
      */
-    public function getSequence()
+    public function getSequence(): int
     {
         return $this->container['sequence'];
     }
 
     /**
      * Sets sequence
-     * @param int $sequence sequence
+     * @param int|null $sequence sequence
      * @return $this
      */
-    public function setSequence($sequence)
+    public function setSequence(?int $sequence): static
     {
         $this->container['sequence'] = $sequence;
 
@@ -176,17 +185,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets interval
      * @return \Secuconnect\Client\Model\PaymentPlanInterval
      */
-    public function getInterval()
+    public function getInterval(): PaymentPlanInterval
     {
         return $this->container['interval'];
     }
 
     /**
      * Sets interval
-     * @param \Secuconnect\Client\Model\PaymentPlanInterval $interval interval
+     * @param \Secuconnect\Client\Model\PaymentPlanInterval|null $interval interval
      * @return $this
      */
-    public function setInterval($interval)
+    public function setInterval(?PaymentPlanInterval $interval): static
     {
         $this->container['interval'] = $interval;
 
@@ -197,17 +206,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets tenure_type
      * @return string
      */
-    public function getTenureType()
+    public function getTenureType(): string
     {
         return $this->container['tenure_type'];
     }
 
     /**
      * Sets tenure_type
-     * @param string $tenure_type Tenure type
+     * @param string|null $tenure_type Tenure type
      * @return $this
      */
-    public function setTenureType($tenure_type)
+    public function setTenureType(?string $tenure_type): static
     {
         $this->container['tenure_type'] = $tenure_type;
 
@@ -218,17 +227,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets total_cycles
      * @return int
      */
-    public function getTotalCycles()
+    public function getTotalCycles(): int
     {
         return $this->container['total_cycles'];
     }
 
     /**
      * Sets total_cycles
-     * @param int $total_cycles Total cycles
+     * @param int|null $total_cycles Total cycles
      * @return $this
      */
-    public function setTotalCycles($total_cycles)
+    public function setTotalCycles(?int $total_cycles): static
     {
         $this->container['total_cycles'] = $total_cycles;
 
@@ -239,17 +248,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets price
      * @return int
      */
-    public function getPrice()
+    public function getPrice(): int
     {
         return $this->container['price'];
     }
 
     /**
      * Sets price
-     * @param int $price Price
+     * @param int|null $price Price
      * @return $this
      */
-    public function setPrice($price)
+    public function setPrice(?int $price): static
     {
         $this->container['price'] = $price;
 
@@ -261,7 +270,7 @@ class BillingCyclesItem implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class BillingCyclesItem implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class BillingCyclesItem implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class BillingCyclesItem implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class BillingCyclesItem implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

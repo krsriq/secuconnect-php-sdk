@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsCollectionModel
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransactionsDeliveryOptionsModel 
+class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, OneOfSmartTransactionsDeliveryOptionsModel 
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsCollectionModel';
+    protected static string $swaggerModelName = 'SmartTransactionsCollectionModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'type' => 'string',
         'scheduled_slot' => '\Secuconnect\Client\Model\SmartTransactionsTimeSlot',
         'store_id' => 'string',
@@ -39,7 +48,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'type' => null,
         'scheduled_slot' => null,
         'store_id' => null,
@@ -47,12 +56,12 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
         'code' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'type' => 'type',
         'scheduled_slot' => 'scheduled_slot',
         'store_id' => 'store_id',
@@ -73,7 +82,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'type' => 'setType',
         'scheduled_slot' => 'setScheduledSlot',
         'store_id' => 'setStoreId',
@@ -85,7 +94,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'type' => 'getType',
         'scheduled_slot' => 'getScheduledSlot',
         'store_id' => 'getStoreId',
@@ -93,38 +102,38 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
         'code' => 'getCode'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['scheduled_slot'] = isset($data['scheduled_slot']) ? $data['scheduled_slot'] : null;
-        $this->container['store_id'] = isset($data['store_id']) ? $data['store_id'] : null;
-        $this->container['delivered_at'] = isset($data['delivered_at']) ? $data['delivered_at'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['scheduled_slot'] = $data['scheduled_slot'] ?? null;
+        $this->container['store_id'] = $data['store_id'] ?? null;
+        $this->container['delivered_at'] = $data['delivered_at'] ?? null;
+        $this->container['code'] = $data['code'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type of delivery option
+     * @param string|null $type Type of delivery option
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -176,17 +185,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets scheduled_slot
      * @return \Secuconnect\Client\Model\SmartTransactionsTimeSlot
      */
-    public function getScheduledSlot()
+    public function getScheduledSlot(): SmartTransactionsTimeSlot
     {
         return $this->container['scheduled_slot'];
     }
 
     /**
      * Sets scheduled_slot
-     * @param \Secuconnect\Client\Model\SmartTransactionsTimeSlot $scheduled_slot scheduled_slot
+     * @param \Secuconnect\Client\Model\SmartTransactionsTimeSlot|null $scheduled_slot scheduled_slot
      * @return $this
      */
-    public function setScheduledSlot($scheduled_slot)
+    public function setScheduledSlot(?SmartTransactionsTimeSlot $scheduled_slot): static
     {
         $this->container['scheduled_slot'] = $scheduled_slot;
 
@@ -197,17 +206,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets store_id
      * @return string
      */
-    public function getStoreId()
+    public function getStoreId(): string
     {
         return $this->container['store_id'];
     }
 
     /**
      * Sets store_id
-     * @param string $store_id Store ID
+     * @param string|null $store_id Store ID
      * @return $this
      */
-    public function setStoreId($store_id)
+    public function setStoreId(?string $store_id): static
     {
         $this->container['store_id'] = $store_id;
 
@@ -218,17 +227,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets delivered_at
      * @return string
      */
-    public function getDeliveredAt()
+    public function getDeliveredAt(): string
     {
         return $this->container['delivered_at'];
     }
 
     /**
      * Sets delivered_at
-     * @param string $delivered_at Delivered at
+     * @param string|null $delivered_at Delivered at
      * @return $this
      */
-    public function setDeliveredAt($delivered_at)
+    public function setDeliveredAt(?string $delivered_at): static
     {
         $this->container['delivered_at'] = $delivered_at;
 
@@ -239,17 +248,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets code
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->container['code'];
     }
 
     /**
      * Sets code
-     * @param string $code confirmation code to pickup the collection
+     * @param string|null $code confirmation code to pickup the collection
      * @return $this
      */
-    public function setCode($code)
+    public function setCode(?string $code): static
     {
         $this->container['code'] = $code;
 
@@ -261,7 +270,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class SmartTransactionsCollectionModel implements ArrayAccess, OneOfSmartTransac
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

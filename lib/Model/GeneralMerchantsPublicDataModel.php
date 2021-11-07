@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsPublicDataModel
@@ -19,13 +28,13 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsPublicDataModel';
+    protected static string $swaggerModelName = 'GeneralMerchantsPublicDataModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'legal_details' => '\Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]',
         'company' => '\Secuconnect\Client\Model\GeneralMerchantsPublicDataCompany',
         'merchant_urls' => '\Secuconnect\Client\Model\GeneralMerchantsUrls[]'
@@ -35,18 +44,18 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'legal_details' => null,
         'company' => null,
         'merchant_urls' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -55,7 +64,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'legal_details' => 'legal_details',
         'company' => 'company',
         'merchant_urls' => 'merchant_urls'
@@ -65,7 +74,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'legal_details' => 'setLegalDetails',
         'company' => 'setCompany',
         'merchant_urls' => 'setMerchantUrls'
@@ -75,38 +84,38 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'legal_details' => 'getLegalDetails',
         'company' => 'getCompany',
         'merchant_urls' => 'getMerchantUrls'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['legal_details'] = isset($data['legal_details']) ? $data['legal_details'] : null;
-        $this->container['company'] = isset($data['company']) ? $data['company'] : null;
-        $this->container['merchant_urls'] = isset($data['merchant_urls']) ? $data['merchant_urls'] : null;
+        $this->container['legal_details'] = $data['legal_details'] ?? null;
+        $this->container['company'] = $data['company'] ?? null;
+        $this->container['merchant_urls'] = $data['merchant_urls'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -127,7 +136,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails()
+    public function getLegalDetails(): array
     {
         return $this->container['legal_details'];
     }
 
     /**
      * Sets legal_details
-     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[] $legal_details Legal details like terms of use, privacy policy, or imprint
+     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]|null $legal_details Legal details like terms of use, privacy policy, or imprint
      * @return $this
      */
-    public function setLegalDetails($legal_details)
+    public function setLegalDetails(?array $legal_details): static
     {
         $this->container['legal_details'] = $legal_details;
 
@@ -158,17 +167,17 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets company
      * @return \Secuconnect\Client\Model\GeneralMerchantsPublicDataCompany
      */
-    public function getCompany()
+    public function getCompany(): GeneralMerchantsPublicDataCompany
     {
         return $this->container['company'];
     }
 
     /**
      * Sets company
-     * @param \Secuconnect\Client\Model\GeneralMerchantsPublicDataCompany $company company
+     * @param \Secuconnect\Client\Model\GeneralMerchantsPublicDataCompany|null $company company
      * @return $this
      */
-    public function setCompany($company)
+    public function setCompany(?GeneralMerchantsPublicDataCompany $company): static
     {
         $this->container['company'] = $company;
 
@@ -179,17 +188,17 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets merchant_urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getMerchantUrls()
+    public function getMerchantUrls(): array
     {
         return $this->container['merchant_urls'];
     }
 
     /**
      * Sets merchant_urls
-     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[] $merchant_urls URLs
+     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[]|null $merchant_urls URLs
      * @return $this
      */
-    public function setMerchantUrls($merchant_urls)
+    public function setMerchantUrls(?array $merchant_urls): static
     {
         $this->container['merchant_urls'] = $merchant_urls;
 
@@ -201,7 +210,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -211,9 +220,9 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -222,7 +231,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -236,7 +245,7 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -245,13 +254,17 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

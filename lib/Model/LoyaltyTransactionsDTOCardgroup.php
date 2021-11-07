@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyTransactionsDTOCardgroup
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
+class LoyaltyTransactionsDTOCardgroup implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyTransactionsDTOCardgroup';
+    protected static string $swaggerModelName = 'LoyaltyTransactionsDTOCardgroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id' => 'string',
         'display_name' => 'string',
         'stock_warn_limit' => 'int'
@@ -37,18 +46,18 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id' => null,
         'display_name' => null,
         'stock_warn_limit' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -57,7 +66,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id' => 'id',
         'display_name' => 'display_name',
         'stock_warn_limit' => 'stock_warn_limit'
@@ -67,7 +76,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id' => 'setId',
         'display_name' => 'setDisplayName',
         'stock_warn_limit' => 'setStockWarnLimit'
@@ -77,42 +86,42 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id' => 'getId',
         'display_name' => 'getDisplayName',
         'stock_warn_limit' => 'getStockWarnLimit'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
-        $this->container['stock_warn_limit'] = isset($data['stock_warn_limit']) ? $data['stock_warn_limit'] : null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['display_name'] = $data['display_name'] ?? null;
+        $this->container['stock_warn_limit'] = $data['stock_warn_limit'] ?? null;
     }
 
     /**
@@ -120,7 +129,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -133,7 +142,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -143,17 +152,17 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Gets id
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param string $id Cardgroup id
+     * @param string|null $id Cardgroup id
      * @return $this
      */
-    public function setId($id)
+    public function setId(?string $id): static
     {
         $this->container['id'] = $id;
 
@@ -164,17 +173,17 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Gets display_name
      * @return string
      */
-    public function getDisplayName()
+    public function getDisplayName(): string
     {
         return $this->container['display_name'];
     }
 
     /**
      * Sets display_name
-     * @param string $display_name Cardgroup Name
+     * @param string|null $display_name Cardgroup Name
      * @return $this
      */
-    public function setDisplayName($display_name)
+    public function setDisplayName(?string $display_name): static
     {
         $this->container['display_name'] = $display_name;
 
@@ -185,17 +194,17 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Gets stock_warn_limit
      * @return int
      */
-    public function getStockWarnLimit()
+    public function getStockWarnLimit(): int
     {
         return $this->container['stock_warn_limit'];
     }
 
     /**
      * Sets stock_warn_limit
-     * @param int $stock_warn_limit Warn limit for Cardgroup stock
+     * @param int|null $stock_warn_limit Warn limit for Cardgroup stock
      * @return $this
      */
-    public function setStockWarnLimit($stock_warn_limit)
+    public function setStockWarnLimit(?int $stock_warn_limit): static
     {
         $this->container['stock_warn_limit'] = $stock_warn_limit;
 
@@ -207,7 +216,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -217,9 +226,9 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -228,7 +237,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -242,7 +251,7 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -251,13 +260,17 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

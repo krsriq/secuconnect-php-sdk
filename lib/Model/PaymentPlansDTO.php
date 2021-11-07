@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentPlansDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentPlansDTO implements ArrayAccess
+class PaymentPlansDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentPlansDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentPlansDTO';
+    protected static string $swaggerModelName = 'PaymentPlansDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'description' => 'string',
         'currency' => 'string',
         'paypal_plan_id' => 'string',
@@ -41,7 +50,7 @@ class PaymentPlansDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'description' => null,
         'currency' => null,
         'paypal_plan_id' => null,
@@ -51,12 +60,12 @@ class PaymentPlansDTO implements ArrayAccess
         'billing_cycles' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class PaymentPlansDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'description' => 'description',
         'currency' => 'currency',
         'paypal_plan_id' => 'paypal_plan_id',
@@ -79,7 +88,7 @@ class PaymentPlansDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'description' => 'setDescription',
         'currency' => 'setCurrency',
         'paypal_plan_id' => 'setPaypalPlanId',
@@ -93,7 +102,7 @@ class PaymentPlansDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'description' => 'getDescription',
         'currency' => 'getCurrency',
         'paypal_plan_id' => 'getPaypalPlanId',
@@ -103,40 +112,40 @@ class PaymentPlansDTO implements ArrayAccess
         'billing_cycles' => 'getBillingCycles'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['paypal_plan_id'] = isset($data['paypal_plan_id']) ? $data['paypal_plan_id'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['payment_methods'] = isset($data['payment_methods']) ? $data['payment_methods'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['billing_cycles'] = isset($data['billing_cycles']) ? $data['billing_cycles'] : null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['paypal_plan_id'] = $data['paypal_plan_id'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['payment_methods'] = $data['payment_methods'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['billing_cycles'] = $data['billing_cycles'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class PaymentPlansDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class PaymentPlansDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Description of payment plan
+     * @param string|null $description Description of payment plan
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -188,17 +197,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency ISO currency code
+     * @param string|null $currency ISO currency code
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -209,17 +218,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets paypal_plan_id
      * @return string
      */
-    public function getPaypalPlanId()
+    public function getPaypalPlanId(): string
     {
         return $this->container['paypal_plan_id'];
     }
 
     /**
      * Sets paypal_plan_id
-     * @param string $paypal_plan_id Payment plan id
+     * @param string|null $paypal_plan_id Payment plan id
      * @return $this
      */
-    public function setPaypalPlanId($paypal_plan_id)
+    public function setPaypalPlanId(?string $paypal_plan_id): static
     {
         $this->container['paypal_plan_id'] = $paypal_plan_id;
 
@@ -230,17 +239,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status Payment plan status
+     * @param string|null $status Payment plan status
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -251,17 +260,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods()
+    public function getPaymentMethods(): array
     {
         return $this->container['payment_methods'];
     }
 
     /**
      * Sets payment_methods
-     * @param string[] $payment_methods Payment methods
+     * @param string[]|null $payment_methods Payment methods
      * @return $this
      */
-    public function setPaymentMethods($payment_methods)
+    public function setPaymentMethods(?array $payment_methods): static
     {
         $this->container['payment_methods'] = $payment_methods;
 
@@ -272,17 +281,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets merchant
      * @return \Secuconnect\Client\Model\GeneralMerchantsProductModel
      */
-    public function getMerchant()
+    public function getMerchant(): GeneralMerchantsProductModel
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\GeneralMerchantsProductModel $merchant merchant
+     * @param \Secuconnect\Client\Model\GeneralMerchantsProductModel|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?GeneralMerchantsProductModel $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -293,17 +302,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets billing_cycles
      * @return \Secuconnect\Client\Model\BillingCyclesItem[]
      */
-    public function getBillingCycles()
+    public function getBillingCycles(): array
     {
         return $this->container['billing_cycles'];
     }
 
     /**
      * Sets billing_cycles
-     * @param \Secuconnect\Client\Model\BillingCyclesItem[] $billing_cycles Billing cycles
+     * @param \Secuconnect\Client\Model\BillingCyclesItem[]|null $billing_cycles Billing cycles
      * @return $this
      */
-    public function setBillingCycles($billing_cycles)
+    public function setBillingCycles(?array $billing_cycles): static
     {
         $this->container['billing_cycles'] = $billing_cycles;
 
@@ -315,7 +324,7 @@ class PaymentPlansDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class PaymentPlansDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class PaymentPlansDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class PaymentPlansDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class PaymentPlansDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartDevicesDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartDevicesDTO implements ArrayAccess
+class SmartDevicesDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartDevicesDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartDevicesDTO';
+    protected static string $swaggerModelName = 'SmartDevicesDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'merchant' => 'string',
         'store' => 'string',
         'device' => 'string',
@@ -46,7 +55,7 @@ class SmartDevicesDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'merchant' => null,
         'store' => null,
         'device' => null,
@@ -61,12 +70,12 @@ class SmartDevicesDTO implements ArrayAccess
         'base_version' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -75,7 +84,7 @@ class SmartDevicesDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'merchant' => 'merchant',
         'store' => 'store',
         'device' => 'device',
@@ -94,7 +103,7 @@ class SmartDevicesDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'merchant' => 'setMerchant',
         'store' => 'setStore',
         'device' => 'setDevice',
@@ -113,7 +122,7 @@ class SmartDevicesDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'merchant' => 'getMerchant',
         'store' => 'getStore',
         'device' => 'getDevice',
@@ -128,45 +137,45 @@ class SmartDevicesDTO implements ArrayAccess
         'base_version' => 'getBaseVersion'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['device'] = isset($data['device']) ? $data['device'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['vendor'] = isset($data['vendor']) ? $data['vendor'] : null;
-        $this->container['vendor_uid'] = isset($data['vendor_uid']) ? $data['vendor_uid'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['tid'] = isset($data['tid']) ? $data['tid'] : null;
-        $this->container['products'] = isset($data['products']) ? $data['products'] : null;
-        $this->container['terminal_type'] = isset($data['terminal_type']) ? $data['terminal_type'] : null;
-        $this->container['base_version'] = isset($data['base_version']) ? $data['base_version'] : null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['device'] = $data['device'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['vendor'] = $data['vendor'] ?? null;
+        $this->container['vendor_uid'] = $data['vendor_uid'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['tid'] = $data['tid'] ?? null;
+        $this->container['products'] = $data['products'] ?? null;
+        $this->container['terminal_type'] = $data['terminal_type'] ?? null;
+        $this->container['base_version'] = $data['base_version'] ?? null;
     }
 
     /**
@@ -174,7 +183,7 @@ class SmartDevicesDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -187,7 +196,7 @@ class SmartDevicesDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -197,17 +206,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets merchant
      * @return string
      */
-    public function getMerchant()
+    public function getMerchant(): string
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param string $merchant Merchant
+     * @param string|null $merchant Merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?string $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -218,17 +227,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets store
      * @return string
      */
-    public function getStore()
+    public function getStore(): string
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param string $store Store
+     * @param string|null $store Store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?string $store): static
     {
         $this->container['store'] = $store;
 
@@ -239,17 +248,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets device
      * @return string
      */
-    public function getDevice()
+    public function getDevice(): string
     {
         return $this->container['device'];
     }
 
     /**
      * Sets device
-     * @param string $device Device
+     * @param string|null $device Device
      * @return $this
      */
-    public function setDevice($device)
+    public function setDevice(?string $device): static
     {
         $this->container['device'] = $device;
 
@@ -260,17 +269,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets contract
      * @return string
      */
-    public function getContract()
+    public function getContract(): string
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param string $contract Contract
+     * @param string|null $contract Contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?string $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -281,17 +290,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets vendor
      * @return string
      */
-    public function getVendor()
+    public function getVendor(): string
     {
         return $this->container['vendor'];
     }
 
     /**
      * Sets vendor
-     * @param string $vendor Vendor
+     * @param string|null $vendor Vendor
      * @return $this
      */
-    public function setVendor($vendor)
+    public function setVendor(?string $vendor): static
     {
         $this->container['vendor'] = $vendor;
 
@@ -302,17 +311,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid()
+    public function getVendorUid(): string
     {
         return $this->container['vendor_uid'];
     }
 
     /**
      * Sets vendor_uid
-     * @param string $vendor_uid Vendor uid
+     * @param string|null $vendor_uid Vendor uid
      * @return $this
      */
-    public function setVendorUid($vendor_uid)
+    public function setVendorUid(?string $vendor_uid): static
     {
         $this->container['vendor_uid'] = $vendor_uid;
 
@@ -323,17 +332,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -344,17 +353,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Description
+     * @param string|null $description Description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -365,17 +374,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets tid
      * @return string
      */
-    public function getTid()
+    public function getTid(): string
     {
         return $this->container['tid'];
     }
 
     /**
      * Sets tid
-     * @param string $tid TID
+     * @param string|null $tid TID
      * @return $this
      */
-    public function setTid($tid)
+    public function setTid(?string $tid): static
     {
         $this->container['tid'] = $tid;
 
@@ -386,17 +395,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets products
      * @return \Secuconnect\Client\Model\SmartDevicesProducts
      */
-    public function getProducts()
+    public function getProducts(): SmartDevicesProducts
     {
         return $this->container['products'];
     }
 
     /**
      * Sets products
-     * @param \Secuconnect\Client\Model\SmartDevicesProducts $products products
+     * @param \Secuconnect\Client\Model\SmartDevicesProducts|null $products products
      * @return $this
      */
-    public function setProducts($products)
+    public function setProducts(?SmartDevicesProducts $products): static
     {
         $this->container['products'] = $products;
 
@@ -407,17 +416,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets terminal_type
      * @return string
      */
-    public function getTerminalType()
+    public function getTerminalType(): string
     {
         return $this->container['terminal_type'];
     }
 
     /**
      * Sets terminal_type
-     * @param string $terminal_type Terminal type
+     * @param string|null $terminal_type Terminal type
      * @return $this
      */
-    public function setTerminalType($terminal_type)
+    public function setTerminalType(?string $terminal_type): static
     {
         $this->container['terminal_type'] = $terminal_type;
 
@@ -428,17 +437,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets base_version
      * @return string
      */
-    public function getBaseVersion()
+    public function getBaseVersion(): string
     {
         return $this->container['base_version'];
     }
 
     /**
      * Sets base_version
-     * @param string $base_version Base version
+     * @param string|null $base_version Base version
      * @return $this
      */
-    public function setBaseVersion($base_version)
+    public function setBaseVersion(?string $base_version): static
     {
         $this->container['base_version'] = $base_version;
 
@@ -450,7 +459,7 @@ class SmartDevicesDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -460,9 +469,9 @@ class SmartDevicesDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -471,7 +480,7 @@ class SmartDevicesDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -485,7 +494,7 @@ class SmartDevicesDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -494,13 +503,17 @@ class SmartDevicesDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

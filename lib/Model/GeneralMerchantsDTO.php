@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeneralMerchantsDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeneralMerchantsDTO implements ArrayAccess
+class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeneralMerchantsDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeneralMerchantsDTO';
+    protected static string $swaggerModelName = 'GeneralMerchantsDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'salutation' => 'string',
         'companyname' => 'string',
         'forename' => 'string',
@@ -46,7 +55,7 @@ class GeneralMerchantsDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'salutation' => null,
         'companyname' => null,
         'forename' => null,
@@ -61,12 +70,12 @@ class GeneralMerchantsDTO implements ArrayAccess
         'urls' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -75,7 +84,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'salutation' => 'salutation',
         'companyname' => 'companyname',
         'forename' => 'forename',
@@ -94,7 +103,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'salutation' => 'setSalutation',
         'companyname' => 'setCompanyname',
         'forename' => 'setForename',
@@ -113,7 +122,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'salutation' => 'getSalutation',
         'companyname' => 'getCompanyname',
         'forename' => 'getForename',
@@ -128,45 +137,45 @@ class GeneralMerchantsDTO implements ArrayAccess
         'urls' => 'getUrls'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['salutation'] = isset($data['salutation']) ? $data['salutation'] : null;
-        $this->container['companyname'] = isset($data['companyname']) ? $data['companyname'] : null;
-        $this->container['forename'] = isset($data['forename']) ? $data['forename'] : null;
-        $this->container['surname'] = isset($data['surname']) ? $data['surname'] : null;
-        $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
-        $this->container['homepage'] = isset($data['homepage']) ? $data['homepage'] : null;
-        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
-        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
-        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
-        $this->container['payment_data'] = isset($data['payment_data']) ? $data['payment_data'] : null;
-        $this->container['legal_details'] = isset($data['legal_details']) ? $data['legal_details'] : null;
-        $this->container['urls'] = isset($data['urls']) ? $data['urls'] : null;
+        $this->container['salutation'] = $data['salutation'] ?? null;
+        $this->container['companyname'] = $data['companyname'] ?? null;
+        $this->container['forename'] = $data['forename'] ?? null;
+        $this->container['surname'] = $data['surname'] ?? null;
+        $this->container['dob'] = $data['dob'] ?? null;
+        $this->container['homepage'] = $data['homepage'] ?? null;
+        $this->container['email'] = $data['email'] ?? null;
+        $this->container['phone'] = $data['phone'] ?? null;
+        $this->container['address'] = $data['address'] ?? null;
+        $this->container['payment_data'] = $data['payment_data'] ?? null;
+        $this->container['legal_details'] = $data['legal_details'] ?? null;
+        $this->container['urls'] = $data['urls'] ?? null;
     }
 
     /**
@@ -174,7 +183,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -187,7 +196,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -197,17 +206,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets salutation
      * @return string
      */
-    public function getSalutation()
+    public function getSalutation(): string
     {
         return $this->container['salutation'];
     }
 
     /**
      * Sets salutation
-     * @param string $salutation Salutation {'Frau', 'Herr', 'Firma', 'Divers'}
+     * @param string|null $salutation Salutation {'Frau', 'Herr', 'Firma', 'Divers'}
      * @return $this
      */
-    public function setSalutation($salutation)
+    public function setSalutation(?string $salutation): static
     {
         $this->container['salutation'] = $salutation;
 
@@ -218,17 +227,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets companyname
      * @return string
      */
-    public function getCompanyname()
+    public function getCompanyname(): string
     {
         return $this->container['companyname'];
     }
 
     /**
      * Sets companyname
-     * @param string $companyname Company name
+     * @param string|null $companyname Company name
      * @return $this
      */
-    public function setCompanyname($companyname)
+    public function setCompanyname(?string $companyname): static
     {
         $this->container['companyname'] = $companyname;
 
@@ -239,17 +248,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets forename
      * @return string
      */
-    public function getForename()
+    public function getForename(): string
     {
         return $this->container['forename'];
     }
 
     /**
      * Sets forename
-     * @param string $forename First name
+     * @param string|null $forename First name
      * @return $this
      */
-    public function setForename($forename)
+    public function setForename(?string $forename): static
     {
         $this->container['forename'] = $forename;
 
@@ -260,17 +269,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets surname
      * @return string
      */
-    public function getSurname()
+    public function getSurname(): string
     {
         return $this->container['surname'];
     }
 
     /**
      * Sets surname
-     * @param string $surname Last name
+     * @param string|null $surname Last name
      * @return $this
      */
-    public function setSurname($surname)
+    public function setSurname(?string $surname): static
     {
         $this->container['surname'] = $surname;
 
@@ -281,17 +290,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets dob
      * @return string
      */
-    public function getDob()
+    public function getDob(): string
     {
         return $this->container['dob'];
     }
 
     /**
      * Sets dob
-     * @param string $dob Date of birth
+     * @param string|null $dob Date of birth
      * @return $this
      */
-    public function setDob($dob)
+    public function setDob(?string $dob): static
     {
         $this->container['dob'] = $dob;
 
@@ -302,17 +311,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets homepage
      * @return string
      */
-    public function getHomepage()
+    public function getHomepage(): string
     {
         return $this->container['homepage'];
     }
 
     /**
      * Sets homepage
-     * @param string $homepage Merchant homepage or shop URL
+     * @param string|null $homepage Merchant homepage or shop URL
      * @return $this
      */
-    public function setHomepage($homepage)
+    public function setHomepage(?string $homepage): static
     {
         $this->container['homepage'] = $homepage;
 
@@ -323,17 +332,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets email
      * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->container['email'];
     }
 
     /**
      * Sets email
-     * @param string $email Merchant email address
+     * @param string|null $email Merchant email address
      * @return $this
      */
-    public function setEmail($email)
+    public function setEmail(?string $email): static
     {
         $this->container['email'] = $email;
 
@@ -344,17 +353,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets phone
      * @return string
      */
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->container['phone'];
     }
 
     /**
      * Sets phone
-     * @param string $phone Merchant phone number
+     * @param string|null $phone Merchant phone number
      * @return $this
      */
-    public function setPhone($phone)
+    public function setPhone(?string $phone): static
     {
         $this->container['phone'] = $phone;
 
@@ -365,17 +374,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress()
+    public function getAddress(): Address
     {
         return $this->container['address'];
     }
 
     /**
      * Sets address
-     * @param \Secuconnect\Client\Model\Address $address address
+     * @param \Secuconnect\Client\Model\Address|null $address address
      * @return $this
      */
-    public function setAddress($address)
+    public function setAddress(?Address $address): static
     {
         $this->container['address'] = $address;
 
@@ -386,17 +395,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets payment_data
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPaymentData()
+    public function getPaymentData(): PaymentInformation
     {
         return $this->container['payment_data'];
     }
 
     /**
      * Sets payment_data
-     * @param \Secuconnect\Client\Model\PaymentInformation $payment_data payment_data
+     * @param \Secuconnect\Client\Model\PaymentInformation|null $payment_data payment_data
      * @return $this
      */
-    public function setPaymentData($payment_data)
+    public function setPaymentData(?PaymentInformation $payment_data): static
     {
         $this->container['payment_data'] = $payment_data;
 
@@ -407,17 +416,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails()
+    public function getLegalDetails(): array
     {
         return $this->container['legal_details'];
     }
 
     /**
      * Sets legal_details
-     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[] $legal_details Legal details, like terms of use, privacy policy, or imprint
+     * @param \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]|null $legal_details Legal details, like terms of use, privacy policy, or imprint
      * @return $this
      */
-    public function setLegalDetails($legal_details)
+    public function setLegalDetails(?array $legal_details): static
     {
         $this->container['legal_details'] = $legal_details;
 
@@ -428,17 +437,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getUrls()
+    public function getUrls(): array
     {
         return $this->container['urls'];
     }
 
     /**
      * Sets urls
-     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[] $urls URLs
+     * @param \Secuconnect\Client\Model\GeneralMerchantsUrls[]|null $urls URLs
      * @return $this
      */
-    public function setUrls($urls)
+    public function setUrls(?array $urls): static
     {
         $this->container['urls'] = $urls;
 
@@ -450,7 +459,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -460,9 +469,9 @@ class GeneralMerchantsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -471,7 +480,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -485,7 +494,7 @@ class GeneralMerchantsDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -494,13 +503,17 @@ class GeneralMerchantsDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentTransactionsProductModel
@@ -19,13 +28,13 @@ class PaymentTransactionsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentTransactionsProductModel';
+    protected static string $swaggerModelName = 'PaymentTransactionsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'updated' => 'string',
         'platform' => '\Secuconnect\Client\Model\ProductInstanceUID',
@@ -60,7 +69,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'updated' => null,
         'platform' => null,
@@ -91,12 +100,12 @@ class PaymentTransactionsProductModel extends BaseProductModel
         'accrual' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -105,7 +114,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'updated' => 'updated',
         'platform' => 'platform',
@@ -140,7 +149,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'updated' => 'setUpdated',
         'platform' => 'setPlatform',
@@ -175,7 +184,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'updated' => 'getUpdated',
         'platform' => 'getPlatform',
@@ -206,57 +215,57 @@ class PaymentTransactionsProductModel extends BaseProductModel
         'accrual' => 'getAccrual'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['platform'] = isset($data['platform']) ? $data['platform'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['store'] = isset($data['store']) ? $data['store'] : null;
-        $this->container['trans_id'] = isset($data['trans_id']) ? $data['trans_id'] : null;
-        $this->container['parents'] = isset($data['parents']) ? $data['parents'] : null;
-        $this->container['product_id'] = isset($data['product_id']) ? $data['product_id'] : null;
-        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
-        $this->container['product_raw'] = isset($data['product_raw']) ? $data['product_raw'] : null;
-        $this->container['zahlungsmittel_id'] = isset($data['zahlungsmittel_id']) ? $data['zahlungsmittel_id'] : null;
-        $this->container['contract_id'] = isset($data['contract_id']) ? $data['contract_id'] : null;
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['status_text'] = isset($data['status_text']) ? $data['status_text'] : null;
-        $this->container['incoming_payment_date'] = isset($data['incoming_payment_date']) ? $data['incoming_payment_date'] : null;
-        $this->container['details'] = isset($data['details']) ? $data['details'] : null;
-        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
-        $this->container['tid'] = isset($data['tid']) ? $data['tid'] : null;
-        $this->container['payment_data'] = isset($data['payment_data']) ? $data['payment_data'] : null;
-        $this->container['store_name'] = isset($data['store_name']) ? $data['store_name'] : null;
-        $this->container['payout_date'] = isset($data['payout_date']) ? $data['payout_date'] : null;
-        $this->container['invoice_number'] = isset($data['invoice_number']) ? $data['invoice_number'] : null;
-        $this->container['transaction_hash'] = isset($data['transaction_hash']) ? $data['transaction_hash'] : null;
-        $this->container['reference_id'] = isset($data['reference_id']) ? $data['reference_id'] : null;
-        $this->container['account_owner'] = isset($data['account_owner']) ? $data['account_owner'] : null;
-        $this->container['accrual'] = isset($data['accrual']) ? $data['accrual'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['platform'] = $data['platform'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['store'] = $data['store'] ?? null;
+        $this->container['trans_id'] = $data['trans_id'] ?? null;
+        $this->container['parents'] = $data['parents'] ?? null;
+        $this->container['product_id'] = $data['product_id'] ?? null;
+        $this->container['product'] = $data['product'] ?? null;
+        $this->container['product_raw'] = $data['product_raw'] ?? null;
+        $this->container['zahlungsmittel_id'] = $data['zahlungsmittel_id'] ?? null;
+        $this->container['contract_id'] = $data['contract_id'] ?? null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['status_text'] = $data['status_text'] ?? null;
+        $this->container['incoming_payment_date'] = $data['incoming_payment_date'] ?? null;
+        $this->container['details'] = $data['details'] ?? null;
+        $this->container['customer'] = $data['customer'] ?? null;
+        $this->container['tid'] = $data['tid'] ?? null;
+        $this->container['payment_data'] = $data['payment_data'] ?? null;
+        $this->container['store_name'] = $data['store_name'] ?? null;
+        $this->container['payout_date'] = $data['payout_date'] ?? null;
+        $this->container['invoice_number'] = $data['invoice_number'] ?? null;
+        $this->container['transaction_hash'] = $data['transaction_hash'] ?? null;
+        $this->container['reference_id'] = $data['reference_id'] ?? null;
+        $this->container['account_owner'] = $data['account_owner'] ?? null;
+        $this->container['accrual'] = $data['accrual'] ?? null;
     }
 
     /**
@@ -264,7 +273,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -277,7 +286,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -287,17 +296,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -308,17 +317,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated()
+    public function getUpdated(): string
     {
         return $this->container['updated'];
     }
 
     /**
      * Sets updated
-     * @param string $updated updated
+     * @param string|null $updated updated
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setUpdated(?string $updated): static
     {
         $this->container['updated'] = $updated;
 
@@ -329,17 +338,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets platform
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getPlatform()
+    public function getPlatform(): ProductInstanceUID
     {
         return $this->container['platform'];
     }
 
     /**
      * Sets platform
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $platform platform
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $platform platform
      * @return $this
      */
-    public function setPlatform($platform)
+    public function setPlatform(?ProductInstanceUID $platform): static
     {
         $this->container['platform'] = $platform;
 
@@ -350,17 +359,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\GeneralMerchantsProductModel
      */
-    public function getMerchant()
+    public function getMerchant(): GeneralMerchantsProductModel
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\GeneralMerchantsProductModel $merchant merchant
+     * @param \Secuconnect\Client\Model\GeneralMerchantsProductModel|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?GeneralMerchantsProductModel $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -371,17 +380,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\GeneralStoresProductModel
      */
-    public function getStore()
+    public function getStore(): GeneralStoresProductModel
     {
         return $this->container['store'];
     }
 
     /**
      * Sets store
-     * @param \Secuconnect\Client\Model\GeneralStoresProductModel $store store
+     * @param \Secuconnect\Client\Model\GeneralStoresProductModel|null $store store
      * @return $this
      */
-    public function setStore($store)
+    public function setStore(?GeneralStoresProductModel $store): static
     {
         $this->container['store'] = $store;
 
@@ -392,17 +401,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets trans_id
      * @return int
      */
-    public function getTransId()
+    public function getTransId(): int
     {
         return $this->container['trans_id'];
     }
 
     /**
      * Sets trans_id
-     * @param int $trans_id Transaction ID in secupay Frontend
+     * @param int|null $trans_id Transaction ID in secupay Frontend
      * @return $this
      */
-    public function setTransId($trans_id)
+    public function setTransId(?int $trans_id): static
     {
         $this->container['trans_id'] = $trans_id;
 
@@ -413,17 +422,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets parents
      * @return \Secuconnect\Client\Model\ParentObj[]
      */
-    public function getParents()
+    public function getParents(): array
     {
         return $this->container['parents'];
     }
 
     /**
      * Sets parents
-     * @param \Secuconnect\Client\Model\ParentObj[] $parents Parent transactions
+     * @param \Secuconnect\Client\Model\ParentObj[]|null $parents Parent transactions
      * @return $this
      */
-    public function setParents($parents)
+    public function setParents(?array $parents): static
     {
         $this->container['parents'] = $parents;
 
@@ -434,17 +443,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product_id
      * @return int
      */
-    public function getProductId()
+    public function getProductId(): int
     {
         return $this->container['product_id'];
     }
 
     /**
      * Sets product_id
-     * @param int $product_id Payment product ID
+     * @param int|null $product_id Payment product ID
      * @return $this
      */
-    public function setProductId($product_id)
+    public function setProductId(?int $product_id): static
     {
         $this->container['product_id'] = $product_id;
 
@@ -455,17 +464,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product
      * @return string
      */
-    public function getProduct()
+    public function getProduct(): string
     {
         return $this->container['product'];
     }
 
     /**
      * Sets product
-     * @param string $product Payment product type
+     * @param string|null $product Payment product type
      * @return $this
      */
-    public function setProduct($product)
+    public function setProduct(?string $product): static
     {
         $this->container['product'] = $product;
 
@@ -476,17 +485,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product_raw
      * @return string
      */
-    public function getProductRaw()
+    public function getProductRaw(): string
     {
         return $this->container['product_raw'];
     }
 
     /**
      * Sets product_raw
-     * @param string $product_raw Payment product name
+     * @param string|null $product_raw Payment product name
      * @return $this
      */
-    public function setProductRaw($product_raw)
+    public function setProductRaw(?string $product_raw): static
     {
         $this->container['product_raw'] = $product_raw;
 
@@ -497,17 +506,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets zahlungsmittel_id
      * @return int
      */
-    public function getZahlungsmittelId()
+    public function getZahlungsmittelId(): int
     {
         return $this->container['zahlungsmittel_id'];
     }
 
     /**
      * Sets zahlungsmittel_id
-     * @param int $zahlungsmittel_id Internal ID of the payment instrument
+     * @param int|null $zahlungsmittel_id Internal ID of the payment instrument
      * @return $this
      */
-    public function setZahlungsmittelId($zahlungsmittel_id)
+    public function setZahlungsmittelId(?int $zahlungsmittel_id): static
     {
         $this->container['zahlungsmittel_id'] = $zahlungsmittel_id;
 
@@ -518,17 +527,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets contract_id
      * @return int
      */
-    public function getContractId()
+    public function getContractId(): int
     {
         return $this->container['contract_id'];
     }
 
     /**
      * Sets contract_id
-     * @param int $contract_id Merchant's contract ID
+     * @param int|null $contract_id Merchant's contract ID
      * @return $this
      */
-    public function setContractId($contract_id)
+    public function setContractId(?int $contract_id): static
     {
         $this->container['contract_id'] = $contract_id;
 
@@ -539,17 +548,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -560,17 +569,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency currency
+     * @param string|null $currency currency
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -581,17 +590,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets status
      * @return int
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param int $status Transaction status ID
+     * @param int|null $status Transaction status ID
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?int $status): static
     {
         $this->container['status'] = $status;
 
@@ -602,17 +611,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets status_text
      * @return string
      */
-    public function getStatusText()
+    public function getStatusText(): string
     {
         return $this->container['status_text'];
     }
 
     /**
      * Sets status_text
-     * @param string $status_text Transaction status description
+     * @param string|null $status_text Transaction status description
      * @return $this
      */
-    public function setStatusText($status_text)
+    public function setStatusText(?string $status_text): static
     {
         $this->container['status_text'] = $status_text;
 
@@ -623,17 +632,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets incoming_payment_date
      * @return string
      */
-    public function getIncomingPaymentDate()
+    public function getIncomingPaymentDate(): string
     {
         return $this->container['incoming_payment_date'];
     }
 
     /**
      * Sets incoming_payment_date
-     * @param string $incoming_payment_date Date when the payment was received
+     * @param string|null $incoming_payment_date Date when the payment was received
      * @return $this
      */
-    public function setIncomingPaymentDate($incoming_payment_date)
+    public function setIncomingPaymentDate(?string $incoming_payment_date): static
     {
         $this->container['incoming_payment_date'] = $incoming_payment_date;
 
@@ -644,17 +653,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets details
      * @return \Secuconnect\Client\Model\PaymentTransactionsProductModelDetails
      */
-    public function getDetails()
+    public function getDetails(): PaymentTransactionsProductModelDetails
     {
         return $this->container['details'];
     }
 
     /**
      * Sets details
-     * @param \Secuconnect\Client\Model\PaymentTransactionsProductModelDetails $details details
+     * @param \Secuconnect\Client\Model\PaymentTransactionsProductModelDetails|null $details details
      * @return $this
      */
-    public function setDetails($details)
+    public function setDetails(?PaymentTransactionsProductModelDetails $details): static
     {
         $this->container['details'] = $details;
 
@@ -665,17 +674,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentTransactionsProductModelCustomer
      */
-    public function getCustomer()
+    public function getCustomer(): PaymentTransactionsProductModelCustomer
     {
         return $this->container['customer'];
     }
 
     /**
      * Sets customer
-     * @param \Secuconnect\Client\Model\PaymentTransactionsProductModelCustomer $customer customer
+     * @param \Secuconnect\Client\Model\PaymentTransactionsProductModelCustomer|null $customer customer
      * @return $this
      */
-    public function setCustomer($customer)
+    public function setCustomer(?PaymentTransactionsProductModelCustomer $customer): static
     {
         $this->container['customer'] = $customer;
 
@@ -686,17 +695,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid()
+    public function getTid(): string
     {
         return $this->container['tid'];
     }
 
     /**
      * Sets tid
-     * @param string $tid Terminal-ID
+     * @param string|null $tid Terminal-ID
      * @return $this
      */
-    public function setTid($tid)
+    public function setTid(?string $tid): static
     {
         $this->container['tid'] = $tid;
 
@@ -707,17 +716,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets payment_data
      * @return string
      */
-    public function getPaymentData()
+    public function getPaymentData(): string
     {
         return $this->container['payment_data'];
     }
 
     /**
      * Sets payment_data
-     * @param string $payment_data Data of the used payment instrument
+     * @param string|null $payment_data Data of the used payment instrument
      * @return $this
      */
-    public function setPaymentData($payment_data)
+    public function setPaymentData(?string $payment_data): static
     {
         $this->container['payment_data'] = $payment_data;
 
@@ -728,17 +737,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName()
+    public function getStoreName(): string
     {
         return $this->container['store_name'];
     }
 
     /**
      * Sets store_name
-     * @param string $store_name Store name
+     * @param string|null $store_name Store name
      * @return $this
      */
-    public function setStoreName($store_name)
+    public function setStoreName(?string $store_name): static
     {
         $this->container['store_name'] = $store_name;
 
@@ -749,17 +758,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets payout_date
      * @return string
      */
-    public function getPayoutDate()
+    public function getPayoutDate(): string
     {
         return $this->container['payout_date'];
     }
 
     /**
      * Sets payout_date
-     * @param string $payout_date Date when the payout was created
+     * @param string|null $payout_date Date when the payout was created
      * @return $this
      */
-    public function setPayoutDate($payout_date)
+    public function setPayoutDate(?string $payout_date): static
     {
         $this->container['payout_date'] = $payout_date;
 
@@ -770,17 +779,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets invoice_number
      * @return string
      */
-    public function getInvoiceNumber()
+    public function getInvoiceNumber(): string
     {
         return $this->container['invoice_number'];
     }
 
     /**
      * Sets invoice_number
-     * @param string $invoice_number Invoice number (from merchant)
+     * @param string|null $invoice_number Invoice number (from merchant)
      * @return $this
      */
-    public function setInvoiceNumber($invoice_number)
+    public function setInvoiceNumber(?string $invoice_number): static
     {
         $this->container['invoice_number'] = $invoice_number;
 
@@ -791,17 +800,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash()
+    public function getTransactionHash(): string
     {
         return $this->container['transaction_hash'];
     }
 
     /**
      * Sets transaction_hash
-     * @param string $transaction_hash Payment-ID
+     * @param string|null $transaction_hash Payment-ID
      * @return $this
      */
-    public function setTransactionHash($transaction_hash)
+    public function setTransactionHash(?string $transaction_hash): static
     {
         $this->container['transaction_hash'] = $transaction_hash;
 
@@ -812,17 +821,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId()
+    public function getReferenceId(): string
     {
         return $this->container['reference_id'];
     }
 
     /**
      * Sets reference_id
-     * @param string $reference_id Reference ID
+     * @param string|null $reference_id Reference ID
      * @return $this
      */
-    public function setReferenceId($reference_id)
+    public function setReferenceId(?string $reference_id): static
     {
         $this->container['reference_id'] = $reference_id;
 
@@ -833,17 +842,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets account_owner
      * @return string
      */
-    public function getAccountOwner()
+    public function getAccountOwner(): string
     {
         return $this->container['account_owner'];
     }
 
     /**
      * Sets account_owner
-     * @param string $account_owner Name of the bank account owner
+     * @param string|null $account_owner Name of the bank account owner
      * @return $this
      */
-    public function setAccountOwner($account_owner)
+    public function setAccountOwner(?string $account_owner): static
     {
         $this->container['account_owner'] = $account_owner;
 
@@ -854,17 +863,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets accrual
      * @return bool
      */
-    public function getAccrual()
+    public function getAccrual(): bool
     {
         return $this->container['accrual'];
     }
 
     /**
      * Sets accrual
-     * @param bool $accrual Accrual Flag
+     * @param bool|null $accrual Accrual Flag
      * @return $this
      */
-    public function setAccrual($accrual)
+    public function setAccrual(?bool $accrual): static
     {
         $this->container['accrual'] = $accrual;
 
@@ -876,7 +885,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -886,9 +895,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -897,7 +906,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -911,7 +920,7 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -920,13 +929,17 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

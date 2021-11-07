@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * IdentDocumentData
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class IdentDocumentData implements ArrayAccess
+class IdentDocumentData implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class IdentDocumentData implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'IdentDocumentData';
+    protected static string $swaggerModelName = 'IdentDocumentData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'country' => '\Secuconnect\Client\Model\ValueField',
         'dateissued' => '\Secuconnect\Client\Model\ValueField',
         'issuedby' => '\Secuconnect\Client\Model\ValueField',
@@ -40,7 +49,7 @@ class IdentDocumentData implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'country' => null,
         'dateissued' => null,
         'issuedby' => null,
@@ -49,12 +58,12 @@ class IdentDocumentData implements ArrayAccess
         'validuntil' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -63,7 +72,7 @@ class IdentDocumentData implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'country' => 'country',
         'dateissued' => 'dateissued',
         'issuedby' => 'issuedby',
@@ -76,7 +85,7 @@ class IdentDocumentData implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'country' => 'setCountry',
         'dateissued' => 'setDateissued',
         'issuedby' => 'setIssuedby',
@@ -89,7 +98,7 @@ class IdentDocumentData implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'country' => 'getCountry',
         'dateissued' => 'getDateissued',
         'issuedby' => 'getIssuedby',
@@ -98,39 +107,39 @@ class IdentDocumentData implements ArrayAccess
         'validuntil' => 'getValiduntil'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['country'] = isset($data['country']) ? $data['country'] : null;
-        $this->container['dateissued'] = isset($data['dateissued']) ? $data['dateissued'] : null;
-        $this->container['issuedby'] = isset($data['issuedby']) ? $data['issuedby'] : null;
-        $this->container['number'] = isset($data['number']) ? $data['number'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['validuntil'] = isset($data['validuntil']) ? $data['validuntil'] : null;
+        $this->container['country'] = $data['country'] ?? null;
+        $this->container['dateissued'] = $data['dateissued'] ?? null;
+        $this->container['issuedby'] = $data['issuedby'] ?? null;
+        $this->container['number'] = $data['number'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['validuntil'] = $data['validuntil'] ?? null;
     }
 
     /**
@@ -138,7 +147,7 @@ class IdentDocumentData implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -151,7 +160,7 @@ class IdentDocumentData implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -161,17 +170,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets country
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCountry()
+    public function getCountry(): ValueField
     {
         return $this->container['country'];
     }
 
     /**
      * Sets country
-     * @param \Secuconnect\Client\Model\ValueField $country country
+     * @param \Secuconnect\Client\Model\ValueField|null $country country
      * @return $this
      */
-    public function setCountry($country)
+    public function setCountry(?ValueField $country): static
     {
         $this->container['country'] = $country;
 
@@ -182,17 +191,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets dateissued
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getDateissued()
+    public function getDateissued(): ValueField
     {
         return $this->container['dateissued'];
     }
 
     /**
      * Sets dateissued
-     * @param \Secuconnect\Client\Model\ValueField $dateissued dateissued
+     * @param \Secuconnect\Client\Model\ValueField|null $dateissued dateissued
      * @return $this
      */
-    public function setDateissued($dateissued)
+    public function setDateissued(?ValueField $dateissued): static
     {
         $this->container['dateissued'] = $dateissued;
 
@@ -203,17 +212,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets issuedby
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getIssuedby()
+    public function getIssuedby(): ValueField
     {
         return $this->container['issuedby'];
     }
 
     /**
      * Sets issuedby
-     * @param \Secuconnect\Client\Model\ValueField $issuedby issuedby
+     * @param \Secuconnect\Client\Model\ValueField|null $issuedby issuedby
      * @return $this
      */
-    public function setIssuedby($issuedby)
+    public function setIssuedby(?ValueField $issuedby): static
     {
         $this->container['issuedby'] = $issuedby;
 
@@ -224,17 +233,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets number
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getNumber()
+    public function getNumber(): ValueField
     {
         return $this->container['number'];
     }
 
     /**
      * Sets number
-     * @param \Secuconnect\Client\Model\ValueField $number number
+     * @param \Secuconnect\Client\Model\ValueField|null $number number
      * @return $this
      */
-    public function setNumber($number)
+    public function setNumber(?ValueField $number): static
     {
         $this->container['number'] = $number;
 
@@ -245,17 +254,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets type
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getType()
+    public function getType(): ValueField
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param \Secuconnect\Client\Model\ValueField $type type
+     * @param \Secuconnect\Client\Model\ValueField|null $type type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?ValueField $type): static
     {
         $this->container['type'] = $type;
 
@@ -266,17 +275,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets validuntil
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getValiduntil()
+    public function getValiduntil(): ValueField
     {
         return $this->container['validuntil'];
     }
 
     /**
      * Sets validuntil
-     * @param \Secuconnect\Client\Model\ValueField $validuntil validuntil
+     * @param \Secuconnect\Client\Model\ValueField|null $validuntil validuntil
      * @return $this
      */
-    public function setValiduntil($validuntil)
+    public function setValiduntil(?ValueField $validuntil): static
     {
         $this->container['validuntil'] = $validuntil;
 
@@ -288,7 +297,7 @@ class IdentDocumentData implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -298,9 +307,9 @@ class IdentDocumentData implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -309,7 +318,7 @@ class IdentDocumentData implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -323,7 +332,7 @@ class IdentDocumentData implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -332,13 +341,17 @@ class IdentDocumentData implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

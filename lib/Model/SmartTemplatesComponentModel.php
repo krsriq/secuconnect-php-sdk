@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTemplatesComponentModel
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTemplatesComponentModel implements ArrayAccess
+class SmartTemplatesComponentModel implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTemplatesComponentModel implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTemplatesComponentModel';
+    protected static string $swaggerModelName = 'SmartTemplatesComponentModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'id' => 'int',
         'name' => 'string',
         'config' => 'object',
@@ -39,7 +48,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'id' => null,
         'name' => null,
         'config' => null,
@@ -47,12 +56,12 @@ class SmartTemplatesComponentModel implements ArrayAccess
         'elements' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -61,7 +70,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'id' => 'id',
         'name' => 'name',
         'config' => 'config',
@@ -73,7 +82,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'id' => 'setId',
         'name' => 'setName',
         'config' => 'setConfig',
@@ -85,7 +94,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'id' => 'getId',
         'name' => 'getName',
         'config' => 'getConfig',
@@ -93,38 +102,38 @@ class SmartTemplatesComponentModel implements ArrayAccess
         'elements' => 'getElements'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['config'] = isset($data['config']) ? $data['config'] : null;
-        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
-        $this->container['elements'] = isset($data['elements']) ? $data['elements'] : null;
+        $this->container['id'] = $data['id'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['config'] = $data['config'] ?? null;
+        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['elements'] = $data['elements'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -145,7 +154,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets id
      * @return int
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->container['id'];
     }
 
     /**
      * Sets id
-     * @param int $id Id of component item of the page
+     * @param int|null $id Id of component item of the page
      * @return $this
      */
-    public function setId($id)
+    public function setId(?int $id): static
     {
         $this->container['id'] = $id;
 
@@ -176,17 +185,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets name
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->container['name'];
     }
 
     /**
      * Sets name
-     * @param string $name The name of component item
+     * @param string|null $name The name of component item
      * @return $this
      */
-    public function setName($name)
+    public function setName(?string $name): static
     {
         $this->container['name'] = $name;
 
@@ -197,17 +206,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets config
      * @return object
      */
-    public function getConfig()
+    public function getConfig(): object
     {
         return $this->container['config'];
     }
 
     /**
      * Sets config
-     * @param object $config The component configuration
+     * @param object|null $config The component configuration
      * @return $this
      */
-    public function setConfig($config)
+    public function setConfig(?object $config): static
     {
         $this->container['config'] = $config;
 
@@ -218,17 +227,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets condition
      * @return object
      */
-    public function getCondition()
+    public function getCondition(): object
     {
         return $this->container['condition'];
     }
 
     /**
      * Sets condition
-     * @param object $condition The component conditions to determine when this component should be shown
+     * @param object|null $condition The component conditions to determine when this component should be shown
      * @return $this
      */
-    public function setCondition($condition)
+    public function setCondition(?object $condition): static
     {
         $this->container['condition'] = $condition;
 
@@ -239,17 +248,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets elements
      * @return \Secuconnect\Client\Model\SmartTemplatesElementModel[]
      */
-    public function getElements()
+    public function getElements(): array
     {
         return $this->container['elements'];
     }
 
     /**
      * Sets elements
-     * @param \Secuconnect\Client\Model\SmartTemplatesElementModel[] $elements The elements inside the page component
+     * @param \Secuconnect\Client\Model\SmartTemplatesElementModel[]|null $elements The elements inside the page component
      * @return $this
      */
-    public function setElements($elements)
+    public function setElements(?array $elements): static
     {
         $this->container['elements'] = $elements;
 
@@ -261,7 +270,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -271,9 +280,9 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -282,7 +291,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -296,7 +305,7 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -305,13 +314,17 @@ class SmartTemplatesComponentModel implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

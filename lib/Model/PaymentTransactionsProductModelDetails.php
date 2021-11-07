@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentTransactionsProductModelDetails
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentTransactionsProductModelDetails implements ArrayAccess
+class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentTransactionsProductModel_details';
+    protected static string $swaggerModelName = 'PaymentTransactionsProductModel_details';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'amount' => 'int',
         'cleared' => 'string',
         'status' => 'int',
@@ -42,7 +51,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'amount' => null,
         'cleared' => null,
         'status' => null,
@@ -53,12 +62,12 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
         'description_raw' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -67,7 +76,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'amount' => 'amount',
         'cleared' => 'cleared',
         'status' => 'status',
@@ -82,7 +91,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'amount' => 'setAmount',
         'cleared' => 'setCleared',
         'status' => 'setStatus',
@@ -97,7 +106,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'amount' => 'getAmount',
         'cleared' => 'getCleared',
         'status' => 'getStatus',
@@ -108,41 +117,41 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
         'description_raw' => 'getDescriptionRaw'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['status_text'] = isset($data['status_text']) ? $data['status_text'] : null;
-        $this->container['status_simple'] = isset($data['status_simple']) ? $data['status_simple'] : null;
-        $this->container['status_text_simple'] = isset($data['status_text_simple']) ? $data['status_text_simple'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['description_raw'] = isset($data['description_raw']) ? $data['description_raw'] : null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['cleared'] = $data['cleared'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['status_text'] = $data['status_text'] ?? null;
+        $this->container['status_simple'] = $data['status_simple'] ?? null;
+        $this->container['status_text_simple'] = $data['status_text_simple'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['description_raw'] = $data['description_raw'] ?? null;
     }
 
     /**
@@ -150,7 +159,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -163,7 +172,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -173,17 +182,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -194,17 +203,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets cleared
      * @return string
      */
-    public function getCleared()
+    public function getCleared(): string
     {
         return $this->container['cleared'];
     }
 
     /**
      * Sets cleared
-     * @param string $cleared Clearing status
+     * @param string|null $cleared Clearing status
      * @return $this
      */
-    public function setCleared($cleared)
+    public function setCleared(?string $cleared): static
     {
         $this->container['cleared'] = $cleared;
 
@@ -215,17 +224,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets status
      * @return int
      */
-    public function getStatus()
+    public function getStatus(): int
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param int $status Transaction status ID
+     * @param int|null $status Transaction status ID
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?int $status): static
     {
         $this->container['status'] = $status;
 
@@ -236,17 +245,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets status_text
      * @return string
      */
-    public function getStatusText()
+    public function getStatusText(): string
     {
         return $this->container['status_text'];
     }
 
     /**
      * Sets status_text
-     * @param string $status_text Transaction status description
+     * @param string|null $status_text Transaction status description
      * @return $this
      */
-    public function setStatusText($status_text)
+    public function setStatusText(?string $status_text): static
     {
         $this->container['status_text'] = $status_text;
 
@@ -257,17 +266,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets status_simple
      * @return int
      */
-    public function getStatusSimple()
+    public function getStatusSimple(): int
     {
         return $this->container['status_simple'];
     }
 
     /**
      * Sets status_simple
-     * @param int $status_simple Transaction simple-status ID
+     * @param int|null $status_simple Transaction simple-status ID
      * @return $this
      */
-    public function setStatusSimple($status_simple)
+    public function setStatusSimple(?int $status_simple): static
     {
         $this->container['status_simple'] = $status_simple;
 
@@ -278,17 +287,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets status_text_simple
      * @return string
      */
-    public function getStatusTextSimple()
+    public function getStatusTextSimple(): string
     {
         return $this->container['status_text_simple'];
     }
 
     /**
      * Sets status_text_simple
-     * @param string $status_text_simple Transaction simple-status description
+     * @param string|null $status_text_simple Transaction simple-status description
      * @return $this
      */
-    public function setStatusTextSimple($status_text_simple)
+    public function setStatusTextSimple(?string $status_text_simple): static
     {
         $this->container['status_text_simple'] = $status_text_simple;
 
@@ -299,17 +308,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets description
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->container['description'];
     }
 
     /**
      * Sets description
-     * @param string $description Transaction description
+     * @param string|null $description Transaction description
      * @return $this
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): static
     {
         $this->container['description'] = $description;
 
@@ -320,17 +329,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets description_raw
      * @return string
      */
-    public function getDescriptionRaw()
+    public function getDescriptionRaw(): string
     {
         return $this->container['description_raw'];
     }
 
     /**
      * Sets description_raw
-     * @param string $description_raw Transaction description (plain text)
+     * @param string|null $description_raw Transaction description (plain text)
      * @return $this
      */
-    public function setDescriptionRaw($description_raw)
+    public function setDescriptionRaw(?string $description_raw): static
     {
         $this->container['description_raw'] = $description_raw;
 
@@ -342,7 +351,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -352,9 +361,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -363,7 +372,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -377,7 +386,7 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -386,13 +395,17 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

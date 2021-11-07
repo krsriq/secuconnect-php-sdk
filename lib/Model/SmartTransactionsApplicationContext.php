@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartTransactionsApplicationContext
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsApplicationContext implements ArrayAccess
+class SmartTransactionsApplicationContext implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartTransactionsApplicationContext implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartTransactionsApplicationContext';
+    protected static string $swaggerModelName = 'SmartTransactionsApplicationContext';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'locks' => '\Secuconnect\Client\Model\SmartTransactionsApplicationContextLocks',
         'return_urls' => '\Secuconnect\Client\Model\SmartTransactionsApplicationContextReturnUrls',
         'iframe_opts' => '\Secuconnect\Client\Model\SmartTransactionsApplicationContextIframeOpts',
@@ -38,19 +47,19 @@ class SmartTransactionsApplicationContext implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'locks' => null,
         'return_urls' => null,
         'iframe_opts' => null,
         'checkout_template' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'locks' => 'locks',
         'return_urls' => 'return_urls',
         'iframe_opts' => 'iframe_opts',
@@ -70,7 +79,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'locks' => 'setLocks',
         'return_urls' => 'setReturnUrls',
         'iframe_opts' => 'setIframeOpts',
@@ -81,44 +90,44 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'locks' => 'getLocks',
         'return_urls' => 'getReturnUrls',
         'iframe_opts' => 'getIframeOpts',
         'checkout_template' => 'getCheckoutTemplate'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['locks'] = isset($data['locks']) ? $data['locks'] : null;
-        $this->container['return_urls'] = isset($data['return_urls']) ? $data['return_urls'] : null;
-        $this->container['iframe_opts'] = isset($data['iframe_opts']) ? $data['iframe_opts'] : null;
-        $this->container['checkout_template'] = isset($data['checkout_template']) ? $data['checkout_template'] : null;
+        $this->container['locks'] = $data['locks'] ?? null;
+        $this->container['return_urls'] = $data['return_urls'] ?? null;
+        $this->container['iframe_opts'] = $data['iframe_opts'] ?? null;
+        $this->container['checkout_template'] = $data['checkout_template'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Gets locks
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextLocks
      */
-    public function getLocks()
+    public function getLocks(): SmartTransactionsApplicationContextLocks
     {
         return $this->container['locks'];
     }
 
     /**
      * Sets locks
-     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextLocks $locks locks
+     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextLocks|null $locks locks
      * @return $this
      */
-    public function setLocks($locks)
+    public function setLocks(?SmartTransactionsApplicationContextLocks $locks): static
     {
         $this->container['locks'] = $locks;
 
@@ -170,17 +179,17 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Gets return_urls
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextReturnUrls
      */
-    public function getReturnUrls()
+    public function getReturnUrls(): SmartTransactionsApplicationContextReturnUrls
     {
         return $this->container['return_urls'];
     }
 
     /**
      * Sets return_urls
-     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextReturnUrls $return_urls return_urls
+     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextReturnUrls|null $return_urls return_urls
      * @return $this
      */
-    public function setReturnUrls($return_urls)
+    public function setReturnUrls(?SmartTransactionsApplicationContextReturnUrls $return_urls): static
     {
         $this->container['return_urls'] = $return_urls;
 
@@ -191,17 +200,17 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Gets iframe_opts
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextIframeOpts
      */
-    public function getIframeOpts()
+    public function getIframeOpts(): SmartTransactionsApplicationContextIframeOpts
     {
         return $this->container['iframe_opts'];
     }
 
     /**
      * Sets iframe_opts
-     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextIframeOpts $iframe_opts iframe_opts
+     * @param \Secuconnect\Client\Model\SmartTransactionsApplicationContextIframeOpts|null $iframe_opts iframe_opts
      * @return $this
      */
-    public function setIframeOpts($iframe_opts)
+    public function setIframeOpts(?SmartTransactionsApplicationContextIframeOpts $iframe_opts): static
     {
         $this->container['iframe_opts'] = $iframe_opts;
 
@@ -212,17 +221,17 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Gets checkout_template
      * @return string
      */
-    public function getCheckoutTemplate()
+    public function getCheckoutTemplate(): string
     {
         return $this->container['checkout_template'];
     }
 
     /**
      * Sets checkout_template
-     * @param string $checkout_template Smart Checkout Template ID
+     * @param string|null $checkout_template Smart Checkout Template ID
      * @return $this
      */
-    public function setCheckoutTemplate($checkout_template)
+    public function setCheckoutTemplate(?string $checkout_template): static
     {
         $this->container['checkout_template'] = $checkout_template;
 
@@ -234,7 +243,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class SmartTransactionsApplicationContext implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

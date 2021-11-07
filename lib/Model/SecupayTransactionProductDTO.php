@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SecupayTransactionProductDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SecupayTransactionProductDTO implements ArrayAccess
+class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SecupayTransactionProductDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SecupayTransactionProductDTO';
+    protected static string $swaggerModelName = 'SecupayTransactionProductDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'amount' => 'int',
         'currency' => 'string',
         'purpose' => 'string',
@@ -50,7 +59,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'amount' => null,
         'currency' => null,
         'purpose' => null,
@@ -69,12 +78,12 @@ class SecupayTransactionProductDTO implements ArrayAccess
         'experience' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -83,7 +92,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'amount' => 'amount',
         'currency' => 'currency',
         'purpose' => 'purpose',
@@ -106,7 +115,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'amount' => 'setAmount',
         'currency' => 'setCurrency',
         'purpose' => 'setPurpose',
@@ -129,7 +138,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'amount' => 'getAmount',
         'currency' => 'getCurrency',
         'purpose' => 'getPurpose',
@@ -148,49 +157,49 @@ class SecupayTransactionProductDTO implements ArrayAccess
         'experience' => 'getExperience'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['currency'] = isset($data['currency']) ? $data['currency'] : null;
-        $this->container['purpose'] = isset($data['purpose']) ? $data['purpose'] : null;
-        $this->container['payment_methods'] = isset($data['payment_methods']) ? $data['payment_methods'] : null;
-        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
-        $this->container['basket'] = isset($data['basket']) ? $data['basket'] : null;
-        $this->container['accrual'] = isset($data['accrual']) ? $data['accrual'] : null;
-        $this->container['payment_action'] = isset($data['payment_action']) ? $data['payment_action'] : null;
-        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
-        $this->container['redirect_url'] = isset($data['redirect_url']) ? $data['redirect_url'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['container'] = isset($data['container']) ? $data['container'] : null;
-        $this->container['opt_data'] = isset($data['opt_data']) ? $data['opt_data'] : null;
-        $this->container['subscription'] = isset($data['subscription']) ? $data['subscription'] : null;
-        $this->container['demo'] = isset($data['demo']) ? $data['demo'] : null;
-        $this->container['experience'] = isset($data['experience']) ? $data['experience'] : null;
+        $this->container['amount'] = $data['amount'] ?? null;
+        $this->container['currency'] = $data['currency'] ?? null;
+        $this->container['purpose'] = $data['purpose'] ?? null;
+        $this->container['payment_methods'] = $data['payment_methods'] ?? null;
+        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['basket'] = $data['basket'] ?? null;
+        $this->container['accrual'] = $data['accrual'] ?? null;
+        $this->container['payment_action'] = $data['payment_action'] ?? null;
+        $this->container['customer'] = $data['customer'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['container'] = $data['container'] ?? null;
+        $this->container['opt_data'] = $data['opt_data'] ?? null;
+        $this->container['subscription'] = $data['subscription'] ?? null;
+        $this->container['demo'] = $data['demo'] ?? null;
+        $this->container['experience'] = $data['experience'] ?? null;
     }
 
     /**
@@ -198,7 +207,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -211,7 +220,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -221,17 +230,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets amount
      * @return int
      */
-    public function getAmount()
+    public function getAmount(): int
     {
         return $this->container['amount'];
     }
 
     /**
      * Sets amount
-     * @param int $amount amount
+     * @param int|null $amount amount
      * @return $this
      */
-    public function setAmount($amount)
+    public function setAmount(?int $amount): static
     {
         $this->container['amount'] = $amount;
 
@@ -242,17 +251,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets currency
      * @return string
      */
-    public function getCurrency()
+    public function getCurrency(): string
     {
         return $this->container['currency'];
     }
 
     /**
      * Sets currency
-     * @param string $currency currency
+     * @param string|null $currency currency
      * @return $this
      */
-    public function setCurrency($currency)
+    public function setCurrency(?string $currency): static
     {
         $this->container['currency'] = $currency;
 
@@ -263,17 +272,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets purpose
      * @return string
      */
-    public function getPurpose()
+    public function getPurpose(): string
     {
         return $this->container['purpose'];
     }
 
     /**
      * Sets purpose
-     * @param string $purpose The purpose of the payment. This is the later assignment of the payment is for example on the account statement of the buyer.
+     * @param string|null $purpose The purpose of the payment. This is the later assignment of the payment is for example on the account statement of the buyer.
      * @return $this
      */
-    public function setPurpose($purpose)
+    public function setPurpose(?string $purpose): static
     {
         $this->container['purpose'] = $purpose;
 
@@ -284,17 +293,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods()
+    public function getPaymentMethods(): array
     {
         return $this->container['payment_methods'];
     }
 
     /**
      * Sets payment_methods
-     * @param string[] $payment_methods payment methods
+     * @param string[]|null $payment_methods payment methods
      * @return $this
      */
-    public function setPaymentMethods($payment_methods)
+    public function setPaymentMethods(?array $payment_methods): static
     {
         $this->container['payment_methods'] = $payment_methods;
 
@@ -305,17 +314,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets order_id
      * @return string
      */
-    public function getOrderId()
+    public function getOrderId(): string
     {
         return $this->container['order_id'];
     }
 
     /**
      * Sets order_id
-     * @param string $order_id Specifying an order number. Depending on the contract setting, this must be unique for each payment.
+     * @param string|null $order_id Specifying an order number. Depending on the contract setting, this must be unique for each payment.
      * @return $this
      */
-    public function setOrderId($order_id)
+    public function setOrderId(?string $order_id): static
     {
         $this->container['order_id'] = $order_id;
 
@@ -326,17 +335,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getBasket()
+    public function getBasket(): array
     {
         return $this->container['basket'];
     }
 
     /**
      * Sets basket
-     * @param \Secuconnect\Client\Model\SecupayBasketItem[] $basket A list of items that are being purchased.
+     * @param \Secuconnect\Client\Model\SecupayBasketItem[]|null $basket A list of items that are being purchased.
      * @return $this
      */
-    public function setBasket($basket)
+    public function setBasket(?array $basket): static
     {
         $this->container['basket'] = $basket;
 
@@ -347,17 +356,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets accrual
      * @return bool
      */
-    public function getAccrual()
+    public function getAccrual(): bool
     {
         return $this->container['accrual'];
     }
 
     /**
      * Sets accrual
-     * @param bool $accrual Indicates whether the payment is locked for pay-out (TRUE) or not (FALSE). Standard value here is FALSE.
+     * @param bool|null $accrual Indicates whether the payment is locked for pay-out (TRUE) or not (FALSE). Standard value here is FALSE.
      * @return $this
      */
-    public function setAccrual($accrual)
+    public function setAccrual(?bool $accrual): static
     {
         $this->container['accrual'] = $accrual;
 
@@ -368,17 +377,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets payment_action
      * @return string
      */
-    public function getPaymentAction()
+    public function getPaymentAction(): string
     {
         return $this->container['payment_action'];
     }
 
     /**
      * Sets payment_action
-     * @param string $payment_action Specifies whether a pre-authorization (\"authorization\") or instant payment (\"sale\") is to be performed. Standard value here is \"sale\". The collection of the pre-authorized payment is made with the \"capture\" command.
+     * @param string|null $payment_action Specifies whether a pre-authorization (\"authorization\") or instant payment (\"sale\") is to be performed. Standard value here is \"sale\". The collection of the pre-authorized payment is made with the \"capture\" command.
      * @return $this
      */
-    public function setPaymentAction($payment_action)
+    public function setPaymentAction(?string $payment_action): static
     {
         $this->container['payment_action'] = $payment_action;
 
@@ -389,17 +398,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer()
+    public function getCustomer(): PaymentCustomersProductModel
     {
         return $this->container['customer'];
     }
 
     /**
      * Sets customer
-     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel $customer customer
+     * @param \Secuconnect\Client\Model\PaymentCustomersProductModel|null $customer customer
      * @return $this
      */
-    public function setCustomer($customer)
+    public function setCustomer(?PaymentCustomersProductModel $customer): static
     {
         $this->container['customer'] = $customer;
 
@@ -410,17 +419,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\SecupayRedirectUrl
      */
-    public function getRedirectUrl()
+    public function getRedirectUrl(): SecupayRedirectUrl
     {
         return $this->container['redirect_url'];
     }
 
     /**
      * Sets redirect_url
-     * @param \Secuconnect\Client\Model\SecupayRedirectUrl $redirect_url redirect_url
+     * @param \Secuconnect\Client\Model\SecupayRedirectUrl|null $redirect_url redirect_url
      * @return $this
      */
-    public function setRedirectUrl($redirect_url)
+    public function setRedirectUrl(?SecupayRedirectUrl $redirect_url): static
     {
         $this->container['redirect_url'] = $redirect_url;
 
@@ -431,17 +440,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets contract
      * @return string
      */
-    public function getContract()
+    public function getContract(): string
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param string $contract Contract id
+     * @param string|null $contract Contract id
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?string $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -452,17 +461,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets container
      * @return string
      */
-    public function getContainer()
+    public function getContainer(): string
     {
         return $this->container['container'];
     }
 
     /**
      * Sets container
-     * @param string $container Container id
+     * @param string|null $container Container id
      * @return $this
      */
-    public function setContainer($container)
+    public function setContainer(?string $container): static
     {
         $this->container['container'] = $container;
 
@@ -473,17 +482,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets opt_data
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOOptData
      */
-    public function getOptData()
+    public function getOptData(): SecupayTransactionProductDTOOptData
     {
         return $this->container['opt_data'];
     }
 
     /**
      * Sets opt_data
-     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOOptData $opt_data opt_data
+     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOOptData|null $opt_data opt_data
      * @return $this
      */
-    public function setOptData($opt_data)
+    public function setOptData(?SecupayTransactionProductDTOOptData $opt_data): static
     {
         $this->container['opt_data'] = $opt_data;
 
@@ -494,17 +503,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets subscription
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOSubscription
      */
-    public function getSubscription()
+    public function getSubscription(): SecupayTransactionProductDTOSubscription
     {
         return $this->container['subscription'];
     }
 
     /**
      * Sets subscription
-     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOSubscription $subscription subscription
+     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOSubscription|null $subscription subscription
      * @return $this
      */
-    public function setSubscription($subscription)
+    public function setSubscription(?SecupayTransactionProductDTOSubscription $subscription): static
     {
         $this->container['subscription'] = $subscription;
 
@@ -515,17 +524,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets demo
      * @return bool
      */
-    public function getDemo()
+    public function getDemo(): bool
     {
         return $this->container['demo'];
     }
 
     /**
      * Sets demo
-     * @param bool $demo Demo
+     * @param bool|null $demo Demo
      * @return $this
      */
-    public function setDemo($demo)
+    public function setDemo(?bool $demo): static
     {
         $this->container['demo'] = $demo;
 
@@ -536,17 +545,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets experience
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOExperience
      */
-    public function getExperience()
+    public function getExperience(): SecupayTransactionProductDTOExperience
     {
         return $this->container['experience'];
     }
 
     /**
      * Sets experience
-     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOExperience $experience experience
+     * @param \Secuconnect\Client\Model\SecupayTransactionProductDTOExperience|null $experience experience
      * @return $this
      */
-    public function setExperience($experience)
+    public function setExperience(?SecupayTransactionProductDTOExperience $experience): static
     {
         $this->container['experience'] = $experience;
 
@@ -558,7 +567,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -568,9 +577,9 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -579,7 +588,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -593,7 +602,7 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -602,13 +611,17 @@ class SecupayTransactionProductDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

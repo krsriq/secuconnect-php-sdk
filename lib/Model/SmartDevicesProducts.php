@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * SmartDevicesProducts
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartDevicesProducts implements ArrayAccess
+class SmartDevicesProducts implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class SmartDevicesProducts implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'SmartDevicesProducts';
+    protected static string $swaggerModelName = 'SmartDevicesProducts';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'loyalty' => '\Secuconnect\Client\Model\SmartDeviceProductsEnabled',
         'smart' => '\Secuconnect\Client\Model\SmartDeviceProductsEnabled',
         'cashreg' => '\Secuconnect\Client\Model\SmartDeviceProductsEnabled',
@@ -41,7 +50,7 @@ class SmartDevicesProducts implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'loyalty' => null,
         'smart' => null,
         'cashreg' => null,
@@ -51,12 +60,12 @@ class SmartDevicesProducts implements ArrayAccess
         'prepaid' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class SmartDevicesProducts implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'loyalty' => 'loyalty',
         'smart' => 'smart',
         'cashreg' => 'cashreg',
@@ -79,7 +88,7 @@ class SmartDevicesProducts implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'loyalty' => 'setLoyalty',
         'smart' => 'setSmart',
         'cashreg' => 'setCashreg',
@@ -93,7 +102,7 @@ class SmartDevicesProducts implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'loyalty' => 'getLoyalty',
         'smart' => 'getSmart',
         'cashreg' => 'getCashreg',
@@ -103,40 +112,40 @@ class SmartDevicesProducts implements ArrayAccess
         'prepaid' => 'getPrepaid'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['loyalty'] = isset($data['loyalty']) ? $data['loyalty'] : null;
-        $this->container['smart'] = isset($data['smart']) ? $data['smart'] : null;
-        $this->container['cashreg'] = isset($data['cashreg']) ? $data['cashreg'] : null;
-        $this->container['collect'] = isset($data['collect']) ? $data['collect'] : null;
-        $this->container['showcase'] = isset($data['showcase']) ? $data['showcase'] : null;
-        $this->container['vtm'] = isset($data['vtm']) ? $data['vtm'] : null;
-        $this->container['prepaid'] = isset($data['prepaid']) ? $data['prepaid'] : null;
+        $this->container['loyalty'] = $data['loyalty'] ?? null;
+        $this->container['smart'] = $data['smart'] ?? null;
+        $this->container['cashreg'] = $data['cashreg'] ?? null;
+        $this->container['collect'] = $data['collect'] ?? null;
+        $this->container['showcase'] = $data['showcase'] ?? null;
+        $this->container['vtm'] = $data['vtm'] ?? null;
+        $this->container['prepaid'] = $data['prepaid'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class SmartDevicesProducts implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class SmartDevicesProducts implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets loyalty
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getLoyalty()
+    public function getLoyalty(): SmartDeviceProductsEnabled
     {
         return $this->container['loyalty'];
     }
 
     /**
      * Sets loyalty
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $loyalty loyalty
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $loyalty loyalty
      * @return $this
      */
-    public function setLoyalty($loyalty)
+    public function setLoyalty(?SmartDeviceProductsEnabled $loyalty): static
     {
         $this->container['loyalty'] = $loyalty;
 
@@ -188,17 +197,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets smart
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getSmart()
+    public function getSmart(): SmartDeviceProductsEnabled
     {
         return $this->container['smart'];
     }
 
     /**
      * Sets smart
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $smart smart
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $smart smart
      * @return $this
      */
-    public function setSmart($smart)
+    public function setSmart(?SmartDeviceProductsEnabled $smart): static
     {
         $this->container['smart'] = $smart;
 
@@ -209,17 +218,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets cashreg
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getCashreg()
+    public function getCashreg(): SmartDeviceProductsEnabled
     {
         return $this->container['cashreg'];
     }
 
     /**
      * Sets cashreg
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $cashreg cashreg
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $cashreg cashreg
      * @return $this
      */
-    public function setCashreg($cashreg)
+    public function setCashreg(?SmartDeviceProductsEnabled $cashreg): static
     {
         $this->container['cashreg'] = $cashreg;
 
@@ -230,17 +239,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets collect
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getCollect()
+    public function getCollect(): SmartDeviceProductsEnabled
     {
         return $this->container['collect'];
     }
 
     /**
      * Sets collect
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $collect collect
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $collect collect
      * @return $this
      */
-    public function setCollect($collect)
+    public function setCollect(?SmartDeviceProductsEnabled $collect): static
     {
         $this->container['collect'] = $collect;
 
@@ -251,17 +260,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets showcase
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getShowcase()
+    public function getShowcase(): SmartDeviceProductsEnabled
     {
         return $this->container['showcase'];
     }
 
     /**
      * Sets showcase
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $showcase showcase
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $showcase showcase
      * @return $this
      */
-    public function setShowcase($showcase)
+    public function setShowcase(?SmartDeviceProductsEnabled $showcase): static
     {
         $this->container['showcase'] = $showcase;
 
@@ -272,17 +281,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets vtm
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getVtm()
+    public function getVtm(): SmartDeviceProductsEnabled
     {
         return $this->container['vtm'];
     }
 
     /**
      * Sets vtm
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled $vtm vtm
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsEnabled|null $vtm vtm
      * @return $this
      */
-    public function setVtm($vtm)
+    public function setVtm(?SmartDeviceProductsEnabled $vtm): static
     {
         $this->container['vtm'] = $vtm;
 
@@ -293,17 +302,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets prepaid
      * @return \Secuconnect\Client\Model\SmartDeviceProductsPrepaid
      */
-    public function getPrepaid()
+    public function getPrepaid(): SmartDeviceProductsPrepaid
     {
         return $this->container['prepaid'];
     }
 
     /**
      * Sets prepaid
-     * @param \Secuconnect\Client\Model\SmartDeviceProductsPrepaid $prepaid prepaid
+     * @param \Secuconnect\Client\Model\SmartDeviceProductsPrepaid|null $prepaid prepaid
      * @return $this
      */
-    public function setPrepaid($prepaid)
+    public function setPrepaid(?SmartDeviceProductsPrepaid $prepaid): static
     {
         $this->container['prepaid'] = $prepaid;
 
@@ -315,7 +324,7 @@ class SmartDevicesProducts implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class SmartDevicesProducts implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class SmartDevicesProducts implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class SmartDevicesProducts implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class SmartDevicesProducts implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

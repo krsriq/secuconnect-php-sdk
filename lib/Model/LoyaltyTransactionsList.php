@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyTransactionsList
@@ -12,7 +21,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyTransactionsList implements ArrayAccess
+class LoyaltyTransactionsList implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -20,13 +29,13 @@ class LoyaltyTransactionsList implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyTransactionsList';
+    protected static string $swaggerModelName = 'LoyaltyTransactionsList';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'count' => 'int',
         'data' => '\Secuconnect\Client\Model\LoyaltyTransactionsProductModel[]'
     ];
@@ -35,17 +44,17 @@ class LoyaltyTransactionsList implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'count' => null,
         'data' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -54,7 +63,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'count' => 'count',
         'data' => 'data'
     ];
@@ -63,7 +72,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'count' => 'setCount',
         'data' => 'setData'
     ];
@@ -72,40 +81,40 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'count' => 'getCount',
         'data' => 'getData'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
-        $this->container['data'] = isset($data['data']) ? $data['data'] : null;
+        $this->container['count'] = $data['count'] ?? null;
+        $this->container['data'] = $data['data'] ?? null;
     }
 
     /**
@@ -113,7 +122,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -126,7 +135,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -136,17 +145,17 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Gets count
      * @return int
      */
-    public function getCount()
+    public function getCount(): int
     {
         return $this->container['count'];
     }
 
     /**
      * Sets count
-     * @param int $count Number of existing loyalty transactions
+     * @param int|null $count Number of existing loyalty transactions
      * @return $this
      */
-    public function setCount($count)
+    public function setCount(?int $count): static
     {
         $this->container['count'] = $count;
 
@@ -157,17 +166,17 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Gets data
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsProductModel[]
      */
-    public function getData()
+    public function getData(): array
     {
         return $this->container['data'];
     }
 
     /**
      * Sets data
-     * @param \Secuconnect\Client\Model\LoyaltyTransactionsProductModel[] $data List of LoyaltyTransactions
+     * @param \Secuconnect\Client\Model\LoyaltyTransactionsProductModel[]|null $data List of LoyaltyTransactions
      * @return $this
      */
-    public function setData($data)
+    public function setData(?array $data): static
     {
         $this->container['data'] = $data;
 
@@ -179,7 +188,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -189,9 +198,9 @@ class LoyaltyTransactionsList implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -200,7 +209,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -214,7 +223,7 @@ class LoyaltyTransactionsList implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -223,13 +232,17 @@ class LoyaltyTransactionsList implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

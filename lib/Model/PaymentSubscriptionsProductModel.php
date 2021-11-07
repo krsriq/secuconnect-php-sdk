@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentSubscriptionsProductModel
@@ -19,13 +28,13 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentSubscriptionsProductModel';
+    protected static string $swaggerModelName = 'PaymentSubscriptionsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'updated' => 'string',
         'smart_transaction' => '\Secuconnect\Client\Model\BaseProductModel',
@@ -44,7 +53,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'updated' => null,
         'smart_transaction' => null,
@@ -59,12 +68,12 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
         'billing_cycles' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -73,7 +82,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'updated' => 'updated',
         'smart_transaction' => 'smart_transaction',
@@ -92,7 +101,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'updated' => 'setUpdated',
         'smart_transaction' => 'setSmartTransaction',
@@ -111,7 +120,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'updated' => 'getUpdated',
         'smart_transaction' => 'getSmartTransaction',
@@ -126,41 +135,41 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
         'billing_cycles' => 'getBillingCycles'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['smart_transaction'] = isset($data['smart_transaction']) ? $data['smart_transaction'] : null;
-        $this->container['merchant'] = isset($data['merchant']) ? $data['merchant'] : null;
-        $this->container['contract'] = isset($data['contract']) ? $data['contract'] : null;
-        $this->container['customer'] = isset($data['customer']) ? $data['customer'] : null;
-        $this->container['container'] = isset($data['container']) ? $data['container'] : null;
-        $this->container['plan'] = isset($data['plan']) ? $data['plan'] : null;
-        $this->container['start_at'] = isset($data['start_at']) ? $data['start_at'] : null;
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['paypal_subscription_id'] = isset($data['paypal_subscription_id']) ? $data['paypal_subscription_id'] : null;
-        $this->container['billing_cycles'] = isset($data['billing_cycles']) ? $data['billing_cycles'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['smart_transaction'] = $data['smart_transaction'] ?? null;
+        $this->container['merchant'] = $data['merchant'] ?? null;
+        $this->container['contract'] = $data['contract'] ?? null;
+        $this->container['customer'] = $data['customer'] ?? null;
+        $this->container['container'] = $data['container'] ?? null;
+        $this->container['plan'] = $data['plan'] ?? null;
+        $this->container['start_at'] = $data['start_at'] ?? null;
+        $this->container['status'] = $data['status'] ?? null;
+        $this->container['paypal_subscription_id'] = $data['paypal_subscription_id'] ?? null;
+        $this->container['billing_cycles'] = $data['billing_cycles'] ?? null;
     }
 
     /**
@@ -168,7 +177,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -181,7 +190,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -191,17 +200,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -212,17 +221,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated()
+    public function getUpdated(): string
     {
         return $this->container['updated'];
     }
 
     /**
      * Sets updated
-     * @param string $updated updated
+     * @param string|null $updated updated
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setUpdated(?string $updated): static
     {
         $this->container['updated'] = $updated;
 
@@ -233,17 +242,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets smart_transaction
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getSmartTransaction()
+    public function getSmartTransaction(): BaseProductModel
     {
         return $this->container['smart_transaction'];
     }
 
     /**
      * Sets smart_transaction
-     * @param \Secuconnect\Client\Model\BaseProductModel $smart_transaction smart_transaction
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $smart_transaction smart_transaction
      * @return $this
      */
-    public function setSmartTransaction($smart_transaction)
+    public function setSmartTransaction(?BaseProductModel $smart_transaction): static
     {
         $this->container['smart_transaction'] = $smart_transaction;
 
@@ -254,17 +263,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getMerchant()
+    public function getMerchant(): BaseProductModel
     {
         return $this->container['merchant'];
     }
 
     /**
      * Sets merchant
-     * @param \Secuconnect\Client\Model\BaseProductModel $merchant merchant
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $merchant merchant
      * @return $this
      */
-    public function setMerchant($merchant)
+    public function setMerchant(?BaseProductModel $merchant): static
     {
         $this->container['merchant'] = $merchant;
 
@@ -275,17 +284,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getContract()
+    public function getContract(): BaseProductModel
     {
         return $this->container['contract'];
     }
 
     /**
      * Sets contract
-     * @param \Secuconnect\Client\Model\BaseProductModel $contract contract
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $contract contract
      * @return $this
      */
-    public function setContract($contract)
+    public function setContract(?BaseProductModel $contract): static
     {
         $this->container['contract'] = $contract;
 
@@ -296,17 +305,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getCustomer()
+    public function getCustomer(): BaseProductModel
     {
         return $this->container['customer'];
     }
 
     /**
      * Sets customer
-     * @param \Secuconnect\Client\Model\BaseProductModel $customer customer
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $customer customer
      * @return $this
      */
-    public function setCustomer($customer)
+    public function setCustomer(?BaseProductModel $customer): static
     {
         $this->container['customer'] = $customer;
 
@@ -317,17 +326,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets container
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getContainer()
+    public function getContainer(): BaseProductModel
     {
         return $this->container['container'];
     }
 
     /**
      * Sets container
-     * @param \Secuconnect\Client\Model\BaseProductModel $container container
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $container container
      * @return $this
      */
-    public function setContainer($container)
+    public function setContainer(?BaseProductModel $container): static
     {
         $this->container['container'] = $container;
 
@@ -338,17 +347,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets plan
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getPlan()
+    public function getPlan(): BaseProductModel
     {
         return $this->container['plan'];
     }
 
     /**
      * Sets plan
-     * @param \Secuconnect\Client\Model\BaseProductModel $plan plan
+     * @param \Secuconnect\Client\Model\BaseProductModel|null $plan plan
      * @return $this
      */
-    public function setPlan($plan)
+    public function setPlan(?BaseProductModel $plan): static
     {
         $this->container['plan'] = $plan;
 
@@ -359,17 +368,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets start_at
      * @return string
      */
-    public function getStartAt()
+    public function getStartAt(): string
     {
         return $this->container['start_at'];
     }
 
     /**
      * Sets start_at
-     * @param string $start_at start at
+     * @param string|null $start_at start at
      * @return $this
      */
-    public function setStartAt($start_at)
+    public function setStartAt(?string $start_at): static
     {
         $this->container['start_at'] = $start_at;
 
@@ -380,17 +389,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus()
+    public function getStatus(): string
     {
         return $this->container['status'];
     }
 
     /**
      * Sets status
-     * @param string $status status
+     * @param string|null $status status
      * @return $this
      */
-    public function setStatus($status)
+    public function setStatus(?string $status): static
     {
         $this->container['status'] = $status;
 
@@ -401,17 +410,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets paypal_subscription_id
      * @return string
      */
-    public function getPaypalSubscriptionId()
+    public function getPaypalSubscriptionId(): string
     {
         return $this->container['paypal_subscription_id'];
     }
 
     /**
      * Sets paypal_subscription_id
-     * @param string $paypal_subscription_id paypal_subscription_id
+     * @param string|null $paypal_subscription_id paypal_subscription_id
      * @return $this
      */
-    public function setPaypalSubscriptionId($paypal_subscription_id)
+    public function setPaypalSubscriptionId(?string $paypal_subscription_id): static
     {
         $this->container['paypal_subscription_id'] = $paypal_subscription_id;
 
@@ -422,17 +431,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets billing_cycles
      * @return \Secuconnect\Client\Model\PaymentSubscriptionsProductModelBillingCycles
      */
-    public function getBillingCycles()
+    public function getBillingCycles(): PaymentSubscriptionsProductModelBillingCycles
     {
         return $this->container['billing_cycles'];
     }
 
     /**
      * Sets billing_cycles
-     * @param \Secuconnect\Client\Model\PaymentSubscriptionsProductModelBillingCycles $billing_cycles billing_cycles
+     * @param \Secuconnect\Client\Model\PaymentSubscriptionsProductModelBillingCycles|null $billing_cycles billing_cycles
      * @return $this
      */
-    public function setBillingCycles($billing_cycles)
+    public function setBillingCycles(?PaymentSubscriptionsProductModelBillingCycles $billing_cycles): static
     {
         $this->container['billing_cycles'] = $billing_cycles;
 
@@ -444,7 +453,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -454,9 +463,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -465,7 +474,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -479,7 +488,7 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -488,13 +497,17 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

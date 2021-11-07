@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * IdentresultPerson
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class IdentresultPerson implements ArrayAccess
+class IdentresultPerson implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class IdentresultPerson implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'IdentresultPerson';
+    protected static string $swaggerModelName = 'IdentresultPerson';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'identificationprocess' => '\Secuconnect\Client\Model\IdentificationProcess',
         'customdata' => '\Secuconnect\Client\Model\IdentificationCustomData',
         'contactdata' => '\Secuconnect\Client\Model\ContactData',
@@ -41,7 +50,7 @@ class IdentresultPerson implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'identificationprocess' => null,
         'customdata' => null,
         'contactdata' => null,
@@ -51,12 +60,12 @@ class IdentresultPerson implements ArrayAccess
         'video' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -65,7 +74,7 @@ class IdentresultPerson implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'identificationprocess' => 'identificationprocess',
         'customdata' => 'customdata',
         'contactdata' => 'contactdata',
@@ -79,7 +88,7 @@ class IdentresultPerson implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'identificationprocess' => 'setIdentificationprocess',
         'customdata' => 'setCustomdata',
         'contactdata' => 'setContactdata',
@@ -93,7 +102,7 @@ class IdentresultPerson implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'identificationprocess' => 'getIdentificationprocess',
         'customdata' => 'getCustomdata',
         'contactdata' => 'getContactdata',
@@ -103,40 +112,40 @@ class IdentresultPerson implements ArrayAccess
         'video' => 'getVideo'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['identificationprocess'] = isset($data['identificationprocess']) ? $data['identificationprocess'] : null;
-        $this->container['customdata'] = isset($data['customdata']) ? $data['customdata'] : null;
-        $this->container['contactdata'] = isset($data['contactdata']) ? $data['contactdata'] : null;
-        $this->container['userdata'] = isset($data['userdata']) ? $data['userdata'] : null;
-        $this->container['attachments'] = isset($data['attachments']) ? $data['attachments'] : null;
-        $this->container['identificationdocument'] = isset($data['identificationdocument']) ? $data['identificationdocument'] : null;
-        $this->container['video'] = isset($data['video']) ? $data['video'] : null;
+        $this->container['identificationprocess'] = $data['identificationprocess'] ?? null;
+        $this->container['customdata'] = $data['customdata'] ?? null;
+        $this->container['contactdata'] = $data['contactdata'] ?? null;
+        $this->container['userdata'] = $data['userdata'] ?? null;
+        $this->container['attachments'] = $data['attachments'] ?? null;
+        $this->container['identificationdocument'] = $data['identificationdocument'] ?? null;
+        $this->container['video'] = $data['video'] ?? null;
     }
 
     /**
@@ -144,7 +153,7 @@ class IdentresultPerson implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -157,7 +166,7 @@ class IdentresultPerson implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -167,17 +176,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets identificationprocess
      * @return \Secuconnect\Client\Model\IdentificationProcess
      */
-    public function getIdentificationprocess()
+    public function getIdentificationprocess(): IdentificationProcess
     {
         return $this->container['identificationprocess'];
     }
 
     /**
      * Sets identificationprocess
-     * @param \Secuconnect\Client\Model\IdentificationProcess $identificationprocess identificationprocess
+     * @param \Secuconnect\Client\Model\IdentificationProcess|null $identificationprocess identificationprocess
      * @return $this
      */
-    public function setIdentificationprocess($identificationprocess)
+    public function setIdentificationprocess(?IdentificationProcess $identificationprocess): static
     {
         $this->container['identificationprocess'] = $identificationprocess;
 
@@ -188,17 +197,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets customdata
      * @return \Secuconnect\Client\Model\IdentificationCustomData
      */
-    public function getCustomdata()
+    public function getCustomdata(): IdentificationCustomData
     {
         return $this->container['customdata'];
     }
 
     /**
      * Sets customdata
-     * @param \Secuconnect\Client\Model\IdentificationCustomData $customdata customdata
+     * @param \Secuconnect\Client\Model\IdentificationCustomData|null $customdata customdata
      * @return $this
      */
-    public function setCustomdata($customdata)
+    public function setCustomdata(?IdentificationCustomData $customdata): static
     {
         $this->container['customdata'] = $customdata;
 
@@ -209,17 +218,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets contactdata
      * @return \Secuconnect\Client\Model\ContactData
      */
-    public function getContactdata()
+    public function getContactdata(): ContactData
     {
         return $this->container['contactdata'];
     }
 
     /**
      * Sets contactdata
-     * @param \Secuconnect\Client\Model\ContactData $contactdata contactdata
+     * @param \Secuconnect\Client\Model\ContactData|null $contactdata contactdata
      * @return $this
      */
-    public function setContactdata($contactdata)
+    public function setContactdata(?ContactData $contactdata): static
     {
         $this->container['contactdata'] = $contactdata;
 
@@ -230,17 +239,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets userdata
      * @return \Secuconnect\Client\Model\UserData
      */
-    public function getUserdata()
+    public function getUserdata(): UserData
     {
         return $this->container['userdata'];
     }
 
     /**
      * Sets userdata
-     * @param \Secuconnect\Client\Model\UserData $userdata userdata
+     * @param \Secuconnect\Client\Model\UserData|null $userdata userdata
      * @return $this
      */
-    public function setUserdata($userdata)
+    public function setUserdata(?UserData $userdata): static
     {
         $this->container['userdata'] = $userdata;
 
@@ -251,17 +260,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets attachments
      * @return \Secuconnect\Client\Model\IdentDocument[]
      */
-    public function getAttachments()
+    public function getAttachments(): array
     {
         return $this->container['attachments'];
     }
 
     /**
      * Sets attachments
-     * @param \Secuconnect\Client\Model\IdentDocument[] $attachments User Data submitted by provider
+     * @param \Secuconnect\Client\Model\IdentDocument[]|null $attachments User Data submitted by provider
      * @return $this
      */
-    public function setAttachments($attachments)
+    public function setAttachments(?array $attachments): static
     {
         $this->container['attachments'] = $attachments;
 
@@ -272,17 +281,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets identificationdocument
      * @return \Secuconnect\Client\Model\IdentDocumentData
      */
-    public function getIdentificationdocument()
+    public function getIdentificationdocument(): IdentDocumentData
     {
         return $this->container['identificationdocument'];
     }
 
     /**
      * Sets identificationdocument
-     * @param \Secuconnect\Client\Model\IdentDocumentData $identificationdocument identificationdocument
+     * @param \Secuconnect\Client\Model\IdentDocumentData|null $identificationdocument identificationdocument
      * @return $this
      */
-    public function setIdentificationdocument($identificationdocument)
+    public function setIdentificationdocument(?IdentDocumentData $identificationdocument): static
     {
         $this->container['identificationdocument'] = $identificationdocument;
 
@@ -293,17 +302,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets video
      * @return string
      */
-    public function getVideo()
+    public function getVideo(): string
     {
         return $this->container['video'];
     }
 
     /**
      * Sets video
-     * @param string $video The url to download the identification video
+     * @param string|null $video The url to download the identification video
      * @return $this
      */
-    public function setVideo($video)
+    public function setVideo(?string $video): static
     {
         $this->container['video'] = $video;
 
@@ -315,7 +324,7 @@ class IdentresultPerson implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -325,9 +334,9 @@ class IdentresultPerson implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -336,7 +345,7 @@ class IdentresultPerson implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -350,7 +359,7 @@ class IdentresultPerson implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -359,13 +368,17 @@ class IdentresultPerson implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

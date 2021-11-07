@@ -1,6 +1,15 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentContractsProductModel
@@ -19,13 +28,13 @@ class PaymentContractsProductModel extends BaseProductModel
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentContractsProductModel';
+    protected static string $swaggerModelName = 'PaymentContractsProductModel';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'created' => 'string',
         'updated' => 'string',
         'parent' => '\Secuconnect\Client\Model\ProductInstanceUID',
@@ -38,7 +47,7 @@ class PaymentContractsProductModel extends BaseProductModel
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'created' => null,
         'updated' => null,
         'parent' => null,
@@ -47,12 +56,12 @@ class PaymentContractsProductModel extends BaseProductModel
         'approved' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes + parent::swaggerTypes();
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats + parent::swaggerFormats();
     }
@@ -61,7 +70,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'created' => 'created',
         'updated' => 'updated',
         'parent' => 'parent',
@@ -74,7 +83,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'created' => 'setCreated',
         'updated' => 'setUpdated',
         'parent' => 'setParent',
@@ -87,7 +96,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'created' => 'getCreated',
         'updated' => 'getUpdated',
         'parent' => 'getParent',
@@ -96,35 +105,35 @@ class PaymentContractsProductModel extends BaseProductModel
         'approved' => 'getApproved'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return parent::attributeMap() + self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return parent::setters() + self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return parent::getters() + self::$getters;
     }
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
         parent::__construct($data);
 
-        $this->container['created'] = isset($data['created']) ? $data['created'] : null;
-        $this->container['updated'] = isset($data['updated']) ? $data['updated'] : null;
-        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
-        $this->container['pay_in_account'] = isset($data['pay_in_account']) ? $data['pay_in_account'] : null;
-        $this->container['demo'] = isset($data['demo']) ? $data['demo'] : null;
-        $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
+        $this->container['created'] = $data['created'] ?? null;
+        $this->container['updated'] = $data['updated'] ?? null;
+        $this->container['parent'] = $data['parent'] ?? null;
+        $this->container['pay_in_account'] = $data['pay_in_account'] ?? null;
+        $this->container['demo'] = $data['demo'] ?? null;
+        $this->container['approved'] = $data['approved'] ?? null;
     }
 
     /**
@@ -132,7 +141,7 @@ class PaymentContractsProductModel extends BaseProductModel
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = parent::listInvalidProperties();
 
@@ -145,7 +154,7 @@ class PaymentContractsProductModel extends BaseProductModel
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -155,17 +164,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated()
+    public function getCreated(): string
     {
         return $this->container['created'];
     }
 
     /**
      * Sets created
-     * @param string $created created
+     * @param string|null $created created
      * @return $this
      */
-    public function setCreated($created)
+    public function setCreated(?string $created): static
     {
         $this->container['created'] = $created;
 
@@ -176,17 +185,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated()
+    public function getUpdated(): string
     {
         return $this->container['updated'];
     }
 
     /**
      * Sets updated
-     * @param string $updated updated
+     * @param string|null $updated updated
      * @return $this
      */
-    public function setUpdated($updated)
+    public function setUpdated(?string $updated): static
     {
         $this->container['updated'] = $updated;
 
@@ -197,17 +206,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets parent
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getParent()
+    public function getParent(): ProductInstanceUID
     {
         return $this->container['parent'];
     }
 
     /**
      * Sets parent
-     * @param \Secuconnect\Client\Model\ProductInstanceUID $parent parent
+     * @param \Secuconnect\Client\Model\ProductInstanceUID|null $parent parent
      * @return $this
      */
-    public function setParent($parent)
+    public function setParent(?ProductInstanceUID $parent): static
     {
         $this->container['parent'] = $parent;
 
@@ -218,17 +227,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets pay_in_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPayInAccount()
+    public function getPayInAccount(): PaymentInformation
     {
         return $this->container['pay_in_account'];
     }
 
     /**
      * Sets pay_in_account
-     * @param \Secuconnect\Client\Model\PaymentInformation $pay_in_account pay_in_account
+     * @param \Secuconnect\Client\Model\PaymentInformation|null $pay_in_account pay_in_account
      * @return $this
      */
-    public function setPayInAccount($pay_in_account)
+    public function setPayInAccount(?PaymentInformation $pay_in_account): static
     {
         $this->container['pay_in_account'] = $pay_in_account;
 
@@ -239,17 +248,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo()
+    public function getDemo(): bool
     {
         return $this->container['demo'];
     }
 
     /**
      * Sets demo
-     * @param bool $demo Is this a demo contract
+     * @param bool|null $demo Is this a demo contract
      * @return $this
      */
-    public function setDemo($demo)
+    public function setDemo(?bool $demo): static
     {
         $this->container['demo'] = $demo;
 
@@ -260,17 +269,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets approved
      * @return bool
      */
-    public function getApproved()
+    public function getApproved(): bool
     {
         return $this->container['approved'];
     }
 
     /**
      * Sets approved
-     * @param bool $approved Indicates if the payout lock was removed
+     * @param bool|null $approved Indicates if the payout lock was removed
      * @return $this
      */
-    public function setApproved($approved)
+    public function setApproved(?bool $approved): static
     {
         $this->container['approved'] = $approved;
 
@@ -282,7 +291,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -292,9 +301,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -303,7 +312,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -317,7 +326,7 @@ class PaymentContractsProductModel extends BaseProductModel
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -326,13 +335,17 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

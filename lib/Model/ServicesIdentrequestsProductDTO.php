@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * ServicesIdentrequestsProductDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class ServicesIdentrequestsProductDTO implements ArrayAccess
+class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'ServicesIdentrequestsProductDTO';
+    protected static string $swaggerModelName = 'ServicesIdentrequestsProductDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'provider' => 'PROVIDER',
         'type' => 'TYPE',
         'demo' => 'bool',
@@ -40,7 +49,7 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'provider' => null,
         'type' => null,
         'demo' => null,
@@ -49,12 +58,12 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
         'redirect_url' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -63,7 +72,7 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'provider' => 'provider',
         'type' => 'type',
         'demo' => 'demo',
@@ -76,7 +85,7 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'provider' => 'setProvider',
         'type' => 'setType',
         'demo' => 'setDemo',
@@ -89,7 +98,7 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'provider' => 'getProvider',
         'type' => 'getType',
         'demo' => 'getDemo',
@@ -98,17 +107,17 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
         'redirect_url' => 'getRedirectUrl'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
@@ -118,12 +127,13 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess
      * Gets allowable values of the enum
      * @return string[]
      */
-    public function getProviderAllowableValues()
+    public function getProviderAllowableValues(): array
     {
         return [
             self::PROVIDER_POST_IDENT,
-self::PROVIDER_BANK_IDENT,
-self::PROVIDER_WEBID,        ];
+            self::PROVIDER_BANK_IDENT,
+            self::PROVIDER_WEBID,
+        ];
     }
 
 
@@ -131,30 +141,31 @@ self::PROVIDER_WEBID,        ];
      * Gets allowable values of the enum
      * @return string[]
      */
-    public function getTypeAllowableValues()
+    public function getTypeAllowableValues(): array
     {
         return [
-            self::TYPE_PERSON,        ];
+            self::TYPE_PERSON,
+        ];
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['provider'] = isset($data['provider']) ? $data['provider'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['demo'] = isset($data['demo']) ? $data['demo'] : null;
-        $this->container['person'] = isset($data['person']) ? $data['person'] : null;
-        $this->container['owner_transaction_id'] = isset($data['owner_transaction_id']) ? $data['owner_transaction_id'] : null;
-        $this->container['redirect_url'] = isset($data['redirect_url']) ? $data['redirect_url'] : null;
+        $this->container['provider'] = $data['provider'] ?? null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['demo'] = $data['demo'] ?? null;
+        $this->container['person'] = $data['person'] ?? null;
+        $this->container['owner_transaction_id'] = $data['owner_transaction_id'] ?? null;
+        $this->container['redirect_url'] = $data['redirect_url'] ?? null;
     }
 
     /**
@@ -162,7 +173,7 @@ self::PROVIDER_WEBID,        ];
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -170,7 +181,7 @@ self::PROVIDER_WEBID,        ];
         if (!is_null($this->container['provider']) && !in_array($this->container['provider'], $allowed_values, true)) {
             $invalid_properties[] = sprintf(
                 "invalid value for 'provider', must be one of '%s'",
-                implode("', '", $allowedValues)
+                implode("', '", $allowed_values)
             );
         }
 
@@ -178,7 +189,7 @@ self::PROVIDER_WEBID,        ];
         if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowed_values, true)) {
             $invalid_properties[] = sprintf(
                 "invalid value for 'type', must be one of '%s'",
-                implode("', '", $allowedValues)
+                implode("', '", $allowed_values)
             );
         }
 
@@ -191,7 +202,7 @@ self::PROVIDER_WEBID,        ];
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -201,21 +212,21 @@ self::PROVIDER_WEBID,        ];
      * Gets provider
      * @return string
      */
-    public function getProvider()
+    public function getProvider(): string
     {
         return $this->container['provider'];
     }
 
     /**
      * Sets provider
-     * @param string $provider Third party identification provider
+     * @param string|null $provider Third party identification provider
      * @return $this
      */
-    public function setProvider($provider)
+    public function setProvider(?string $provider): static
     {
         $allowed_values = $this->getProviderAllowableValues();
         if (!is_null($provider) && !in_array($provider, $allowed_values, true)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'provider', must be one of '%s'",
                     implode("', '", $allowed_values)
@@ -231,21 +242,21 @@ self::PROVIDER_WEBID,        ];
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Type
+     * @param string|null $type Type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $allowed_values = $this->getTypeAllowableValues();
         if (!is_null($type) && !in_array($type, $allowed_values, true)) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'type', must be one of '%s'",
                     implode("', '", $allowed_values)
@@ -261,17 +272,17 @@ self::PROVIDER_WEBID,        ];
      * Gets demo
      * @return bool
      */
-    public function getDemo()
+    public function getDemo(): bool
     {
         return $this->container['demo'];
     }
 
     /**
      * Sets demo
-     * @param bool $demo Demo Flag
+     * @param bool|null $demo Demo Flag
      * @return $this
      */
-    public function setDemo($demo)
+    public function setDemo(?bool $demo): static
     {
         $this->container['demo'] = $demo;
 
@@ -282,17 +293,17 @@ self::PROVIDER_WEBID,        ];
      * Gets person
      * @return \Secuconnect\Client\Model\IdentrequestPersonDTO[]
      */
-    public function getPerson()
+    public function getPerson(): array
     {
         return $this->container['person'];
     }
 
     /**
      * Sets person
-     * @param \Secuconnect\Client\Model\IdentrequestPersonDTO[] $person The person which should be identified by third party provider
+     * @param \Secuconnect\Client\Model\IdentrequestPersonDTO[]|null $person The person which should be identified by third party provider
      * @return $this
      */
-    public function setPerson($person)
+    public function setPerson(?array $person): static
     {
         $this->container['person'] = $person;
 
@@ -303,17 +314,17 @@ self::PROVIDER_WEBID,        ];
      * Gets owner_transaction_id
      * @return string
      */
-    public function getOwnerTransactionId()
+    public function getOwnerTransactionId(): string
     {
         return $this->container['owner_transaction_id'];
     }
 
     /**
      * Sets owner_transaction_id
-     * @param string $owner_transaction_id Arbitrary ID to identify identrequest on merchant
+     * @param string|null $owner_transaction_id Arbitrary ID to identify identrequest on merchant
      * @return $this
      */
-    public function setOwnerTransactionId($owner_transaction_id)
+    public function setOwnerTransactionId(?string $owner_transaction_id): static
     {
         $this->container['owner_transaction_id'] = $owner_transaction_id;
 
@@ -324,17 +335,17 @@ self::PROVIDER_WEBID,        ];
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\IdentrequestRedirectUrls
      */
-    public function getRedirectUrl()
+    public function getRedirectUrl(): IdentrequestRedirectUrls
     {
         return $this->container['redirect_url'];
     }
 
     /**
      * Sets redirect_url
-     * @param \Secuconnect\Client\Model\IdentrequestRedirectUrls $redirect_url redirect_url
+     * @param \Secuconnect\Client\Model\IdentrequestRedirectUrls|null $redirect_url redirect_url
      * @return $this
      */
-    public function setRedirectUrl($redirect_url)
+    public function setRedirectUrl(?IdentrequestRedirectUrls $redirect_url): static
     {
         $this->container['redirect_url'] = $redirect_url;
 
@@ -346,7 +357,7 @@ self::PROVIDER_WEBID,        ];
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -356,9 +367,9 @@ self::PROVIDER_WEBID,        ];
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -367,7 +378,7 @@ self::PROVIDER_WEBID,        ];
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -381,7 +392,7 @@ self::PROVIDER_WEBID,        ];
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -390,13 +401,17 @@ self::PROVIDER_WEBID,        ];
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * PaymentContractsDTORequestId
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentContractsDTORequestId implements ArrayAccess
+class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class PaymentContractsDTORequestId implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PaymentContractsDTORequestId';
+    protected static string $swaggerModelName = 'PaymentContractsDTORequestId';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'contact' => '\Secuconnect\Client\Model\Contact',
         'project' => 'string',
         'payout_account' => '\Secuconnect\Client\Model\PaymentInformation',
@@ -35,16 +44,14 @@ class PaymentContractsDTORequestId implements ArrayAccess
         'payin_account' => 'bool',
         'create_first_store' => 'bool',
         'store_name' => 'string',
-        'payout_purpose' => 'string',
-        'identrequest' => 'string',
-        'signed_contract' => 'string'
+        'payout_purpose' => 'string'
     ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'contact' => null,
         'project' => null,
         'payout_account' => null,
@@ -52,17 +59,15 @@ class PaymentContractsDTORequestId implements ArrayAccess
         'payin_account' => null,
         'create_first_store' => null,
         'store_name' => null,
-        'payout_purpose' => null,
-        'identrequest' => null,
-        'signed_contract' => null
+        'payout_purpose' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -71,7 +76,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'contact' => 'contact',
         'project' => 'project',
         'payout_account' => 'payout_account',
@@ -79,16 +84,14 @@ class PaymentContractsDTORequestId implements ArrayAccess
         'payin_account' => 'payin_account',
         'create_first_store' => 'create_first_store',
         'store_name' => 'store_name',
-        'payout_purpose' => 'payout_purpose',
-        'identrequest' => 'identrequest',
-        'signed_contract' => 'signed_contract'
+        'payout_purpose' => 'payout_purpose'
     ];
 
     /**
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'contact' => 'setContact',
         'project' => 'setProject',
         'payout_account' => 'setPayoutAccount',
@@ -96,16 +99,14 @@ class PaymentContractsDTORequestId implements ArrayAccess
         'payin_account' => 'setPayinAccount',
         'create_first_store' => 'setCreateFirstStore',
         'store_name' => 'setStoreName',
-        'payout_purpose' => 'setPayoutPurpose',
-        'identrequest' => 'setIdentrequest',
-        'signed_contract' => 'setSignedContract'
+        'payout_purpose' => 'setPayoutPurpose'
     ];
 
     /**
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'contact' => 'getContact',
         'project' => 'getProject',
         'payout_account' => 'getPayoutAccount',
@@ -113,48 +114,44 @@ class PaymentContractsDTORequestId implements ArrayAccess
         'payin_account' => 'getPayinAccount',
         'create_first_store' => 'getCreateFirstStore',
         'store_name' => 'getStoreName',
-        'payout_purpose' => 'getPayoutPurpose',
-        'identrequest' => 'getIdentrequest',
-        'signed_contract' => 'getSignedContract'
+        'payout_purpose' => 'getPayoutPurpose'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
-        $this->container['project'] = isset($data['project']) ? $data['project'] : null;
-        $this->container['payout_account'] = isset($data['payout_account']) ? $data['payout_account'] : null;
-        $this->container['iframe_opts'] = isset($data['iframe_opts']) ? $data['iframe_opts'] : null;
-        $this->container['payin_account'] = isset($data['payin_account']) ? $data['payin_account'] : false;
-        $this->container['create_first_store'] = isset($data['create_first_store']) ? $data['create_first_store'] : false;
-        $this->container['store_name'] = isset($data['store_name']) ? $data['store_name'] : null;
-        $this->container['payout_purpose'] = isset($data['payout_purpose']) ? $data['payout_purpose'] : null;
-        $this->container['identrequest'] = isset($data['identrequest']) ? $data['identrequest'] : null;
-        $this->container['signed_contract'] = isset($data['signed_contract']) ? $data['signed_contract'] : null;
+        $this->container['contact'] = $data['contact'] ?? null;
+        $this->container['project'] = $data['project'] ?? null;
+        $this->container['payout_account'] = $data['payout_account'] ?? null;
+        $this->container['iframe_opts'] = $data['iframe_opts'] ?? null;
+        $this->container['payin_account'] = $data['payin_account'] ?? false;
+        $this->container['create_first_store'] = $data['create_first_store'] ?? false;
+        $this->container['store_name'] = $data['store_name'] ?? null;
+        $this->container['payout_purpose'] = $data['payout_purpose'] ?? null;
     }
 
     /**
@@ -162,7 +159,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -175,7 +172,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -185,17 +182,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact()
+    public function getContact(): Contact
     {
         return $this->container['contact'];
     }
 
     /**
      * Sets contact
-     * @param \Secuconnect\Client\Model\Contact $contact contact
+     * @param \Secuconnect\Client\Model\Contact|null $contact contact
      * @return $this
      */
-    public function setContact($contact)
+    public function setContact(?Contact $contact): static
     {
         $this->container['contact'] = $contact;
 
@@ -206,17 +203,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets project
      * @return string
      */
-    public function getProject()
+    public function getProject(): string
     {
         return $this->container['project'];
     }
 
     /**
      * Sets project
-     * @param string $project Name of the project (must be unique)
+     * @param string|null $project Name of the project (must be unique)
      * @return $this
      */
-    public function setProject($project)
+    public function setProject(?string $project): static
     {
         $this->container['project'] = $project;
 
@@ -227,17 +224,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets payout_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPayoutAccount()
+    public function getPayoutAccount(): PaymentInformation
     {
         return $this->container['payout_account'];
     }
 
     /**
      * Sets payout_account
-     * @param \Secuconnect\Client\Model\PaymentInformation $payout_account payout_account
+     * @param \Secuconnect\Client\Model\PaymentInformation|null $payout_account payout_account
      * @return $this
      */
-    public function setPayoutAccount($payout_account)
+    public function setPayoutAccount(?PaymentInformation $payout_account): static
     {
         $this->container['payout_account'] = $payout_account;
 
@@ -248,17 +245,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets iframe_opts
      * @return \Secuconnect\Client\Model\PaymentContractsDTOIFrameOpts
      */
-    public function getIframeOpts()
+    public function getIframeOpts(): PaymentContractsDTOIFrameOpts
     {
         return $this->container['iframe_opts'];
     }
 
     /**
      * Sets iframe_opts
-     * @param \Secuconnect\Client\Model\PaymentContractsDTOIFrameOpts $iframe_opts iframe_opts
+     * @param \Secuconnect\Client\Model\PaymentContractsDTOIFrameOpts|null $iframe_opts iframe_opts
      * @return $this
      */
-    public function setIframeOpts($iframe_opts)
+    public function setIframeOpts(?PaymentContractsDTOIFrameOpts $iframe_opts): static
     {
         $this->container['iframe_opts'] = $iframe_opts;
 
@@ -269,17 +266,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets payin_account
      * @return bool
      */
-    public function getPayinAccount()
+    public function getPayinAccount(): bool
     {
         return $this->container['payin_account'];
     }
 
     /**
      * Sets payin_account
-     * @param bool $payin_account Pay in account
+     * @param bool|null $payin_account Pay in account
      * @return $this
      */
-    public function setPayinAccount($payin_account)
+    public function setPayinAccount(?bool $payin_account): static
     {
         $this->container['payin_account'] = $payin_account;
 
@@ -290,17 +287,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets create_first_store
      * @return bool
      */
-    public function getCreateFirstStore()
+    public function getCreateFirstStore(): bool
     {
         return $this->container['create_first_store'];
     }
 
     /**
      * Sets create_first_store
-     * @param bool $create_first_store Create first store
+     * @param bool|null $create_first_store Create first store
      * @return $this
      */
-    public function setCreateFirstStore($create_first_store)
+    public function setCreateFirstStore(?bool $create_first_store): static
     {
         $this->container['create_first_store'] = $create_first_store;
 
@@ -311,17 +308,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets store_name
      * @return string
      */
-    public function getStoreName()
+    public function getStoreName(): string
     {
         return $this->container['store_name'];
     }
 
     /**
      * Sets store_name
-     * @param string $store_name Store name
+     * @param string|null $store_name Store name
      * @return $this
      */
-    public function setStoreName($store_name)
+    public function setStoreName(?string $store_name): static
     {
         $this->container['store_name'] = $store_name;
 
@@ -332,61 +329,19 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets payout_purpose
      * @return string
      */
-    public function getPayoutPurpose()
+    public function getPayoutPurpose(): string
     {
         return $this->container['payout_purpose'];
     }
 
     /**
      * Sets payout_purpose
-     * @param string $payout_purpose Payout purpose
+     * @param string|null $payout_purpose Payout purpose
      * @return $this
      */
-    public function setPayoutPurpose($payout_purpose)
+    public function setPayoutPurpose(?string $payout_purpose): static
     {
         $this->container['payout_purpose'] = $payout_purpose;
-
-        return $this;
-    }
-
-    /**
-     * Gets identrequest
-     * @return string
-     */
-    public function getIdentrequest()
-    {
-        return $this->container['identrequest'];
-    }
-
-    /**
-     * Sets identrequest
-     * @param string $identrequest Object ID of Services Identrequest
-     * @return $this
-     */
-    public function setIdentrequest($identrequest)
-    {
-        $this->container['identrequest'] = $identrequest;
-
-        return $this;
-    }
-
-    /**
-     * Gets signed_contract
-     * @return string
-     */
-    public function getSignedContract()
-    {
-        return $this->container['signed_contract'];
-    }
-
-    /**
-     * Sets signed_contract
-     * @param string $signed_contract The document ID of of uploaded signed contract; s. Document service
-     * @return $this
-     */
-    public function setSignedContract($signed_contract)
-    {
-        $this->container['signed_contract'] = $signed_contract;
 
         return $this;
     }
@@ -396,7 +351,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -406,9 +361,9 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -417,7 +372,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -431,7 +386,7 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -440,13 +395,17 @@ class PaymentContractsDTORequestId implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

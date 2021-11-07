@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * UploadidentsProductDTO
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class UploadidentsProductDTO implements ArrayAccess
+class UploadidentsProductDTO implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class UploadidentsProductDTO implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'UploadidentsProductDTO';
+    protected static string $swaggerModelName = 'UploadidentsProductDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'merchant_id' => 'string',
         'payment_id' => 'string',
         'contract_id' => 'string',
@@ -40,7 +49,7 @@ class UploadidentsProductDTO implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'merchant_id' => null,
         'payment_id' => null,
         'contract_id' => null,
@@ -49,12 +58,12 @@ class UploadidentsProductDTO implements ArrayAccess
         'document_ids' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -63,7 +72,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'merchant_id' => 'merchant_id',
         'payment_id' => 'payment_id',
         'contract_id' => 'contract_id',
@@ -76,7 +85,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'merchant_id' => 'setMerchantId',
         'payment_id' => 'setPaymentId',
         'contract_id' => 'setContractId',
@@ -89,7 +98,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'merchant_id' => 'getMerchantId',
         'payment_id' => 'getPaymentId',
         'contract_id' => 'getContractId',
@@ -98,39 +107,39 @@ class UploadidentsProductDTO implements ArrayAccess
         'document_ids' => 'getDocumentIds'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['merchant_id'] = isset($data['merchant_id']) ? $data['merchant_id'] : null;
-        $this->container['payment_id'] = isset($data['payment_id']) ? $data['payment_id'] : null;
-        $this->container['contract_id'] = isset($data['contract_id']) ? $data['contract_id'] : null;
-        $this->container['apikey'] = isset($data['apikey']) ? $data['apikey'] : null;
-        $this->container['service_issue_id'] = isset($data['service_issue_id']) ? $data['service_issue_id'] : null;
-        $this->container['document_ids'] = isset($data['document_ids']) ? $data['document_ids'] : null;
+        $this->container['merchant_id'] = $data['merchant_id'] ?? null;
+        $this->container['payment_id'] = $data['payment_id'] ?? null;
+        $this->container['contract_id'] = $data['contract_id'] ?? null;
+        $this->container['apikey'] = $data['apikey'] ?? null;
+        $this->container['service_issue_id'] = $data['service_issue_id'] ?? null;
+        $this->container['document_ids'] = $data['document_ids'] ?? null;
     }
 
     /**
@@ -138,7 +147,7 @@ class UploadidentsProductDTO implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -151,7 +160,7 @@ class UploadidentsProductDTO implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -161,17 +170,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets merchant_id
      * @return string
      */
-    public function getMerchantId()
+    public function getMerchantId(): string
     {
         return $this->container['merchant_id'];
     }
 
     /**
      * Sets merchant_id
-     * @param string $merchant_id Merchant ID
+     * @param string|null $merchant_id Merchant ID
      * @return $this
      */
-    public function setMerchantId($merchant_id)
+    public function setMerchantId(?string $merchant_id): static
     {
         $this->container['merchant_id'] = $merchant_id;
 
@@ -182,17 +191,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets payment_id
      * @return string
      */
-    public function getPaymentId()
+    public function getPaymentId(): string
     {
         return $this->container['payment_id'];
     }
 
     /**
      * Sets payment_id
-     * @param string $payment_id Payment ID
+     * @param string|null $payment_id Payment ID
      * @return $this
      */
-    public function setPaymentId($payment_id)
+    public function setPaymentId(?string $payment_id): static
     {
         $this->container['payment_id'] = $payment_id;
 
@@ -203,17 +212,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets contract_id
      * @return string
      */
-    public function getContractId()
+    public function getContractId(): string
     {
         return $this->container['contract_id'];
     }
 
     /**
      * Sets contract_id
-     * @param string $contract_id Contract ID
+     * @param string|null $contract_id Contract ID
      * @return $this
      */
-    public function setContractId($contract_id)
+    public function setContractId(?string $contract_id): static
     {
         $this->container['contract_id'] = $contract_id;
 
@@ -224,17 +233,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets apikey
      * @return string
      */
-    public function getApikey()
+    public function getApikey(): string
     {
         return $this->container['apikey'];
     }
 
     /**
      * Sets apikey
-     * @param string $apikey Api Key
+     * @param string|null $apikey Api Key
      * @return $this
      */
-    public function setApikey($apikey)
+    public function setApikey(?string $apikey): static
     {
         $this->container['apikey'] = $apikey;
 
@@ -245,17 +254,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets service_issue_id
      * @return int
      */
-    public function getServiceIssueId()
+    public function getServiceIssueId(): int
     {
         return $this->container['service_issue_id'];
     }
 
     /**
      * Sets service_issue_id
-     * @param int $service_issue_id Service issue id
+     * @param int|null $service_issue_id Service issue id
      * @return $this
      */
-    public function setServiceIssueId($service_issue_id)
+    public function setServiceIssueId(?int $service_issue_id): static
     {
         $this->container['service_issue_id'] = $service_issue_id;
 
@@ -266,17 +275,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets document_ids
      * @return string[]
      */
-    public function getDocumentIds()
+    public function getDocumentIds(): array
     {
         return $this->container['document_ids'];
     }
 
     /**
      * Sets document_ids
-     * @param string[] $document_ids List of documents ids
+     * @param string[]|null $document_ids List of documents ids
      * @return $this
      */
-    public function setDocumentIds($document_ids)
+    public function setDocumentIds(?array $document_ids): static
     {
         $this->container['document_ids'] = $document_ids;
 
@@ -288,7 +297,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -298,9 +307,9 @@ class UploadidentsProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -309,7 +318,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -323,7 +332,7 @@ class UploadidentsProductDTO implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -332,13 +341,17 @@ class UploadidentsProductDTO implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

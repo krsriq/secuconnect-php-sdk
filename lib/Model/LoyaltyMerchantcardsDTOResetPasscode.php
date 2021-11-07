@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * LoyaltyMerchantcardsDTOResetPasscode
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
+class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'LoyaltyMerchantcardsDTOResetPasscode';
+    protected static string $swaggerModelName = 'LoyaltyMerchantcardsDTOResetPasscode';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'cardnumber' => 'int',
         'passcode' => 'int'
     ];
@@ -36,17 +45,17 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'cardnumber' => null,
         'passcode' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -55,7 +64,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'cardnumber' => 'cardnumber',
         'passcode' => 'passcode'
     ];
@@ -64,7 +73,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'cardnumber' => 'setCardnumber',
         'passcode' => 'setPasscode'
     ];
@@ -73,40 +82,40 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'cardnumber' => 'getCardnumber',
         'passcode' => 'getPasscode'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['cardnumber'] = isset($data['cardnumber']) ? $data['cardnumber'] : null;
-        $this->container['passcode'] = isset($data['passcode']) ? $data['passcode'] : null;
+        $this->container['cardnumber'] = $data['cardnumber'] ?? null;
+        $this->container['passcode'] = $data['passcode'] ?? null;
     }
 
     /**
@@ -114,7 +123,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -127,7 +136,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -137,17 +146,17 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Gets cardnumber
      * @return int
      */
-    public function getCardnumber()
+    public function getCardnumber(): int
     {
         return $this->container['cardnumber'];
     }
 
     /**
      * Sets cardnumber
-     * @param int $cardnumber Loyalty Card number
+     * @param int|null $cardnumber Loyalty Card number
      * @return $this
      */
-    public function setCardnumber($cardnumber)
+    public function setCardnumber(?int $cardnumber): static
     {
         $this->container['cardnumber'] = $cardnumber;
 
@@ -158,17 +167,17 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Gets passcode
      * @return int
      */
-    public function getPasscode()
+    public function getPasscode(): int
     {
         return $this->container['passcode'];
     }
 
     /**
      * Sets passcode
-     * @param int $passcode Loyalty Card passcode
+     * @param int|null $passcode Loyalty Card passcode
      * @return $this
      */
-    public function setPasscode($passcode)
+    public function setPasscode(?int $passcode): static
     {
         $this->container['passcode'] = $passcode;
 
@@ -180,7 +189,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -190,9 +199,9 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -201,7 +210,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -215,7 +224,7 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -224,13 +233,17 @@ class LoyaltyMerchantcardsDTOResetPasscode implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 

@@ -1,8 +1,17 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Model;
 
-use \ArrayAccess;
+use ArrayAccess;
+use InvalidArgumentException;
+use Secuconnect\Client\ObjectSerializer;
 
 /**
  * GeoAddress
@@ -13,7 +22,7 @@ use \ArrayAccess;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class GeoAddress implements ArrayAccess
+class GeoAddress implements ArrayAccess, ModelInterface
 {
     const DISCRIMINATOR = null;
 
@@ -21,13 +30,13 @@ class GeoAddress implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'GeoAddress';
+    protected static string $swaggerModelName = 'GeoAddress';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerTypes = [
+    protected static array $swaggerTypes = [
         'type' => 'string',
         'address_components' => '\Secuconnect\Client\Model\AddressComponents[]',
         'address_formatted' => 'string',
@@ -38,19 +47,19 @@ class GeoAddress implements ArrayAccess
       * Array of property to format mappings. Used for (de)serialization
       * @var string[]
       */
-    protected static $swaggerFormats = [
+    protected static array $swaggerFormats = [
         'type' => null,
         'address_components' => null,
         'address_formatted' => null,
         'geometry' => null
     ];
 
-    public static function swaggerTypes()
+    public static function swaggerTypes(): array
     {
         return self::$swaggerTypes;
     }
 
-    public static function swaggerFormats()
+    public static function swaggerFormats(): array
     {
         return self::$swaggerFormats;
     }
@@ -59,7 +68,7 @@ class GeoAddress implements ArrayAccess
      * Array of attributes where the key is the local name, and the value is the original name
      * @var string[]
      */
-    protected static $attributeMap = [
+    protected static array $attributeMap = [
         'type' => 'type',
         'address_components' => 'address_components',
         'address_formatted' => 'address_formatted',
@@ -70,7 +79,7 @@ class GeoAddress implements ArrayAccess
      * Array of attributes to setter functions (for deserialization of responses)
      * @var string[]
      */
-    protected static $setters = [
+    protected static array $setters = [
         'type' => 'setType',
         'address_components' => 'setAddressComponents',
         'address_formatted' => 'setAddressFormatted',
@@ -81,44 +90,44 @@ class GeoAddress implements ArrayAccess
      * Array of attributes to getter functions (for serialization of requests)
      * @var string[]
      */
-    protected static $getters = [
+    protected static array $getters = [
         'type' => 'getType',
         'address_components' => 'getAddressComponents',
         'address_formatted' => 'getAddressFormatted',
         'geometry' => 'getGeometry'
     ];
 
-    public static function attributeMap()
+    public static function attributeMap(): array
     {
         return self::$attributeMap;
     }
 
-    public static function setters()
+    public static function setters(): array
     {
         return self::$setters;
     }
 
-    public static function getters()
+    public static function getters(): array
     {
         return self::$getters;
     }
 
     /**
      * Associative array for storing property values
-     * @var mixed[]
+     * @var array
      */
-    protected $container = [];
+    protected array $container = [];
 
     /**
      * Constructor
-     * @param mixed[] $data Associated array of property values initializing the model
+     * @param array|null $data Associated array of property values initializing the model
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['address_components'] = isset($data['address_components']) ? $data['address_components'] : null;
-        $this->container['address_formatted'] = isset($data['address_formatted']) ? $data['address_formatted'] : null;
-        $this->container['geometry'] = isset($data['geometry']) ? $data['geometry'] : null;
+        $this->container['type'] = $data['type'] ?? null;
+        $this->container['address_components'] = $data['address_components'] ?? null;
+        $this->container['address_formatted'] = $data['address_formatted'] ?? null;
+        $this->container['geometry'] = $data['geometry'] ?? null;
     }
 
     /**
@@ -126,7 +135,7 @@ class GeoAddress implements ArrayAccess
      *
      * @return array invalid properties with reasons
      */
-    public function listInvalidProperties()
+    public function listInvalidProperties(): array
     {
         $invalid_properties = [];
 
@@ -139,7 +148,7 @@ class GeoAddress implements ArrayAccess
      *
      * @return bool True if all properties are valid
      */
-    public function valid()
+    public function valid(): bool
     {
         return true;
     }
@@ -149,17 +158,17 @@ class GeoAddress implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->container['type'];
     }
 
     /**
      * Sets type
-     * @param string $type Address type
+     * @param string|null $type Address type
      * @return $this
      */
-    public function setType($type)
+    public function setType(?string $type): static
     {
         $this->container['type'] = $type;
 
@@ -170,17 +179,17 @@ class GeoAddress implements ArrayAccess
      * Gets address_components
      * @return \Secuconnect\Client\Model\AddressComponents[]
      */
-    public function getAddressComponents()
+    public function getAddressComponents(): array
     {
         return $this->container['address_components'];
     }
 
     /**
      * Sets address_components
-     * @param \Secuconnect\Client\Model\AddressComponents[] $address_components Address components
+     * @param \Secuconnect\Client\Model\AddressComponents[]|null $address_components Address components
      * @return $this
      */
-    public function setAddressComponents($address_components)
+    public function setAddressComponents(?array $address_components): static
     {
         $this->container['address_components'] = $address_components;
 
@@ -191,17 +200,17 @@ class GeoAddress implements ArrayAccess
      * Gets address_formatted
      * @return string
      */
-    public function getAddressFormatted()
+    public function getAddressFormatted(): string
     {
         return $this->container['address_formatted'];
     }
 
     /**
      * Sets address_formatted
-     * @param string $address_formatted Address formatted
+     * @param string|null $address_formatted Address formatted
      * @return $this
      */
-    public function setAddressFormatted($address_formatted)
+    public function setAddressFormatted(?string $address_formatted): static
     {
         $this->container['address_formatted'] = $address_formatted;
 
@@ -212,17 +221,17 @@ class GeoAddress implements ArrayAccess
      * Gets geometry
      * @return \Secuconnect\Client\Model\GeoAddressGeometry
      */
-    public function getGeometry()
+    public function getGeometry(): GeoAddressGeometry
     {
         return $this->container['geometry'];
     }
 
     /**
      * Sets geometry
-     * @param \Secuconnect\Client\Model\GeoAddressGeometry $geometry geometry
+     * @param \Secuconnect\Client\Model\GeoAddressGeometry|null $geometry geometry
      * @return $this
      */
-    public function setGeometry($geometry)
+    public function setGeometry(?GeoAddressGeometry $geometry): static
     {
         $this->container['geometry'] = $geometry;
 
@@ -234,7 +243,7 @@ class GeoAddress implements ArrayAccess
      * @param integer $offset Offset
      * @return boolean
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->container[$offset]);
     }
@@ -244,9 +253,9 @@ class GeoAddress implements ArrayAccess
      * @param integer $offset Offset
      * @return mixed
      */
-    public function offsetGet($offset)
+    public function offsetGet($offset): mixed
     {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
+        return $this->container[$offset] ?? null;
     }
 
     /**
@@ -255,7 +264,7 @@ class GeoAddress implements ArrayAccess
      * @param mixed   $value  Value to be set
      * @return void
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
             $this->container[] = $value;
@@ -269,7 +278,7 @@ class GeoAddress implements ArrayAccess
      * @param integer $offset Offset
      * @return void
      */
-    public function offsetUnset($offset)
+    public function offsetUnset($offset): void
     {
         unset($this->container[$offset]);
     }
@@ -278,13 +287,17 @@ class GeoAddress implements ArrayAccess
      * Gets the string presentation of the object
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
-        }
+        return json_encode(ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+    }
 
-        return json_encode(\Secuconnect\Client\ObjectSerializer::sanitizeForSerialization($this));
+    /**
+     * @inheritDoc
+     */
+    public function getModelName(): string
+    {
+        return self::$swaggerModelName;
     }
 }
 
