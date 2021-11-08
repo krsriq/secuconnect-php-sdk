@@ -176,9 +176,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact(): Contact
+    public function getContact(): Contact|null
     {
-        return $this->container['contact'];
+        return $this->container['contact'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets merchant_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getMerchantContact(): Contact
+    public function getMerchantContact(): Contact|null
     {
-        return $this->container['merchant_contact'];
+        return $this->container['merchant_contact'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets account_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getAccountContact(): Contact
+    public function getAccountContact(): Contact|null
     {
-        return $this->container['account_contact'];
+        return $this->container['account_contact'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets payment_container
      * @return \Secuconnect\Client\Model\LoyaltyCustomersPaymentContainerModel[]
      */
-    public function getPaymentContainer(): array
+    public function getPaymentContainer(): array|null
     {
-        return $this->container['payment_container'];
+        return $this->container['payment_container'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets customernumber
      * @return string
      */
-    public function getCustomernumber(): string
+    public function getCustomernumber(): string|null
     {
-        return $this->container['customernumber'];
+        return $this->container['customernumber'] ?? null;
     }
 
     /**
@@ -323,9 +323,9 @@ class LoyaltyCustomersProductModel extends BaseProductModel
      * Gets note
      * @return string
      */
-    public function getNote(): string
+    public function getNote(): string|null
     {
-        return $this->container['note'];
+        return $this->container['note'] ?? null;
     }
 
     /**

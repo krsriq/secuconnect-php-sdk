@@ -146,9 +146,9 @@ class PrepaidMappingZvt implements ArrayAccess, ModelInterface
      * Gets item
      * @return \Secuconnect\Client\Model\PrepaidMappingZvtItem
      */
-    public function getItem(): PrepaidMappingZvtItem
+    public function getItem(): PrepaidMappingZvtItem|null
     {
-        return $this->container['item'];
+        return $this->container['item'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class PrepaidMappingZvt implements ArrayAccess, ModelInterface
      * Gets vtc_id
      * @return string
      */
-    public function getVtcId(): string
+    public function getVtcId(): string|null
     {
-        return $this->container['vtc_id'];
+        return $this->container['vtc_id'] ?? null;
     }
 
     /**

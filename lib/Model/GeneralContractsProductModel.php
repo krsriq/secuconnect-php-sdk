@@ -164,9 +164,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets id_old
      * @return int
      */
-    public function getIdOld(): int
+    public function getIdOld(): int|null
     {
-        return $this->container['id_old'];
+        return $this->container['id_old'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets parent
      * @return \Secuconnect\Client\Model\ParentModel
      */
-    public function getParent(): ParentModel
+    public function getParent(): ParentModel|null
     {
-        return $this->container['parent'];
+        return $this->container['parent'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets pay_in_advance_account
      * @return \Secuconnect\Client\Model\BankAccountDescriptor
      */
-    public function getPayInAdvanceAccount(): BankAccountDescriptor
+    public function getPayInAdvanceAccount(): BankAccountDescriptor|null
     {
-        return $this->container['pay_in_advance_account'];
+        return $this->container['pay_in_advance_account'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets payment_link_options
      * @return \Secuconnect\Client\Model\PaymentLinkOptions
      */
-    public function getPaymentLinkOptions(): PaymentLinkOptions
+    public function getPaymentLinkOptions(): PaymentLinkOptions|null
     {
-        return $this->container['payment_link_options'];
+        return $this->container['payment_link_options'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class GeneralContractsProductModel extends BaseProductModel
      * Gets approved
      * @return bool
      */
-    public function getApproved(): bool
+    public function getApproved(): bool|null
     {
-        return $this->container['approved'];
+        return $this->container['approved'] ?? null;
     }
 
     /**

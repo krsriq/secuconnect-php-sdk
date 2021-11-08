@@ -158,9 +158,9 @@ class PaymentTransactionsInstructions implements ArrayAccess, ModelInterface
      * Gets lang
      * @return string
      */
-    public function getLang(): string
+    public function getLang(): string|null
     {
-        return $this->container['lang'];
+        return $this->container['lang'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class PaymentTransactionsInstructions implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class PaymentTransactionsInstructions implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PaymentTransactionsInstructions implements ArrayAccess, ModelInterface
      * Gets payment
      * @return \Secuconnect\Client\Model\BankAccountDescriptor
      */
-    public function getPayment(): BankAccountDescriptor
+    public function getPayment(): BankAccountDescriptor|null
     {
-        return $this->container['payment'];
+        return $this->container['payment'] ?? null;
     }
 
     /**

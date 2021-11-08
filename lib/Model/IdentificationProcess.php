@@ -152,9 +152,9 @@ class IdentificationProcess implements ArrayAccess, ModelInterface
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class IdentificationProcess implements ArrayAccess, ModelInterface
      * Gets identificatontime
      * @return string
      */
-    public function getIdentificatontime(): string
+    public function getIdentificatontime(): string|null
     {
-        return $this->container['identificatontime'];
+        return $this->container['identificatontime'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class IdentificationProcess implements ArrayAccess, ModelInterface
      * Gets transactionnumber
      * @return string
      */
-    public function getTransactionnumber(): string
+    public function getTransactionnumber(): string|null
     {
-        return $this->container['transactionnumber'];
+        return $this->container['transactionnumber'] ?? null;
     }
 
     /**

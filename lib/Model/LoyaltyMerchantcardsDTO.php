@@ -164,9 +164,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
      * Gets card
      * @return string
      */
-    public function getCard(): string
+    public function getCard(): string|null
     {
-        return $this->container['card'];
+        return $this->container['card'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
      * Gets payment_container
      * @return string
      */
-    public function getPaymentContainer(): string
+    public function getPaymentContainer(): string|null
     {
-        return $this->container['payment_container'];
+        return $this->container['payment_container'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
      * Gets created_by_merchant
      * @return bool
      */
-    public function getCreatedByMerchant(): bool
+    public function getCreatedByMerchant(): bool|null
     {
-        return $this->container['created_by_merchant'];
+        return $this->container['created_by_merchant'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class LoyaltyMerchantcardsDTO implements ArrayAccess, ModelInterface
      * Gets used_by_merchant
      * @return bool
      */
-    public function getUsedByMerchant(): bool
+    public function getUsedByMerchant(): bool|null
     {
-        return $this->container['used_by_merchant'];
+        return $this->container['used_by_merchant'] ?? null;
     }
 
     /**

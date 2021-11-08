@@ -139,9 +139,9 @@ class PaymentTransactionsShippingUrl implements ArrayAccess, ModelInterface
      * Gets url
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): string|null
     {
-        return $this->container['url'];
+        return $this->container['url'] ?? null;
     }
 
     /**

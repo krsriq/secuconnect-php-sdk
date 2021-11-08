@@ -146,9 +146,9 @@ class PrepaidZvtDTO implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class PrepaidZvtDTO implements ArrayAccess, ModelInterface
      * Gets product_id
      * @return int
      */
-    public function getProductId(): int
+    public function getProductId(): int|null
     {
-        return $this->container['product_id'];
+        return $this->container['product_id'] ?? null;
     }
 
     /**

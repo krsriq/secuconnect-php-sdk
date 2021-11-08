@@ -158,9 +158,9 @@ class SmartTransactionPreparePayloadDataModel implements ArrayAccess, ModelInter
      * Gets callback_urls
      * @return string[]
      */
-    public function getCallbackUrls(): array
+    public function getCallbackUrls(): array|null
     {
-        return $this->container['callback_urls'];
+        return $this->container['callback_urls'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class SmartTransactionPreparePayloadDataModel implements ArrayAccess, ModelInter
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class SmartTransactionPreparePayloadDataModel implements ArrayAccess, ModelInter
      * Gets mode
      * @return string
      */
-    public function getMode(): string
+    public function getMode(): string|null
     {
-        return $this->container['mode'];
+        return $this->container['mode'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class SmartTransactionPreparePayloadDataModel implements ArrayAccess, ModelInter
      * Gets is_paypal_basic
      * @return bool
      */
-    public function getIsPaypalBasic(): bool
+    public function getIsPaypalBasic(): bool|null
     {
-        return $this->container['is_paypal_basic'];
+        return $this->container['is_paypal_basic'] ?? null;
     }
 
     /**

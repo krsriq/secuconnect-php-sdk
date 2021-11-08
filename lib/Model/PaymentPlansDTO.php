@@ -176,9 +176,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets paypal_plan_id
      * @return string
      */
-    public function getPaypalPlanId(): string
+    public function getPaypalPlanId(): string|null
     {
-        return $this->container['paypal_plan_id'];
+        return $this->container['paypal_plan_id'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods(): array
+    public function getPaymentMethods(): array|null
     {
-        return $this->container['payment_methods'];
+        return $this->container['payment_methods'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return \Secuconnect\Client\Model\GeneralMerchantsProductModel
      */
-    public function getMerchant(): GeneralMerchantsProductModel
+    public function getMerchant(): GeneralMerchantsProductModel|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class PaymentPlansDTO implements ArrayAccess, ModelInterface
      * Gets billing_cycles
      * @return \Secuconnect\Client\Model\BillingCyclesItem[]
      */
-    public function getBillingCycles(): array
+    public function getBillingCycles(): array|null
     {
-        return $this->container['billing_cycles'];
+        return $this->container['billing_cycles'] ?? null;
     }
 
     /**

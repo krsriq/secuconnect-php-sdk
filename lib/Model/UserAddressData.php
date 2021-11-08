@@ -164,9 +164,9 @@ class UserAddressData implements ArrayAccess, ModelInterface
      * Gets street
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getStreet(): ValueField
+    public function getStreet(): ValueField|null
     {
-        return $this->container['street'];
+        return $this->container['street'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class UserAddressData implements ArrayAccess, ModelInterface
      * Gets street_number
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getStreetNumber(): ValueField
+    public function getStreetNumber(): ValueField|null
     {
-        return $this->container['street_number'];
+        return $this->container['street_number'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class UserAddressData implements ArrayAccess, ModelInterface
      * Gets city
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCity(): ValueField
+    public function getCity(): ValueField|null
     {
-        return $this->container['city'];
+        return $this->container['city'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class UserAddressData implements ArrayAccess, ModelInterface
      * Gets postal_code
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getPostalCode(): ValueField
+    public function getPostalCode(): ValueField|null
     {
-        return $this->container['postal_code'];
+        return $this->container['postal_code'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class UserAddressData implements ArrayAccess, ModelInterface
      * Gets country
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCountry(): ValueField
+    public function getCountry(): ValueField|null
     {
-        return $this->container['country'];
+        return $this->container['country'] ?? null;
     }
 
     /**

@@ -6,11 +6,11 @@ use PHPUnit\Framework\TestCase;
 use Secuconnect\Client\ApiException;
 use Secuconnect\Client\Model\BankAccountDescriptor;
 use Secuconnect\Client\Model\CreditCardDescriptor;
+use Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate;
 use Secuconnect\Client\Model\PaymentContainerMandate;
 use Secuconnect\Client\Model\PaymentContainersDTO;
 use Secuconnect\Client\Model\PaymentContainersList;
 use Secuconnect\Client\Model\PaymentContainersProductModel;
-use Secuconnect\Client\Model\PaymentCustomersProductModel;
 
 /**
  * Class PaymentContainersApiTest
@@ -19,67 +19,28 @@ class PaymentContainersApiTest extends TestCase
 {
     const BANK_ACCOUNT_OWNER_RENAMED = 'John Doe';
 
-    /**
-     * @var PaymentContainersApi
-     */
-    private $api;
+    private ?PaymentContainersApi $api;
 
-    /**
-     * @var string
-     */
-    private static $containerId;
+    private static ?string $containerId;
 
-    /**
-     * @var PaymentContainersDTO
-     */
-    private static $container;
+    private static ?PaymentContainersDTO $container;
 
-    /**
-     * @var BankAccountDescriptor
-     */
-    private static $privateData;
+    private static ?BankAccountDescriptor $privateData;
 
-    /**
-     * @var PaymentCustomersProductModel
-     */
-    private static $customer;
+    private static ?OneOfPaymentContainersDTOModelPrivate $bankAccount;
 
-    /**
-     * @var BankAccountDescriptor
-     */
-    private static $bankAccount;
+    private static ?string $created;
 
-    /**
-     * @var string
-     */
-    private static $created;
+    private static PaymentContainersProductModel $testContainer1;
 
-    /**
-     * @var string
-     */
-    private static $updated;
+    private static PaymentContainersProductModel $testContainer2;
 
-    /**
-     * @var PaymentContainersProductModel
-     */
-    private static $testContainer1;
-
-    /**
-     * @var PaymentContainersProductModel
-     */
-    private static $testContainer2;
-
-    /**
-     * @var PaymentContainersProductModel
-     */
-    private static $testContainer3;
+    private static PaymentContainersProductModel $testContainer3;
 
     /**
      * Setup before running any test cases
-     *
-     * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$containerId = '';
@@ -95,19 +56,16 @@ class PaymentContainersApiTest extends TestCase
             ->setType('bank_account')
             ->setPrivate(self::$privateData);
 
-        self::$customer = SecuconnectObjects::getInstance()->getCustomer();
-
         self::$bankAccount = new BankAccountDescriptor();
 
         self::$created = '';
-        self::$updated = '';
     }
 
     /**
      * Setup before running each test case
      * @throws ApiException
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $instance = SecuconnectObjects::getInstance();
@@ -118,7 +76,7 @@ class PaymentContainersApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -127,15 +85,13 @@ class PaymentContainersApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$containerId = null;
         self::$container = null;
         self::$privateData = null;
-        self::$customer = null;
         self::$bankAccount = null;
         self::$created = null;
-        self::$updated = null;
         parent::tearDownAfterClass();
     }
 
@@ -246,8 +202,6 @@ class PaymentContainersApiTest extends TestCase
         $this->assertNotEmpty($response->getMandate()->getSepaMandateId());
         $this->assertNotEmpty($response->getMandate()->getType());
         $this->assertNotEmpty($response->getMandate()->getIdentification());
-
-        self::$updated = $response->getUpdated();
     }
 
     /**
@@ -305,7 +259,7 @@ class PaymentContainersApiTest extends TestCase
 
         $this->assertNotEmpty($response);
         $this->assertInstanceOf(PaymentContainersList::class, $response);
-        $this->assertInternalType('int', $response->getCount());
+        $this->assertIsInt($response->getCount());
 
         foreach ($response->getData() as $container) {
             $this->assertInstanceOf(PaymentContainersProductModel::class, $container);
@@ -443,18 +397,5 @@ class PaymentContainersApiTest extends TestCase
         $this->assertEquals(self::$bankAccount->getBankname(), $public_data->getBankname());
         $this->assertEquals('bank_account', $response[0]->getType());
         $this->assertEquals(self::$created, $response[0]->getCreated());
-    }
-
-    /**
-     * Asserts that a variable is of type array.
-     * @param mixed $value
-     */
-    public static function assertIsArray($value)
-    {
-        if (method_exists(TestCase::class, 'assertIsArray')) {
-            parent::assertIsArray($value);
-        } else {
-            self::assertInternalType('array', $value);
-        }
     }
 }

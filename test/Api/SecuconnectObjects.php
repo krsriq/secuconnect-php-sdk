@@ -26,25 +26,13 @@ class SecuconnectObjects
         'pin' => "..."
     ];
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance = null;
 
-    /**
-     * @var PaymentContainersProductModel
-     */
-    private $container;
+    private PaymentContainersProductModel $container;
 
-    /**
-     * @var PaymentCustomersProductModel
-     */
-    private $customer;
+    private PaymentCustomersProductModel $customer;
 
-    /**
-     * @var array
-     */
-    private $basket;
+    private array $basket;
 
     private function __construct()
     {
@@ -59,7 +47,7 @@ class SecuconnectObjects
      * @throws ApiException
      *
      */
-    public static function getInstance()
+    public static function getInstance(): static
     {
         if (self::$instance == null) {
             self::$instance = new self();
@@ -76,7 +64,7 @@ class SecuconnectObjects
      * @return $this
      * @throws ApiException
      */
-    public function authenticateByClientCredentials()
+    public function authenticateByClientCredentials(): static
     {
         Authenticator::authenticateByClientCredentials(...array_values(Globals::OAuthClientCredentials));
         return $this;
@@ -86,16 +74,13 @@ class SecuconnectObjects
      * @return $this
      * @throws ApiException
      */
-    public function authenticateByApplicationUser()
+    public function authenticateByApplicationUser(): static
     {
         Authenticator::authenticateByApplicationUser(...array_values(Globals::OAuthApplicationUserCredentials));
         return $this;
     }
 
-    /**
-     * @return PaymentContainersDTO
-     */
-    public function createPaymentContainersDTO()
+    public function createPaymentContainersDTO(): PaymentContainersDTO
     {
         $privateData = new BankAccountDescriptor();
         $privateData
@@ -112,11 +97,10 @@ class SecuconnectObjects
     }
 
     /**
-     * @return $this
+     * @return PaymentContainersProductModel
      * @throws ApiException
-     *
      */
-    private function createContainer()
+    private function createContainer(): PaymentContainersProductModel
     {
         try {
             $api = new PaymentContainersApi();
@@ -126,13 +110,10 @@ class SecuconnectObjects
             throw $e;
         }
 
-        return $this;
+        return $this->container;
     }
 
-    /**
-     * @return PaymentCustomersDTO
-     */
-    public function createPaymentCustomersDTO()
+    public function createPaymentCustomersDTO(): PaymentCustomersDTO
     {
         $contact = new Contact();
         $contact->setForename('John');
@@ -147,11 +128,10 @@ class SecuconnectObjects
     }
 
     /**
-     * @return $this
+     * @return PaymentCustomersProductModel
      * @throws ApiException
-     *
      */
-    private function createCustomer()
+    private function createCustomer(): PaymentCustomersProductModel
     {
         try {
             $api = new PaymentCustomersApi();
@@ -161,13 +141,13 @@ class SecuconnectObjects
             throw $e;
         }
 
-        return $this;
+        return $this->customer;
     }
 
     /**
-     * @return $this
+     * @return SecupayBasketItem[]
      */
-    private function createBasket()
+    private function createBasket(): array
     {
         $basketItem1 = new SecupayBasketItem();
         $basketItem1->setItemType('shipping');
@@ -197,29 +177,20 @@ class SecuconnectObjects
 
         $this->basket = [$basketItem1, $basketItem2, $basketItem3];
 
-        return $this;
+        return $this->basket;
     }
 
-    /**
-     * @return PaymentContainersProductModel
-     */
-    public function getContainer()
+    public function getContainer(): PaymentContainersProductModel
     {
         return $this->container;
     }
 
-    /**
-     * @return PaymentCustomersProductModel
-     */
-    public function getCustomer()
+    public function getCustomer(): PaymentCustomersProductModel
     {
         return $this->customer;
     }
 
-    /**
-     * @return array
-     */
-    public function getBasket()
+    public function getBasket(): array
     {
         return $this->basket;
     }

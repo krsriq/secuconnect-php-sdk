@@ -182,9 +182,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets owner
      * @return string
      */
-    public function getOwner(): string
+    public function getOwner(): string|null
     {
-        return $this->container['owner'];
+        return $this->container['owner'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets pan
      * @return string
      */
-    public function getPan(): string
+    public function getPan(): string|null
     {
-        return $this->container['pan'];
+        return $this->container['pan'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets expiration_date
      * @return string
      */
-    public function getExpirationDate(): string
+    public function getExpirationDate(): string|null
     {
-        return $this->container['expiration_date'];
+        return $this->container['expiration_date'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets issuer
      * @return string
      */
-    public function getIssuer(): string
+    public function getIssuer(): string|null
     {
-        return $this->container['issuer'];
+        return $this->container['issuer'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets transact_container
      * @return string
      */
-    public function getTransactContainer(): string
+    public function getTransactContainer(): string|null
     {
-        return $this->container['transact_container'];
+        return $this->container['transact_container'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets transact_skey_pubkey
      * @return string
      */
-    public function getTransactSkeyPubkey(): string
+    public function getTransactSkeyPubkey(): string|null
     {
-        return $this->container['transact_skey_pubkey'];
+        return $this->container['transact_skey_pubkey'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets transact_skey_keyname
      * @return string
      */
-    public function getTransactSkeyKeyname(): string
+    public function getTransactSkeyKeyname(): string|null
     {
-        return $this->container['transact_skey_keyname'];
+        return $this->container['transact_skey_keyname'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class CreditCardDescriptor implements ArrayAccess, ModelInterface, OneOfPaymentC
      * Gets transact_hash
      * @return string
      */
-    public function getTransactHash(): string
+    public function getTransactHash(): string|null
     {
-        return $this->container['transact_hash'];
+        return $this->container['transact_hash'] ?? null;
     }
 
     /**

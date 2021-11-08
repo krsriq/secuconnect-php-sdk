@@ -140,9 +140,9 @@ class PaymentLinkOptions implements ArrayAccess, ModelInterface
      * Gets background
      * @return \Secuconnect\Client\Model\BackgroundImageOption
      */
-    public function getBackground(): BackgroundImageOption
+    public function getBackground(): BackgroundImageOption|null
     {
-        return $this->container['background'];
+        return $this->container['background'] ?? null;
     }
 
     /**

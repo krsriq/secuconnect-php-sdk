@@ -176,9 +176,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets loyalty
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getLoyalty(): SmartDeviceProductsEnabled
+    public function getLoyalty(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['loyalty'];
+        return $this->container['loyalty'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets smart
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getSmart(): SmartDeviceProductsEnabled
+    public function getSmart(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['smart'];
+        return $this->container['smart'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets cashreg
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getCashreg(): SmartDeviceProductsEnabled
+    public function getCashreg(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['cashreg'];
+        return $this->container['cashreg'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets collect
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getCollect(): SmartDeviceProductsEnabled
+    public function getCollect(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['collect'];
+        return $this->container['collect'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets showcase
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getShowcase(): SmartDeviceProductsEnabled
+    public function getShowcase(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['showcase'];
+        return $this->container['showcase'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets vtm
      * @return \Secuconnect\Client\Model\SmartDeviceProductsEnabled
      */
-    public function getVtm(): SmartDeviceProductsEnabled
+    public function getVtm(): SmartDeviceProductsEnabled|null
     {
-        return $this->container['vtm'];
+        return $this->container['vtm'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SmartDevicesProducts implements ArrayAccess, ModelInterface
      * Gets prepaid
      * @return \Secuconnect\Client\Model\SmartDeviceProductsPrepaid
      */
-    public function getPrepaid(): SmartDeviceProductsPrepaid
+    public function getPrepaid(): SmartDeviceProductsPrepaid|null
     {
-        return $this->container['prepaid'];
+        return $this->container['prepaid'] ?? null;
     }
 
     /**

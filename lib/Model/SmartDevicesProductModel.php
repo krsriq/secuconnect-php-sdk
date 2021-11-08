@@ -242,9 +242,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -263,9 +263,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -284,9 +284,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore(): Store
+    public function getStore(): Store|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -305,9 +305,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -326,9 +326,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets vendor
      * @return string
      */
-    public function getVendor(): string
+    public function getVendor(): string|null
     {
-        return $this->container['vendor'];
+        return $this->container['vendor'] ?? null;
     }
 
     /**
@@ -347,9 +347,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid(): string
+    public function getVendorUid(): string|null
     {
-        return $this->container['vendor_uid'];
+        return $this->container['vendor_uid'] ?? null;
     }
 
     /**
@@ -368,9 +368,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -389,9 +389,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets device
      * @return \Secuconnect\Client\Model\SmartDevicesDevice
      */
-    public function getDevice(): SmartDevicesDevice
+    public function getDevice(): SmartDevicesDevice|null
     {
-        return $this->container['device'];
+        return $this->container['device'] ?? null;
     }
 
     /**
@@ -410,9 +410,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets routing
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getRouting(): ProductInstanceUID
+    public function getRouting(): ProductInstanceUID|null
     {
-        return $this->container['routing'];
+        return $this->container['routing'] ?? null;
     }
 
     /**
@@ -431,9 +431,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets user_pin
      * @return string
      */
-    public function getUserPin(): string
+    public function getUserPin(): string|null
     {
-        return $this->container['user_pin'];
+        return $this->container['user_pin'] ?? null;
     }
 
     /**
@@ -452,9 +452,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets products
      * @return \Secuconnect\Client\Model\SmartDevicesProducts
      */
-    public function getProducts(): SmartDevicesProducts
+    public function getProducts(): SmartDevicesProducts|null
     {
-        return $this->container['products'];
+        return $this->container['products'] ?? null;
     }
 
     /**
@@ -473,9 +473,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -494,9 +494,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -515,9 +515,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets idle_screen_register
      * @return string
      */
-    public function getIdleScreenRegister(): string
+    public function getIdleScreenRegister(): string|null
     {
-        return $this->container['idle_screen_register'];
+        return $this->container['idle_screen_register'] ?? null;
     }
 
     /**
@@ -536,9 +536,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets idle_screen_terminal
      * @return string
      */
-    public function getIdleScreenTerminal(): string
+    public function getIdleScreenTerminal(): string|null
     {
-        return $this->container['idle_screen_terminal'];
+        return $this->container['idle_screen_terminal'] ?? null;
     }
 
     /**
@@ -557,9 +557,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets online
      * @return bool
      */
-    public function getOnline(): bool
+    public function getOnline(): bool|null
     {
-        return $this->container['online'];
+        return $this->container['online'] ?? null;
     }
 
     /**
@@ -578,9 +578,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets refresh
      * @return int
      */
-    public function getRefresh(): int
+    public function getRefresh(): int|null
     {
-        return $this->container['refresh'];
+        return $this->container['refresh'] ?? null;
     }
 
     /**
@@ -599,9 +599,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets terminal_type
      * @return string
      */
-    public function getTerminalType(): string
+    public function getTerminalType(): string|null
     {
-        return $this->container['terminal_type'];
+        return $this->container['terminal_type'] ?? null;
     }
 
     /**
@@ -620,9 +620,9 @@ class SmartDevicesProductModel extends BaseProductModel
      * Gets base_version
      * @return string
      */
-    public function getBaseVersion(): string
+    public function getBaseVersion(): string|null
     {
-        return $this->container['base_version'];
+        return $this->container['base_version'] ?? null;
     }
 
     /**

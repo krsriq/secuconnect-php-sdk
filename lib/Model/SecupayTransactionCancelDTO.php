@@ -152,9 +152,9 @@ class SecupayTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract(): PaymentContractsProductModel
+    public function getContract(): PaymentContractsProductModel|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SecupayTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SecupayTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets reduce_stakeholder_payment
      * @return bool
      */
-    public function getReduceStakeholderPayment(): bool
+    public function getReduceStakeholderPayment(): bool|null
     {
-        return $this->container['reduce_stakeholder_payment'];
+        return $this->container['reduce_stakeholder_payment'] ?? null;
     }
 
     /**

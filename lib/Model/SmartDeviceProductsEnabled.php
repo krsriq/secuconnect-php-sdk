@@ -140,9 +140,9 @@ class SmartDeviceProductsEnabled implements ArrayAccess, ModelInterface
      * Gets enabled
      * @return bool
      */
-    public function getEnabled(): bool
+    public function getEnabled(): bool|null
     {
-        return $this->container['enabled'];
+        return $this->container['enabled'] ?? null;
     }
 
     /**

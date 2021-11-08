@@ -2,6 +2,7 @@
 
 namespace Secuconnect\Client;
 
+use InvalidArgumentException;
 use Psr\Cache\CacheItemPoolInterface;
 use Secuconnect\Client\Cache\FileCache;
 use Secuconnect\Client\Printer\ImitationDevicePrinter;
@@ -13,186 +14,127 @@ use Secuconnect\Client\Printer\Printer;
 class Configuration
 {
     const DEFAULT_HOST = 'connect-testing.secupay-ag.de'; // For live use: connect.secucard.com
-    const SDK_VERSION = '2.10.0';
+    const SDK_VERSION = '3.0.0';
 
     const BASE_URL = 'https://' . self::DEFAULT_HOST . '/';
     const API_URL = self::BASE_URL . 'api/v2';
 
     /**
-     * @var self|null
+     * @var Configuration|null
      */
-    private static $defaultConfiguration;
+    protected static ?Configuration $defaultConfiguration;
 
     /**
-     * basic stomp destination
+     * Proxy settings for curl
      *
-     * @var string
+     * @var CurlProxyConfiguration|null
      */
-    protected $replyToStomp = '/temp-queue/main';
+    public ?CurlProxyConfiguration $proxy = null;
 
     /**
-     * basic stomp destination
-     *
-     * @var string
+     * Printer (f.e. to display the receipt)
      */
-    protected $basicStompDestination = '/exchange/connect.api/';
+    protected Printer $printer;
+
+    /**
+     * PSR6 Cache solution
+     */
+    protected CacheItemPoolInterface $cache;
+
+    /**
+     * STOMP destination
+     */
+    protected string $basicStompDestination = '/exchange/connect.api/';
+
+    /**
+     * STOMP queue
+     */
+    protected string $replyToStomp = '/temp-queue/main';
 
     /**
      * Access token for OAuth
-     *
-     * @var string
      */
-    protected $accessToken = '';
+    protected string $accessToken = '';
 
     /**
      * The default header(s)
      *
      * @var array
      */
-    protected $defaultHeaders = [];
+    protected array $defaultHeaders = [];
 
     /**
      * The host
-     *
-     * @var string
      */
-    protected $host = self::API_URL;
+    protected string $host = self::API_URL;
 
     /**
      * The authentication host
-     *
-     * @var string
      */
-    protected $authHost = self::BASE_URL;
-
-    /**
-     * The stomp host
-     *
-     * @var string
-     */
-    protected $stompHost = 'ssl://' . self::DEFAULT_HOST;
+    protected string $authHost = self::BASE_URL;
 
     /**
      * The stomp port
-     *
-     * @var string
      */
-    protected $stompPort = '61614';
+    protected string $stompPort = '61614';
 
     /**
-     * Timeout (second) of the HTTP request, by default set to 0, no timeout
-     *
-     * @var string
+     * The stomp host
      */
-    protected $curlTimeout = 0;
-
-    /**
-     * Timeout (second) of the HTTP connection, by default set to 0, no timeout
-     *
-     * @var string
-     */
-    protected $curlConnectTimeout = 0;
+    protected string $stompHost = 'ssl://' . self::DEFAULT_HOST;
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
-     *
-     * @var string
      */
-    protected $userAgent = 'Secuconnect-PHP-Client/' . self::SDK_VERSION;
+    protected string $userAgent = 'Secuconnect-PHP-Client/' . self::SDK_VERSION;
 
     /**
-     * Debug switch (default set to false)
-     *
-     * @var bool
+     * Timeout (second) of the HTTP request, by default set to 0, no timeout
      */
-    protected $debug = false;
+    protected int $curlTimeout = 0;
 
     /**
-     * Debug file location (log to STDOUT by default)
-     *
-     * @var string
+     * Timeout (second) of the HTTP connection, by default set to 0, no timeout
      */
-    protected $debugFile = 'php://output';
-
-    /**
-     * Debug file location (log to STDOUT by default)
-     *
-     * @var string
-     */
-    protected $tempFolderPath;
-
-    /**
-     * Indicates if SSL verification should be enabled or disabled.
-     *
-     * This is useful if the host uses a self-signed SSL certificate.
-     *
-     * @var boolean True if the certificate should be validated, false otherwise.
-     */
-    protected $sslVerification = true;
-
-    /**
-     * Curl proxy host
-     *
-     * @var string
-     */
-    protected $proxyHost;
-
-    /**
-     * Curl proxy port
-     *
-     * @var integer
-     */
-    protected $proxyPort;
-
-    /**
-     * Curl proxy type, e.g. CURLPROXY_HTTP or CURLPROXY_SOCKS5
-     *
-     * @see https://secure.php.net/manual/en/function.curl-setopt.php
-     * @var integer
-     */
-    protected $proxyType;
-
-    /**
-     * Curl proxy username
-     *
-     * @var string
-     */
-    protected $proxyUser;
-
-    /**
-     * Curl proxy password
-     *
-     * @var string
-     */
-    protected $proxyPassword;
+    protected int $curlConnectTimeout = 0;
 
     /**
      * Allow Curl encoding header
      *
      * @var bool
      */
-    protected $allowEncoding = false;
+    protected bool $allowEncoding = false;
 
     /**
-     * PSR6 Cache solution
-     *
-     * @var CacheItemPoolInterface
+     * Debug switch (default set to false)
      */
-    protected $cache;
+    protected bool $debug = false;
 
     /**
-     * Printer
-     *
-     * @var Printer
+     * Debug file location (log to STDOUT by default)
      */
-    protected $printer;
+    protected string $debugFile = 'php://output';
+
+    /**
+     * Debug file location (log to STDOUT by default)
+     */
+    protected string $tempFolderPath;
+
+    /**
+     * Indicates if SSL verification should be enabled or disabled.
+     *
+     * This is useful if the host uses a self-signed SSL certificate.
+     *
+     * @var bool True if the certificate should be validated, false otherwise.
+     */
+    protected bool $sslVerification = true;
 
     /**
      * Configuration constructor.
-     * @param CacheItemPoolInterface $cache
-     * @param Printer $printer
+     * @param CacheItemPoolInterface|null $cache
+     * @param Printer|null $printer
      */
-    public function __construct($cache = null, $printer = null)
+    public function __construct(CacheItemPoolInterface $cache = null, Printer $printer = null)
     {
         $this->tempFolderPath = sys_get_temp_dir();
         $this->cache = $cache ?: new FileCache();
@@ -200,91 +142,143 @@ class Configuration
     }
 
     /**
+     * Gets the essential information for debugging
+     *
+     * @return string The report for debugging
+     */
+    public static function toDebugReport(): string
+    {
+        $report = 'PHP SDK (Secuconnect\Client) Debug Report:' . PHP_EOL;
+        $report .= '    OS: ' . php_uname() . PHP_EOL;
+        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
+        $report .= '    SDK Package Version: ' . self::SDK_VERSION . PHP_EOL;
+        $report .= '    Default Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+
+        return $report;
+    }
+
+    /**
+     * Gets the temp folder path
+     *
+     * @return string
+     */
+    public function getTempFolderPath(): string
+    {
+        return $this->tempFolderPath;
+    }
+
+    /**
+     * Sets the temp folder path
+     *
+     * @param string $tempFolderPath
+     * @return $this
+     */
+    public function setTempFolderPath(string $tempFolderPath): static
+    {
+        $this->tempFolderPath = $tempFolderPath;
+        return $this;
+    }
+
+    /**
+     * Gets the default configuration instance
+     *
+     * @return Configuration
+     */
+    public static function getDefaultConfiguration(): static
+    {
+        self::$defaultConfiguration ??= new Configuration();
+
+        return self::$defaultConfiguration;
+    }
+
+    /**
+     * Sets the default configuration instance
+     *
+     * @param Configuration $config An instance of the Configuration Object
+     * @return void
+     */
+    public static function setDefaultConfiguration(Configuration $config): void
+    {
+        self::$defaultConfiguration = $config;
+    }
+
+    /**
      * @return Printer
      */
-    public function getPrinter()
+    public function getPrinter(): Printer
     {
         return $this->printer;
     }
 
     /**
      * @param Printer $printer
+     * @return $this
      */
-    public function setPrinter(Printer $printer)
+    public function setPrinter(Printer $printer): static
     {
         $this->printer = $printer;
+        return $this;
     }
 
     /**
+     * Gets the PSR6 cache solution
      * @return CacheItemPoolInterface
      */
-    public function getCache()
+    public function getCache(): CacheItemPoolInterface
     {
         return $this->cache;
     }
 
     /**
+     * Sets the PSR6 cache solution
      * @param CacheItemPoolInterface $cache
+     * @return Configuration
      */
-    public function setCache(CacheItemPoolInterface $cache)
+    public function setCache(CacheItemPoolInterface $cache): static
     {
         $this->cache = $cache;
+        return $this;
     }
 
     /**
-     * Sets the basic Stomp Destination
+     * Gets the STOMP destination
      *
-     * @param string basicStompDestination
+     * @return string
+     */
+    public function getBasicStompDestination(): string
+    {
+        return $this->basicStompDestination;
+    }
+
+    /**
+     * Sets the STOMP destination
      *
+     * @param string $basicStompDestination
      * @return $this
      */
-    public function setBasicStompDestination($basicStompDestination)
+    public function setBasicStompDestination(string $basicStompDestination): static
     {
         $this->basicStompDestination = $basicStompDestination;
         return $this;
     }
 
     /**
-     * Gets the basic Stomp Destination
+     * Gets the STOMP queue
      *
      * @return string basicStompDestination
      */
-    public function getBasicStompDestination()
-    {
-        return $this->basicStompDestination;
-    }
-
-    /**
-     * Sets the access token for OAuth
-     *
-     * @param string $accessToken Token for OAuth
-     *
-     * @return $this
-     */
-    public function setAccessToken($accessToken)
-    {
-        $this->accessToken = $accessToken;
-        return $this;
-    }
-
-    /**
-     * Gets the basic Stomp Destination
-     *
-     * @return string basicStompDestination
-     */
-    public function getReplyToStomp()
+    public function getReplyToStomp(): string
     {
         return $this->replyToStomp;
     }
 
     /**
-     * Sets ReplyToStomp parameter
+     * Sets STOMP queue
      *
      * @param string $replyToStomp
-     *
      * @return $this
      */
-    public function setReplyToStomp($replyToStomp)
+    public function setReplyToStomp(string $replyToStomp): static
     {
         $this->replyToStomp = $replyToStomp;
         return $this;
@@ -295,27 +289,20 @@ class Configuration
      *
      * @return string Access token for OAuth
      */
-    public function getAccessToken()
+    public function getAccessToken(): string
     {
         return $this->accessToken;
     }
 
     /**
-     * Adds a default header
+     * Sets the access token for OAuth
      *
-     * @param string $headerName  header name (e.g. Token)
-     * @param string $headerValue header value (e.g. 1z8wp3)
-     *
-     * @throws \InvalidArgumentException
+     * @param string $accessToken
      * @return $this
      */
-    public function addDefaultHeader($headerName, $headerValue)
+    public function setAccessToken(string $accessToken): static
     {
-        if (!is_string($headerName)) {
-            throw new \InvalidArgumentException('Header name must be a string.');
-        }
-
-        $this->defaultHeaders[$headerName] =  $headerValue;
+        $this->accessToken = $accessToken;
         return $this;
     }
 
@@ -324,126 +311,150 @@ class Configuration
      *
      * @return array An array of default header(s)
      */
-    public function getDefaultHeaders()
+    public function getDefaultHeaders(): array
     {
         return $this->defaultHeaders;
+    }
+
+    /**
+     * Adds a default header
+     *
+     * @param string $headerName header name (e.g. Token)
+     * @param string $headerValue header value (e.g. 1z8wp3)
+     * @return $this
+     * @throws InvalidArgumentException
+     */
+    public function addDefaultHeader(string $headerName, string $headerValue): static
+    {
+        if (empty($headerName)) {
+            throw new InvalidArgumentException('Header name must be a string.');
+        }
+
+        $this->defaultHeaders[$headerName] = $headerValue;
+        return $this;
     }
 
     /**
      * Deletes a default header
      *
      * @param string $headerName the header to delete
-     *
      * @return $this
      */
-    public function deleteDefaultHeader($headerName)
+    public function deleteDefaultHeader(string $headerName): static
     {
         unset($this->defaultHeaders[$headerName]);
         return $this;
     }
 
     /**
+     * Gets the host
+     *
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
      * Sets the host
      *
      * @param string $host Host
-     *
      * @return $this
      */
-    public function setHost($host)
+    public function setHost(string $host): static
     {
         $this->host = $host;
         return $this;
     }
 
     /**
-     * Gets the host
+     * Gets the authentication host
      *
-     * @return string Host
+     * @return string
      */
-    public function getHost()
+    public function getAuthHost(): string
     {
-        return $this->host;
+        return $this->authHost;
     }
 
     /**
      * Sets the authentication host
      *
-     * @param $host
+     * @param string $host
      * @return $this
      */
-    public function setAuthHost($host)
+    public function setAuthHost(string $host): static
     {
         $this->authHost = $host;
         return $this;
     }
 
     /**
-     * Gets the authentication host
+     * Gets the stomp port
      *
-     * @return string Host
+     * @return string
      */
-    public function getAuthHost()
+    public function getStompPort(): string
     {
-        return $this->authHost;
+        return $this->stompPort;
     }
 
-     /**
+    /**
      * Sets the stomp port
      *
-     * @param string stompPort
-     *
+     * @param string $port
      * @return $this
      */
-    public function setStompPort($port)
+    public function setStompPort(string $port): static
     {
         $this->stompPort = $port;
         return $this;
     }
 
     /**
-     * Gets the stomp port
+     * Gets the stomp host
      *
-     * @return string stompPort
+     * @return string
      */
-    public function getStompPort()
+    public function getStompHost(): string
     {
-        return $this->stompPort;
+        return $this->stompHost;
     }
 
     /**
      * Sets the stomp host
      *
-     * @param string authHost
+     * @param string $host
      * @return $this
      */
-    public function setStompHost($host)
+    public function setStompHost(string $host): static
     {
         $this->stompHost = $host;
         return $this;
     }
 
     /**
-     * Gets the stomp host
+     * Gets the user agent of the api client
      *
-     * @return string Host
+     * @return string
      */
-    public function getStompHost()
+    public function getUserAgent(): string
     {
-        return $this->stompHost;
+        return $this->userAgent;
     }
 
     /**
      * Sets the user agent of the api client
      *
-     * @param string $userAgent the user agent of the api client
-     *
-     * @throws \InvalidArgumentException
+     * @param string $userAgent
      * @return $this
+     * @throws InvalidArgumentException
      */
-    public function setUserAgent($userAgent)
+    public function setUserAgent(string $userAgent): static
     {
-        if (!is_string($userAgent)) {
-            throw new \InvalidArgumentException('User-agent must be a string.');
+        if (empty($userAgent)) {
+            throw new InvalidArgumentException('User-agent must be a string.');
         }
 
         $this->userAgent = $userAgent;
@@ -451,27 +462,26 @@ class Configuration
     }
 
     /**
-     * Gets the user agent of the api client
+     * Gets the HTTP timeout value
      *
-     * @return string user agent
+     * @return int
      */
-    public function getUserAgent()
+    public function getCurlTimeout(): int
     {
-        return $this->userAgent;
+        return $this->curlTimeout;
     }
 
     /**
      * Sets the HTTP timeout value
      *
-     * @param integer $seconds Number of seconds before timing out [set to 0 for no timeout]
-     *
-     * @throws \InvalidArgumentException
+     * @param int $seconds Number of seconds before timing out [set to 0 for no timeout]
      * @return $this
+     * @throws InvalidArgumentException
      */
-    public function setCurlTimeout($seconds)
+    public function setCurlTimeout(int $seconds): static
     {
-        if (!is_numeric($seconds) || $seconds < 0) {
-            throw new \InvalidArgumentException('Timeout value must be numeric and a non-negative number.');
+        if ($seconds < 0) {
+            throw new InvalidArgumentException('Timeout value must be a non-negative number.');
         }
 
         $this->curlTimeout = $seconds;
@@ -479,27 +489,27 @@ class Configuration
     }
 
     /**
-     * Gets the HTTP timeout value
+     * Gets the HTTP connect timeout value
      *
-     * @return string HTTP timeout value
+     * @return int
      */
-    public function getCurlTimeout()
+    public function getCurlConnectTimeout(): int
     {
-        return $this->curlTimeout;
+        return $this->curlConnectTimeout;
     }
 
     /**
      * Sets the HTTP connect timeout value
      *
-     * @param integer $seconds Number of seconds before connection times out [set to 0 for no timeout]
+     * @param int $seconds Number of seconds before connection times out [set to 0 for no timeout]
      *
-     * @throws \InvalidArgumentException
      * @return $this
+     * @throws InvalidArgumentException
      */
-    public function setCurlConnectTimeout($seconds)
+    public function setCurlConnectTimeout(int $seconds): static
     {
-        if (!is_numeric($seconds) || $seconds < 0) {
-            throw new \InvalidArgumentException('Connect timeout value must be numeric and a non-negative number.');
+        if ($seconds < 0) {
+            throw new InvalidArgumentException('Connect timeout value must be a non-negative number.');
         }
 
         $this->curlConnectTimeout = $seconds;
@@ -507,162 +517,42 @@ class Configuration
     }
 
     /**
-     * Set whether to accept encoding
-     * @param bool $allowEncoding
+     * Get whether to allow encoding
      *
+     * @return bool
+     */
+    public function getAllowEncoding(): bool
+    {
+        return $this->allowEncoding;
+    }
+
+    /**
+     * Set whether to accept encoding
+     *
+     * @param bool $allowEncoding
      * @return $this
      */
-    public function setAllowEncoding($allowEncoding)
+    public function setAllowEncoding(bool $allowEncoding): static
     {
         $this->allowEncoding = $allowEncoding;
         return $this;
     }
 
     /**
-     * Gets the HTTP connect timeout value
-     *
-     * @return string HTTP connect timeout value
+     * @return CurlProxyConfiguration|null
      */
-    public function getCurlConnectTimeout()
+    public function getProxy(): ?CurlProxyConfiguration
     {
-        return $this->curlConnectTimeout;
+        return $this->proxy;
     }
 
     /**
-     * Get whether to allow encoding
-     *
-     * @return bool
+     * @param CurlProxyConfiguration|null $proxy
+     * @return Configuration
      */
-    public function getAllowEncoding()
+    public function setProxy(?CurlProxyConfiguration $proxy): static
     {
-        return $this->allowEncoding;
-    }
-
-    /**
-     * Sets the HTTP Proxy Host
-     *
-     * @param string $proxyHost HTTP Proxy URL
-     *
-     * @return $this
-     */
-    public function setCurlProxyHost($proxyHost)
-    {
-        $this->proxyHost = $proxyHost;
-        return $this;
-    }
-
-    /**
-     * Gets the HTTP Proxy Host
-     *
-     * @return string
-     */
-    public function getCurlProxyHost()
-    {
-        return $this->proxyHost;
-    }
-
-    /**
-     * Sets the HTTP Proxy Port
-     *
-     * @param integer $proxyPort HTTP Proxy Port
-     *
-     * @return $this
-     */
-    public function setCurlProxyPort($proxyPort)
-    {
-        $this->proxyPort = $proxyPort;
-        return $this;
-    }
-
-    /**
-     * Gets the HTTP Proxy Port
-     *
-     * @return integer
-     */
-    public function getCurlProxyPort()
-    {
-        return $this->proxyPort;
-    }
-
-    /**
-     * Sets the HTTP Proxy Type
-     *
-     * @param integer $proxyType HTTP Proxy Type
-     *
-     * @return $this
-     */
-    public function setCurlProxyType($proxyType)
-    {
-        $this->proxyType = $proxyType;
-        return $this;
-    }
-
-    /**
-     * Gets the HTTP Proxy Type
-     *
-     * @return integer
-     */
-    public function getCurlProxyType()
-    {
-        return $this->proxyType;
-    }
-
-    /**
-     * Sets the HTTP Proxy User
-     *
-     * @param string $proxyUser HTTP Proxy User
-     *
-     * @return $this
-     */
-    public function setCurlProxyUser($proxyUser)
-    {
-        $this->proxyUser = $proxyUser;
-        return $this;
-    }
-
-    /**
-     * Gets the HTTP Proxy User
-     *
-     * @return string
-     */
-    public function getCurlProxyUser()
-    {
-        return $this->proxyUser;
-    }
-
-    /**
-     * Sets the HTTP Proxy Password
-     *
-     * @param string $proxyPassword HTTP Proxy Password
-     *
-     * @return $this
-     */
-    public function setCurlProxyPassword($proxyPassword)
-    {
-        $this->proxyPassword = $proxyPassword;
-        return $this;
-    }
-
-    /**
-     * Gets the HTTP Proxy Password
-     *
-     * @return string
-     */
-    public function getCurlProxyPassword()
-    {
-        return $this->proxyPassword;
-    }
-
-    /**
-     * Sets debug flag
-     *
-     * @param bool $debug Debug flag
-     *
-     * @return $this
-     */
-    public function setDebug($debug)
-    {
-        $this->debug = $debug;
+        $this->proxy = $proxy;
         return $this;
     }
 
@@ -671,21 +561,20 @@ class Configuration
      *
      * @return bool
      */
-    public function getDebug()
+    public function getDebug(): bool
     {
         return $this->debug;
     }
 
     /**
-     * Sets the debug file
+     * Sets debug flag
      *
-     * @param string $debugFile Debug file
-     *
+     * @param bool $debug
      * @return $this
      */
-    public function setDebugFile($debugFile)
+    public function setDebug(bool $debug): static
     {
-        $this->debugFile = $debugFile;
+        $this->debug = $debug;
         return $this;
     }
 
@@ -694,97 +583,42 @@ class Configuration
      *
      * @return string
      */
-    public function getDebugFile()
+    public function getDebugFile(): string
     {
         return $this->debugFile;
     }
 
     /**
-     * Sets the temp folder path
+     * Sets the debug file
      *
-     * @param string $tempFolderPath Temp folder path
-     *
+     * @param string $debugFile Debug file
      * @return $this
      */
-    public function setTempFolderPath($tempFolderPath)
+    public function setDebugFile(string $debugFile): static
     {
-        $this->tempFolderPath = $tempFolderPath;
-        return $this;
-    }
-
-    /**
-     * Gets the temp folder path
-     *
-     * @return string Temp folder path
-     */
-    public function getTempFolderPath()
-    {
-        return $this->tempFolderPath;
-    }
-
-    /**
-     * Sets if SSL verification should be enabled or disabled
-     *
-     * @param boolean $sslVerification True if the certificate should be validated, false otherwise
-     *
-     * @return $this
-     */
-    public function setSSLVerification($sslVerification)
-    {
-        $this->sslVerification = $sslVerification;
+        $this->debugFile = $debugFile;
         return $this;
     }
 
     /**
      * Gets if SSL verification should be enabled or disabled
      *
-     * @return boolean True if the certificate should be validated, false otherwise
+     * @return bool True if the certificate should be validated, false otherwise
      */
-    public function getSSLVerification()
+    public function getSSLVerification(): bool
     {
         return $this->sslVerification;
     }
 
     /**
-     * Gets the default configuration instance
+     * Sets if SSL verification should be enabled or disabled
      *
-     * @return Configuration
+     * @param bool $sslVerification True if the certificate should be validated, false otherwise
+     * @return $this
      */
-    public static function getDefaultConfiguration()
+    public function setSSLVerification(bool $sslVerification): static
     {
-        if (self::$defaultConfiguration === null) {
-            self::$defaultConfiguration = new Configuration();
-        }
-
-        return self::$defaultConfiguration;
-    }
-
-    /**
-     * Sets the detault configuration instance
-     *
-     * @param Configuration $config An instance of the Configuration Object
-     *
-     * @return void
-     */
-    public static function setDefaultConfiguration(Configuration $config)
-    {
-        self::$defaultConfiguration = $config;
-    }
-
-    /**
-     * Gets the essential information for debugging
-     *
-     * @return string The report for debugging
-     */
-    public static function toDebugReport()
-    {
-        $report  = 'PHP SDK (Secuconnect\Client) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
-        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    OpenAPI Spec Version: 2.0.0' . PHP_EOL;
-        $report .= '    SDK Package Version: ' . self::SDK_VERSION . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
-
-        return $report;
+        $this->sslVerification = $sslVerification;
+        return $this;
     }
 }

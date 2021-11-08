@@ -380,9 +380,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -401,9 +401,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -422,9 +422,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -443,9 +443,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\SmartTransactionsMerchant
      */
-    public function getMerchant(): SmartTransactionsMerchant
+    public function getMerchant(): SmartTransactionsMerchant|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -464,9 +464,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -485,9 +485,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets provider_contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getProviderContract(): ProductInstanceUID
+    public function getProviderContract(): ProductInstanceUID|null
     {
-        return $this->container['provider_contract'];
+        return $this->container['provider_contract'] ?? null;
     }
 
     /**
@@ -506,9 +506,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -527,9 +527,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets shipping_address
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getShippingAddress(): PaymentCustomersProductModel
+    public function getShippingAddress(): PaymentCustomersProductModel|null
     {
-        return $this->container['shipping_address'];
+        return $this->container['shipping_address'] ?? null;
     }
 
     /**
@@ -548,9 +548,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets container
      * @return \Secuconnect\Client\Model\SmartTransactionsContainer
      */
-    public function getContainer(): SmartTransactionsContainer
+    public function getContainer(): SmartTransactionsContainer|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -569,9 +569,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets checkin
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckin
      */
-    public function getCheckin(): SmartTransactionsCheckin
+    public function getCheckin(): SmartTransactionsCheckin|null
     {
-        return $this->container['checkin'];
+        return $this->container['checkin'] ?? null;
     }
 
     /**
@@ -590,9 +590,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets merchant_ref
      * @return string
      */
-    public function getMerchantRef(): string
+    public function getMerchantRef(): string|null
     {
-        return $this->container['merchant_ref'];
+        return $this->container['merchant_ref'] ?? null;
     }
 
     /**
@@ -611,9 +611,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets transaction_ref
      * @return string
      */
-    public function getTransactionRef(): string
+    public function getTransactionRef(): string|null
     {
-        return $this->container['transaction_ref'];
+        return $this->container['transaction_ref'] ?? null;
     }
 
     /**
@@ -632,9 +632,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getStore(): ProductInstanceUID
+    public function getStore(): ProductInstanceUID|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -653,9 +653,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets device_source
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getDeviceSource(): ProductInstanceUID
+    public function getDeviceSource(): ProductInstanceUID|null
     {
-        return $this->container['device_source'];
+        return $this->container['device_source'] ?? null;
     }
 
     /**
@@ -674,9 +674,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets device_destination
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getDeviceDestination(): ProductInstanceUID
+    public function getDeviceDestination(): ProductInstanceUID|null
     {
-        return $this->container['device_destination'];
+        return $this->container['device_destination'] ?? null;
     }
 
     /**
@@ -695,9 +695,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets receipt_number
      * @return int
      */
-    public function getReceiptNumber(): int
+    public function getReceiptNumber(): int|null
     {
-        return $this->container['receipt_number'];
+        return $this->container['receipt_number'] ?? null;
     }
 
     /**
@@ -716,9 +716,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets receipt
      * @return \Secuconnect\Client\Model\SmartTransactionsReceipt[]
      */
-    public function getReceipt(): array
+    public function getReceipt(): array|null
     {
-        return $this->container['receipt'];
+        return $this->container['receipt'] ?? null;
     }
 
     /**
@@ -737,9 +737,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets receipt_merchant
      * @return \Secuconnect\Client\Model\SmartTransactionsReceipt[]
      */
-    public function getReceiptMerchant(): array
+    public function getReceiptMerchant(): array|null
     {
-        return $this->container['receipt_merchant'];
+        return $this->container['receipt_merchant'] ?? null;
     }
 
     /**
@@ -758,9 +758,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets receipt_merchant_print
      * @return bool
      */
-    public function getReceiptMerchantPrint(): bool
+    public function getReceiptMerchantPrint(): bool|null
     {
-        return $this->container['receipt_merchant_print'];
+        return $this->container['receipt_merchant_print'] ?? null;
     }
 
     /**
@@ -779,9 +779,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets basket_info
      * @return \Secuconnect\Client\Model\SmartTransactionsBasketInfo
      */
-    public function getBasketInfo(): SmartTransactionsBasketInfo
+    public function getBasketInfo(): SmartTransactionsBasketInfo|null
     {
-        return $this->container['basket_info'];
+        return $this->container['basket_info'] ?? null;
     }
 
     /**
@@ -800,9 +800,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets basket
      * @return \Secuconnect\Client\Model\SmartTransactionsBasket
      */
-    public function getBasket(): SmartTransactionsBasket
+    public function getBasket(): SmartTransactionsBasket|null
     {
-        return $this->container['basket'];
+        return $this->container['basket'] ?? null;
     }
 
     /**
@@ -821,9 +821,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets idents
      * @return \Secuconnect\Client\Model\SmartTransactionsIdent[]
      */
-    public function getIdents(): array
+    public function getIdents(): array|null
     {
-        return $this->container['idents'];
+        return $this->container['idents'] ?? null;
     }
 
     /**
@@ -842,9 +842,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets tax_rate
      * @return int
      */
-    public function getTaxRate(): int
+    public function getTaxRate(): int|null
     {
-        return $this->container['tax_rate'];
+        return $this->container['tax_rate'] ?? null;
     }
 
     /**
@@ -863,9 +863,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets tax_amount
      * @return int
      */
-    public function getTaxAmount(): int
+    public function getTaxAmount(): int|null
     {
-        return $this->container['tax_amount'];
+        return $this->container['tax_amount'] ?? null;
     }
 
     /**
@@ -884,9 +884,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets cashier
      * @return string
      */
-    public function getCashier(): string
+    public function getCashier(): string|null
     {
-        return $this->container['cashier'];
+        return $this->container['cashier'] ?? null;
     }
 
     /**
@@ -905,9 +905,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets market
      * @return string
      */
-    public function getMarket(): string
+    public function getMarket(): string|null
     {
-        return $this->container['market'];
+        return $this->container['market'] ?? null;
     }
 
     /**
@@ -926,9 +926,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets delivery_options
      * @return \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel
      */
-    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel
+    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel|null
     {
-        return $this->container['delivery_options'];
+        return $this->container['delivery_options'] ?? null;
     }
 
     /**
@@ -947,9 +947,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets product
      * @return string
      */
-    public function getProduct(): string
+    public function getProduct(): string|null
     {
-        return $this->container['product'];
+        return $this->container['product'] ?? null;
     }
 
     /**
@@ -968,9 +968,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -989,9 +989,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets payment_method
      * @return string
      */
-    public function getPaymentMethod(): string
+    public function getPaymentMethod(): string|null
     {
-        return $this->container['payment_method'];
+        return $this->container['payment_method'] ?? null;
     }
 
     /**
@@ -1010,9 +1010,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets transactions
      * @return \Secuconnect\Client\Model\PaymentTransactionsProductModel[]
      */
-    public function getTransactions(): array
+    public function getTransactions(): array|null
     {
-        return $this->container['transactions'];
+        return $this->container['transactions'] ?? null;
     }
 
     /**
@@ -1031,9 +1031,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets last_visited_page
      * @return string
      */
-    public function getLastVisitedPage(): string
+    public function getLastVisitedPage(): string|null
     {
-        return $this->container['last_visited_page'];
+        return $this->container['last_visited_page'] ?? null;
     }
 
     /**
@@ -1052,9 +1052,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets is_demo
      * @return bool
      */
-    public function getIsDemo(): bool
+    public function getIsDemo(): bool|null
     {
-        return $this->container['is_demo'];
+        return $this->container['is_demo'] ?? null;
     }
 
     /**
@@ -1073,9 +1073,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets checkout_links
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckoutLinks
      */
-    public function getCheckoutLinks(): SmartTransactionsCheckoutLinks
+    public function getCheckoutLinks(): SmartTransactionsCheckoutLinks|null
     {
-        return $this->container['checkout_links'];
+        return $this->container['checkout_links'] ?? null;
     }
 
     /**
@@ -1094,9 +1094,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets intent
      * @return string
      */
-    public function getIntent(): string
+    public function getIntent(): string|null
     {
-        return $this->container['intent'];
+        return $this->container['intent'] ?? null;
     }
 
     /**
@@ -1115,9 +1115,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets iframe_url
      * @return string
      */
-    public function getIframeUrl(): string
+    public function getIframeUrl(): string|null
     {
-        return $this->container['iframe_url'];
+        return $this->container['iframe_url'] ?? null;
     }
 
     /**
@@ -1136,9 +1136,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets prepaid_sales
      * @return \Secuconnect\Client\Model\SmartTransactionsPrepaidSalesDetails
      */
-    public function getPrepaidSales(): SmartTransactionsPrepaidSalesDetails
+    public function getPrepaidSales(): SmartTransactionsPrepaidSalesDetails|null
     {
-        return $this->container['prepaid_sales'];
+        return $this->container['prepaid_sales'] ?? null;
     }
 
     /**
@@ -1157,9 +1157,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets communications
      * @return \Secuconnect\Client\Model\SmartTransactionsCommunication
      */
-    public function getCommunications(): SmartTransactionsCommunication
+    public function getCommunications(): SmartTransactionsCommunication|null
     {
-        return $this->container['communications'];
+        return $this->container['communications'] ?? null;
     }
 
     /**
@@ -1178,9 +1178,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets payment_links
      * @return \Secuconnect\Client\Model\SmartTransactionsPaymentLinks
      */
-    public function getPaymentLinks(): SmartTransactionsPaymentLinks
+    public function getPaymentLinks(): SmartTransactionsPaymentLinks|null
     {
-        return $this->container['payment_links'];
+        return $this->container['payment_links'] ?? null;
     }
 
     /**
@@ -1199,9 +1199,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets application_context
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContext
      */
-    public function getApplicationContext(): SmartTransactionsApplicationContext
+    public function getApplicationContext(): SmartTransactionsApplicationContext|null
     {
-        return $this->container['application_context'];
+        return $this->container['application_context'] ?? null;
     }
 
     /**
@@ -1220,9 +1220,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets payment_instructions
      * @return \Secuconnect\Client\Model\PaymentInstructions
      */
-    public function getPaymentInstructions(): PaymentInstructions
+    public function getPaymentInstructions(): PaymentInstructions|null
     {
-        return $this->container['payment_instructions'];
+        return $this->container['payment_instructions'] ?? null;
     }
 
     /**
@@ -1241,9 +1241,9 @@ class SmartTransactionsProductModel extends BaseProductModel
      * Gets payment_context
      * @return \Secuconnect\Client\Model\PaymentContext
      */
-    public function getPaymentContext(): PaymentContext
+    public function getPaymentContext(): PaymentContext|null
     {
-        return $this->container['payment_context'];
+        return $this->container['payment_context'] ?? null;
     }
 
     /**

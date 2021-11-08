@@ -146,9 +146,9 @@ class SecupayTransactionCaptureDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract(): PaymentContractsProductModel
+    public function getContract(): PaymentContractsProductModel|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionCaptureDTO implements ArrayAccess, ModelInterface
      * Gets shipping_information
      * @return \Secuconnect\Client\Model\SecupayTransactionSetShippingInformationDTO
      */
-    public function getShippingInformation(): SecupayTransactionSetShippingInformationDTO
+    public function getShippingInformation(): SecupayTransactionSetShippingInformationDTO|null
     {
-        return $this->container['shipping_information'];
+        return $this->container['shipping_information'] ?? null;
     }
 
     /**

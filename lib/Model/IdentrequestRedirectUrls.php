@@ -146,9 +146,9 @@ class IdentrequestRedirectUrls implements ArrayAccess, ModelInterface
      * Gets url_success
      * @return string
      */
-    public function getUrlSuccess(): string
+    public function getUrlSuccess(): string|null
     {
-        return $this->container['url_success'];
+        return $this->container['url_success'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class IdentrequestRedirectUrls implements ArrayAccess, ModelInterface
      * Gets url_failure
      * @return string
      */
-    public function getUrlFailure(): string
+    public function getUrlFailure(): string|null
     {
-        return $this->container['url_failure'];
+        return $this->container['url_failure'] ?? null;
     }
 
     /**

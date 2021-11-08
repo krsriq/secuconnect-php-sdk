@@ -146,9 +146,9 @@ class MandateDTO implements ArrayAccess, ModelInterface
      * Gets customer_id
      * @return string
      */
-    public function getCustomerId(): string
+    public function getCustomerId(): string|null
     {
-        return $this->container['customer_id'];
+        return $this->container['customer_id'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class MandateDTO implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**

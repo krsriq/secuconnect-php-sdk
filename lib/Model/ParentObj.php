@@ -164,9 +164,9 @@ class ParentObj implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class ParentObj implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class ParentObj implements ArrayAccess, ModelInterface
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class ParentObj implements ArrayAccess, ModelInterface
      * Gets ref_type_id
      * @return int
      */
-    public function getRefTypeId(): int
+    public function getRefTypeId(): int|null
     {
-        return $this->container['ref_type_id'];
+        return $this->container['ref_type_id'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class ParentObj implements ArrayAccess, ModelInterface
      * Gets relation_type
      * @return string
      */
-    public function getRelationType(): string
+    public function getRelationType(): string|null
     {
-        return $this->container['relation_type'];
+        return $this->container['relation_type'] ?? null;
     }
 
     /**

@@ -164,9 +164,9 @@ class BillingCyclesItem implements ArrayAccess, ModelInterface
      * Gets sequence
      * @return int
      */
-    public function getSequence(): int
+    public function getSequence(): int|null
     {
-        return $this->container['sequence'];
+        return $this->container['sequence'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class BillingCyclesItem implements ArrayAccess, ModelInterface
      * Gets interval
      * @return \Secuconnect\Client\Model\PaymentPlanInterval
      */
-    public function getInterval(): PaymentPlanInterval
+    public function getInterval(): PaymentPlanInterval|null
     {
-        return $this->container['interval'];
+        return $this->container['interval'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class BillingCyclesItem implements ArrayAccess, ModelInterface
      * Gets tenure_type
      * @return string
      */
-    public function getTenureType(): string
+    public function getTenureType(): string|null
     {
-        return $this->container['tenure_type'];
+        return $this->container['tenure_type'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class BillingCyclesItem implements ArrayAccess, ModelInterface
      * Gets total_cycles
      * @return int
      */
-    public function getTotalCycles(): int
+    public function getTotalCycles(): int|null
     {
-        return $this->container['total_cycles'];
+        return $this->container['total_cycles'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class BillingCyclesItem implements ArrayAccess, ModelInterface
      * Gets price
      * @return int
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
-        return $this->container['price'];
+        return $this->container['price'] ?? null;
     }
 
     /**

@@ -12,7 +12,7 @@ class ImitationDevicePrinter implements Printer
      *
      * @param object $token
      */
-    public function printUserCode($token)
+    public function printUserCode(object $token): void
     {
         if (!empty($token) && isset($token->user_code)) {
             echo 'Your user code is: ' . $token->user_code . PHP_EOL .

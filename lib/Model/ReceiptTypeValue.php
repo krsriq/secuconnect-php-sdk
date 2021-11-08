@@ -134,9 +134,9 @@ class ReceiptTypeValue extends ReceiptType
      * Gets value
      * @return \Secuconnect\Client\Model\ReceiptValue
      */
-    public function getValue(): ReceiptValue
+    public function getValue(): ReceiptValue|null
     {
-        return $this->container['value'];
+        return $this->container['value'] ?? null;
     }
 
     /**

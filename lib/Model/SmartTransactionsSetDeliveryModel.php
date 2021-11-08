@@ -140,9 +140,9 @@ class SmartTransactionsSetDeliveryModel implements ArrayAccess, ModelInterface
      * Gets delivery_options
      * @return \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel
      */
-    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel
+    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel|null
     {
-        return $this->container['delivery_options'];
+        return $this->container['delivery_options'] ?? null;
     }
 
     /**

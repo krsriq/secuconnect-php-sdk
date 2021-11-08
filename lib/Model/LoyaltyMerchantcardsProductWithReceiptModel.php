@@ -152,9 +152,9 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets receipt_header
      * @return \Secuconnect\Client\Model\ReceiptType[]
      */
-    public function getReceiptHeader(): array
+    public function getReceiptHeader(): array|null
     {
-        return $this->container['receipt_header'];
+        return $this->container['receipt_header'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt(): array
+    public function getReceipt(): array|null
     {
-        return $this->container['receipt'];
+        return $this->container['receipt'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -215,9 +215,9 @@ class LoyaltyMerchantcardsProductWithReceiptModel extends LoyaltyMerchantcardsPr
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**

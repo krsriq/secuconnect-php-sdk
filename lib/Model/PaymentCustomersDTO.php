@@ -140,9 +140,9 @@ class PaymentCustomersDTO implements ArrayAccess, ModelInterface
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact(): Contact
+    public function getContact(): Contact|null
     {
-        return $this->container['contact'];
+        return $this->container['contact'] ?? null;
     }
 
     /**

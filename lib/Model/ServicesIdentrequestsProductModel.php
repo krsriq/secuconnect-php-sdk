@@ -242,9 +242,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -263,9 +263,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -284,9 +284,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -305,9 +305,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets provider
      * @return string
      */
-    public function getProvider(): string
+    public function getProvider(): string|null
     {
-        return $this->container['provider'];
+        return $this->container['provider'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -365,9 +365,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -386,9 +386,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -407,9 +407,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets person
      * @return \Secuconnect\Client\Model\IdentrequestPerson[]
      */
-    public function getPerson(): array
+    public function getPerson(): array|null
     {
-        return $this->container['person'];
+        return $this->container['person'] ?? null;
     }
 
     /**
@@ -428,9 +428,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets owner_transaction_id
      * @return string
      */
-    public function getOwnerTransactionId(): string
+    public function getOwnerTransactionId(): string|null
     {
-        return $this->container['owner_transaction_id'];
+        return $this->container['owner_transaction_id'] ?? null;
     }
 
     /**
@@ -449,9 +449,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\IdentrequestRedirectUrls
      */
-    public function getRedirectUrl(): IdentrequestRedirectUrls
+    public function getRedirectUrl(): IdentrequestRedirectUrls|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**
@@ -470,9 +470,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets graduation_date
      * @return string
      */
-    public function getGraduationDate(): string
+    public function getGraduationDate(): string|null
     {
-        return $this->container['graduation_date'];
+        return $this->container['graduation_date'] ?? null;
     }
 
     /**
@@ -491,9 +491,9 @@ class ServicesIdentrequestsProductModel extends BaseProductModel
      * Gets treated
      * @return bool
      */
-    public function getTreated(): bool
+    public function getTreated(): bool|null
     {
-        return $this->container['treated'];
+        return $this->container['treated'] ?? null;
     }
 
     /**

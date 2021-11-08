@@ -182,9 +182,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets prefix
      * @return string
      */
-    public function getPrefix(): string
+    public function getPrefix(): string|null
     {
-        return $this->container['prefix'];
+        return $this->container['prefix'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets value
      * @return string
      */
-    public function getValue(): string
+    public function getValue(): string|null
     {
-        return $this->container['value'];
+        return $this->container['value'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets valid
      * @return bool
      */
-    public function getValid(): bool
+    public function getValid(): bool|null
     {
-        return $this->container['valid'];
+        return $this->container['valid'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class SmartTransactionsIdent implements ArrayAccess, ModelInterface
      * Gets merchantcard
      * @return \Secuconnect\Client\Model\LoyaltyMerchantcardsProductModel
      */
-    public function getMerchantcard(): LoyaltyMerchantcardsProductModel
+    public function getMerchantcard(): LoyaltyMerchantcardsProductModel|null
     {
-        return $this->container['merchantcard'];
+        return $this->container['merchantcard'] ?? null;
     }
 
     /**

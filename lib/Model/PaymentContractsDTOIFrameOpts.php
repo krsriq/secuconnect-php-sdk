@@ -164,9 +164,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
      * Gets show_basket
      * @return bool
      */
-    public function getShowBasket(): bool
+    public function getShowBasket(): bool|null
     {
-        return $this->container['show_basket'];
+        return $this->container['show_basket'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
      * Gets basket_title
      * @return string
      */
-    public function getBasketTitle(): string
+    public function getBasketTitle(): string|null
     {
-        return $this->container['basket_title'];
+        return $this->container['basket_title'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
      * Gets submit_button_title
      * @return string
      */
-    public function getSubmitButtonTitle(): string
+    public function getSubmitButtonTitle(): string|null
     {
-        return $this->container['submit_button_title'];
+        return $this->container['submit_button_title'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
      * Gets logo_base64
      * @return string
      */
-    public function getLogoBase64(): string
+    public function getLogoBase64(): string|null
     {
-        return $this->container['logo_base64'];
+        return $this->container['logo_base64'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class PaymentContractsDTOIFrameOpts implements ArrayAccess, ModelInterface
      * Gets cession
      * @return string
      */
-    public function getCession(): string
+    public function getCession(): string|null
     {
-        return $this->container['cession'];
+        return $this->container['cession'] ?? null;
     }
 
     /**

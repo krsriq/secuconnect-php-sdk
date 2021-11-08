@@ -139,9 +139,9 @@ class ResultBoolean implements ArrayAccess, ModelInterface
      * Gets result
      * @return bool
      */
-    public function getResult(): bool
+    public function getResult(): bool|null
     {
-        return $this->container['result'];
+        return $this->container['result'] ?? null;
     }
 
     /**

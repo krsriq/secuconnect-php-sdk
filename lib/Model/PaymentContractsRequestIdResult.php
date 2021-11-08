@@ -163,9 +163,9 @@ class PaymentContractsRequestIdResult implements ArrayAccess, ModelInterface
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -184,9 +184,9 @@ class PaymentContractsRequestIdResult implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -205,9 +205,9 @@ class PaymentContractsRequestIdResult implements ArrayAccess, ModelInterface
      * Gets store
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getStore(): ProductInstanceUID
+    public function getStore(): ProductInstanceUID|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -226,9 +226,9 @@ class PaymentContractsRequestIdResult implements ArrayAccess, ModelInterface
      * Gets apikey
      * @return string
      */
-    public function getApikey(): string
+    public function getApikey(): string|null
     {
-        return $this->container['apikey'];
+        return $this->container['apikey'] ?? null;
     }
 
     /**
@@ -247,9 +247,9 @@ class PaymentContractsRequestIdResult implements ArrayAccess, ModelInterface
      * Gets payin_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPayinAccount(): PaymentInformation
+    public function getPayinAccount(): PaymentInformation|null
     {
-        return $this->container['payin_account'];
+        return $this->container['payin_account'] ?? null;
     }
 
     /**

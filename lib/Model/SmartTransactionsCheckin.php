@@ -152,9 +152,9 @@ class SmartTransactionsCheckin implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartTransactionsCheckin implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartTransactionsCheckin implements ArrayAccess, ModelInterface
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**

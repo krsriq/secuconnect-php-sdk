@@ -152,9 +152,9 @@ class LoyaltyTransactionsDTORelatedTransactions implements ArrayAccess, ModelInt
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class LoyaltyTransactionsDTORelatedTransactions implements ArrayAccess, ModelInt
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class LoyaltyTransactionsDTORelatedTransactions implements ArrayAccess, ModelInt
      * Gets ref_type_id
      * @return int
      */
-    public function getRefTypeId(): int
+    public function getRefTypeId(): int|null
     {
-        return $this->container['ref_type_id'];
+        return $this->container['ref_type_id'] ?? null;
     }
 
     /**

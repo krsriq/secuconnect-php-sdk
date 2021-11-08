@@ -146,9 +146,9 @@ class SmartRoutingsDTO implements ArrayAccess, ModelInterface
      * Gets store
      * @return string
      */
-    public function getStore(): string
+    public function getStore(): string|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartRoutingsDTO implements ArrayAccess, ModelInterface
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**

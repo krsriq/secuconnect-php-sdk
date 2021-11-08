@@ -140,9 +140,9 @@ class SmartTransactionsCheckoutLinks implements ArrayAccess, ModelInterface
      * Gets url_checkout
      * @return string
      */
-    public function getUrlCheckout(): string
+    public function getUrlCheckout(): string|null
     {
-        return $this->container['url_checkout'];
+        return $this->container['url_checkout'] ?? null;
     }
 
     /**

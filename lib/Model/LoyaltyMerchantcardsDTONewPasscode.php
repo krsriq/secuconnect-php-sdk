@@ -134,9 +134,9 @@ class LoyaltyMerchantcardsDTONewPasscode extends LoyaltyMerchantcardsDTOValidate
      * Gets passcode
      * @return int
      */
-    public function getPasscode(): int
+    public function getPasscode(): int|null
     {
-        return $this->container['passcode'];
+        return $this->container['passcode'] ?? null;
     }
 
     /**

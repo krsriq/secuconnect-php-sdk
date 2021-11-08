@@ -146,9 +146,9 @@ class OpenHours implements ArrayAccess, ModelInterface
      * Gets open
      * @return \Secuconnect\Client\Model\DayTime
      */
-    public function getOpen(): DayTime
+    public function getOpen(): DayTime|null
     {
-        return $this->container['open'];
+        return $this->container['open'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class OpenHours implements ArrayAccess, ModelInterface
      * Gets close
      * @return \Secuconnect\Client\Model\DayTime
      */
-    public function getClose(): DayTime
+    public function getClose(): DayTime|null
     {
-        return $this->container['close'];
+        return $this->container['close'] ?? null;
     }
 
     /**

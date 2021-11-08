@@ -158,9 +158,9 @@ class PaymentContractsDTOClone implements ArrayAccess, ModelInterface
      * Gets project
      * @return string
      */
-    public function getProject(): string
+    public function getProject(): string|null
     {
-        return $this->container['project'];
+        return $this->container['project'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class PaymentContractsDTOClone implements ArrayAccess, ModelInterface
      * Gets payment_data
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPaymentData(): PaymentInformation
+    public function getPaymentData(): PaymentInformation|null
     {
-        return $this->container['payment_data'];
+        return $this->container['payment_data'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class PaymentContractsDTOClone implements ArrayAccess, ModelInterface
      * Gets payin_account
      * @return bool
      */
-    public function getPayinAccount(): bool
+    public function getPayinAccount(): bool|null
     {
-        return $this->container['payin_account'];
+        return $this->container['payin_account'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PaymentContractsDTOClone implements ArrayAccess, ModelInterface
      * Gets url_push
      * @return string
      */
-    public function getUrlPush(): string
+    public function getUrlPush(): string|null
     {
-        return $this->container['url_push'];
+        return $this->container['url_push'] ?? null;
     }
 
     /**

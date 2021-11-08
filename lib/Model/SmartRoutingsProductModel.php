@@ -164,9 +164,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore(): Store
+    public function getStore(): Store|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class SmartRoutingsProductModel extends BaseProductModel
      * Gets assign
      * @return \Secuconnect\Client\Model\SmartRoutingsAssign[]
      */
-    public function getAssign(): array
+    public function getAssign(): array|null
     {
-        return $this->container['assign'];
+        return $this->container['assign'] ?? null;
     }
 
     /**

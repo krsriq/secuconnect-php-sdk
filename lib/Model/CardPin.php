@@ -139,9 +139,9 @@ class CardPin implements ArrayAccess, ModelInterface
      * Gets pin
      * @return int
      */
-    public function getPin(): int
+    public function getPin(): int|null
     {
-        return $this->container['pin'];
+        return $this->container['pin'] ?? null;
     }
 
     /**

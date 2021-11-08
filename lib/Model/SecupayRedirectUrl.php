@@ -158,9 +158,9 @@ class SecupayRedirectUrl implements ArrayAccess, ModelInterface
      * Gets iframe_url
      * @return string
      */
-    public function getIframeUrl(): string
+    public function getIframeUrl(): string|null
     {
-        return $this->container['iframe_url'];
+        return $this->container['iframe_url'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class SecupayRedirectUrl implements ArrayAccess, ModelInterface
      * Gets url_success
      * @return string
      */
-    public function getUrlSuccess(): string
+    public function getUrlSuccess(): string|null
     {
-        return $this->container['url_success'];
+        return $this->container['url_success'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class SecupayRedirectUrl implements ArrayAccess, ModelInterface
      * Gets url_failure
      * @return string
      */
-    public function getUrlFailure(): string
+    public function getUrlFailure(): string|null
     {
-        return $this->container['url_failure'];
+        return $this->container['url_failure'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class SecupayRedirectUrl implements ArrayAccess, ModelInterface
      * Gets url_push
      * @return string
      */
-    public function getUrlPush(): string
+    public function getUrlPush(): string|null
     {
-        return $this->container['url_push'];
+        return $this->container['url_push'] ?? null;
     }
 
     /**

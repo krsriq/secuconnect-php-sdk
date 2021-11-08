@@ -218,9 +218,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets parent
      * @return int
      */
-    public function getParent(): int
+    public function getParent(): int|null
     {
-        return $this->container['parent'];
+        return $this->container['parent'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets item_type
      * @return string
      */
-    public function getItemType(): string
+    public function getItemType(): string|null
     {
-        return $this->container['item_type'];
+        return $this->container['item_type'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets desc
      * @return string
      */
-    public function getDesc(): string
+    public function getDesc(): string|null
     {
-        return $this->container['desc'];
+        return $this->container['desc'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets article_number
      * @return string
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): string|null
     {
-        return $this->container['article_number'];
+        return $this->container['article_number'] ?? null;
     }
 
     /**
@@ -323,9 +323,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets serial_number
      * @return string
      */
-    public function getSerialNumber(): string
+    public function getSerialNumber(): string|null
     {
-        return $this->container['serial_number'];
+        return $this->container['serial_number'] ?? null;
     }
 
     /**
@@ -344,9 +344,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets ean
      * @return string
      */
-    public function getEan(): string
+    public function getEan(): string|null
     {
-        return $this->container['ean'];
+        return $this->container['ean'] ?? null;
     }
 
     /**
@@ -365,9 +365,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets quantity
      * @return int
      */
-    public function getQuantity(): int
+    public function getQuantity(): int|null
     {
-        return $this->container['quantity'];
+        return $this->container['quantity'] ?? null;
     }
 
     /**
@@ -386,9 +386,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets price_one
      * @return int
      */
-    public function getPriceOne(): int
+    public function getPriceOne(): int|null
     {
-        return $this->container['price_one'];
+        return $this->container['price_one'] ?? null;
     }
 
     /**
@@ -407,9 +407,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets sum
      * @return int
      */
-    public function getSum(): int
+    public function getSum(): int|null
     {
-        return $this->container['sum'];
+        return $this->container['sum'] ?? null;
     }
 
     /**
@@ -428,9 +428,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets tax
      * @return int
      */
-    public function getTax(): int
+    public function getTax(): int|null
     {
-        return $this->container['tax'];
+        return $this->container['tax'] ?? null;
     }
 
     /**
@@ -449,9 +449,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId(): string|null
     {
-        return $this->container['reference_id'];
+        return $this->container['reference_id'] ?? null;
     }
 
     /**
@@ -470,9 +470,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets contract_id
      * @return string
      */
-    public function getContractId(): string
+    public function getContractId(): string|null
     {
-        return $this->container['contract_id'];
+        return $this->container['contract_id'] ?? null;
     }
 
     /**
@@ -491,9 +491,9 @@ class SmartTransactionsSubBasketProduct implements ArrayAccess, ModelInterface
      * Gets group
      * @return \Secuconnect\Client\Model\SmartTransactionsBasketProductGroup[]
      */
-    public function getGroup(): array
+    public function getGroup(): array|null
     {
-        return $this->container['group'];
+        return $this->container['group'] ?? null;
     }
 
     /**

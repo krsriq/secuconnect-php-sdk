@@ -152,9 +152,9 @@ class SmartTransactionsBasketProductGroup implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartTransactionsBasketProductGroup implements ArrayAccess, ModelInterface
      * Gets desc
      * @return string
      */
-    public function getDesc(): string
+    public function getDesc(): string|null
     {
-        return $this->container['desc'];
+        return $this->container['desc'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartTransactionsBasketProductGroup implements ArrayAccess, ModelInterface
      * Gets level
      * @return int
      */
-    public function getLevel(): int
+    public function getLevel(): int|null
     {
-        return $this->container['level'];
+        return $this->container['level'] ?? null;
     }
 
     /**

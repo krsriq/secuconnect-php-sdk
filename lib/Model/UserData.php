@@ -176,9 +176,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets dob
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getDob(): ValueField
+    public function getDob(): ValueField|null
     {
-        return $this->container['dob'];
+        return $this->container['dob'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets birthplace
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getBirthplace(): ValueField
+    public function getBirthplace(): ValueField|null
     {
-        return $this->container['birthplace'];
+        return $this->container['birthplace'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets forename
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getForename(): ValueField
+    public function getForename(): ValueField|null
     {
-        return $this->container['forename'];
+        return $this->container['forename'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets surname
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getSurname(): ValueField
+    public function getSurname(): ValueField|null
     {
-        return $this->container['surname'];
+        return $this->container['surname'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets nationality
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getNationality(): ValueField
+    public function getNationality(): ValueField|null
     {
-        return $this->container['nationality'];
+        return $this->container['nationality'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets gender
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getGender(): ValueField
+    public function getGender(): ValueField|null
     {
-        return $this->container['gender'];
+        return $this->container['gender'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class UserData implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\UserAddressData
      */
-    public function getAddress(): UserAddressData
+    public function getAddress(): UserAddressData|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**

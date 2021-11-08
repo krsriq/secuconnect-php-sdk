@@ -188,9 +188,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets customer
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getCustomer(): ProductInstanceUID
+    public function getCustomer(): ProductInstanceUID|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets container
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContainer(): ProductInstanceUID
+    public function getContainer(): ProductInstanceUID|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets method
      * @return string
      */
-    public function getMethod(): string
+    public function getMethod(): string|null
     {
-        return $this->container['method'];
+        return $this->container['method'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets callback_urls
      * @return \Secuconnect\Client\Model\SmartTransactionsPrepareCallbackUrls
      */
-    public function getCallbackUrls(): SmartTransactionsPrepareCallbackUrls
+    public function getCallbackUrls(): SmartTransactionsPrepareCallbackUrls|null
     {
-        return $this->container['callback_urls'];
+        return $this->container['callback_urls'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets device_source
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getDeviceSource(): ProductInstanceUID
+    public function getDeviceSource(): ProductInstanceUID|null
     {
-        return $this->container['device_source'];
+        return $this->container['device_source'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets mode
      * @return string
      */
-    public function getMode(): string
+    public function getMode(): string|null
     {
-        return $this->container['mode'];
+        return $this->container['mode'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets is_paypal_basic
      * @return bool
      */
-    public function getIsPaypalBasic(): bool
+    public function getIsPaypalBasic(): bool|null
     {
-        return $this->container['is_paypal_basic'];
+        return $this->container['is_paypal_basic'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class SmartTransactionsPrepare implements ArrayAccess, ModelInterface
      * Gets is_demo
      * @return bool
      */
-    public function getIsDemo(): bool
+    public function getIsDemo(): bool|null
     {
-        return $this->container['is_demo'];
+        return $this->container['is_demo'] ?? null;
     }
 
     /**

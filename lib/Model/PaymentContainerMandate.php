@@ -176,9 +176,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets sepa_mandate_id
      * @return string
      */
-    public function getSepaMandateId(): string
+    public function getSepaMandateId(): string|null
     {
-        return $this->container['sepa_mandate_id'];
+        return $this->container['sepa_mandate_id'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets iban
      * @return string
      */
-    public function getIban(): string
+    public function getIban(): string|null
     {
-        return $this->container['iban'];
+        return $this->container['iban'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets bic
      * @return string
      */
-    public function getBic(): string
+    public function getBic(): string|null
     {
-        return $this->container['bic'];
+        return $this->container['bic'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets identification
      * @return string
      */
-    public function getIdentification(): string
+    public function getIdentification(): string|null
     {
-        return $this->container['identification'];
+        return $this->container['identification'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class PaymentContainerMandate implements ArrayAccess, ModelInterface
      * Gets creditor_id
      * @return string
      */
-    public function getCreditorId(): string
+    public function getCreditorId(): string|null
     {
-        return $this->container['creditor_id'];
+        return $this->container['creditor_id'] ?? null;
     }
 
     /**

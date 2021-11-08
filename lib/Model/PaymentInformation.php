@@ -158,9 +158,9 @@ class PaymentInformation implements ArrayAccess, ModelInterface
      * Gets iban
      * @return string
      */
-    public function getIban(): string
+    public function getIban(): string|null
     {
-        return $this->container['iban'];
+        return $this->container['iban'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class PaymentInformation implements ArrayAccess, ModelInterface
      * Gets bic
      * @return string
      */
-    public function getBic(): string
+    public function getBic(): string|null
     {
-        return $this->container['bic'];
+        return $this->container['bic'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class PaymentInformation implements ArrayAccess, ModelInterface
      * Gets owner
      * @return string
      */
-    public function getOwner(): string
+    public function getOwner(): string|null
     {
-        return $this->container['owner'];
+        return $this->container['owner'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PaymentInformation implements ArrayAccess, ModelInterface
      * Gets bankname
      * @return string
      */
-    public function getBankname(): string
+    public function getBankname(): string|null
     {
-        return $this->container['bankname'];
+        return $this->container['bankname'] ?? null;
     }
 
     /**

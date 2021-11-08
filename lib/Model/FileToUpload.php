@@ -140,9 +140,9 @@ class FileToUpload implements ArrayAccess, ModelInterface
      * Gets file
      * @return string
      */
-    public function getFile(): string
+    public function getFile(): string|null
     {
-        return $this->container['file'];
+        return $this->container['file'] ?? null;
     }
 
     /**

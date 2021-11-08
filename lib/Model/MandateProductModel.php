@@ -140,9 +140,9 @@ class MandateProductModel implements ArrayAccess, ModelInterface
      * Gets mandate_url
      * @return string
      */
-    public function getMandateUrl(): string
+    public function getMandateUrl(): string|null
     {
-        return $this->container['mandate_url'];
+        return $this->container['mandate_url'] ?? null;
     }
 
     /**

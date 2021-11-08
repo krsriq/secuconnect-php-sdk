@@ -146,9 +146,9 @@ class IdentDocument implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class IdentDocument implements ArrayAccess, ModelInterface
      * Gets url
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): string|null
     {
-        return $this->container['url'];
+        return $this->container['url'] ?? null;
     }
 
     /**

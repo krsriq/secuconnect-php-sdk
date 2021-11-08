@@ -146,9 +146,9 @@ class SecupayTransactionProductDTOSubscription implements ArrayAccess, ModelInte
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionProductDTOSubscription implements ArrayAccess, ModelInte
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**

@@ -164,9 +164,9 @@ class SmartTransactionsReceiptValue implements ArrayAccess, ModelInterface
      * Gets caption
      * @return string
      */
-    public function getCaption(): string
+    public function getCaption(): string|null
     {
-        return $this->container['caption'];
+        return $this->container['caption'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SmartTransactionsReceiptValue implements ArrayAccess, ModelInterface
      * Gets text
      * @return string
      */
-    public function getText(): string
+    public function getText(): string|null
     {
-        return $this->container['text'];
+        return $this->container['text'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SmartTransactionsReceiptValue implements ArrayAccess, ModelInterface
      * Gets decoration
      * @return string[]
      */
-    public function getDecoration(): array
+    public function getDecoration(): array|null
     {
-        return $this->container['decoration'];
+        return $this->container['decoration'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartTransactionsReceiptValue implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartTransactionsReceiptValue implements ArrayAccess, ModelInterface
      * Gets value
      * @return string
      */
-    public function getValue(): string
+    public function getValue(): string|null
     {
-        return $this->container['value'];
+        return $this->container['value'] ?? null;
     }
 
     /**

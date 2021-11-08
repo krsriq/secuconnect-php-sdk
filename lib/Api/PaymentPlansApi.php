@@ -1,10 +1,19 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Api;
 
-use Secuconnect\Client\ApiClient;
+use Exception;
+use InvalidArgumentException;
+use Secuconnect\Client\ApiController;
 use Secuconnect\Client\ApiException;
-use Secuconnect\Client\Authentication\Authenticator;
 
 /**
  * PaymentPlansApi
@@ -14,69 +23,26 @@ use Secuconnect\Client\Authentication\Authenticator;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentPlansApi
+class PaymentPlansApi extends ApiController
 {
-    /**
-     * API Client
-     *
-     * @var ApiClient instance of the ApiClient
-     */
-    protected $apiClient;
-
-    /**
-     * Constructor
-     *
-     * @param ApiClient|null $apiClient The api client to use
-     */
-    public function __construct(ApiClient $apiClient = null)
-    {
-        if ($apiClient === null) {
-            $apiClient = new ApiClient();
-        }
-
-        $this->apiClient = $apiClient;
-    }
-
-    /**
-     * Get API client
-     *
-     * @return ApiClient get the API client
-     */
-    public function getApiClient()
-    {
-        return $this->apiClient;
-    }
-
-    /**
-     * Set the API client
-     *
-     * @param ApiClient $apiClient set the API client
-     *
-     * @return PaymentPlansApi
-     */
-    public function setApiClient(ApiClient $apiClient)
-    {
-        $this->apiClient = $apiClient;
-        return $this;
-    }
 
     /**
      * Operation paymentPlansGet
      *
      * GET Payment/Plans
      *
-     * @param int $count The maximum number of items to return 
-     * @param int $offset The position within the whole result set to start returning items (zero-based) 
-     * @param string $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;. 
-     * @param string $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60; 
-     * @param string $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending. 
-     * @throws ApiException on non-2xx response
+     * @param int|null $count The maximum number of items to return
+     * @param int|null $offset The position within the whole result set to start returning items (zero-based)
+     * @param string|null $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;.
+     * @param string|null $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60;
+     * @param string|null $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending.
      * @return \Secuconnect\Client\Model\PaymentPlansList
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansGet($count = null, $offset = null, $fields = null, $q = null, $sort = null)
+    public function paymentPlansGet(?int $count = null, ?int $offset = null, ?string $fields = null, ?string $q = null, ?string $sort = null): \Secuconnect\Client\Model\PaymentPlansList
     {
-        list($response) = $this->paymentPlansGetWithHttpInfo($count, $offset, $fields, $q, $sort);
-        return $response;
+        return $this->paymentPlansGetWithHttpInfo($count, $offset, $fields, $q, $sort)[0];
     }
 
     /**
@@ -84,60 +50,55 @@ class PaymentPlansApi
      *
      * GET Payment/Plans
      *
-     * @param int $count The maximum number of items to return 
-     * @param int $offset The position within the whole result set to start returning items (zero-based) 
-     * @param string $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;. 
-     * @param string $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60; 
-     * @param string $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending. 
-     * @throws ApiException on non-2xx response
+     * @param int|null $count The maximum number of items to return
+     * @param int|null $offset The position within the whole result set to start returning items (zero-based)
+     * @param string|null $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;.
+     * @param string|null $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60;
+     * @param string|null $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending.
      * @return array of \Secuconnect\Client\Model\PaymentPlansList, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansGetWithHttpInfo($count = null, $offset = null, $fields = null, $q = null, $sort = null)
+    public function paymentPlansGetWithHttpInfo(?int $count = null, ?int $offset = null, ?string $fields = null, ?string $q = null, ?string $sort = null): array
     {
         // parse inputs
         $resourcePath = "/Payment/Plans";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // query params
         if ($count !== null) {
             $queryParams['count'] = $this->apiClient->getSerializer()->toQueryValue($count);
         }
+
         // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }
+
         // query params
         if ($fields !== null) {
             $queryParams['fields'] = $this->apiClient->getSerializer()->toQueryValue($fields);
         }
+
         // query params
         if ($q !== null) {
             $queryParams['q'] = $this->apiClient->getSerializer()->toQueryValue($q);
         }
+
         // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -148,29 +109,14 @@ class PaymentPlansApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\PaymentPlansList',
-                    '/Payment/Plans'
+                    $responseType = '\Secuconnect\Client\Model\PaymentPlansList'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\PaymentPlansList', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\PaymentPlansList', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -181,13 +127,13 @@ class PaymentPlansApi
      * GET Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\PaymentPlansProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansGetById($payment_plan_id)
+    public function paymentPlansGetById(string $payment_plan_id): \Secuconnect\Client\Model\PaymentPlansProductModel
     {
-        list($response) = $this->paymentPlansGetByIdWithHttpInfo($payment_plan_id);
-        return $response;
+        return $this->paymentPlansGetByIdWithHttpInfo($payment_plan_id)[0];
     }
 
     /**
@@ -196,49 +142,40 @@ class PaymentPlansApi
      * GET Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\PaymentPlansProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansGetByIdWithHttpInfo($payment_plan_id)
+    public function paymentPlansGetByIdWithHttpInfo(string $payment_plan_id): array
     {
         // verify the required parameter 'payment_plan_id' is set
-        if ($payment_plan_id === null || (is_array($payment_plan_id) && count($payment_plan_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_plan_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_plan_id when calling paymentPlansGetById'
             );
         }
+
         // parse inputs
         $resourcePath = "/Payment/Plans/{paymentPlanId}";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($payment_plan_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentPlanId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "paymentPlanId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -249,29 +186,14 @@ class PaymentPlansApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\PaymentPlansProductModel',
-                    '/Payment/Plans/{paymentPlanId}'
+                    $responseType = '\Secuconnect\Client\Model\PaymentPlansProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\PaymentPlansProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\PaymentPlansProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -282,14 +204,14 @@ class PaymentPlansApi
      * PATCH Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties
      * @return \Secuconnect\Client\Model\PaymentPlansProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPatch($payment_plan_id, $body)
+    public function paymentPlansPatch(string $payment_plan_id, \Secuconnect\Client\Model\PaymentPlansDTO $body): \Secuconnect\Client\Model\PaymentPlansProductModel
     {
-        list($response) = $this->paymentPlansPatchWithHttpInfo($payment_plan_id, $body);
-        return $response;
+        return $this->paymentPlansPatchWithHttpInfo($payment_plan_id, $body)[0];
     }
 
     /**
@@ -298,55 +220,41 @@ class PaymentPlansApi
      * PATCH Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties
      * @return array of \Secuconnect\Client\Model\PaymentPlansProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPatchWithHttpInfo($payment_plan_id, $body)
+    public function paymentPlansPatchWithHttpInfo(string $payment_plan_id, \Secuconnect\Client\Model\PaymentPlansDTO $body): array
     {
         // verify the required parameter 'payment_plan_id' is set
-        if ($payment_plan_id === null || (is_array($payment_plan_id) && count($payment_plan_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_plan_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_plan_id when calling paymentPlansPatch'
             );
         }
+
         // parse inputs
         $resourcePath = "/Payment/Plans/{paymentPlanId}";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($payment_plan_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentPlanId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "paymentPlanId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -357,29 +265,14 @@ class PaymentPlansApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\PaymentPlansProductModel',
-                    '/Payment/Plans/{paymentPlanId}'
+                    $responseType = '\Secuconnect\Client\Model\PaymentPlansProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\PaymentPlansProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\PaymentPlansProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -389,14 +282,14 @@ class PaymentPlansApi
      *
      * POST Payment/Plans
      *
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plan properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plan properties
      * @return \Secuconnect\Client\Model\PaymentPlansProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPost($body)
+    public function paymentPlansPost(\Secuconnect\Client\Model\PaymentPlansDTO $body): \Secuconnect\Client\Model\PaymentPlansProductModel
     {
-        list($response) = $this->paymentPlansPostWithHttpInfo($body);
-        return $response;
+        return $this->paymentPlansPostWithHttpInfo($body)[0];
     }
 
     /**
@@ -404,41 +297,26 @@ class PaymentPlansApi
      *
      * POST Payment/Plans
      *
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plan properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plan properties
      * @return array of \Secuconnect\Client\Model\PaymentPlansProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPostWithHttpInfo($body)
+    public function paymentPlansPostWithHttpInfo(\Secuconnect\Client\Model\PaymentPlansDTO $body): array
     {
         // parse inputs
         $resourcePath = "/Payment/Plans";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -449,29 +327,14 @@ class PaymentPlansApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\PaymentPlansProductModel',
-                    '/Payment/Plans'
+                    $responseType = '\Secuconnect\Client\Model\PaymentPlansProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\PaymentPlansProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\PaymentPlansProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -482,14 +345,14 @@ class PaymentPlansApi
      * PUT Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties
      * @return \Secuconnect\Client\Model\PaymentPlansProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPut($payment_plan_id, $body)
+    public function paymentPlansPut(string $payment_plan_id, \Secuconnect\Client\Model\PaymentPlansDTO $body): \Secuconnect\Client\Model\PaymentPlansProductModel
     {
-        list($response) = $this->paymentPlansPutWithHttpInfo($payment_plan_id, $body);
-        return $response;
+        return $this->paymentPlansPutWithHttpInfo($payment_plan_id, $body)[0];
     }
 
     /**
@@ -498,55 +361,41 @@ class PaymentPlansApi
      * PUT Payment/Plans/{paymentPlanId}
      *
      * @param string $payment_plan_id Payment plan id (required)
-     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\PaymentPlansDTO $body Payment plans properties
      * @return array of \Secuconnect\Client\Model\PaymentPlansProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentPlansPutWithHttpInfo($payment_plan_id, $body)
+    public function paymentPlansPutWithHttpInfo(string $payment_plan_id, \Secuconnect\Client\Model\PaymentPlansDTO $body): array
     {
         // verify the required parameter 'payment_plan_id' is set
-        if ($payment_plan_id === null || (is_array($payment_plan_id) && count($payment_plan_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_plan_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_plan_id when calling paymentPlansPut'
             );
         }
+
         // parse inputs
         $resourcePath = "/Payment/Plans/{paymentPlanId}";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($payment_plan_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentPlanId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "paymentPlanId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_plan_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -557,29 +406,14 @@ class PaymentPlansApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\PaymentPlansProductModel',
-                    '/Payment/Plans/{paymentPlanId}'
+                    $responseType = '\Secuconnect\Client\Model\PaymentPlansProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\PaymentPlansProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\PaymentPlansProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }

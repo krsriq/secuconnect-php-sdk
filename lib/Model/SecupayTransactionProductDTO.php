@@ -230,9 +230,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods(): array
+    public function getPaymentMethods(): array|null
     {
-        return $this->container['payment_methods'];
+        return $this->container['payment_methods'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets order_id
      * @return string
      */
-    public function getOrderId(): string
+    public function getOrderId(): string|null
     {
-        return $this->container['order_id'];
+        return $this->container['order_id'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getBasket(): array
+    public function getBasket(): array|null
     {
-        return $this->container['basket'];
+        return $this->container['basket'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets accrual
      * @return bool
      */
-    public function getAccrual(): bool
+    public function getAccrual(): bool|null
     {
-        return $this->container['accrual'];
+        return $this->container['accrual'] ?? null;
     }
 
     /**
@@ -377,9 +377,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets payment_action
      * @return string
      */
-    public function getPaymentAction(): string
+    public function getPaymentAction(): string|null
     {
-        return $this->container['payment_action'];
+        return $this->container['payment_action'] ?? null;
     }
 
     /**
@@ -398,9 +398,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -419,9 +419,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\SecupayRedirectUrl
      */
-    public function getRedirectUrl(): SecupayRedirectUrl
+    public function getRedirectUrl(): SecupayRedirectUrl|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**
@@ -440,9 +440,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return string
      */
-    public function getContract(): string
+    public function getContract(): string|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -461,9 +461,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets container
      * @return string
      */
-    public function getContainer(): string
+    public function getContainer(): string|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -482,9 +482,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets opt_data
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOOptData
      */
-    public function getOptData(): SecupayTransactionProductDTOOptData
+    public function getOptData(): SecupayTransactionProductDTOOptData|null
     {
-        return $this->container['opt_data'];
+        return $this->container['opt_data'] ?? null;
     }
 
     /**
@@ -503,9 +503,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets subscription
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOSubscription
      */
-    public function getSubscription(): SecupayTransactionProductDTOSubscription
+    public function getSubscription(): SecupayTransactionProductDTOSubscription|null
     {
-        return $this->container['subscription'];
+        return $this->container['subscription'] ?? null;
     }
 
     /**
@@ -524,9 +524,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -545,9 +545,9 @@ class SecupayTransactionProductDTO implements ArrayAccess, ModelInterface
      * Gets experience
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOExperience
      */
-    public function getExperience(): SecupayTransactionProductDTOExperience
+    public function getExperience(): SecupayTransactionProductDTOExperience|null
     {
-        return $this->container['experience'];
+        return $this->container['experience'] ?? null;
     }
 
     /**

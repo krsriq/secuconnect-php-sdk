@@ -15,68 +15,42 @@ use Secuconnect\Client\Model\SecupayTransactionProductModel;
  */
 class PaymentSecupayPrepaysApiTest extends TestCase
 {
-    /**
-     * @var PaymentSecupayPrepaysApi
-     */
-    private $api;
+    private ?PaymentSecupayPrepaysApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $secuconnectObjects;
+    private static ?SecuconnectObjects $secuconnectObjects;
 
-    /**
-     * @var string
-     */
-    private static $prepayTransactionId;
+    private static string $prepayTransactionId;
 
-    /**
-     * @var string
-     */
-    private static $customerId;
+    private static ?string $customerId;
 
-    /**
-     * @var int
-     */
-    private static $amount;
+    private static ?int $amount;
 
-    /**
-     * @var string
-     */
-    private static $currency;
+    private static ?string $currency;
 
-    /**
-     * @var string
-     */
-    private static $purpose;
+    private static ?string $purpose;
 
-    /**
-     * @var string
-     */
-    private static $orderId;
+    private static ?string $orderId;
 
-    /**
-     * @var bool
-     */
-    private static $accrual;
+    private static ?bool $accrual;
 
     /**
      * @var SecupayBasketItem[]
      */
-    private static $basket;
+    private static ?array $basket;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$secuconnectObjects = SecuconnectObjects::getInstance();
         self::$customerId = self::$secuconnectObjects->getCustomer()->getId();
         self::$amount = 6324;
         self::$currency = 'EUR';
+        self::$purpose = 'Test Order';
         self::$orderId = 'ZZZZZZ';
         self::$accrual = true;
         self::$basket = self::$secuconnectObjects->getBasket();
@@ -85,7 +59,7 @@ class PaymentSecupayPrepaysApiTest extends TestCase
     /**
      * Setup before running each test case
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api = new PaymentSecupayPrepaysApi();
@@ -94,7 +68,7 @@ class PaymentSecupayPrepaysApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -103,12 +77,13 @@ class PaymentSecupayPrepaysApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$secuconnectObjects = null;
         self::$customerId = null;
         self::$amount = null;
         self::$currency = null;
+        self::$purpose = null;
         self::$orderId = null;
         self::$accrual = null;
         self::$basket = null;

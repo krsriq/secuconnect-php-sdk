@@ -158,9 +158,9 @@ class SmartDeviceProductsPrepaid implements ArrayAccess, ModelInterface
      * Gets enabled
      * @return bool
      */
-    public function getEnabled(): bool
+    public function getEnabled(): bool|null
     {
-        return $this->container['enabled'];
+        return $this->container['enabled'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class SmartDeviceProductsPrepaid implements ArrayAccess, ModelInterface
      * Gets simulate_force
      * @return bool
      */
-    public function getSimulateForce(): bool
+    public function getSimulateForce(): bool|null
     {
-        return $this->container['simulate_force'];
+        return $this->container['simulate_force'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class SmartDeviceProductsPrepaid implements ArrayAccess, ModelInterface
      * Gets demo_force
      * @return bool
      */
-    public function getDemoForce(): bool
+    public function getDemoForce(): bool|null
     {
-        return $this->container['demo_force'];
+        return $this->container['demo_force'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class SmartDeviceProductsPrepaid implements ArrayAccess, ModelInterface
      * Gets vtc_tid
      * @return string
      */
-    public function getVtcTid(): string
+    public function getVtcTid(): string|null
     {
-        return $this->container['vtc_tid'];
+        return $this->container['vtc_tid'] ?? null;
     }
 
     /**

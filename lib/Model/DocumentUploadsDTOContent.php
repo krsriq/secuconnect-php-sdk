@@ -140,9 +140,9 @@ class DocumentUploadsDTOContent implements ArrayAccess, ModelInterface
      * Gets content
      * @return string
      */
-    public function getContent(): string
+    public function getContent(): string|null
     {
-        return $this->container['content'];
+        return $this->container['content'] ?? null;
     }
 
     /**

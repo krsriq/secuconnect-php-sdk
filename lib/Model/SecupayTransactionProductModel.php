@@ -254,9 +254,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -275,9 +275,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -296,9 +296,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -317,9 +317,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -338,9 +338,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**
@@ -359,9 +359,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets order_id
      * @return string
      */
-    public function getOrderId(): string
+    public function getOrderId(): string|null
     {
-        return $this->container['order_id'];
+        return $this->container['order_id'] ?? null;
     }
 
     /**
@@ -380,9 +380,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets payment_id
      * @return string
      */
-    public function getPaymentId(): string
+    public function getPaymentId(): string|null
     {
-        return $this->container['payment_id'];
+        return $this->container['payment_id'] ?? null;
     }
 
     /**
@@ -401,9 +401,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getBasket(): array
+    public function getBasket(): array|null
     {
-        return $this->container['basket'];
+        return $this->container['basket'] ?? null;
     }
 
     /**
@@ -422,9 +422,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets transaction_status
      * @return string
      */
-    public function getTransactionStatus(): string
+    public function getTransactionStatus(): string|null
     {
-        return $this->container['transaction_status'];
+        return $this->container['transaction_status'] ?? null;
     }
 
     /**
@@ -443,9 +443,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets accrual
      * @return bool
      */
-    public function getAccrual(): bool
+    public function getAccrual(): bool|null
     {
-        return $this->container['accrual'];
+        return $this->container['accrual'] ?? null;
     }
 
     /**
@@ -464,9 +464,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets payment_action
      * @return string
      */
-    public function getPaymentAction(): string
+    public function getPaymentAction(): string|null
     {
-        return $this->container['payment_action'];
+        return $this->container['payment_action'] ?? null;
     }
 
     /**
@@ -485,9 +485,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets transfer_purpose
      * @return string
      */
-    public function getTransferPurpose(): string
+    public function getTransferPurpose(): string|null
     {
-        return $this->container['transfer_purpose'];
+        return $this->container['transfer_purpose'] ?? null;
     }
 
     /**
@@ -506,9 +506,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets transfer_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getTransferAccount(): PaymentInformation
+    public function getTransferAccount(): PaymentInformation|null
     {
-        return $this->container['transfer_account'];
+        return $this->container['transfer_account'] ?? null;
     }
 
     /**
@@ -527,9 +527,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -548,9 +548,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets used_payment_instrument
      * @return \Secuconnect\Client\Model\SecupayTransactionProductModelUsedPaymentInstrument
      */
-    public function getUsedPaymentInstrument(): SecupayTransactionProductModelUsedPaymentInstrument
+    public function getUsedPaymentInstrument(): SecupayTransactionProductModelUsedPaymentInstrument|null
     {
-        return $this->container['used_payment_instrument'];
+        return $this->container['used_payment_instrument'] ?? null;
     }
 
     /**
@@ -569,9 +569,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\SecupayRedirectUrl
      */
-    public function getRedirectUrl(): SecupayRedirectUrl
+    public function getRedirectUrl(): SecupayRedirectUrl|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**
@@ -590,9 +590,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets subscription
      * @return \Secuconnect\Client\Model\SecupayTransactionProductDTOSubscription
      */
-    public function getSubscription(): SecupayTransactionProductDTOSubscription
+    public function getSubscription(): SecupayTransactionProductDTOSubscription|null
     {
-        return $this->container['subscription'];
+        return $this->container['subscription'] ?? null;
     }
 
     /**
@@ -611,9 +611,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets iframe_url
      * @return string
      */
-    public function getIframeUrl(): string
+    public function getIframeUrl(): string|null
     {
-        return $this->container['iframe_url'];
+        return $this->container['iframe_url'] ?? null;
     }
 
     /**
@@ -632,9 +632,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets container
      * @return \Secuconnect\Client\Model\PaymentContainersProductModel
      */
-    public function getContainer(): PaymentContainersProductModel
+    public function getContainer(): PaymentContainersProductModel|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -653,9 +653,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets sub_transactions
      * @return \Secuconnect\Client\Model\SecupaySubTransactionProductModel[]
      */
-    public function getSubTransactions(): array
+    public function getSubTransactions(): array|null
     {
-        return $this->container['sub_transactions'];
+        return $this->container['sub_transactions'] ?? null;
     }
 
     /**
@@ -674,9 +674,9 @@ class SecupayTransactionProductModel extends BaseProductModel
      * Gets mandate
      * @return \Secuconnect\Client\Model\PaymentContainerMandate
      */
-    public function getMandate(): PaymentContainerMandate
+    public function getMandate(): PaymentContainerMandate|null
     {
-        return $this->container['mandate'];
+        return $this->container['mandate'] ?? null;
     }
 
     /**

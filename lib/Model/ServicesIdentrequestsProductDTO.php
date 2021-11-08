@@ -212,9 +212,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets provider
      * @return string
      */
-    public function getProvider(): string
+    public function getProvider(): string|null
     {
-        return $this->container['provider'];
+        return $this->container['provider'] ?? null;
     }
 
     /**
@@ -242,9 +242,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets person
      * @return \Secuconnect\Client\Model\IdentrequestPersonDTO[]
      */
-    public function getPerson(): array
+    public function getPerson(): array|null
     {
-        return $this->container['person'];
+        return $this->container['person'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets owner_transaction_id
      * @return string
      */
-    public function getOwnerTransactionId(): string
+    public function getOwnerTransactionId(): string|null
     {
-        return $this->container['owner_transaction_id'];
+        return $this->container['owner_transaction_id'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class ServicesIdentrequestsProductDTO implements ArrayAccess, ModelInterface
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\IdentrequestRedirectUrls
      */
-    public function getRedirectUrl(): IdentrequestRedirectUrls
+    public function getRedirectUrl(): IdentrequestRedirectUrls|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**

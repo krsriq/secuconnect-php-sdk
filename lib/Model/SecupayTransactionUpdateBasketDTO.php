@@ -146,9 +146,9 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract(): PaymentContractsProductModel
+    public function getContract(): PaymentContractsProductModel|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionUpdateBasketDTO implements ArrayAccess, ModelInterface
      * Gets basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getBasket(): array
+    public function getBasket(): array|null
     {
-        return $this->container['basket'];
+        return $this->container['basket'] ?? null;
     }
 
     /**

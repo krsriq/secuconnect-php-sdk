@@ -146,9 +146,9 @@ class LoyaltyCardsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyCardsProductModel extends BaseProductModel
      * Gets account
      * @return \Secuconnect\Client\Model\LoyaltyCardsDTOAccount
      */
-    public function getAccount(): LoyaltyCardsDTOAccount
+    public function getAccount(): LoyaltyCardsDTOAccount|null
     {
-        return $this->container['account'];
+        return $this->container['account'] ?? null;
     }
 
     /**
@@ -188,9 +188,9 @@ class LoyaltyCardsProductModel extends BaseProductModel
      * Gets cardnumber
      * @return string
      */
-    public function getCardnumber(): string
+    public function getCardnumber(): string|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**

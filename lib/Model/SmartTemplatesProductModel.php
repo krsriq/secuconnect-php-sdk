@@ -176,9 +176,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets default_language
      * @return string
      */
-    public function getDefaultLanguage(): string
+    public function getDefaultLanguage(): string|null
     {
-        return $this->container['default_language'];
+        return $this->container['default_language'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets header
      * @return \Secuconnect\Client\Model\SmartTemplatesComponentModel[]
      */
-    public function getHeader(): array
+    public function getHeader(): array|null
     {
-        return $this->container['header'];
+        return $this->container['header'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets footer
      * @return \Secuconnect\Client\Model\SmartTemplatesComponentModel[]
      */
-    public function getFooter(): array
+    public function getFooter(): array|null
     {
-        return $this->container['footer'];
+        return $this->container['footer'] ?? null;
     }
 
     /**
@@ -323,9 +323,9 @@ class SmartTemplatesProductModel extends BaseProductModel
      * Gets pages
      * @return \Secuconnect\Client\Model\SmartTemplatesComponentModel[]
      */
-    public function getPages(): array
+    public function getPages(): array|null
     {
-        return $this->container['pages'];
+        return $this->container['pages'] ?? null;
     }
 
     /**

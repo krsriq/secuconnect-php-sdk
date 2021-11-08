@@ -1,10 +1,19 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Api;
 
-use Secuconnect\Client\ApiClient;
+use Exception;
+use InvalidArgumentException;
+use Secuconnect\Client\ApiController;
 use Secuconnect\Client\ApiException;
-use Secuconnect\Client\Authentication\Authenticator;
 
 /**
  * SmartTransactionsApi
@@ -14,65 +23,22 @@ use Secuconnect\Client\Authentication\Authenticator;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SmartTransactionsApi
+class SmartTransactionsApi extends ApiController
 {
-    /**
-     * API Client
-     *
-     * @var ApiClient instance of the ApiClient
-     */
-    protected $apiClient;
-
-    /**
-     * Constructor
-     *
-     * @param ApiClient|null $apiClient The api client to use
-     */
-    public function __construct(ApiClient $apiClient = null)
-    {
-        if ($apiClient === null) {
-            $apiClient = new ApiClient();
-        }
-
-        $this->apiClient = $apiClient;
-    }
-
-    /**
-     * Get API client
-     *
-     * @return ApiClient get the API client
-     */
-    public function getApiClient()
-    {
-        return $this->apiClient;
-    }
-
-    /**
-     * Set the API client
-     *
-     * @param ApiClient $apiClient set the API client
-     *
-     * @return SmartTransactionsApi
-     */
-    public function setApiClient(ApiClient $apiClient)
-    {
-        $this->apiClient = $apiClient;
-        return $this;
-    }
 
     /**
      * Operation addTransaction
      *
      * POST Smart/Transactions
      *
-     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function addTransaction($body)
+    public function addTransaction(\Secuconnect\Client\Model\SmartTransactionsDTO $body): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->addTransactionWithHttpInfo($body);
-        return $response;
+        return $this->addTransactionWithHttpInfo($body)[0];
     }
 
     /**
@@ -80,41 +46,26 @@ class SmartTransactionsApi
      *
      * POST Smart/Transactions
      *
-     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function addTransactionWithHttpInfo($body)
+    public function addTransactionWithHttpInfo(\Secuconnect\Client\Model\SmartTransactionsDTO $body): array
     {
         // parse inputs
         $resourcePath = "/Smart/Transactions";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -125,29 +76,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -158,13 +94,13 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/cancel
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function cancelTransaction($smart_transaction_id)
+    public function cancelTransaction(string $smart_transaction_id): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->cancelTransactionWithHttpInfo($smart_transaction_id);
-        return $response;
+        return $this->cancelTransactionWithHttpInfo($smart_transaction_id)[0];
     }
 
     /**
@@ -173,49 +109,40 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/cancel
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function cancelTransactionWithHttpInfo($smart_transaction_id)
+    public function cancelTransactionWithHttpInfo(string $smart_transaction_id): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling cancelTransaction'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/cancel";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -226,29 +153,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}/cancel'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -259,13 +171,13 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/canceltrx
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function cancelTrx($smart_transaction_id)
+    public function cancelTrx(string $smart_transaction_id): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->cancelTrxWithHttpInfo($smart_transaction_id);
-        return $response;
+        return $this->cancelTrxWithHttpInfo($smart_transaction_id)[0];
     }
 
     /**
@@ -274,49 +186,40 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/canceltrx
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function cancelTrxWithHttpInfo($smart_transaction_id)
+    public function cancelTrxWithHttpInfo(string $smart_transaction_id): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling cancelTrx'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/canceltrx";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -327,29 +230,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}/canceltrx'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -360,13 +248,13 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartDeviceId}/diagnosis
      *
      * @param string $smart_device_id Smart device id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function diagnose($smart_device_id)
+    public function diagnose(string $smart_device_id): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->diagnoseWithHttpInfo($smart_device_id);
-        return $response;
+        return $this->diagnoseWithHttpInfo($smart_device_id)[0];
     }
 
     /**
@@ -375,49 +263,40 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartDeviceId}/diagnosis
      *
      * @param string $smart_device_id Smart device id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function diagnoseWithHttpInfo($smart_device_id)
+    public function diagnoseWithHttpInfo(string $smart_device_id): array
     {
         // verify the required parameter 'smart_device_id' is set
-        if ($smart_device_id === null || (is_array($smart_device_id) && count($smart_device_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_device_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_device_id when calling diagnose'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartDeviceId}/diagnosis";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_device_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartDeviceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_device_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartDeviceId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_device_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -428,29 +307,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartDeviceId}/diagnosis'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -460,18 +324,18 @@ class SmartTransactionsApi
      *
      * GET Smart/Transactions
      *
-     * @param int $count The maximum number of items to return 
-     * @param int $offset The position within the whole result set to start returning items (zero-based) 
-     * @param string $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;. 
-     * @param string $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60; 
-     * @param string $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending. 
-     * @throws ApiException on non-2xx response
+     * @param int|null $count The maximum number of items to return
+     * @param int|null $offset The position within the whole result set to start returning items (zero-based)
+     * @param string|null $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;.
+     * @param string|null $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60;
+     * @param string|null $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending.
      * @return \Secuconnect\Client\Model\SmartTransactionsList
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getAll($count = null, $offset = null, $fields = null, $q = null, $sort = null)
+    public function getAll(?int $count = null, ?int $offset = null, ?string $fields = null, ?string $q = null, ?string $sort = null): \Secuconnect\Client\Model\SmartTransactionsList
     {
-        list($response) = $this->getAllWithHttpInfo($count, $offset, $fields, $q, $sort);
-        return $response;
+        return $this->getAllWithHttpInfo($count, $offset, $fields, $q, $sort)[0];
     }
 
     /**
@@ -479,60 +343,55 @@ class SmartTransactionsApi
      *
      * GET Smart/Transactions
      *
-     * @param int $count The maximum number of items to return 
-     * @param int $offset The position within the whole result set to start returning items (zero-based) 
-     * @param string $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;. 
-     * @param string $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60; 
-     * @param string $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending. 
-     * @throws ApiException on non-2xx response
+     * @param int|null $count The maximum number of items to return
+     * @param int|null $offset The position within the whole result set to start returning items (zero-based)
+     * @param string|null $fields List of fields to include in the result. Nested properties can be accessed with this notation: &#x60;prop1.prop2&#x60;.
+     * @param string|null $q A query string to restrict the returned items to given conditions. The query string must consist of any combination of single expressions in the form &#x60;property:condition&#x60;. Property names can be nested like &#x60;property.property&#x60;.  Example: &#x60;customer.name:Meier&#x60;  A condition may contain:  * &#x60;?&#x60; as wildcard for one character;  * &#x60;*&#x60; as wildcard for any number of characters.  You can also use value ranges in the form &#x60;[min TO max]&#x60;.  Example: &#x60;customer.age:[30 TO 40]&#x60;  You can combine expressions logically by &#x60;expr AND expr&#x60; and &#x60;{expr} OR {expr}&#x60;. You can also negate an expression using &#x60;NOT {expr}&#x60;. Parenthesis &#x60;(...)&#x60; can be used to control precedence.  Example: &#x60;(NOT customer.name:meier*) AND (customer.age:[30 TO 40] OR customer.age:[50 TO 60])&#x60;
+     * @param string|null $sort String with comma separated pairs of &#x60;field:order&#x60;.  Options for order:  * &#x60;asc&#x60; ascending;  * &#x60;dsc&#x60; descending.
      * @return array of \Secuconnect\Client\Model\SmartTransactionsList, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getAllWithHttpInfo($count = null, $offset = null, $fields = null, $q = null, $sort = null)
+    public function getAllWithHttpInfo(?int $count = null, ?int $offset = null, ?string $fields = null, ?string $q = null, ?string $sort = null): array
     {
         // parse inputs
         $resourcePath = "/Smart/Transactions";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // query params
         if ($count !== null) {
             $queryParams['count'] = $this->apiClient->getSerializer()->toQueryValue($count);
         }
+
         // query params
         if ($offset !== null) {
             $queryParams['offset'] = $this->apiClient->getSerializer()->toQueryValue($offset);
         }
+
         // query params
         if ($fields !== null) {
             $queryParams['fields'] = $this->apiClient->getSerializer()->toQueryValue($fields);
         }
+
         // query params
         if ($q !== null) {
             $queryParams['q'] = $this->apiClient->getSerializer()->toQueryValue($q);
         }
+
         // query params
         if ($sort !== null) {
             $queryParams['sort'] = $this->apiClient->getSerializer()->toQueryValue($sort);
         }
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -543,29 +402,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsList',
-                    '/Smart/Transactions'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsList'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsList', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsList', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -576,13 +420,13 @@ class SmartTransactionsApi
      * GET Smart/Transactions/{smartTransactionId}
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getOne($smart_transaction_id)
+    public function getOne(string $smart_transaction_id): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->getOneWithHttpInfo($smart_transaction_id);
-        return $response;
+        return $this->getOneWithHttpInfo($smart_transaction_id)[0];
     }
 
     /**
@@ -591,49 +435,40 @@ class SmartTransactionsApi
      * GET Smart/Transactions/{smartTransactionId}
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getOneWithHttpInfo($smart_transaction_id)
+    public function getOneWithHttpInfo(string $smart_transaction_id): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling getOne'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -644,29 +479,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -677,13 +497,13 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/preTransaction
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsPreTransactionModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function preTransaction($smart_transaction_id)
+    public function preTransaction(string $smart_transaction_id): \Secuconnect\Client\Model\SmartTransactionsPreTransactionModel
     {
-        list($response) = $this->preTransactionWithHttpInfo($smart_transaction_id);
-        return $response;
+        return $this->preTransactionWithHttpInfo($smart_transaction_id)[0];
     }
 
     /**
@@ -692,49 +512,40 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartTransactionId}/preTransaction
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsPreTransactionModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function preTransactionWithHttpInfo($smart_transaction_id)
+    public function preTransactionWithHttpInfo(string $smart_transaction_id): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling preTransaction'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/preTransaction";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -745,29 +556,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsPreTransactionModel',
-                    '/Smart/Transactions/{smartTransactionId}/preTransaction'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsPreTransactionModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsPreTransactionModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsPreTransactionModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -779,14 +575,14 @@ class SmartTransactionsApi
      *
      * @param string $smart_transaction_id Smart transaction id (required)
      * @param string $payment_method Payment method (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function prepare($smart_transaction_id, $payment_method, $body)
+    public function prepare(string $smart_transaction_id, string $payment_method, \Secuconnect\Client\Model\SmartTransactionsPrepare $body): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->prepareWithHttpInfo($smart_transaction_id, $payment_method, $body);
-        return $response;
+        return $this->prepareWithHttpInfo($smart_transaction_id, $payment_method, $body)[0];
     }
 
     /**
@@ -796,69 +592,56 @@ class SmartTransactionsApi
      *
      * @param string $smart_transaction_id Smart transaction id (required)
      * @param string $payment_method Payment method (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function prepareWithHttpInfo($smart_transaction_id, $payment_method, $body)
+    public function prepareWithHttpInfo(string $smart_transaction_id, string $payment_method, \Secuconnect\Client\Model\SmartTransactionsPrepare $body): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling prepare'
             );
         }
+
         // verify the required parameter 'payment_method' is set
-        if ($payment_method === null || (is_array($payment_method) && count($payment_method) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_method)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_method when calling prepare'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/prepare/{paymentMethod}";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($payment_method !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentMethod" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_method),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        // path params
+        
+        $resourcePath = str_replace(
+            "{" . "paymentMethod" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_method),
+           $resourcePath
+        );
+
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -869,29 +652,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}/prepare/{paymentMethod}'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -902,14 +670,14 @@ class SmartTransactionsApi
      * POST Smart/Transactions/stx_xxx/setDelivery
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body Information about the delivery status 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body Information about the delivery status
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function setDelivery($smart_transaction_id, $body)
+    public function setDelivery(string $smart_transaction_id, \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->setDeliveryWithHttpInfo($smart_transaction_id, $body);
-        return $response;
+        return $this->setDeliveryWithHttpInfo($smart_transaction_id, $body)[0];
     }
 
     /**
@@ -918,55 +686,41 @@ class SmartTransactionsApi
      * POST Smart/Transactions/stx_xxx/setDelivery
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body Information about the delivery status 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body Information about the delivery status
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function setDeliveryWithHttpInfo($smart_transaction_id, $body)
+    public function setDeliveryWithHttpInfo(string $smart_transaction_id, \Secuconnect\Client\Model\SmartTransactionsSetDeliveryModel $body): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling setDelivery'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/setDelivery";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -977,29 +731,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}/setDelivery'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -1010,13 +749,13 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartDeviceId}/endOfDay
      *
      * @param string $smart_device_id Smart device id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function startEndOfDayReport($smart_device_id)
+    public function startEndOfDayReport(string $smart_device_id): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->startEndOfDayReportWithHttpInfo($smart_device_id);
-        return $response;
+        return $this->startEndOfDayReportWithHttpInfo($smart_device_id)[0];
     }
 
     /**
@@ -1025,49 +764,40 @@ class SmartTransactionsApi
      * POST Smart/Transactions/{smartDeviceId}/endOfDay
      *
      * @param string $smart_device_id Smart device id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function startEndOfDayReportWithHttpInfo($smart_device_id)
+    public function startEndOfDayReportWithHttpInfo(string $smart_device_id): array
     {
         // verify the required parameter 'smart_device_id' is set
-        if ($smart_device_id === null || (is_array($smart_device_id) && count($smart_device_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_device_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_device_id when calling startEndOfDayReport'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartDeviceId}/endOfDay";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_device_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartDeviceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_device_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartDeviceId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_device_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -1078,29 +808,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartDeviceId}/endOfDay'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -1112,14 +827,14 @@ class SmartTransactionsApi
      *
      * @param string $smart_transaction_id Smart transaction id (required)
      * @param string $payment_method Payment method (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function startTransaction($smart_transaction_id, $payment_method, $body)
+    public function startTransaction(string $smart_transaction_id, string $payment_method, \Secuconnect\Client\Model\SmartTransactionsPrepare $body): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->startTransactionWithHttpInfo($smart_transaction_id, $payment_method, $body);
-        return $response;
+        return $this->startTransactionWithHttpInfo($smart_transaction_id, $payment_method, $body)[0];
     }
 
     /**
@@ -1129,69 +844,56 @@ class SmartTransactionsApi
      *
      * @param string $smart_transaction_id Smart transaction id (required)
      * @param string $payment_method Payment method (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsPrepare $body Information which customer and container will be used to this operation
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function startTransactionWithHttpInfo($smart_transaction_id, $payment_method, $body)
+    public function startTransactionWithHttpInfo(string $smart_transaction_id, string $payment_method, \Secuconnect\Client\Model\SmartTransactionsPrepare $body): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling startTransaction'
             );
         }
+
         // verify the required parameter 'payment_method' is set
-        if ($payment_method === null || (is_array($payment_method) && count($payment_method) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_method)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_method when calling startTransaction'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}/start/{paymentMethod}";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($payment_method !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentMethod" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_method),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        // path params
+        
+        $resourcePath = str_replace(
+            "{" . "paymentMethod" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_method),
+           $resourcePath
+        );
+
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -1202,29 +904,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}/start/{paymentMethod}'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -1235,14 +922,14 @@ class SmartTransactionsApi
      * PUT Smart/Transactions/{smartTransactionId}
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties
      * @return \Secuconnect\Client\Model\SmartTransactionsProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function updateTransaction($smart_transaction_id, $body)
+    public function updateTransaction(string $smart_transaction_id, \Secuconnect\Client\Model\SmartTransactionsDTO $body): \Secuconnect\Client\Model\SmartTransactionsProductModel
     {
-        list($response) = $this->updateTransactionWithHttpInfo($smart_transaction_id, $body);
-        return $response;
+        return $this->updateTransactionWithHttpInfo($smart_transaction_id, $body)[0];
     }
 
     /**
@@ -1251,55 +938,41 @@ class SmartTransactionsApi
      * PUT Smart/Transactions/{smartTransactionId}
      *
      * @param string $smart_transaction_id Smart transaction id (required)
-     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SmartTransactionsDTO $body Smart transaction properties
      * @return array of \Secuconnect\Client\Model\SmartTransactionsProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function updateTransactionWithHttpInfo($smart_transaction_id, $body)
+    public function updateTransactionWithHttpInfo(string $smart_transaction_id, \Secuconnect\Client\Model\SmartTransactionsDTO $body): array
     {
         // verify the required parameter 'smart_transaction_id' is set
-        if ($smart_transaction_id === null || (is_array($smart_transaction_id) && count($smart_transaction_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($smart_transaction_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $smart_transaction_id when calling updateTransaction'
             );
         }
+
         // parse inputs
         $resourcePath = "/Smart/Transactions/{smartTransactionId}";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($smart_transaction_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "smartTransactionId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
-                $resourcePath
-            );
-        }
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "smartTransactionId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($smart_transaction_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -1310,29 +983,14 @@ class SmartTransactionsApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SmartTransactionsProductModel',
-                    '/Smart/Transactions/{smartTransactionId}'
+                    $responseType = '\Secuconnect\Client\Model\SmartTransactionsProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SmartTransactionsProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SmartTransactionsProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }

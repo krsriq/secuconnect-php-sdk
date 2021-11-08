@@ -146,9 +146,9 @@ class LoyaltyMerchantcardsDTOCsc implements ArrayAccess, ModelInterface
      * Gets cardnumber
      * @return int
      */
-    public function getCardnumber(): int
+    public function getCardnumber(): int|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyMerchantcardsDTOCsc implements ArrayAccess, ModelInterface
      * Gets csc
      * @return int
      */
-    public function getCsc(): int
+    public function getCsc(): int|null
     {
-        return $this->container['csc'];
+        return $this->container['csc'] ?? null;
     }
 
     /**

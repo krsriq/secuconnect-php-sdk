@@ -152,9 +152,9 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess, Mode
      * Gets url_success
      * @return string
      */
-    public function getUrlSuccess(): string
+    public function getUrlSuccess(): string|null
     {
-        return $this->container['url_success'];
+        return $this->container['url_success'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess, Mode
      * Gets url_abort
      * @return string
      */
-    public function getUrlAbort(): string
+    public function getUrlAbort(): string|null
     {
-        return $this->container['url_abort'];
+        return $this->container['url_abort'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartTransactionsApplicationContextReturnUrls implements ArrayAccess, Mode
      * Gets url_error
      * @return string
      */
-    public function getUrlError(): string
+    public function getUrlError(): string|null
     {
-        return $this->container['url_error'];
+        return $this->container['url_error'] ?? null;
     }
 
     /**

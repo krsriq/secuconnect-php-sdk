@@ -10,26 +10,19 @@ use Secuconnect\Client\Model\GeoAddress;
 
 /**
  * Class GeneralMerchantsApiTest
- * @package Secuconnect\Client
  */
 class GeneralMerchantsApiTest extends TestCase
 {
-    /**
-     * @var GeneralMerchantsApi
-     */
-    private static $api;
+    private static ?GeneralMerchantsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$instance = SecuconnectObjects::getInstance();
@@ -40,7 +33,7 @@ class GeneralMerchantsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$instance = null;
         self::$api = null;
@@ -51,7 +44,7 @@ class GeneralMerchantsApiTest extends TestCase
      * Test case for getting list of General Merchants.
      * @throws ApiException
      */
-    public function testGetListOfGeneralMerchants()
+    public function testGetListOfGeneralMerchants(): ?GeneralMerchantsProductModel
     {
         try {
             $response = self::$api->getAll(1);
@@ -109,10 +102,10 @@ class GeneralMerchantsApiTest extends TestCase
      * Test case for getting one General Merchant by provided id.
      *
      * @depends testGetListOfGeneralMerchants
-     * @param GeneralMerchantsProductModel $merchant
+     * @param GeneralMerchantsProductModel|null $merchant
      * @throws ApiException
      */
-    public function testGetOneGeneralMerchantByProvidedId(GeneralMerchantsProductModel $merchant)
+    public function testGetOneGeneralMerchantByProvidedId(?GeneralMerchantsProductModel $merchant)
     {
         if ($merchant !== null) {
             $response = self::$api->getOne($merchant->getId());

@@ -139,9 +139,9 @@ class CreatedField implements ArrayAccess, ModelInterface
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**

@@ -140,9 +140,9 @@ class ProductInstanceID implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**

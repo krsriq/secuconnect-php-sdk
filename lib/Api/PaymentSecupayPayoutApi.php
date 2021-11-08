@@ -1,10 +1,19 @@
 <?php
+/**
+ * @noinspection PhpUnused
+ * @noinspection DuplicatedCode
+ * @noinspection PhpUnnecessaryLocalVariableInspection
+ * @noinspection PhpUnnecessaryFullyQualifiedNameInspection
+ * @noinspection PhpFullyQualifiedNameUsageInspection
+ * @noinspection PhpPureAttributeCanBeAddedInspection
+ */
 
 namespace Secuconnect\Client\Api;
 
-use Secuconnect\Client\ApiClient;
+use Exception;
+use InvalidArgumentException;
+use Secuconnect\Client\ApiController;
 use Secuconnect\Client\ApiException;
-use Secuconnect\Client\Authentication\Authenticator;
 
 /**
  * PaymentSecupayPayoutApi
@@ -14,51 +23,8 @@ use Secuconnect\Client\Authentication\Authenticator;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class PaymentSecupayPayoutApi
+class PaymentSecupayPayoutApi extends ApiController
 {
-    /**
-     * API Client
-     *
-     * @var ApiClient instance of the ApiClient
-     */
-    protected $apiClient;
-
-    /**
-     * Constructor
-     *
-     * @param ApiClient|null $apiClient The api client to use
-     */
-    public function __construct(ApiClient $apiClient = null)
-    {
-        if ($apiClient === null) {
-            $apiClient = new ApiClient();
-        }
-
-        $this->apiClient = $apiClient;
-    }
-
-    /**
-     * Get API client
-     *
-     * @return ApiClient get the API client
-     */
-    public function getApiClient()
-    {
-        return $this->apiClient;
-    }
-
-    /**
-     * Set the API client
-     *
-     * @param ApiClient $apiClient set the API client
-     *
-     * @return PaymentSecupayPayoutApi
-     */
-    public function setApiClient(ApiClient $apiClient)
-    {
-        $this->apiClient = $apiClient;
-        return $this;
-    }
 
     /**
      * Operation getSecupaypayout
@@ -66,13 +32,13 @@ class PaymentSecupayPayoutApi
      * GET Payment/Secupaypayout/{paymentPayoutId}
      *
      * @param string $payment_payout_id Payment payout id (required)
-     * @throws ApiException on non-2xx response
      * @return \Secuconnect\Client\Model\SecupayPayoutProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getSecupaypayout($payment_payout_id)
+    public function getSecupaypayout(string $payment_payout_id): \Secuconnect\Client\Model\SecupayPayoutProductModel
     {
-        list($response) = $this->getSecupaypayoutWithHttpInfo($payment_payout_id);
-        return $response;
+        return $this->getSecupaypayoutWithHttpInfo($payment_payout_id)[0];
     }
 
     /**
@@ -81,49 +47,40 @@ class PaymentSecupayPayoutApi
      * GET Payment/Secupaypayout/{paymentPayoutId}
      *
      * @param string $payment_payout_id Payment payout id (required)
-     * @throws ApiException on non-2xx response
      * @return array of \Secuconnect\Client\Model\SecupayPayoutProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function getSecupaypayoutWithHttpInfo($payment_payout_id)
+    public function getSecupaypayoutWithHttpInfo(string $payment_payout_id): array
     {
         // verify the required parameter 'payment_payout_id' is set
-        if ($payment_payout_id === null || (is_array($payment_payout_id) && count($payment_payout_id) === 0)) {
-            throw new \InvalidArgumentException(
+        if (empty($payment_payout_id)) {
+            throw new InvalidArgumentException(
                 'Missing the required parameter $payment_payout_id when calling getSecupaypayout'
             );
         }
+
         // parse inputs
         $resourcePath = "/Payment/Secupaypayout/{paymentPayoutId}";
-        $httpBody = '';
+        $httpBody = [];
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
         // path params
-        if ($payment_payout_id !== null) {
-            $resourcePath = str_replace(
-                "{" . "paymentPayoutId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($payment_payout_id),
-                $resourcePath
-            );
-        }
+        
+        $resourcePath = str_replace(
+            "{" . "paymentPayoutId" . "}",
+            $this->apiClient->getSerializer()->toPathValue($payment_payout_id),
+           $resourcePath
+        );
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -134,29 +91,14 @@ class PaymentSecupayPayoutApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SecupayPayoutProductModel',
-                    '/Payment/Secupaypayout/{paymentPayoutId}'
+                    $responseType = '\Secuconnect\Client\Model\SecupayPayoutProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SecupayPayoutProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SecupayPayoutProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }
@@ -166,14 +108,14 @@ class PaymentSecupayPayoutApi
      *
      * POST Payment/Secupaypayout
      *
-     * @param \Secuconnect\Client\Model\SecupayPayoutDTO $body Payout payment transaction input properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SecupayPayoutDTO $body Payout payment transaction input properties
      * @return \Secuconnect\Client\Model\SecupayPayoutProductModel
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentSecupaypayoutPost($body)
+    public function paymentSecupaypayoutPost(\Secuconnect\Client\Model\SecupayPayoutDTO $body): \Secuconnect\Client\Model\SecupayPayoutProductModel
     {
-        list($response) = $this->paymentSecupaypayoutPostWithHttpInfo($body);
-        return $response;
+        return $this->paymentSecupaypayoutPostWithHttpInfo($body)[0];
     }
 
     /**
@@ -181,41 +123,26 @@ class PaymentSecupayPayoutApi
      *
      * POST Payment/Secupaypayout
      *
-     * @param \Secuconnect\Client\Model\SecupayPayoutDTO $body Payout payment transaction input properties 
-     * @throws ApiException on non-2xx response
+     * @param \Secuconnect\Client\Model\SecupayPayoutDTO $body Payout payment transaction input properties
      * @return array of \Secuconnect\Client\Model\SecupayPayoutProductModel, HTTP status code, HTTP response headers (array of strings)
+     * @throws ApiException on non-2xx response
+     * @throws Exception
      */
-    public function paymentSecupaypayoutPostWithHttpInfo($body)
+    public function paymentSecupaypayoutPostWithHttpInfo(\Secuconnect\Client\Model\SecupayPayoutDTO $body): array
     {
         // parse inputs
         $resourcePath = "/Payment/Secupaypayout";
-        $httpBody = '';
         $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
+        $headerParams = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ];
 
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
+        $httpBody = $body;
         for ($retries = 0; ; $retries++) {
-
             // this endpoint requires OAuth (access token)
-            if (strlen($this->apiClient->getConfig()->getAccessToken()) !== 0) {
-                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getConfig()->getAccessToken();
+            if (strlen($this->apiClient->getAccessToken()) !== 0) {
+                $headerParams['Authorization'] = 'Bearer ' . $this->apiClient->getAccessToken();
             }
 
             // make the API Call
@@ -226,29 +153,14 @@ class PaymentSecupayPayoutApi
                     $queryParams,
                     $httpBody,
                     $headerParams,
-                    '\Secuconnect\Client\Model\SecupayPayoutProductModel',
-                    '/Payment/Secupaypayout'
+                    $responseType = '\Secuconnect\Client\Model\SecupayPayoutProductModel'
                 );
 
-                return [$this->apiClient->getSerializer()->deserialize($response, '\Secuconnect\Client\Model\SecupayPayoutProductModel', $httpHeader), $statusCode, $httpHeader];
+                return [$this->apiClient->getSerializer()->deserialize($response, $responseType, $httpHeader), $statusCode, $httpHeader];
             } catch (ApiException $e) {
-                switch ($e->getCode()) {
-                    case 200:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\SecupayPayoutProductModel', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
-                    case 401:
-                        if ($retries < 1) {
-                            Authenticator::reauthenticate();
-                            continue 2;
-                        }
-                    default:
-                        $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Secuconnect\Client\Model\ProductExceptionPayload', $e->getResponseHeaders());
-                        $e->setResponseObject($data);
-                        break;
+                if ($this->checkAndFormatApiException($e, $responseType, $retries) === 'retry') {
+                    continue;
                 }
-
-                throw $e;
             }
         }
     }

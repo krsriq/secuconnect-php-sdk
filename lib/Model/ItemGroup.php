@@ -164,9 +164,9 @@ class ItemGroup implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class ItemGroup implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class ItemGroup implements ArrayAccess, ModelInterface
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class ItemGroup implements ArrayAccess, ModelInterface
      * Gets logo
      * @return string
      */
-    public function getLogo(): string
+    public function getLogo(): string|null
     {
-        return $this->container['logo'];
+        return $this->container['logo'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class ItemGroup implements ArrayAccess, ModelInterface
      * Gets enabled
      * @return bool
      */
-    public function getEnabled(): bool
+    public function getEnabled(): bool|null
     {
-        return $this->container['enabled'];
+        return $this->container['enabled'] ?? null;
     }
 
     /**

@@ -164,9 +164,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, O
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, O
      * Gets scheduled_slot
      * @return \Secuconnect\Client\Model\SmartTransactionsTimeSlot
      */
-    public function getScheduledSlot(): SmartTransactionsTimeSlot
+    public function getScheduledSlot(): SmartTransactionsTimeSlot|null
     {
-        return $this->container['scheduled_slot'];
+        return $this->container['scheduled_slot'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, O
      * Gets store_id
      * @return string
      */
-    public function getStoreId(): string
+    public function getStoreId(): string|null
     {
-        return $this->container['store_id'];
+        return $this->container['store_id'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, O
      * Gets delivered_at
      * @return string
      */
-    public function getDeliveredAt(): string
+    public function getDeliveredAt(): string|null
     {
-        return $this->container['delivered_at'];
+        return $this->container['delivered_at'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartTransactionsCollectionModel implements ArrayAccess, ModelInterface, O
      * Gets code
      * @return string
      */
-    public function getCode(): string
+    public function getCode(): string|null
     {
-        return $this->container['code'];
+        return $this->container['code'] ?? null;
     }
 
     /**

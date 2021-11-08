@@ -146,9 +146,9 @@ class SmartTransactionsBasket implements ArrayAccess, ModelInterface
      * Gets products
      * @return \Secuconnect\Client\Model\SmartTransactionsBasketProduct[]
      */
-    public function getProducts(): array
+    public function getProducts(): array|null
     {
-        return $this->container['products'];
+        return $this->container['products'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsBasket implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**

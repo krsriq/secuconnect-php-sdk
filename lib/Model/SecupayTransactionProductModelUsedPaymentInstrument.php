@@ -146,9 +146,9 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionProductModelUsedPaymentInstrument implements ArrayAccess
      * Gets data
      * @return \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate
      */
-    public function getData(): OneOfPaymentContainersDTOModelPrivate
+    public function getData(): OneOfPaymentContainersDTOModelPrivate|null
     {
-        return $this->container['data'];
+        return $this->container['data'] ?? null;
     }
 
     /**

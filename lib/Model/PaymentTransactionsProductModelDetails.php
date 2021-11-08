@@ -182,9 +182,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets cleared
      * @return string
      */
-    public function getCleared(): string
+    public function getCleared(): string|null
     {
-        return $this->container['cleared'];
+        return $this->container['cleared'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets status
      * @return int
      */
-    public function getStatus(): int
+    public function getStatus(): int|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets status_text
      * @return string
      */
-    public function getStatusText(): string
+    public function getStatusText(): string|null
     {
-        return $this->container['status_text'];
+        return $this->container['status_text'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets status_simple
      * @return int
      */
-    public function getStatusSimple(): int
+    public function getStatusSimple(): int|null
     {
-        return $this->container['status_simple'];
+        return $this->container['status_simple'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets status_text_simple
      * @return string
      */
-    public function getStatusTextSimple(): string
+    public function getStatusTextSimple(): string|null
     {
-        return $this->container['status_text_simple'];
+        return $this->container['status_text_simple'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class PaymentTransactionsProductModelDetails implements ArrayAccess, ModelInterf
      * Gets description_raw
      * @return string
      */
-    public function getDescriptionRaw(): string
+    public function getDescriptionRaw(): string|null
     {
-        return $this->container['description_raw'];
+        return $this->container['description_raw'] ?? null;
     }
 
     /**

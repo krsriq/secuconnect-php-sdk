@@ -164,9 +164,9 @@ class LoyaltyCardgroupsDTO implements ArrayAccess, ModelInterface
      * Gets display_name
      * @return string
      */
-    public function getDisplayName(): string
+    public function getDisplayName(): string|null
     {
-        return $this->container['display_name'];
+        return $this->container['display_name'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class LoyaltyCardgroupsDTO implements ArrayAccess, ModelInterface
      * Gets display_name_raw
      * @return string
      */
-    public function getDisplayNameRaw(): string
+    public function getDisplayNameRaw(): string|null
     {
-        return $this->container['display_name_raw'];
+        return $this->container['display_name_raw'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class LoyaltyCardgroupsDTO implements ArrayAccess, ModelInterface
      * Gets stock_warn_limit
      * @return string
      */
-    public function getStockWarnLimit(): string
+    public function getStockWarnLimit(): string|null
     {
-        return $this->container['stock_warn_limit'];
+        return $this->container['stock_warn_limit'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class LoyaltyCardgroupsDTO implements ArrayAccess, ModelInterface
      * Gets picture
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture(): string|null
     {
-        return $this->container['picture'];
+        return $this->container['picture'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class LoyaltyCardgroupsDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return \Secuconnect\Client\Model\LoyaltyCardgroupsDTOMerchant
      */
-    public function getMerchant(): LoyaltyCardgroupsDTOMerchant
+    public function getMerchant(): LoyaltyCardgroupsDTOMerchant|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**

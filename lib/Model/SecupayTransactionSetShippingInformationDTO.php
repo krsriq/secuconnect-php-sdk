@@ -152,9 +152,9 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess, ModelI
      * Gets carrier
      * @return string
      */
-    public function getCarrier(): string
+    public function getCarrier(): string|null
     {
-        return $this->container['carrier'];
+        return $this->container['carrier'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess, ModelI
      * Gets tracking_id
      * @return string
      */
-    public function getTrackingId(): string
+    public function getTrackingId(): string|null
     {
-        return $this->container['tracking_id'];
+        return $this->container['tracking_id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SecupayTransactionSetShippingInformationDTO implements ArrayAccess, ModelI
      * Gets invoice_number
      * @return string
      */
-    public function getInvoiceNumber(): string
+    public function getInvoiceNumber(): string|null
     {
-        return $this->container['invoice_number'];
+        return $this->container['invoice_number'] ?? null;
     }
 
     /**

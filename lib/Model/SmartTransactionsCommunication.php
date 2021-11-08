@@ -146,9 +146,9 @@ class SmartTransactionsCommunication implements ArrayAccess, ModelInterface
      * Gets action_type
      * @return string
      */
-    public function getActionType(): string
+    public function getActionType(): string|null
     {
-        return $this->container['action_type'];
+        return $this->container['action_type'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsCommunication implements ArrayAccess, ModelInterface
      * Gets template_id
      * @return string
      */
-    public function getTemplateId(): string
+    public function getTemplateId(): string|null
     {
-        return $this->container['template_id'];
+        return $this->container['template_id'] ?? null;
     }
 
     /**

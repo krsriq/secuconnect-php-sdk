@@ -140,9 +140,9 @@ class SecupayTransactionReverseAccrualDTO implements ArrayAccess, ModelInterface
      * Gets accrual
      * @return bool
      */
-    public function getAccrual(): bool
+    public function getAccrual(): bool|null
     {
-        return $this->container['accrual'];
+        return $this->container['accrual'] ?? null;
     }
 
     /**

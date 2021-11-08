@@ -146,9 +146,9 @@ class SmartTransactionsApplicationContextLocks implements ArrayAccess, ModelInte
      * Gets customer
      * @return bool
      */
-    public function getCustomer(): bool
+    public function getCustomer(): bool|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsApplicationContextLocks implements ArrayAccess, ModelInte
      * Gets shipping_address
      * @return bool
      */
-    public function getShippingAddress(): bool
+    public function getShippingAddress(): bool|null
     {
-        return $this->container['shipping_address'];
+        return $this->container['shipping_address'] ?? null;
     }
 
     /**

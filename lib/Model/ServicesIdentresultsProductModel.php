@@ -164,9 +164,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets request
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getRequest(): ProductInstanceUID
+    public function getRequest(): ProductInstanceUID|null
     {
-        return $this->container['request'];
+        return $this->container['request'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class ServicesIdentresultsProductModel extends BaseProductModel
      * Gets person
      * @return \Secuconnect\Client\Model\IdentresultPerson[]
      */
-    public function getPerson(): array
+    public function getPerson(): array|null
     {
-        return $this->container['person'];
+        return $this->container['person'] ?? null;
     }
 
     /**

@@ -176,9 +176,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets item_type
      * @return string
      */
-    public function getItemType(): string
+    public function getItemType(): string|null
     {
-        return $this->container['item_type'];
+        return $this->container['item_type'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId(): string|null
     {
-        return $this->container['reference_id'];
+        return $this->container['reference_id'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash(): string
+    public function getTransactionHash(): string|null
     {
-        return $this->container['transaction_hash'];
+        return $this->container['transaction_hash'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets transaction_id
      * @return string
      */
-    public function getTransactionId(): string
+    public function getTransactionId(): string|null
     {
-        return $this->container['transaction_id'];
+        return $this->container['transaction_id'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets container_id
      * @return string
      */
-    public function getContainerId(): string
+    public function getContainerId(): string|null
     {
-        return $this->container['container_id'];
+        return $this->container['container_id'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SecupayTransactionListItem implements ArrayAccess, ModelInterface
      * Gets total
      * @return int
      */
-    public function getTotal(): int
+    public function getTotal(): int|null
     {
-        return $this->container['total'];
+        return $this->container['total'] ?? null;
     }
 
     /**

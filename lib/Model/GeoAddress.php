@@ -158,9 +158,9 @@ class GeoAddress implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class GeoAddress implements ArrayAccess, ModelInterface
      * Gets address_components
      * @return \Secuconnect\Client\Model\AddressComponents[]
      */
-    public function getAddressComponents(): array
+    public function getAddressComponents(): array|null
     {
-        return $this->container['address_components'];
+        return $this->container['address_components'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class GeoAddress implements ArrayAccess, ModelInterface
      * Gets address_formatted
      * @return string
      */
-    public function getAddressFormatted(): string
+    public function getAddressFormatted(): string|null
     {
-        return $this->container['address_formatted'];
+        return $this->container['address_formatted'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class GeoAddress implements ArrayAccess, ModelInterface
      * Gets geometry
      * @return \Secuconnect\Client\Model\GeoAddressGeometry
      */
-    public function getGeometry(): GeoAddressGeometry
+    public function getGeometry(): GeoAddressGeometry|null
     {
-        return $this->container['geometry'];
+        return $this->container['geometry'] ?? null;
     }
 
     /**

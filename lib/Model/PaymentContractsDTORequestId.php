@@ -182,9 +182,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact(): Contact
+    public function getContact(): Contact|null
     {
-        return $this->container['contact'];
+        return $this->container['contact'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets project
      * @return string
      */
-    public function getProject(): string
+    public function getProject(): string|null
     {
-        return $this->container['project'];
+        return $this->container['project'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets payout_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPayoutAccount(): PaymentInformation
+    public function getPayoutAccount(): PaymentInformation|null
     {
-        return $this->container['payout_account'];
+        return $this->container['payout_account'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets iframe_opts
      * @return \Secuconnect\Client\Model\PaymentContractsDTOIFrameOpts
      */
-    public function getIframeOpts(): PaymentContractsDTOIFrameOpts
+    public function getIframeOpts(): PaymentContractsDTOIFrameOpts|null
     {
-        return $this->container['iframe_opts'];
+        return $this->container['iframe_opts'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets payin_account
      * @return bool
      */
-    public function getPayinAccount(): bool
+    public function getPayinAccount(): bool|null
     {
-        return $this->container['payin_account'];
+        return $this->container['payin_account'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets create_first_store
      * @return bool
      */
-    public function getCreateFirstStore(): bool
+    public function getCreateFirstStore(): bool|null
     {
-        return $this->container['create_first_store'];
+        return $this->container['create_first_store'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets store_name
      * @return string
      */
-    public function getStoreName(): string
+    public function getStoreName(): string|null
     {
-        return $this->container['store_name'];
+        return $this->container['store_name'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class PaymentContractsDTORequestId implements ArrayAccess, ModelInterface
      * Gets payout_purpose
      * @return string
      */
-    public function getPayoutPurpose(): string
+    public function getPayoutPurpose(): string|null
     {
-        return $this->container['payout_purpose'];
+        return $this->container['payout_purpose'] ?? null;
     }
 
     /**

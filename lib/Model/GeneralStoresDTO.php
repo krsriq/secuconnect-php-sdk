@@ -188,9 +188,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets facebook_id
      * @return string
      */
-    public function getFacebookId(): string
+    public function getFacebookId(): string|null
     {
-        return $this->container['facebook_id'];
+        return $this->container['facebook_id'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets phone
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): string|null
     {
-        return $this->container['phone'];
+        return $this->container['phone'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite(): string
+    public function getUrlWebsite(): string|null
     {
-        return $this->container['url_website'];
+        return $this->container['url_website'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets photo_main
      * @return string
      */
-    public function getPhotoMain(): string
+    public function getPhotoMain(): string|null
     {
-        return $this->container['photo_main'];
+        return $this->container['photo_main'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets photo
      * @return string[]
      */
-    public function getPhoto(): array
+    public function getPhoto(): array|null
     {
-        return $this->container['photo'];
+        return $this->container['photo'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class GeneralStoresDTO implements ArrayAccess, ModelInterface
      * Gets open_hours
      * @return \Secuconnect\Client\Model\OpenHours[]
      */
-    public function getOpenHours(): array
+    public function getOpenHours(): array|null
     {
-        return $this->container['open_hours'];
+        return $this->container['open_hours'] ?? null;
     }
 
     /**

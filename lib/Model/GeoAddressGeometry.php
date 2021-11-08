@@ -146,9 +146,9 @@ class GeoAddressGeometry implements ArrayAccess, ModelInterface
      * Gets lat
      * @return string
      */
-    public function getLat(): string
+    public function getLat(): string|null
     {
-        return $this->container['lat'];
+        return $this->container['lat'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class GeoAddressGeometry implements ArrayAccess, ModelInterface
      * Gets lon
      * @return string
      */
-    public function getLon(): string
+    public function getLon(): string|null
     {
-        return $this->container['lon'];
+        return $this->container['lon'] ?? null;
     }
 
     /**

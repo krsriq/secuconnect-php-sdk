@@ -206,9 +206,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets store
      * @return string
      */
-    public function getStore(): string
+    public function getStore(): string|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets device
      * @return string
      */
-    public function getDevice(): string
+    public function getDevice(): string|null
     {
-        return $this->container['device'];
+        return $this->container['device'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return string
      */
-    public function getContract(): string
+    public function getContract(): string|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -290,9 +290,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets vendor
      * @return string
      */
-    public function getVendor(): string
+    public function getVendor(): string|null
     {
-        return $this->container['vendor'];
+        return $this->container['vendor'] ?? null;
     }
 
     /**
@@ -311,9 +311,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid(): string
+    public function getVendorUid(): string|null
     {
-        return $this->container['vendor_uid'];
+        return $this->container['vendor_uid'] ?? null;
     }
 
     /**
@@ -332,9 +332,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -353,9 +353,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -374,9 +374,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -395,9 +395,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets products
      * @return \Secuconnect\Client\Model\SmartDevicesProducts
      */
-    public function getProducts(): SmartDevicesProducts
+    public function getProducts(): SmartDevicesProducts|null
     {
-        return $this->container['products'];
+        return $this->container['products'] ?? null;
     }
 
     /**
@@ -416,9 +416,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets terminal_type
      * @return string
      */
-    public function getTerminalType(): string
+    public function getTerminalType(): string|null
     {
-        return $this->container['terminal_type'];
+        return $this->container['terminal_type'] ?? null;
     }
 
     /**
@@ -437,9 +437,9 @@ class SmartDevicesDTO implements ArrayAccess, ModelInterface
      * Gets base_version
      * @return string
      */
-    public function getBaseVersion(): string
+    public function getBaseVersion(): string|null
     {
-        return $this->container['base_version'];
+        return $this->container['base_version'] ?? null;
     }
 
     /**

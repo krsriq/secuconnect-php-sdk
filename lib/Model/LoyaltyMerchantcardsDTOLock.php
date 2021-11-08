@@ -152,9 +152,9 @@ class LoyaltyMerchantcardsDTOLock implements ArrayAccess, ModelInterface
      * Gets lock_status
      * @return string
      */
-    public function getLockStatus(): string
+    public function getLockStatus(): string|null
     {
-        return $this->container['lock_status'];
+        return $this->container['lock_status'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class LoyaltyMerchantcardsDTOLock implements ArrayAccess, ModelInterface
      * Gets reason
      * @return string
      */
-    public function getReason(): string
+    public function getReason(): string|null
     {
-        return $this->container['reason'];
+        return $this->container['reason'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class LoyaltyMerchantcardsDTOLock implements ArrayAccess, ModelInterface
      * Gets note
      * @return string
      */
-    public function getNote(): string
+    public function getNote(): string|null
     {
-        return $this->container['note'];
+        return $this->container['note'] ?? null;
     }
 
     /**

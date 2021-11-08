@@ -32,22 +32,16 @@ class SmartTransactionsApiTest extends TestCase
 {
     const SMART_TRANSACTIONS = 'smart.transactions';
 
-    /**
-     * @var SmartTransactionsApi
-     */
-    private static $api;
+    private static ?SmartTransactionsApi $api;
 
-    /**
-     * @var SmartTransactionsProductModel
-     */
-    private static $SmartTransactionsProductModel;
+    private static SmartTransactionsProductModel $SmartTransactionsProductModel;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         Authenticator::authenticateByClientCredentials(...array_values(Globals::OAuthClientCredentials));
@@ -185,7 +179,7 @@ class SmartTransactionsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$api = null;
         parent::tearDownAfterClass();
@@ -454,7 +448,6 @@ class SmartTransactionsApiTest extends TestCase
         try {
             $smartTransaction = self::$api->addTransaction($transactionDTO);
             $this->assertEquals('shipping', $smartTransaction->getDeliveryOptions()->getType());
-
         } catch (ApiException $e) {
             print_r($e->getResponseBody());
             throw $e;
@@ -479,16 +472,14 @@ class SmartTransactionsApiTest extends TestCase
         try {
             $prepare_response = self::$api->prepare($smartTransaction->getId(), 'debit', $smartTransactionPrepareModel);
             $this->assertInstanceOf(SmartTransactionsProductModel::class, $prepare_response);
-
         } catch (ApiException $e) {
             print_r($e->getResponseBody());
             throw $e;
         }
 
         try {
-            $transactionAfterStart = self::$api->startTransaction($smartTransaction->getId(), '', NULL);
+            $transactionAfterStart = self::$api->startTransaction($smartTransaction->getId(), '', null);
             $this->assertInstanceOf(SmartTransactionsProductModel::class, $transactionAfterStart);
-
         } catch (ApiException $e) {
             print_r($e->getResponseBody());
             throw $e;
@@ -520,7 +511,6 @@ class SmartTransactionsApiTest extends TestCase
             print_r($e->getResponseBody());
             throw $e;
         }
-
     }
 
     /**
@@ -704,7 +694,7 @@ class SmartTransactionsApiTest extends TestCase
 
 
         try {
-            $transactionAfterStart = self::$api->startTransaction($smartTransaction->getId(), 'demo', NULL);
+            $transactionAfterStart = self::$api->startTransaction($smartTransaction->getId(), 'demo', null);
             $this->assertInstanceOf(SmartTransactionsProductModel::class, $transactionAfterStart);
         } catch (ApiException $e) {
             print_r($e->getResponseBody());

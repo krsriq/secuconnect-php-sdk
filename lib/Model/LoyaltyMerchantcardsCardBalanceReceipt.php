@@ -194,9 +194,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets valid
      * @return bool
      */
-    public function getValid(): bool
+    public function getValid(): bool|null
     {
-        return $this->container['valid'];
+        return $this->container['valid'] ?? null;
     }
 
     /**
@@ -215,9 +215,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets balance
      * @return int
      */
-    public function getBalance(): int
+    public function getBalance(): int|null
     {
-        return $this->container['balance'];
+        return $this->container['balance'] ?? null;
     }
 
     /**
@@ -236,9 +236,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets points
      * @return int
      */
-    public function getPoints(): int
+    public function getPoints(): int|null
     {
-        return $this->container['points'];
+        return $this->container['points'] ?? null;
     }
 
     /**
@@ -257,9 +257,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets new_passcode
      * @return bool
      */
-    public function getNewPasscode(): bool
+    public function getNewPasscode(): bool|null
     {
-        return $this->container['new_passcode'];
+        return $this->container['new_passcode'] ?? null;
     }
 
     /**
@@ -278,9 +278,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets receipt_header
      * @return \Secuconnect\Client\Model\ReceiptType[]
      */
-    public function getReceiptHeader(): array
+    public function getReceiptHeader(): array|null
     {
-        return $this->container['receipt_header'];
+        return $this->container['receipt_header'] ?? null;
     }
 
     /**
@@ -299,9 +299,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt(): array
+    public function getReceipt(): array|null
     {
-        return $this->container['receipt'];
+        return $this->container['receipt'] ?? null;
     }
 
     /**
@@ -320,9 +320,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets amount_split_enabled
      * @return bool
      */
-    public function getAmountSplitEnabled(): bool
+    public function getAmountSplitEnabled(): bool|null
     {
-        return $this->container['amount_split_enabled'];
+        return $this->container['amount_split_enabled'] ?? null;
     }
 
     /**
@@ -341,9 +341,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets limit_allowed
      * @return bool
      */
-    public function getLimitAllowed(): bool
+    public function getLimitAllowed(): bool|null
     {
-        return $this->container['limit_allowed'];
+        return $this->container['limit_allowed'] ?? null;
     }
 
     /**
@@ -362,9 +362,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets limit_str
      * @return string
      */
-    public function getLimitStr(): string
+    public function getLimitStr(): string|null
     {
-        return $this->container['limit_str'];
+        return $this->container['limit_str'] ?? null;
     }
 
     /**
@@ -383,9 +383,9 @@ class LoyaltyMerchantcardsCardBalanceReceipt implements ArrayAccess, ModelInterf
      * Gets limit
      * @return int
      */
-    public function getLimit(): int
+    public function getLimit(): int|null
     {
-        return $this->container['limit'];
+        return $this->container['limit'] ?? null;
     }
 
     /**

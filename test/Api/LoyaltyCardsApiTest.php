@@ -9,24 +9,14 @@ use Secuconnect\Client\Model\LoyaltyCardsProductModel;
 
 /**
  * Class LoyaltyCardsApiTest
- * @package Secuconnect\Client
  */
 class LoyaltyCardsApiTest extends TestCase
 {
-    /**
-     * @var LoyaltyCardsApi
-     */
-    private static $api;
+    private static ?LoyaltyCardsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance;
 
-    /**
-     * @var string
-     */
-    private static $cardId;
+    private static ?string $cardId;
 
     const LOYALTY_CARDS = "loyalty.cards";
 
@@ -35,7 +25,7 @@ class LoyaltyCardsApiTest extends TestCase
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$instance = SecuconnectObjects::getInstance();
@@ -47,7 +37,7 @@ class LoyaltyCardsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$instance = null;
         self::$api = null;
@@ -60,9 +50,8 @@ class LoyaltyCardsApiTest extends TestCase
      *
      * @throws ApiException
      */
-    public function testGetListOfLoyaltyCards()
+    public function testGetListOfLoyaltyCards(): ?LoyaltyCardsProductModel
     {
-        $card = null;
         $numberOfCards = null;
         $response = self::$api->getAll(50, 10);
 
@@ -91,10 +80,10 @@ class LoyaltyCardsApiTest extends TestCase
      * Test case for getting one Loyalty Card by provided id.
      *
      * @depends testGetListOfLoyaltyCards
-     * @param LoyaltyCardsProductModel $card
+     * @param LoyaltyCardsProductModel|null $card
      * @throws ApiException
      */
-    public function testGetOneLoyaltyCardByProvidedId(LoyaltyCardsProductModel $card)
+    public function testGetOneLoyaltyCardByProvidedId(?LoyaltyCardsProductModel $card)
     {
         if (!is_null($card)) {
             $response = self::$api->getOne($card->getId());

@@ -152,9 +152,9 @@ class PaymentContext implements ArrayAccess, ModelInterface
      * Gets auto_capture
      * @return bool
      */
-    public function getAutoCapture(): bool
+    public function getAutoCapture(): bool|null
     {
-        return $this->container['auto_capture'];
+        return $this->container['auto_capture'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class PaymentContext implements ArrayAccess, ModelInterface
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods(): array
+    public function getPaymentMethods(): array|null
     {
-        return $this->container['payment_methods'];
+        return $this->container['payment_methods'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class PaymentContext implements ArrayAccess, ModelInterface
      * Gets merchant_initiated
      * @return bool
      */
-    public function getMerchantInitiated(): bool
+    public function getMerchantInitiated(): bool|null
     {
-        return $this->container['merchant_initiated'];
+        return $this->container['merchant_initiated'] ?? null;
     }
 
     /**

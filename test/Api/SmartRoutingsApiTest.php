@@ -19,27 +19,18 @@ class SmartRoutingsApiTest extends TestCase
     const SMART_ROUTING_DESCRIPTION = 'test description';
     const SMART_ROUTING_DESCRIPTION_2 = 'test description 2';
 
-    /**
-     * @var SmartRoutingsApi
-     */
-    private static $api;
+    private static ?SmartRoutingsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance;
 
-    /**
-     * @var string
-     */
-    private static $smartRoutingId;
+    private static ?string $smartRoutingId;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$instance = SecuconnectObjects::getInstance();
@@ -50,7 +41,7 @@ class SmartRoutingsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$instance = null;
         self::$api = null;
@@ -340,7 +331,7 @@ class SmartRoutingsApiTest extends TestCase
      * Test case for getting list of Smart Routings.
      * @throws ApiException
      */
-    public function testGetListOfSmartRoutings()
+    public function testGetListOfSmartRoutings(): ?SmartRoutingsProductModel
     {
         try {
             $response = self::$api->getAll(10);

@@ -12,26 +12,19 @@ use Secuconnect\Client\Model\OpenHours;
 
 /**
  * Class GeneralStoresApiTest
- * @package Secuconnect\Client
  */
 class GeneralStoresApiTest extends TestCase
 {
-    /**
-     * @var GeneralStoresApi
-     */
-    private static $api;
+    private static ?GeneralStoresApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance;
 
     /**
      * Setup before running all test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$instance = SecuconnectObjects::getInstance();
@@ -42,7 +35,7 @@ class GeneralStoresApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$instance = null;
         self::$api = null;
@@ -54,9 +47,8 @@ class GeneralStoresApiTest extends TestCase
      *
      * @throws ApiException
      */
-    public function testGetListOfGeneralStores()
+    public function testGetListOfGeneralStores(): ?GeneralStoresProductModel
     {
-        $store = null;
         $response = self::$api->getAll();
         $numberOfStores = $response->getCount();
 
@@ -107,11 +99,11 @@ class GeneralStoresApiTest extends TestCase
      * Test case for getting one General Store by provided id.
      *
      * @depends testGetListOfGeneralStores
-     * @param GeneralStoresProductModel $store
+     * @param GeneralStoresProductModel|null $store
      * @return string
      * @throws ApiException
      */
-    public function testGetOneGeneralStoreByProvidedId(GeneralStoresProductModel $store)
+    public function testGetOneGeneralStoreByProvidedId(?GeneralStoresProductModel $store): string
     {
         if ($store !== null) {
             $response = self::$api->getOne($store->getId());
@@ -156,7 +148,7 @@ class GeneralStoresApiTest extends TestCase
      * @param string $storeId
      * @throws ApiException
      */
-    public function testSetDefault($storeId)
+    public function testSetDefault(string $storeId)
     {
         if (!empty($storeId)) {
             $reason = new GeneralStoresDTOReason();
@@ -199,7 +191,7 @@ class GeneralStoresApiTest extends TestCase
     /**
      * @return array
      */
-    public function prepareOpenHours()
+    public function prepareOpenHours(): array
     {
         $newOpenHours = [];
 

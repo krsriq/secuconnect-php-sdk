@@ -139,9 +139,9 @@ class SmartRoutingPriority implements ArrayAccess, ModelInterface
      * Gets priority
      * @return int
      */
-    public function getPriority(): int
+    public function getPriority(): int|null
     {
-        return $this->container['priority'];
+        return $this->container['priority'] ?? null;
     }
 
     /**

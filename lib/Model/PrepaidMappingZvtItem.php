@@ -140,9 +140,9 @@ class PrepaidMappingZvtItem implements ArrayAccess, ModelInterface
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**

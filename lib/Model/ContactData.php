@@ -146,9 +146,9 @@ class ContactData implements ArrayAccess, ModelInterface
      * Gets mobile
      * @return string
      */
-    public function getMobile(): string
+    public function getMobile(): string|null
     {
-        return $this->container['mobile'];
+        return $this->container['mobile'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class ContactData implements ArrayAccess, ModelInterface
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**

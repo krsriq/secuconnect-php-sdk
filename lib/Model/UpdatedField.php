@@ -139,9 +139,9 @@ class UpdatedField implements ArrayAccess, ModelInterface
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**

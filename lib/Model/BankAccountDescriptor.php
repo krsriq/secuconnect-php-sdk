@@ -164,9 +164,9 @@ class BankAccountDescriptor implements ArrayAccess, ModelInterface, OneOfPayment
      * Gets iban
      * @return string
      */
-    public function getIban(): string
+    public function getIban(): string|null
     {
-        return $this->container['iban'];
+        return $this->container['iban'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class BankAccountDescriptor implements ArrayAccess, ModelInterface, OneOfPayment
      * Gets bic
      * @return string
      */
-    public function getBic(): string
+    public function getBic(): string|null
     {
-        return $this->container['bic'];
+        return $this->container['bic'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class BankAccountDescriptor implements ArrayAccess, ModelInterface, OneOfPayment
      * Gets owner
      * @return string
      */
-    public function getOwner(): string
+    public function getOwner(): string|null
     {
-        return $this->container['owner'];
+        return $this->container['owner'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class BankAccountDescriptor implements ArrayAccess, ModelInterface, OneOfPayment
      * Gets bankname
      * @return string
      */
-    public function getBankname(): string
+    public function getBankname(): string|null
     {
-        return $this->container['bankname'];
+        return $this->container['bankname'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class BankAccountDescriptor implements ArrayAccess, ModelInterface, OneOfPayment
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**

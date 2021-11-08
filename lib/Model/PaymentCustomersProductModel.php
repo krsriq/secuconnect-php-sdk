@@ -152,9 +152,9 @@ class PaymentCustomersProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class PaymentCustomersProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class PaymentCustomersProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -215,9 +215,9 @@ class PaymentCustomersProductModel extends BaseProductModel
      * Gets contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getContact(): Contact
+    public function getContact(): Contact|null
     {
-        return $this->container['contact'];
+        return $this->container['contact'] ?? null;
     }
 
     /**

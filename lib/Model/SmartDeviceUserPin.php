@@ -139,9 +139,9 @@ class SmartDeviceUserPin implements ArrayAccess, ModelInterface
      * Gets user_pin
      * @return string
      */
-    public function getUserPin(): string
+    public function getUserPin(): string|null
     {
-        return $this->container['user_pin'];
+        return $this->container['user_pin'] ?? null;
     }
 
     /**

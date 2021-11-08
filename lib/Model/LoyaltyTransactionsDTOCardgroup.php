@@ -152,9 +152,9 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess, ModelInterface
      * Gets display_name
      * @return string
      */
-    public function getDisplayName(): string
+    public function getDisplayName(): string|null
     {
-        return $this->container['display_name'];
+        return $this->container['display_name'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class LoyaltyTransactionsDTOCardgroup implements ArrayAccess, ModelInterface
      * Gets stock_warn_limit
      * @return int
      */
-    public function getStockWarnLimit(): int
+    public function getStockWarnLimit(): int|null
     {
-        return $this->container['stock_warn_limit'];
+        return $this->container['stock_warn_limit'] ?? null;
     }
 
     /**

@@ -176,9 +176,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets tax
      * @return int
      */
-    public function getTax(): int
+    public function getTax(): int|null
     {
-        return $this->container['tax'];
+        return $this->container['tax'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets price_one
      * @return int
      */
-    public function getPriceOne(): int
+    public function getPriceOne(): int|null
     {
-        return $this->container['price_one'];
+        return $this->container['price_one'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets quantity
      * @return int
      */
-    public function getQuantity(): int
+    public function getQuantity(): int|null
     {
-        return $this->container['quantity'];
+        return $this->container['quantity'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets desc
      * @return string
      */
-    public function getDesc(): string
+    public function getDesc(): string|null
     {
-        return $this->container['desc'];
+        return $this->container['desc'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets article_number
      * @return string
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): string|null
     {
-        return $this->container['article_number'];
+        return $this->container['article_number'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SmartTransactionsBaseProduct implements ArrayAccess, ModelInterface
      * Gets ean
      * @return string
      */
-    public function getEan(): string
+    public function getEan(): string|null
     {
-        return $this->container['ean'];
+        return $this->container['ean'] ?? null;
     }
 
     /**

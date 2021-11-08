@@ -188,9 +188,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets redirect_url
      * @return \Secuconnect\Client\Model\SecupayRedirectUrl
      */
-    public function getRedirectUrl(): SecupayRedirectUrl
+    public function getRedirectUrl(): SecupayRedirectUrl|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return string
      */
-    public function getContract(): string
+    public function getContract(): string|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets opt_data
      * @return \Secuconnect\Client\Model\SecupayPayoutDTOOptData
      */
-    public function getOptData(): SecupayPayoutDTOOptData
+    public function getOptData(): SecupayPayoutDTOOptData|null
     {
-        return $this->container['opt_data'];
+        return $this->container['opt_data'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets order_id
      * @return string
      */
-    public function getOrderId(): string
+    public function getOrderId(): string|null
     {
-        return $this->container['order_id'];
+        return $this->container['order_id'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class SecupayPayoutDTO implements ArrayAccess, ModelInterface
      * Gets transaction_list
      * @return \Secuconnect\Client\Model\SecupayTransactionListItem[]
      */
-    public function getTransactionList(): array
+    public function getTransactionList(): array|null
     {
-        return $this->container['transaction_list'];
+        return $this->container['transaction_list'] ?? null;
     }
 
     /**

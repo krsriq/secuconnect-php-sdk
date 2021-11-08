@@ -146,9 +146,9 @@ class LoyaltyTransactionsDTOCard implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyTransactionsDTOCard implements ArrayAccess, ModelInterface
      * Gets cardnumber
      * @return string
      */
-    public function getCardnumber(): string
+    public function getCardnumber(): string|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**

@@ -152,9 +152,9 @@ class PaymentCancelResultDetails implements ArrayAccess, ModelInterface
      * Gets new_trans_id
      * @return int
      */
-    public function getNewTransId(): int
+    public function getNewTransId(): int|null
     {
-        return $this->container['new_trans_id'];
+        return $this->container['new_trans_id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class PaymentCancelResultDetails implements ArrayAccess, ModelInterface
      * Gets remaining_amount
      * @return int
      */
-    public function getRemainingAmount(): int
+    public function getRemainingAmount(): int|null
     {
-        return $this->container['remaining_amount'];
+        return $this->container['remaining_amount'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class PaymentCancelResultDetails implements ArrayAccess, ModelInterface
      * Gets refund_waiting_for_payment
      * @return bool
      */
-    public function getRefundWaitingForPayment(): bool
+    public function getRefundWaitingForPayment(): bool|null
     {
-        return $this->container['refund_waiting_for_payment'];
+        return $this->container['refund_waiting_for_payment'] ?? null;
     }
 
     /**

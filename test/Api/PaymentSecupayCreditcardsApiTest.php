@@ -14,57 +14,33 @@ use Secuconnect\Client\Model\SecupayTransactionProductModel;
  */
 class PaymentSecupayCreditcardsApiTest extends TestCase
 {
-    /**
-     * @var PaymentSecupayCreditcardsApi
-     */
-    private $api;
+    private ?PaymentSecupayCreditcardsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $secuconnectObjects;
+    private static ?SecuconnectObjects $secuconnectObjects;
 
-    /**
-     * @var string
-     */
-    private static $creditCardTransactionId;
+    private static ?string $creditCardTransactionId;
 
-    /**
-     * @var string
-     */
-    private static $customerId;
+    private static ?string $customerId;
 
-    /**
-     * @var int
-     */
-    private static $amount;
+    private static ?int $amount;
 
-    /**
-     * @var string
-     */
-    private static $currency;
+    private static ?string $currency;
 
-    /**
-     * @var string
-     */
-    private static $orderId;
+    private static ?string $orderId;
 
-    /**
-     * @var bool
-     */
-    private static $accrual;
+    private static ?bool $accrual;
 
     /**
      * @var SecupayBasketItem[]
      */
-    private static $basket;
+    private static ?array $basket;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$secuconnectObjects = SecuconnectObjects::getInstance();
@@ -79,7 +55,7 @@ class PaymentSecupayCreditcardsApiTest extends TestCase
     /**
      * Setup before running each test case
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api = new PaymentSecupayCreditcardsApi();
@@ -88,7 +64,7 @@ class PaymentSecupayCreditcardsApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -97,7 +73,7 @@ class PaymentSecupayCreditcardsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$secuconnectObjects = null;
         self::$creditCardTransactionId = null;
@@ -178,65 +154,65 @@ class PaymentSecupayCreditcardsApiTest extends TestCase
     /**
      * Test case for paymentSecupaycreditcardsHashGet
      *
+     * @depends testPaymentSecupaycreditcardsPost
      * @throws ApiException
      */
     public function testPaymentSecupayCreditcardsGetById()
     {
-        if (isset(self::$creditCardTransactionId) && !empty(self::$creditCardTransactionId)) {
-            try {
-                $response = $this->api->paymentSecupayCreditcardsGetById(self::$creditCardTransactionId);
-            } catch (ApiException $e) {
-                print_r($e->getResponseBody());
-                throw $e;
-            }
-
-            $this->assertInstanceOf(SecupayTransactionProductModel::class, $response);
-            $this->assertEquals('payment.secupaycreditcards', $response->getObject());
-            $this->assertEquals(self::$creditCardTransactionId, $response->getId());
-            $this->assertNotEmpty($response->getTransId());
-            $this->assertNotEmpty($response->getStatus());
-            $this->assertEquals(self::$amount, $response->getAmount());
-            $this->assertEquals(self::$currency, $response->getCurrency());
-            $this->assertEmpty($response->getPurpose());
-            $this->assertEquals(self::$orderId, $response->getOrderId());
-
-            for ($i = 0; $i < 3; ++$i) {
-                $this->assertEquals(self::$basket[$i], $response->getBasket()[$i]);
-                $this->assertEquals(self::$basket[$i]->getItemType(), $response->getBasket()[$i]->getItemType());
-                $this->assertEquals(self::$basket[$i]->getArticleNumber(), $response->getBasket()[$i]->getArticleNumber());
-                $this->assertEquals(self::$basket[$i]->getQuantity(), $response->getBasket()[$i]->getQuantity());
-                $this->assertEquals(self::$basket[$i]->getName(), $response->getBasket()[$i]->getName());
-                $this->assertEquals(self::$basket[$i]->getModel(), $response->getBasket()[$i]->getModel());
-                $this->assertEquals(self::$basket[$i]->getEan(), $response->getBasket()[$i]->getEan());
-                $this->assertEquals(self::$basket[$i]->getTax(), $response->getBasket()[$i]->getTax());
-                $this->assertEquals(self::$basket[$i]->getTotal(), $response->getBasket()[$i]->getTotal());
-                $this->assertEquals(self::$basket[$i]->getPrice(), $response->getBasket()[$i]->getPrice());
-                $this->assertEquals(self::$basket[$i]->getApikey(), $response->getBasket()[$i]->getApikey());
-                $this->assertEquals(self::$basket[$i]->getTransactionHash(), $response->getBasket()[$i]->getTransactionHash());
-                $this->assertEquals(self::$basket[$i]->getContractId(), $response->getBasket()[$i]->getContractId());
-            }
-
-            $this->assertEquals(1, $response->getTransactionStatus());
-            $this->assertEquals(self::$accrual, $response->getAccrual());
-            $this->assertEquals('sale', $response->getPaymentAction());
-            $this->assertNotEmpty($response->getCustomer());
-            $this->assertInstanceOf(PaymentCustomersProductModel::class, $response->getCustomer());
-            $this->assertEquals('payment.customers', $response->getCustomer()->getObject());
-            $this->assertEquals(self::$customerId, $response->getCustomer()->getId());
-            $this->assertNotEmpty($response->getCustomer()->getCreated());
-            $this->assertNotEmpty($response->getRedirectUrl());
-            $this->assertNotEmpty($response->getRedirectUrl()->getIframeUrl());
-            $this->assertNotEmpty($response->getRedirectUrl()->getUrlSuccess());
-            $this->assertNotEmpty($response->getRedirectUrl()->getUrlFailure());
+        try {
+            $response = $this->api->paymentSecupayCreditcardsGetById(self::$creditCardTransactionId);
+        } catch (ApiException $e) {
+            print_r($e->getResponseBody());
+            throw $e;
         }
+
+        $this->assertInstanceOf(SecupayTransactionProductModel::class, $response);
+        $this->assertEquals('payment.secupaycreditcards', $response->getObject());
+        $this->assertEquals(self::$creditCardTransactionId, $response->getId());
+        $this->assertNotEmpty($response->getTransId());
+        $this->assertNotEmpty($response->getStatus());
+        $this->assertEquals(self::$amount, $response->getAmount());
+        $this->assertEquals(self::$currency, $response->getCurrency());
+        $this->assertEmpty($response->getPurpose());
+        $this->assertEquals(self::$orderId, $response->getOrderId());
+
+        for ($i = 0; $i < 3; ++$i) {
+            $this->assertEquals(self::$basket[$i], $response->getBasket()[$i]);
+            $this->assertEquals(self::$basket[$i]->getItemType(), $response->getBasket()[$i]->getItemType());
+            $this->assertEquals(self::$basket[$i]->getArticleNumber(), $response->getBasket()[$i]->getArticleNumber());
+            $this->assertEquals(self::$basket[$i]->getQuantity(), $response->getBasket()[$i]->getQuantity());
+            $this->assertEquals(self::$basket[$i]->getName(), $response->getBasket()[$i]->getName());
+            $this->assertEquals(self::$basket[$i]->getModel(), $response->getBasket()[$i]->getModel());
+            $this->assertEquals(self::$basket[$i]->getEan(), $response->getBasket()[$i]->getEan());
+            $this->assertEquals(self::$basket[$i]->getTax(), $response->getBasket()[$i]->getTax());
+            $this->assertEquals(self::$basket[$i]->getTotal(), $response->getBasket()[$i]->getTotal());
+            $this->assertEquals(self::$basket[$i]->getPrice(), $response->getBasket()[$i]->getPrice());
+            $this->assertEquals(self::$basket[$i]->getApikey(), $response->getBasket()[$i]->getApikey());
+            $this->assertEquals(self::$basket[$i]->getTransactionHash(), $response->getBasket()[$i]->getTransactionHash());
+            $this->assertEquals(self::$basket[$i]->getContractId(), $response->getBasket()[$i]->getContractId());
+        }
+
+        $this->assertEquals(1, $response->getTransactionStatus());
+        $this->assertEquals(self::$accrual, $response->getAccrual());
+        $this->assertEquals('sale', $response->getPaymentAction());
+        $this->assertNotEmpty($response->getCustomer());
+        $this->assertInstanceOf(PaymentCustomersProductModel::class, $response->getCustomer());
+        $this->assertEquals('payment.customers', $response->getCustomer()->getObject());
+        $this->assertEquals(self::$customerId, $response->getCustomer()->getId());
+        $this->assertNotEmpty($response->getCustomer()->getCreated());
+        $this->assertNotEmpty($response->getRedirectUrl());
+        $this->assertNotEmpty($response->getRedirectUrl()->getIframeUrl());
+        $this->assertNotEmpty($response->getRedirectUrl()->getUrlSuccess());
+        $this->assertNotEmpty($response->getRedirectUrl()->getUrlFailure());
     }
 
     /**
      * Test case for paymentSecupaycreditcardsHashCancelPost
      *
-     * @throws ApiException
-     *
+     * @depends testPaymentSecupaycreditcardsPost
      * @group ignore
+     *
+     * @throws ApiException
      */
     public function testPaymentSecupayCreditcardsCancelById()
     {
@@ -248,7 +224,7 @@ class PaymentSecupayCreditcardsApiTest extends TestCase
         }
 
         $this->assertNotEmpty($response);
-        $this->assertTrue($response['result']);
+        $this->assertNotEmpty($response['result']);
         $this->assertTrue($response['demo']);
     }
 }

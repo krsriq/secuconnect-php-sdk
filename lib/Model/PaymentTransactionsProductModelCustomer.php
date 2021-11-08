@@ -163,9 +163,9 @@ class PaymentTransactionsProductModelCustomer implements ArrayAccess, ModelInter
      * Gets companyname
      * @return string
      */
-    public function getCompanyname(): string
+    public function getCompanyname(): string|null
     {
-        return $this->container['companyname'];
+        return $this->container['companyname'] ?? null;
     }
 
     /**
@@ -184,9 +184,9 @@ class PaymentTransactionsProductModelCustomer implements ArrayAccess, ModelInter
      * Gets salutation
      * @return string
      */
-    public function getSalutation(): string
+    public function getSalutation(): string|null
     {
-        return $this->container['salutation'];
+        return $this->container['salutation'] ?? null;
     }
 
     /**
@@ -205,9 +205,9 @@ class PaymentTransactionsProductModelCustomer implements ArrayAccess, ModelInter
      * Gets title
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): string|null
     {
-        return $this->container['title'];
+        return $this->container['title'] ?? null;
     }
 
     /**
@@ -226,9 +226,9 @@ class PaymentTransactionsProductModelCustomer implements ArrayAccess, ModelInter
      * Gets forename
      * @return string
      */
-    public function getForename(): string
+    public function getForename(): string|null
     {
-        return $this->container['forename'];
+        return $this->container['forename'] ?? null;
     }
 
     /**
@@ -247,9 +247,9 @@ class PaymentTransactionsProductModelCustomer implements ArrayAccess, ModelInter
      * Gets surname
      * @return string
      */
-    public function getSurname(): string
+    public function getSurname(): string|null
     {
-        return $this->container['surname'];
+        return $this->container['surname'] ?? null;
     }
 
     /**

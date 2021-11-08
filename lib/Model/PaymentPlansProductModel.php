@@ -182,9 +182,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets paypal_plan_id
      * @return string
      */
-    public function getPaypalPlanId(): string
+    public function getPaypalPlanId(): string|null
     {
-        return $this->container['paypal_plan_id'];
+        return $this->container['paypal_plan_id'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets payment_methods
      * @return string[]
      */
-    public function getPaymentMethods(): array
+    public function getPaymentMethods(): array|null
     {
-        return $this->container['payment_methods'];
+        return $this->container['payment_methods'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\GeneralMerchantsProductModel
      */
-    public function getMerchant(): GeneralMerchantsProductModel
+    public function getMerchant(): GeneralMerchantsProductModel|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -350,9 +350,9 @@ class PaymentPlansProductModel extends BaseProductModel
      * Gets billing_cycles
      * @return \Secuconnect\Client\Model\BillingCyclesItem[]
      */
-    public function getBillingCycles(): array
+    public function getBillingCycles(): array|null
     {
-        return $this->container['billing_cycles'];
+        return $this->container['billing_cycles'] ?? null;
     }
 
     /**

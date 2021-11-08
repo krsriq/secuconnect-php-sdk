@@ -152,9 +152,9 @@ class PaymentCancelResult implements ArrayAccess, ModelInterface
      * Gets new_trans_id
      * @return int
      */
-    public function getNewTransId(): int
+    public function getNewTransId(): int|null
     {
-        return $this->container['new_trans_id'];
+        return $this->container['new_trans_id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class PaymentCancelResult implements ArrayAccess, ModelInterface
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class PaymentCancelResult implements ArrayAccess, ModelInterface
      * Gets result
      * @return \Secuconnect\Client\Model\PaymentCancelResultDetails
      */
-    public function getResult(): PaymentCancelResultDetails
+    public function getResult(): PaymentCancelResultDetails|null
     {
-        return $this->container['result'];
+        return $this->container['result'] ?? null;
     }
 
     /**

@@ -146,9 +146,9 @@ class LoyaltyCardgroupsDTOCheckPasscodeEnabled implements ArrayAccess, ModelInte
      * Gets action
      * @return string
      */
-    public function getAction(): string
+    public function getAction(): string|null
     {
-        return $this->container['action'];
+        return $this->container['action'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyCardgroupsDTOCheckPasscodeEnabled implements ArrayAccess, ModelInte
      * Gets cardnumber
      * @return string
      */
-    public function getCardnumber(): string
+    public function getCardnumber(): string|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**

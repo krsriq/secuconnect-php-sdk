@@ -158,9 +158,9 @@ class PrepaidSalesSmartDevice implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class PrepaidSalesSmartDevice implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class PrepaidSalesSmartDevice implements ArrayAccess, ModelInterface
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PrepaidSalesSmartDevice implements ArrayAccess, ModelInterface
      * Gets vendor_uid
      * @return string
      */
-    public function getVendorUid(): string
+    public function getVendorUid(): string|null
     {
-        return $this->container['vendor_uid'];
+        return $this->container['vendor_uid'] ?? null;
     }
 
     /**

@@ -146,9 +146,9 @@ class ValueField implements ArrayAccess, ModelInterface
      * Gets value
      * @return string
      */
-    public function getValue(): string
+    public function getValue(): string|null
     {
-        return $this->container['value'];
+        return $this->container['value'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class ValueField implements ArrayAccess, ModelInterface
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**

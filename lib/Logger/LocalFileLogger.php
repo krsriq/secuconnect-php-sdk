@@ -1,10 +1,11 @@
 <?php
+/** @noinspection PhpUnused */
 
 namespace Secuconnect\Client\Logger;
 
-
-use Exception;
 use Psr\Log\LoggerInterface;
+use Secuconnect\Client\LoggingException;
+use Stringable;
 
 /**
  * Class LocalFileLogger
@@ -17,66 +18,105 @@ class LocalFileLogger implements LoggerInterface
      *
      * @var string
      */
-    private $dirName;
+    private string $dirName;
 
-    public function __construct($dirName = 'logs/')
+    /**
+     * @param string $dirName
+     */
+    public function __construct(string $dirName = 'logs/')
     {
         $this->dirName = $dirName;
     }
 
-    public function emergency($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function emergency(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"emergency.log");
+        $this->saveMessageToLogFile($message, "emergency.log");
     }
 
-    public function alert($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function alert(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"alert.log");
+        $this->saveMessageToLogFile($message, "alert.log");
     }
 
-    public function critical($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function critical(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"critical.log");
+        $this->saveMessageToLogFile($message, "critical.log");
     }
 
-    public function error($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function error(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"error.log");
+        $this->saveMessageToLogFile($message, "error.log");
     }
 
-    public function warning($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function warning(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"warning.log");
+        $this->saveMessageToLogFile($message, "warning.log");
     }
 
-    public function notice($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function notice(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"notice.log");
+        $this->saveMessageToLogFile($message, "notice.log");
     }
 
-    public function info($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function info(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"info.log");
+        $this->saveMessageToLogFile($message, "info.log");
     }
 
-    public function debug($message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function debug(string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"debug.log");
+        $this->saveMessageToLogFile($message, "debug.log");
     }
 
-    public function log($level, $message, array $context = [])
+    /**
+     * @inheritDoc
+     * @throws LoggingException
+     */
+    public function log($level, string|Stringable $message, array $context = []): void
     {
-        $this->saveMessageToLogFile($message,"log.log");
+        $this->saveMessageToLogFile($message, "log.log");
     }
 
     /**
      * Function for saving a message in a file.
      *
-     * @param $message
-     * @param $fileName
-     * @throws Exception
+     * @param string|Stringable $message
+     * @param string $fileName
+     * @throws LoggingException
      */
-    private function saveMessageToLogFile($message, $fileName)
+    private function saveMessageToLogFile(string|Stringable $message, string $fileName): void
     {
         $this->checkDirectory($this->dirName, 'Error while creating directory for logs.');
 
@@ -89,14 +129,14 @@ class LocalFileLogger implements LoggerInterface
 
         if ($fileHandle) {
             if (!fwrite($fileHandle, $message)) {
-                throw new Exception('Error while writing to log file.');
+                throw new LoggingException('Error while writing to log file.');
             }
 
             if (!fclose($fileHandle)) {
-                throw new Exception('Error while closing log file.');
+                throw new LoggingException('Error while closing log file.');
             }
         } else {
-            throw new Exception('Error while obtaining file pointer resource.');
+            throw new LoggingException('Error while obtaining file pointer resource.');
         }
     }
 
@@ -104,15 +144,15 @@ class LocalFileLogger implements LoggerInterface
      * Function for checking if directory exists and
      * if doesn't exist it create new directory.
      *
-     * @param $dirName
-     * @param $errorMessage
-     * @throws Exception
+     * @param string $dirName
+     * @param string|Stringable $errorMessage
+     * @throws LoggingException
      */
-    private function checkDirectory($dirName, $errorMessage)
+    private function checkDirectory(string $dirName, string|Stringable $errorMessage): void
     {
         if (!file_exists($dirName)) {
             if (!mkdir($dirName)) {
-                throw new Exception($errorMessage);
+                throw new LoggingException($errorMessage);
             }
         }
     }
@@ -121,27 +161,29 @@ class LocalFileLogger implements LoggerInterface
      * Function for preparing full log message.
      * It adds the current date and EOL.
      *
-     * @param $message
+     * @param string|Stringable $message
      * @return string
      */
-    private function prepareFullLogMessage($message)
+    private function prepareFullLogMessage(string|Stringable $message): string
     {
         return "[ " . date("G:i:s") . " ] - " . $message . PHP_EOL;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDirName()
+    public function getDirName(): string
     {
         return $this->dirName;
     }
 
     /**
-     * @param $dirName
+     * @param string $dirName
+     * @return $this
      */
-    public function setDirName($dirName)
+    public function setDirName(string $dirName): static
     {
         $this->dirName = $dirName;
+        return $this;
     }
 }

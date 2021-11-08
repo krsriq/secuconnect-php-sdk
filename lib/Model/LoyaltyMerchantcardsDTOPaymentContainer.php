@@ -158,9 +158,9 @@ class LoyaltyMerchantcardsDTOPaymentContainer implements ArrayAccess, ModelInter
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class LoyaltyMerchantcardsDTOPaymentContainer implements ArrayAccess, ModelInter
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class LoyaltyMerchantcardsDTOPaymentContainer implements ArrayAccess, ModelInter
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class LoyaltyMerchantcardsDTOPaymentContainer implements ArrayAccess, ModelInter
      * Gets payment_information
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPaymentInformation(): PaymentInformation
+    public function getPaymentInformation(): PaymentInformation|null
     {
-        return $this->container['payment_information'];
+        return $this->container['payment_information'] ?? null;
     }
 
     /**

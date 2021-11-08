@@ -170,9 +170,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets country
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getCountry(): ValueField
+    public function getCountry(): ValueField|null
     {
-        return $this->container['country'];
+        return $this->container['country'] ?? null;
     }
 
     /**
@@ -191,9 +191,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets dateissued
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getDateissued(): ValueField
+    public function getDateissued(): ValueField|null
     {
-        return $this->container['dateissued'];
+        return $this->container['dateissued'] ?? null;
     }
 
     /**
@@ -212,9 +212,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets issuedby
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getIssuedby(): ValueField
+    public function getIssuedby(): ValueField|null
     {
-        return $this->container['issuedby'];
+        return $this->container['issuedby'] ?? null;
     }
 
     /**
@@ -233,9 +233,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets number
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getNumber(): ValueField
+    public function getNumber(): ValueField|null
     {
-        return $this->container['number'];
+        return $this->container['number'] ?? null;
     }
 
     /**
@@ -254,9 +254,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets type
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getType(): ValueField
+    public function getType(): ValueField|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -275,9 +275,9 @@ class IdentDocumentData implements ArrayAccess, ModelInterface
      * Gets validuntil
      * @return \Secuconnect\Client\Model\ValueField
      */
-    public function getValiduntil(): ValueField
+    public function getValiduntil(): ValueField|null
     {
-        return $this->container['validuntil'];
+        return $this->container['validuntil'] ?? null;
     }
 
     /**

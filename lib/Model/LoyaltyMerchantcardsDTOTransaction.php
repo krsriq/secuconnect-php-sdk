@@ -188,9 +188,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets action
      * @return string
      */
-    public function getAction(): string
+    public function getAction(): string|null
     {
-        return $this->container['action'];
+        return $this->container['action'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets terminal_id
      * @return string
      */
-    public function getTerminalId(): string
+    public function getTerminalId(): string|null
     {
-        return $this->container['terminal_id'];
+        return $this->container['terminal_id'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets store
      * @return string
      */
-    public function getStore(): string
+    public function getStore(): string|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets cardnumber
      * @return int
      */
-    public function getCardnumber(): int
+    public function getCardnumber(): int|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets bonus_amount
      * @return int
      */
-    public function getBonusAmount(): int
+    public function getBonusAmount(): int|null
     {
-        return $this->container['bonus_amount'];
+        return $this->container['bonus_amount'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets amount_split_allowed
      * @return string
      */
-    public function getAmountSplitAllowed(): string
+    public function getAmountSplitAllowed(): string|null
     {
-        return $this->container['amount_split_allowed'];
+        return $this->container['amount_split_allowed'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class LoyaltyMerchantcardsDTOTransaction implements ArrayAccess, ModelInterface
      * Gets merchant_id
      * @return string
      */
-    public function getMerchantId(): string
+    public function getMerchantId(): string|null
     {
-        return $this->container['merchant_id'];
+        return $this->container['merchant_id'] ?? null;
     }
 
     /**

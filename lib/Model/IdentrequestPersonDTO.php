@@ -158,9 +158,9 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom1
      * @return string
      */
-    public function getCustom1(): string
+    public function getCustom1(): string|null
     {
-        return $this->container['custom1'];
+        return $this->container['custom1'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom2
      * @return string
      */
-    public function getCustom2(): string
+    public function getCustom2(): string|null
     {
-        return $this->container['custom2'];
+        return $this->container['custom2'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom3
      * @return string
      */
-    public function getCustom3(): string
+    public function getCustom3(): string|null
     {
-        return $this->container['custom3'];
+        return $this->container['custom3'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom4
      * @return string
      */
-    public function getCustom4(): string
+    public function getCustom4(): string|null
     {
-        return $this->container['custom4'];
+        return $this->container['custom4'] ?? null;
     }
 
     /**
@@ -242,9 +242,9 @@ class IdentrequestPersonDTO extends Contact
      * Gets custom5
      * @return string
      */
-    public function getCustom5(): string
+    public function getCustom5(): string|null
     {
-        return $this->container['custom5'];
+        return $this->container['custom5'] ?? null;
     }
 
     /**

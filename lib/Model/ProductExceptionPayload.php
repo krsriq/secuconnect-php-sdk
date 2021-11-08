@@ -170,9 +170,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -191,9 +191,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets error
      * @return string
      */
-    public function getError(): string
+    public function getError(): string|null
     {
-        return $this->container['error'];
+        return $this->container['error'] ?? null;
     }
 
     /**
@@ -212,9 +212,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets error_details
      * @return string
      */
-    public function getErrorDetails(): string
+    public function getErrorDetails(): string|null
     {
-        return $this->container['error_details'];
+        return $this->container['error_details'] ?? null;
     }
 
     /**
@@ -233,9 +233,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets error_user
      * @return string
      */
-    public function getErrorUser(): string
+    public function getErrorUser(): string|null
     {
-        return $this->container['error_user'];
+        return $this->container['error_user'] ?? null;
     }
 
     /**
@@ -254,9 +254,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets code
      * @return string
      */
-    public function getCode(): string
+    public function getCode(): string|null
     {
-        return $this->container['code'];
+        return $this->container['code'] ?? null;
     }
 
     /**
@@ -275,9 +275,9 @@ class ProductExceptionPayload implements ArrayAccess, ModelInterface
      * Gets support_id
      * @return string
      */
-    public function getSupportId(): string
+    public function getSupportId(): string|null
     {
-        return $this->container['support_id'];
+        return $this->container['support_id'] ?? null;
     }
 
     /**

@@ -182,9 +182,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\PaymentContractsProductModel
      */
-    public function getContract(): PaymentContractsProductModel
+    public function getContract(): PaymentContractsProductModel|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets assign
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getAssign(): ProductInstanceUID
+    public function getAssign(): ProductInstanceUID|null
     {
-        return $this->container['assign'];
+        return $this->container['assign'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets public
      * @return \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate
      */
-    public function getPublic(): OneOfPaymentContainersDTOModelPrivate
+    public function getPublic(): OneOfPaymentContainersDTOModelPrivate|null
     {
-        return $this->container['public'];
+        return $this->container['public'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets private
      * @return \Secuconnect\Client\Model\OneOfPaymentContainersDTOModelPrivate
      */
-    public function getPrivate(): OneOfPaymentContainersDTOModelPrivate
+    public function getPrivate(): OneOfPaymentContainersDTOModelPrivate|null
     {
-        return $this->container['private'];
+        return $this->container['private'] ?? null;
     }
 
     /**
@@ -350,9 +350,9 @@ class PaymentContainersProductModel extends BaseProductModel
      * Gets mandate
      * @return \Secuconnect\Client\Model\PaymentContainerMandate
      */
-    public function getMandate(): PaymentContainerMandate
+    public function getMandate(): PaymentContainerMandate|null
     {
-        return $this->container['mandate'];
+        return $this->container['mandate'] ?? null;
     }
 
     /**

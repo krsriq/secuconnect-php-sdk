@@ -140,9 +140,9 @@ class PrepaidSalesProductDTO implements ArrayAccess, ModelInterface
      * Gets item
      * @return string
      */
-    public function getItem(): string
+    public function getItem(): string|null
     {
-        return $this->container['item'];
+        return $this->container['item'] ?? null;
     }
 
     /**

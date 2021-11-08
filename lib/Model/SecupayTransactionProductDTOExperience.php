@@ -146,9 +146,9 @@ class SecupayTransactionProductDTOExperience implements ArrayAccess, ModelInterf
      * Gets positive
      * @return int
      */
-    public function getPositive(): int
+    public function getPositive(): int|null
     {
-        return $this->container['positive'];
+        return $this->container['positive'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionProductDTOExperience implements ArrayAccess, ModelInterf
      * Gets negative
      * @return int
      */
-    public function getNegative(): int
+    public function getNegative(): int|null
     {
-        return $this->container['negative'];
+        return $this->container['negative'] ?? null;
     }
 
     /**

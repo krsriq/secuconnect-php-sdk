@@ -146,9 +146,9 @@ class LoyaltyTransactionsDTOStore implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyTransactionsDTOStore implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**

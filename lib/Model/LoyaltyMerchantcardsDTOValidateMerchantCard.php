@@ -146,9 +146,9 @@ class LoyaltyMerchantcardsDTOValidateMerchantCard implements ArrayAccess, ModelI
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyMerchantcardsDTOValidateMerchantCard implements ArrayAccess, ModelI
      * Gets cardnumber
      * @return int
      */
-    public function getCardnumber(): int
+    public function getCardnumber(): int|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**

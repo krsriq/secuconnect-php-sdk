@@ -134,9 +134,9 @@ class SecupayBasketItem extends SecupayBaseBasketItem
      * Gets sub_basket
      * @return \Secuconnect\Client\Model\SecupayBasketItem[]
      */
-    public function getSubBasket(): array
+    public function getSubBasket(): array|null
     {
-        return $this->container['sub_basket'];
+        return $this->container['sub_basket'] ?? null;
     }
 
     /**

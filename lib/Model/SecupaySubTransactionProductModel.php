@@ -152,9 +152,9 @@ class SecupaySubTransactionProductModel implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SecupaySubTransactionProductModel implements ArrayAccess, ModelInterface
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SecupaySubTransactionProductModel implements ArrayAccess, ModelInterface
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId(): string|null
     {
-        return $this->container['reference_id'];
+        return $this->container['reference_id'] ?? null;
     }
 
     /**

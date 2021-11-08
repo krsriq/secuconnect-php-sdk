@@ -164,9 +164,9 @@ class LoyaltyCustomersPaymentContainerModel implements ArrayAccess, ModelInterfa
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class LoyaltyCustomersPaymentContainerModel implements ArrayAccess, ModelInterfa
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class LoyaltyCustomersPaymentContainerModel implements ArrayAccess, ModelInterfa
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class LoyaltyCustomersPaymentContainerModel implements ArrayAccess, ModelInterfa
      * Gets payment_information
      * @return \Secuconnect\Client\Model\BankAccountDescriptor
      */
-    public function getPaymentInformation(): BankAccountDescriptor
+    public function getPaymentInformation(): BankAccountDescriptor|null
     {
-        return $this->container['payment_information'];
+        return $this->container['payment_information'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class LoyaltyCustomersPaymentContainerModel implements ArrayAccess, ModelInterfa
      * Gets last_usage
      * @return string
      */
-    public function getLastUsage(): string
+    public function getLastUsage(): string|null
     {
-        return $this->container['last_usage'];
+        return $this->container['last_usage'] ?? null;
     }
 
     /**

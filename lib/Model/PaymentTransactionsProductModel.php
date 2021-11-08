@@ -296,9 +296,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -317,9 +317,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -338,9 +338,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets platform
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getPlatform(): ProductInstanceUID
+    public function getPlatform(): ProductInstanceUID|null
     {
-        return $this->container['platform'];
+        return $this->container['platform'] ?? null;
     }
 
     /**
@@ -359,9 +359,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\GeneralMerchantsProductModel
      */
-    public function getMerchant(): GeneralMerchantsProductModel
+    public function getMerchant(): GeneralMerchantsProductModel|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -380,9 +380,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\GeneralStoresProductModel
      */
-    public function getStore(): GeneralStoresProductModel
+    public function getStore(): GeneralStoresProductModel|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -401,9 +401,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -422,9 +422,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets parents
      * @return \Secuconnect\Client\Model\ParentObj[]
      */
-    public function getParents(): array
+    public function getParents(): array|null
     {
-        return $this->container['parents'];
+        return $this->container['parents'] ?? null;
     }
 
     /**
@@ -443,9 +443,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product_id
      * @return int
      */
-    public function getProductId(): int
+    public function getProductId(): int|null
     {
-        return $this->container['product_id'];
+        return $this->container['product_id'] ?? null;
     }
 
     /**
@@ -464,9 +464,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product
      * @return string
      */
-    public function getProduct(): string
+    public function getProduct(): string|null
     {
-        return $this->container['product'];
+        return $this->container['product'] ?? null;
     }
 
     /**
@@ -485,9 +485,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets product_raw
      * @return string
      */
-    public function getProductRaw(): string
+    public function getProductRaw(): string|null
     {
-        return $this->container['product_raw'];
+        return $this->container['product_raw'] ?? null;
     }
 
     /**
@@ -506,9 +506,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets zahlungsmittel_id
      * @return int
      */
-    public function getZahlungsmittelId(): int
+    public function getZahlungsmittelId(): int|null
     {
-        return $this->container['zahlungsmittel_id'];
+        return $this->container['zahlungsmittel_id'] ?? null;
     }
 
     /**
@@ -527,9 +527,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets contract_id
      * @return int
      */
-    public function getContractId(): int
+    public function getContractId(): int|null
     {
-        return $this->container['contract_id'];
+        return $this->container['contract_id'] ?? null;
     }
 
     /**
@@ -548,9 +548,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -569,9 +569,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -590,9 +590,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets status
      * @return int
      */
-    public function getStatus(): int
+    public function getStatus(): int|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -611,9 +611,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets status_text
      * @return string
      */
-    public function getStatusText(): string
+    public function getStatusText(): string|null
     {
-        return $this->container['status_text'];
+        return $this->container['status_text'] ?? null;
     }
 
     /**
@@ -632,9 +632,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets incoming_payment_date
      * @return string
      */
-    public function getIncomingPaymentDate(): string
+    public function getIncomingPaymentDate(): string|null
     {
-        return $this->container['incoming_payment_date'];
+        return $this->container['incoming_payment_date'] ?? null;
     }
 
     /**
@@ -653,9 +653,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets details
      * @return \Secuconnect\Client\Model\PaymentTransactionsProductModelDetails
      */
-    public function getDetails(): PaymentTransactionsProductModelDetails
+    public function getDetails(): PaymentTransactionsProductModelDetails|null
     {
-        return $this->container['details'];
+        return $this->container['details'] ?? null;
     }
 
     /**
@@ -674,9 +674,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentTransactionsProductModelCustomer
      */
-    public function getCustomer(): PaymentTransactionsProductModelCustomer
+    public function getCustomer(): PaymentTransactionsProductModelCustomer|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -695,9 +695,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -716,9 +716,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets payment_data
      * @return string
      */
-    public function getPaymentData(): string
+    public function getPaymentData(): string|null
     {
-        return $this->container['payment_data'];
+        return $this->container['payment_data'] ?? null;
     }
 
     /**
@@ -737,9 +737,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName(): string
+    public function getStoreName(): string|null
     {
-        return $this->container['store_name'];
+        return $this->container['store_name'] ?? null;
     }
 
     /**
@@ -758,9 +758,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets payout_date
      * @return string
      */
-    public function getPayoutDate(): string
+    public function getPayoutDate(): string|null
     {
-        return $this->container['payout_date'];
+        return $this->container['payout_date'] ?? null;
     }
 
     /**
@@ -779,9 +779,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets invoice_number
      * @return string
      */
-    public function getInvoiceNumber(): string
+    public function getInvoiceNumber(): string|null
     {
-        return $this->container['invoice_number'];
+        return $this->container['invoice_number'] ?? null;
     }
 
     /**
@@ -800,9 +800,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash(): string
+    public function getTransactionHash(): string|null
     {
-        return $this->container['transaction_hash'];
+        return $this->container['transaction_hash'] ?? null;
     }
 
     /**
@@ -821,9 +821,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId(): string|null
     {
-        return $this->container['reference_id'];
+        return $this->container['reference_id'] ?? null;
     }
 
     /**
@@ -842,9 +842,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets account_owner
      * @return string
      */
-    public function getAccountOwner(): string
+    public function getAccountOwner(): string|null
     {
-        return $this->container['account_owner'];
+        return $this->container['account_owner'] ?? null;
     }
 
     /**
@@ -863,9 +863,9 @@ class PaymentTransactionsProductModel extends BaseProductModel
      * Gets accrual
      * @return bool
      */
-    public function getAccrual(): bool
+    public function getAccrual(): bool|null
     {
-        return $this->container['accrual'];
+        return $this->container['accrual'] ?? null;
     }
 
     /**

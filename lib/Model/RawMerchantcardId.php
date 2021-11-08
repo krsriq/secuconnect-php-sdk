@@ -139,9 +139,9 @@ class RawMerchantcardId implements ArrayAccess, ModelInterface
      * Gets result
      * @return string
      */
-    public function getResult(): string
+    public function getResult(): string|null
     {
-        return $this->container['result'];
+        return $this->container['result'] ?? null;
     }
 
     /**

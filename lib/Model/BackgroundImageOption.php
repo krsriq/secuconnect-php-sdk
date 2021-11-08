@@ -146,9 +146,9 @@ class BackgroundImageOption implements ArrayAccess, ModelInterface
      * Gets enabled
      * @return bool
      */
-    public function getEnabled(): bool
+    public function getEnabled(): bool|null
     {
-        return $this->container['enabled'];
+        return $this->container['enabled'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class BackgroundImageOption implements ArrayAccess, ModelInterface
      * Gets image_url
      * @return string
      */
-    public function getImageUrl(): string
+    public function getImageUrl(): string|null
     {
-        return $this->container['image_url'];
+        return $this->container['image_url'] ?? null;
     }
 
     /**

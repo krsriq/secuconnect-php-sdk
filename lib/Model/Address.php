@@ -176,9 +176,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets street
      * @return string
      */
-    public function getStreet(): string
+    public function getStreet(): string|null
     {
-        return $this->container['street'];
+        return $this->container['street'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets street_number
      * @return string
      */
-    public function getStreetNumber(): string
+    public function getStreetNumber(): string|null
     {
-        return $this->container['street_number'];
+        return $this->container['street_number'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets city
      * @return string
      */
-    public function getCity(): string
+    public function getCity(): string|null
     {
-        return $this->container['city'];
+        return $this->container['city'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets postal_code
      * @return string
      */
-    public function getPostalCode(): string
+    public function getPostalCode(): string|null
     {
-        return $this->container['postal_code'];
+        return $this->container['postal_code'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets country
      * @return string
      */
-    public function getCountry(): string
+    public function getCountry(): string|null
     {
-        return $this->container['country'];
+        return $this->container['country'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class Address implements ArrayAccess, ModelInterface
      * Gets additional_address_data
      * @return string
      */
-    public function getAdditionalAddressData(): string
+    public function getAdditionalAddressData(): string|null
     {
-        return $this->container['additional_address_data'];
+        return $this->container['additional_address_data'] ?? null;
     }
 
     /**

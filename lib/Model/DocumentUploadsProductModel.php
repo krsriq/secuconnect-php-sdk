@@ -146,9 +146,9 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -188,9 +188,9 @@ class DocumentUploadsProductModel extends DocumentUploadsBaseProductModel
      * Gets size
      * @return int
      */
-    public function getSize(): int
+    public function getSize(): int|null
     {
-        return $this->container['size'];
+        return $this->container['size'] ?? null;
     }
 
     /**

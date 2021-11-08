@@ -27,17 +27,17 @@ class Authenticator
     /**
      * @var CacheItemPoolInterface
      */
-    private static $cache;
+    private static CacheItemPoolInterface $cache;
 
     /**
      * @var ApiClient
      */
-    private static $apiClient;
+    private static ApiClient $apiClient;
 
     /**
      * @var AuthenticationCredentials
      */
-    private static $credentials;
+    private static AuthenticationCredentials $credentials;
 
     /**
      * Authenticator constructor.
@@ -73,7 +73,7 @@ class Authenticator
      * @return string
      * @throws ApiException
      */
-    public static function authenticateByDevice($clientId, $clientSecret, $uuid)
+    public static function authenticateByDevice(string $clientId, string $clientSecret, string $uuid): string
     {
         return self::startAuthenticationProcess(OAuthDeviceCredentials::fromUuid(
             $clientId,
@@ -203,14 +203,11 @@ class Authenticator
     private static function init(AuthenticationCredentials $authenticationCredentials)
     {
         self::$credentials = $authenticationCredentials;
+        self::$cache ??= Configuration::getDefaultConfiguration()->getCache();
 
-        if (!self::$cache) {
-            self::setCache(Configuration::getDefaultConfiguration()->getCache());
-        }
-
-        if (!self::$apiClient) {
-            $config = new Configuration();
-            $config->setHost(Configuration::getDefaultConfiguration()->getAuthHost());
+        if (!isset(self::$apiClient)) {
+            $config = clone Configuration::getDefaultConfiguration();
+            $config->setHost($config->getAuthHost());
 
             self::setApiClient(new ApiClient($config));
         }

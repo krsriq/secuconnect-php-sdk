@@ -176,9 +176,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets prepaid
      * @return string
      */
-    public function getPrepaid(): string
+    public function getPrepaid(): string|null
     {
-        return $this->container['prepaid'];
+        return $this->container['prepaid'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets debit
      * @return string
      */
-    public function getDebit(): string
+    public function getDebit(): string|null
     {
-        return $this->container['debit'];
+        return $this->container['debit'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets creditcard
      * @return string
      */
-    public function getCreditcard(): string
+    public function getCreditcard(): string|null
     {
-        return $this->container['creditcard'];
+        return $this->container['creditcard'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets invoice
      * @return string
      */
-    public function getInvoice(): string
+    public function getInvoice(): string|null
     {
-        return $this->container['invoice'];
+        return $this->container['invoice'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets paypal
      * @return string
      */
-    public function getPaypal(): string
+    public function getPaypal(): string|null
     {
-        return $this->container['paypal'];
+        return $this->container['paypal'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets sofort
      * @return string
      */
-    public function getSofort(): string
+    public function getSofort(): string|null
     {
-        return $this->container['sofort'];
+        return $this->container['sofort'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class SmartTransactionsPaymentLinks implements ArrayAccess, ModelInterface
      * Gets general
      * @return string
      */
-    public function getGeneral(): string
+    public function getGeneral(): string|null
     {
-        return $this->container['general'];
+        return $this->container['general'] ?? null;
     }
 
     /**

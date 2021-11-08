@@ -134,9 +134,9 @@ class SmartTransactionsBonusProducts extends SmartTransactionsBaseProduct
      * Gets serial_number
      * @return string
      */
-    public function getSerialNumber(): string
+    public function getSerialNumber(): string|null
     {
-        return $this->container['serial_number'];
+        return $this->container['serial_number'] ?? null;
     }
 
     /**

@@ -146,9 +146,9 @@ class DayTime implements ArrayAccess, ModelInterface
      * Gets day
      * @return int
      */
-    public function getDay(): int
+    public function getDay(): int|null
     {
-        return $this->container['day'];
+        return $this->container['day'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class DayTime implements ArrayAccess, ModelInterface
      * Gets time
      * @return string
      */
-    public function getTime(): string
+    public function getTime(): string|null
     {
-        return $this->container['time'];
+        return $this->container['time'] ?? null;
     }
 
     /**

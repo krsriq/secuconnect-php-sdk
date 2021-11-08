@@ -152,9 +152,9 @@ class GetAvailablePaymentMethodsDTO implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class GetAvailablePaymentMethodsDTO implements ArrayAccess, ModelInterface
      * Gets is_demo
      * @return bool
      */
-    public function getIsDemo(): bool
+    public function getIsDemo(): bool|null
     {
-        return $this->container['is_demo'];
+        return $this->container['is_demo'] ?? null;
     }
 
     /**

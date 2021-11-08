@@ -230,9 +230,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets forename
      * @return string
      */
-    public function getForename(): string
+    public function getForename(): string|null
     {
-        return $this->container['forename'];
+        return $this->container['forename'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets surname
      * @return string
      */
-    public function getSurname(): string
+    public function getSurname(): string|null
     {
-        return $this->container['surname'];
+        return $this->container['surname'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets companyname
      * @return string
      */
-    public function getCompanyname(): string
+    public function getCompanyname(): string|null
     {
-        return $this->container['companyname'];
+        return $this->container['companyname'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets salutation
      * @return string
      */
-    public function getSalutation(): string
+    public function getSalutation(): string|null
     {
-        return $this->container['salutation'];
+        return $this->container['salutation'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets gender
      * @return string
      */
-    public function getGender(): string
+    public function getGender(): string|null
     {
-        return $this->container['gender'];
+        return $this->container['gender'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets title
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): string|null
     {
-        return $this->container['title'];
+        return $this->container['title'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**
@@ -377,9 +377,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets phone
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): string|null
     {
-        return $this->container['phone'];
+        return $this->container['phone'] ?? null;
     }
 
     /**
@@ -398,9 +398,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets mobile
      * @return string
      */
-    public function getMobile(): string
+    public function getMobile(): string|null
     {
-        return $this->container['mobile'];
+        return $this->container['mobile'] ?? null;
     }
 
     /**
@@ -419,9 +419,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets fax
      * @return string
      */
-    public function getFax(): string
+    public function getFax(): string|null
     {
-        return $this->container['fax'];
+        return $this->container['fax'] ?? null;
     }
 
     /**
@@ -440,9 +440,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets dob
      * @return string
      */
-    public function getDob(): string
+    public function getDob(): string|null
     {
-        return $this->container['dob'];
+        return $this->container['dob'] ?? null;
     }
 
     /**
@@ -461,9 +461,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets picture
      * @return string
      */
-    public function getPicture(): string
+    public function getPicture(): string|null
     {
-        return $this->container['picture'];
+        return $this->container['picture'] ?? null;
     }
 
     /**
@@ -482,9 +482,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite(): string
+    public function getUrlWebsite(): string|null
     {
-        return $this->container['url_website'];
+        return $this->container['url_website'] ?? null;
     }
 
     /**
@@ -503,9 +503,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets birthplace
      * @return string
      */
-    public function getBirthplace(): string
+    public function getBirthplace(): string|null
     {
-        return $this->container['birthplace'];
+        return $this->container['birthplace'] ?? null;
     }
 
     /**
@@ -524,9 +524,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets nationality
      * @return string
      */
-    public function getNationality(): string
+    public function getNationality(): string|null
     {
-        return $this->container['nationality'];
+        return $this->container['nationality'] ?? null;
     }
 
     /**
@@ -545,9 +545,9 @@ class Contact implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**

@@ -224,9 +224,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets item_type
      * @return string
      */
-    public function getItemType(): string
+    public function getItemType(): string|null
     {
-        return $this->container['item_type'];
+        return $this->container['item_type'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets article_number
      * @return string
      */
-    public function getArticleNumber(): string
+    public function getArticleNumber(): string|null
     {
-        return $this->container['article_number'];
+        return $this->container['article_number'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets quantity
      * @return int
      */
-    public function getQuantity(): int
+    public function getQuantity(): int|null
     {
-        return $this->container['quantity'];
+        return $this->container['quantity'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets model
      * @return string
      */
-    public function getModel(): string
+    public function getModel(): string|null
     {
-        return $this->container['model'];
+        return $this->container['model'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets ean
      * @return string
      */
-    public function getEan(): string
+    public function getEan(): string|null
     {
-        return $this->container['ean'];
+        return $this->container['ean'] ?? null;
     }
 
     /**
@@ -350,9 +350,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets tax
      * @return string
      */
-    public function getTax(): string
+    public function getTax(): string|null
     {
-        return $this->container['tax'];
+        return $this->container['tax'] ?? null;
     }
 
     /**
@@ -371,9 +371,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets total
      * @return int
      */
-    public function getTotal(): int
+    public function getTotal(): int|null
     {
-        return $this->container['total'];
+        return $this->container['total'] ?? null;
     }
 
     /**
@@ -392,9 +392,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets price
      * @return int
      */
-    public function getPrice(): int
+    public function getPrice(): int|null
     {
-        return $this->container['price'];
+        return $this->container['price'] ?? null;
     }
 
     /**
@@ -413,9 +413,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets apikey
      * @return string
      */
-    public function getApikey(): string
+    public function getApikey(): string|null
     {
-        return $this->container['apikey'];
+        return $this->container['apikey'] ?? null;
     }
 
     /**
@@ -434,9 +434,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets plan_id
      * @return string
      */
-    public function getPlanId(): string
+    public function getPlanId(): string|null
     {
-        return $this->container['plan_id'];
+        return $this->container['plan_id'] ?? null;
     }
 
     /**
@@ -455,9 +455,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets start_at
      * @return string
      */
-    public function getStartAt(): string
+    public function getStartAt(): string|null
     {
-        return $this->container['start_at'];
+        return $this->container['start_at'] ?? null;
     }
 
     /**
@@ -476,9 +476,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets transaction_hash
      * @return string
      */
-    public function getTransactionHash(): string
+    public function getTransactionHash(): string|null
     {
-        return $this->container['transaction_hash'];
+        return $this->container['transaction_hash'] ?? null;
     }
 
     /**
@@ -497,9 +497,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets contract_id
      * @return string
      */
-    public function getContractId(): string
+    public function getContractId(): string|null
     {
-        return $this->container['contract_id'];
+        return $this->container['contract_id'] ?? null;
     }
 
     /**
@@ -518,9 +518,9 @@ class SecupayBaseBasketItem implements ArrayAccess, ModelInterface
      * Gets reference_id
      * @return string
      */
-    public function getReferenceId(): string
+    public function getReferenceId(): string|null
     {
-        return $this->container['reference_id'];
+        return $this->container['reference_id'] ?? null;
     }
 
     /**

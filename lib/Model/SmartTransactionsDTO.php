@@ -302,9 +302,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -323,9 +323,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets provider_contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getProviderContract(): ProductInstanceUID
+    public function getProviderContract(): ProductInstanceUID|null
     {
-        return $this->container['provider_contract'];
+        return $this->container['provider_contract'] ?? null;
     }
 
     /**
@@ -344,9 +344,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets transaction_ref
      * @return string
      */
-    public function getTransactionRef(): string
+    public function getTransactionRef(): string|null
     {
-        return $this->container['transaction_ref'];
+        return $this->container['transaction_ref'] ?? null;
     }
 
     /**
@@ -365,9 +365,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets merchant_ref
      * @return string
      */
-    public function getMerchantRef(): string
+    public function getMerchantRef(): string|null
     {
-        return $this->container['merchant_ref'];
+        return $this->container['merchant_ref'] ?? null;
     }
 
     /**
@@ -386,9 +386,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets basket
      * @return \Secuconnect\Client\Model\SmartTransactionsBasket
      */
-    public function getBasket(): SmartTransactionsBasket
+    public function getBasket(): SmartTransactionsBasket|null
     {
-        return $this->container['basket'];
+        return $this->container['basket'] ?? null;
     }
 
     /**
@@ -407,9 +407,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets basket_info
      * @return \Secuconnect\Client\Model\SmartTransactionsBasketInfo
      */
-    public function getBasketInfo(): SmartTransactionsBasketInfo
+    public function getBasketInfo(): SmartTransactionsBasketInfo|null
     {
-        return $this->container['basket_info'];
+        return $this->container['basket_info'] ?? null;
     }
 
     /**
@@ -428,9 +428,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets idents
      * @return \Secuconnect\Client\Model\SmartTransactionsIdent[]
      */
-    public function getIdents(): array
+    public function getIdents(): array|null
     {
-        return $this->container['idents'];
+        return $this->container['idents'] ?? null;
     }
 
     /**
@@ -449,9 +449,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets tax_amount
      * @return int
      */
-    public function getTaxAmount(): int
+    public function getTaxAmount(): int|null
     {
-        return $this->container['tax_amount'];
+        return $this->container['tax_amount'] ?? null;
     }
 
     /**
@@ -470,9 +470,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets tax_rate
      * @return int
      */
-    public function getTaxRate(): int
+    public function getTaxRate(): int|null
     {
-        return $this->container['tax_rate'];
+        return $this->container['tax_rate'] ?? null;
     }
 
     /**
@@ -491,9 +491,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets market
      * @return string
      */
-    public function getMarket(): string
+    public function getMarket(): string|null
     {
-        return $this->container['market'];
+        return $this->container['market'] ?? null;
     }
 
     /**
@@ -512,9 +512,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets cashier
      * @return string
      */
-    public function getCashier(): string
+    public function getCashier(): string|null
     {
-        return $this->container['cashier'];
+        return $this->container['cashier'] ?? null;
     }
 
     /**
@@ -533,9 +533,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets product
      * @return string
      */
-    public function getProduct(): string
+    public function getProduct(): string|null
     {
-        return $this->container['product'];
+        return $this->container['product'] ?? null;
     }
 
     /**
@@ -554,9 +554,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets device_source
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getDeviceSource(): ProductInstanceUID
+    public function getDeviceSource(): ProductInstanceUID|null
     {
-        return $this->container['device_source'];
+        return $this->container['device_source'] ?? null;
     }
 
     /**
@@ -575,9 +575,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -596,9 +596,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceID
      */
-    public function getContract(): ProductInstanceID
+    public function getContract(): ProductInstanceID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -617,9 +617,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets last_visited_page
      * @return string
      */
-    public function getLastVisitedPage(): string
+    public function getLastVisitedPage(): string|null
     {
-        return $this->container['last_visited_page'];
+        return $this->container['last_visited_page'] ?? null;
     }
 
     /**
@@ -638,9 +638,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets customer
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getCustomer(): PaymentCustomersProductModel
+    public function getCustomer(): PaymentCustomersProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -659,9 +659,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets shipping_address
      * @return \Secuconnect\Client\Model\PaymentCustomersProductModel
      */
-    public function getShippingAddress(): PaymentCustomersProductModel
+    public function getShippingAddress(): PaymentCustomersProductModel|null
     {
-        return $this->container['shipping_address'];
+        return $this->container['shipping_address'] ?? null;
     }
 
     /**
@@ -680,9 +680,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets container
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContainer(): ProductInstanceUID
+    public function getContainer(): ProductInstanceUID|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -701,9 +701,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets checkin
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckin
      */
-    public function getCheckin(): SmartTransactionsCheckin
+    public function getCheckin(): SmartTransactionsCheckin|null
     {
-        return $this->container['checkin'];
+        return $this->container['checkin'] ?? null;
     }
 
     /**
@@ -722,9 +722,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets payment_method
      * @return string
      */
-    public function getPaymentMethod(): string
+    public function getPaymentMethod(): string|null
     {
-        return $this->container['payment_method'];
+        return $this->container['payment_method'] ?? null;
     }
 
     /**
@@ -743,9 +743,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets is_demo
      * @return bool
      */
-    public function getIsDemo(): bool
+    public function getIsDemo(): bool|null
     {
-        return $this->container['is_demo'];
+        return $this->container['is_demo'] ?? null;
     }
 
     /**
@@ -764,9 +764,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets intent
      * @return string
      */
-    public function getIntent(): string
+    public function getIntent(): string|null
     {
-        return $this->container['intent'];
+        return $this->container['intent'] ?? null;
     }
 
     /**
@@ -785,9 +785,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets checkout_links
      * @return \Secuconnect\Client\Model\SmartTransactionsCheckoutLinks
      */
-    public function getCheckoutLinks(): SmartTransactionsCheckoutLinks
+    public function getCheckoutLinks(): SmartTransactionsCheckoutLinks|null
     {
-        return $this->container['checkout_links'];
+        return $this->container['checkout_links'] ?? null;
     }
 
     /**
@@ -806,9 +806,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets delivery_options
      * @return \Secuconnect\Client\Model\OneOfSmartTransactionsDeliveryOptionsModel
      */
-    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel
+    public function getDeliveryOptions(): OneOfSmartTransactionsDeliveryOptionsModel|null
     {
-        return $this->container['delivery_options'];
+        return $this->container['delivery_options'] ?? null;
     }
 
     /**
@@ -827,9 +827,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets communications
      * @return \Secuconnect\Client\Model\SmartTransactionsCommunication
      */
-    public function getCommunications(): SmartTransactionsCommunication
+    public function getCommunications(): SmartTransactionsCommunication|null
     {
-        return $this->container['communications'];
+        return $this->container['communications'] ?? null;
     }
 
     /**
@@ -848,9 +848,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets application_context
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContext
      */
-    public function getApplicationContext(): SmartTransactionsApplicationContext
+    public function getApplicationContext(): SmartTransactionsApplicationContext|null
     {
-        return $this->container['application_context'];
+        return $this->container['application_context'] ?? null;
     }
 
     /**
@@ -869,9 +869,9 @@ class SmartTransactionsDTO implements ArrayAccess, ModelInterface
      * Gets payment_context
      * @return \Secuconnect\Client\Model\PaymentContext
      */
-    public function getPaymentContext(): PaymentContext
+    public function getPaymentContext(): PaymentContext|null
     {
-        return $this->container['payment_context'];
+        return $this->container['payment_context'] ?? null;
     }
 
     /**

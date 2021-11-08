@@ -164,9 +164,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets parent
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getParent(): ProductInstanceUID
+    public function getParent(): ProductInstanceUID|null
     {
-        return $this->container['parent'];
+        return $this->container['parent'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets pay_in_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPayInAccount(): PaymentInformation
+    public function getPayInAccount(): PaymentInformation|null
     {
-        return $this->container['pay_in_account'];
+        return $this->container['pay_in_account'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class PaymentContractsProductModel extends BaseProductModel
      * Gets approved
      * @return bool
      */
-    public function getApproved(): bool
+    public function getApproved(): bool|null
     {
-        return $this->container['approved'];
+        return $this->container['approved'] ?? null;
     }
 
     /**

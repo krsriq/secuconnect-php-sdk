@@ -140,9 +140,9 @@ class SecupayPayoutDTOOptData implements ArrayAccess, ModelInterface
      * Gets language
      * @return string
      */
-    public function getLanguage(): string
+    public function getLanguage(): string|null
     {
-        return $this->container['language'];
+        return $this->container['language'] ?? null;
     }
 
     /**

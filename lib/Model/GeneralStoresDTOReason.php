@@ -140,9 +140,9 @@ class GeneralStoresDTOReason implements ArrayAccess, ModelInterface
      * Gets reason
      * @return string
      */
-    public function getReason(): string
+    public function getReason(): string|null
     {
-        return $this->container['reason'];
+        return $this->container['reason'] ?? null;
     }
 
     /**

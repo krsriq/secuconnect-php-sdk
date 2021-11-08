@@ -139,9 +139,9 @@ class Disabled implements ArrayAccess, ModelInterface
      * Gets disabled
      * @return int
      */
-    public function getDisabled(): int
+    public function getDisabled(): int|null
     {
-        return $this->container['disabled'];
+        return $this->container['disabled'] ?? null;
     }
 
     /**

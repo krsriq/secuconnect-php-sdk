@@ -152,9 +152,9 @@ class SmartTransactionsBasketInfo implements ArrayAccess, ModelInterface
      * Gets sum
      * @return int
      */
-    public function getSum(): int
+    public function getSum(): int|null
     {
-        return $this->container['sum'];
+        return $this->container['sum'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartTransactionsBasketInfo implements ArrayAccess, ModelInterface
      * Gets gratuity
      * @return int
      */
-    public function getGratuity(): int
+    public function getGratuity(): int|null
     {
-        return $this->container['gratuity'];
+        return $this->container['gratuity'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartTransactionsBasketInfo implements ArrayAccess, ModelInterface
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**

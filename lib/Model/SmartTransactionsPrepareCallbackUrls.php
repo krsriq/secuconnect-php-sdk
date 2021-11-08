@@ -146,9 +146,9 @@ class SmartTransactionsPrepareCallbackUrls implements ArrayAccess, ModelInterfac
      * Gets success_url
      * @return string
      */
-    public function getSuccessUrl(): string
+    public function getSuccessUrl(): string|null
     {
-        return $this->container['success_url'];
+        return $this->container['success_url'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsPrepareCallbackUrls implements ArrayAccess, ModelInterfac
      * Gets failure_url
      * @return string
      */
-    public function getFailureUrl(): string
+    public function getFailureUrl(): string|null
     {
-        return $this->container['failure_url'];
+        return $this->container['failure_url'] ?? null;
     }
 
     /**

@@ -134,9 +134,9 @@ class PaymentInstructions extends BankAccountDescriptor
      * Gets girocode_url
      * @return string
      */
-    public function getGirocodeUrl(): string
+    public function getGirocodeUrl(): string|null
     {
-        return $this->container['girocode_url'];
+        return $this->container['girocode_url'] ?? null;
     }
 
     /**

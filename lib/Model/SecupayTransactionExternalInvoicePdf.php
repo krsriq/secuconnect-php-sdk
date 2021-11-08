@@ -140,9 +140,9 @@ class SecupayTransactionExternalInvoicePdf implements ArrayAccess, ModelInterfac
      * Gets document
      * @return \Secuconnect\Client\Model\SecupayTransactionExternalInvoicePdfDocument
      */
-    public function getDocument(): SecupayTransactionExternalInvoicePdfDocument
+    public function getDocument(): SecupayTransactionExternalInvoicePdfDocument|null
     {
-        return $this->container['document'];
+        return $this->container['document'] ?? null;
     }
 
     /**

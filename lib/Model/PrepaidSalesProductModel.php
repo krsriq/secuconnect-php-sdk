@@ -278,9 +278,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -299,9 +299,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -320,9 +320,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets stock
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getStock(): ProductInstanceUID
+    public function getStock(): ProductInstanceUID|null
     {
-        return $this->container['stock'];
+        return $this->container['stock'] ?? null;
     }
 
     /**
@@ -341,9 +341,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets item
      * @return \Secuconnect\Client\Model\PrepaidSalesItem
      */
-    public function getItem(): PrepaidSalesItem
+    public function getItem(): PrepaidSalesItem|null
     {
-        return $this->container['item'];
+        return $this->container['item'] ?? null;
     }
 
     /**
@@ -362,9 +362,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets itemgroup
      * @return \Secuconnect\Client\Model\ItemGroup
      */
-    public function getItemgroup(): ItemGroup
+    public function getItemgroup(): ItemGroup|null
     {
-        return $this->container['itemgroup'];
+        return $this->container['itemgroup'] ?? null;
     }
 
     /**
@@ -383,9 +383,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets smart_device
      * @return \Secuconnect\Client\Model\PrepaidSalesSmartDevice
      */
-    public function getSmartDevice(): PrepaidSalesSmartDevice
+    public function getSmartDevice(): PrepaidSalesSmartDevice|null
     {
-        return $this->container['smart_device'];
+        return $this->container['smart_device'] ?? null;
     }
 
     /**
@@ -404,9 +404,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -425,9 +425,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\Store
      */
-    public function getStore(): Store
+    public function getStore(): Store|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -446,9 +446,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getContract(): ProductInstanceUID
+    public function getContract(): ProductInstanceUID|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -467,9 +467,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets demo
      * @return bool
      */
-    public function getDemo(): bool
+    public function getDemo(): bool|null
     {
-        return $this->container['demo'];
+        return $this->container['demo'] ?? null;
     }
 
     /**
@@ -488,9 +488,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -509,9 +509,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -530,9 +530,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -551,9 +551,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets commission
      * @return int
      */
-    public function getCommission(): int
+    public function getCommission(): int|null
     {
-        return $this->container['commission'];
+        return $this->container['commission'] ?? null;
     }
 
     /**
@@ -572,9 +572,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets commission_currency
      * @return string
      */
-    public function getCommissionCurrency(): string
+    public function getCommissionCurrency(): string|null
     {
-        return $this->container['commission_currency'];
+        return $this->container['commission_currency'] ?? null;
     }
 
     /**
@@ -593,9 +593,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets code
      * @return string
      */
-    public function getCode(): string
+    public function getCode(): string|null
     {
-        return $this->container['code'];
+        return $this->container['code'] ?? null;
     }
 
     /**
@@ -614,9 +614,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets serial
      * @return string
      */
-    public function getSerial(): string
+    public function getSerial(): string|null
     {
-        return $this->container['serial'];
+        return $this->container['serial'] ?? null;
     }
 
     /**
@@ -635,9 +635,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets cardnumber
      * @return string
      */
-    public function getCardnumber(): string
+    public function getCardnumber(): string|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**
@@ -656,9 +656,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets expire_date
      * @return string
      */
-    public function getExpireDate(): string
+    public function getExpireDate(): string|null
     {
-        return $this->container['expire_date'];
+        return $this->container['expire_date'] ?? null;
     }
 
     /**
@@ -677,9 +677,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets provider_delivery_number
      * @return string
      */
-    public function getProviderDeliveryNumber(): string
+    public function getProviderDeliveryNumber(): string|null
     {
-        return $this->container['provider_delivery_number'];
+        return $this->container['provider_delivery_number'] ?? null;
     }
 
     /**
@@ -698,9 +698,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_header
      * @return string
      */
-    public function getReceiptHeader(): string
+    public function getReceiptHeader(): string|null
     {
-        return $this->container['receipt_header'];
+        return $this->container['receipt_header'] ?? null;
     }
 
     /**
@@ -719,9 +719,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_customer
      * @return string
      */
-    public function getReceiptCustomer(): string
+    public function getReceiptCustomer(): string|null
     {
-        return $this->container['receipt_customer'];
+        return $this->container['receipt_customer'] ?? null;
     }
 
     /**
@@ -740,9 +740,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_zvt
      * @return string
      */
-    public function getReceiptZvt(): string
+    public function getReceiptZvt(): string|null
     {
-        return $this->container['receipt_zvt'];
+        return $this->container['receipt_zvt'] ?? null;
     }
 
     /**
@@ -761,9 +761,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets receipt_dealer
      * @return string
      */
-    public function getReceiptDealer(): string
+    public function getReceiptDealer(): string|null
     {
-        return $this->container['receipt_dealer'];
+        return $this->container['receipt_dealer'] ?? null;
     }
 
     /**
@@ -782,9 +782,9 @@ class PrepaidSalesProductModel extends BaseProductModel
      * Gets vtc_tid
      * @return string
      */
-    public function getVtcTid(): string
+    public function getVtcTid(): string|null
     {
-        return $this->container['vtc_tid'];
+        return $this->container['vtc_tid'] ?? null;
     }
 
     /**

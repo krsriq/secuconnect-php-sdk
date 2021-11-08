@@ -230,9 +230,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchant
      */
-    public function getMerchant(): LoyaltyTransactionsDTOMerchant
+    public function getMerchant(): LoyaltyTransactionsDTOMerchant|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets cardgroup
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOCardgroup
      */
-    public function getCardgroup(): LoyaltyTransactionsDTOCardgroup
+    public function getCardgroup(): LoyaltyTransactionsDTOCardgroup|null
     {
-        return $this->container['cardgroup'];
+        return $this->container['cardgroup'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets store
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOStore
      */
-    public function getStore(): LoyaltyTransactionsDTOStore
+    public function getStore(): LoyaltyTransactionsDTOStore|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets merchantcard
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOMerchantcard
      */
-    public function getMerchantcard(): LoyaltyTransactionsDTOMerchantcard
+    public function getMerchantcard(): LoyaltyTransactionsDTOMerchantcard|null
     {
-        return $this->container['merchantcard'];
+        return $this->container['merchantcard'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets card
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTOCard
      */
-    public function getCard(): LoyaltyTransactionsDTOCard
+    public function getCard(): LoyaltyTransactionsDTOCard|null
     {
-        return $this->container['card'];
+        return $this->container['card'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets parents
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]
      */
-    public function getParents(): array
+    public function getParents(): array|null
     {
-        return $this->container['parents'];
+        return $this->container['parents'] ?? null;
     }
 
     /**
@@ -377,9 +377,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets children
      * @return \Secuconnect\Client\Model\LoyaltyTransactionsDTORelatedTransactions[]
      */
-    public function getChildren(): array
+    public function getChildren(): array|null
     {
-        return $this->container['children'];
+        return $this->container['children'] ?? null;
     }
 
     /**
@@ -398,9 +398,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -419,9 +419,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -440,9 +440,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -461,9 +461,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -482,9 +482,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets balance
      * @return int
      */
-    public function getBalance(): int
+    public function getBalance(): int|null
     {
-        return $this->container['balance'];
+        return $this->container['balance'] ?? null;
     }
 
     /**
@@ -503,9 +503,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -524,9 +524,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets last_changee
      * @return string
      */
-    public function getLastChangee(): string
+    public function getLastChangee(): string|null
     {
-        return $this->container['last_changee'];
+        return $this->container['last_changee'] ?? null;
     }
 
     /**
@@ -545,9 +545,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets receipt
      * @return \Secuconnect\Client\Model\ReceiptTypeValue[]
      */
-    public function getReceipt(): array
+    public function getReceipt(): array|null
     {
-        return $this->container['receipt'];
+        return $this->container['receipt'] ?? null;
     }
 
     /**
@@ -566,9 +566,9 @@ class LoyaltyTransactionsProductModel extends BaseProductModel
      * Gets is_cancelling
      * @return int
      */
-    public function getIsCancelling(): int
+    public function getIsCancelling(): int|null
     {
-        return $this->container['is_cancelling'];
+        return $this->container['is_cancelling'] ?? null;
     }
 
     /**

@@ -176,9 +176,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets merchant
      * @return string
      */
-    public function getMerchant(): string
+    public function getMerchant(): string|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets merchant_contact
      * @return \Secuconnect\Client\Model\Contact
      */
-    public function getMerchantContact(): Contact
+    public function getMerchantContact(): Contact|null
     {
-        return $this->container['merchant_contact'];
+        return $this->container['merchant_contact'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets age
      * @return int
      */
-    public function getAge(): int
+    public function getAge(): int|null
     {
-        return $this->container['age'];
+        return $this->container['age'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets days_until_birthday
      * @return int
      */
-    public function getDaysUntilBirthday(): int
+    public function getDaysUntilBirthday(): int|null
     {
-        return $this->container['days_until_birthday'];
+        return $this->container['days_until_birthday'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets customernumber
      * @return string
      */
-    public function getCustomernumber(): string
+    public function getCustomernumber(): string|null
     {
-        return $this->container['customernumber'];
+        return $this->container['customernumber'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets note
      * @return string
      */
-    public function getNote(): string
+    public function getNote(): string|null
     {
-        return $this->container['note'];
+        return $this->container['note'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class LoyaltyCustomersDTO implements ArrayAccess, ModelInterface
      * Gets additional_data
      * @return object
      */
-    public function getAdditionalData(): object
+    public function getAdditionalData(): object|null
     {
-        return $this->container['additional_data'];
+        return $this->container['additional_data'] ?? null;
     }
 
     /**

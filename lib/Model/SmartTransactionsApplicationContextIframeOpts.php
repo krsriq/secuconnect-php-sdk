@@ -188,9 +188,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets payment_hint_title
      * @return string
      */
-    public function getPaymentHintTitle(): string
+    public function getPaymentHintTitle(): string|null
     {
-        return $this->container['payment_hint_title'];
+        return $this->container['payment_hint_title'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets payment_hint
      * @return \Secuconnect\Client\Model\SmartTransactionsReceipt[]
      */
-    public function getPaymentHint(): array
+    public function getPaymentHint(): array|null
     {
-        return $this->container['payment_hint'];
+        return $this->container['payment_hint'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets project_title
      * @return string
      */
-    public function getProjectTitle(): string
+    public function getProjectTitle(): string|null
     {
-        return $this->container['project_title'];
+        return $this->container['project_title'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets submit_button_title
      * @return string
      */
-    public function getSubmitButtonTitle(): string
+    public function getSubmitButtonTitle(): string|null
     {
-        return $this->container['submit_button_title'];
+        return $this->container['submit_button_title'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets cancel_button_title
      * @return string
      */
-    public function getCancelButtonTitle(): string
+    public function getCancelButtonTitle(): string|null
     {
-        return $this->container['cancel_button_title'];
+        return $this->container['cancel_button_title'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets language
      * @return string
      */
-    public function getLanguage(): string
+    public function getLanguage(): string|null
     {
-        return $this->container['language'];
+        return $this->container['language'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets basket_title
      * @return string
      */
-    public function getBasketTitle(): string
+    public function getBasketTitle(): string|null
     {
-        return $this->container['basket_title'];
+        return $this->container['basket_title'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets hide_disclaimer
      * @return bool
      */
-    public function getHideDisclaimer(): bool
+    public function getHideDisclaimer(): bool|null
     {
-        return $this->container['hide_disclaimer'];
+        return $this->container['hide_disclaimer'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class SmartTransactionsApplicationContextIframeOpts implements ArrayAccess, Mode
      * Gets has_accepted_disclaimer
      * @return bool
      */
-    public function getHasAcceptedDisclaimer(): bool
+    public function getHasAcceptedDisclaimer(): bool|null
     {
-        return $this->container['has_accepted_disclaimer'];
+        return $this->container['has_accepted_disclaimer'] ?? null;
     }
 
     /**

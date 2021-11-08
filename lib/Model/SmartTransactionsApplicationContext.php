@@ -158,9 +158,9 @@ class SmartTransactionsApplicationContext implements ArrayAccess, ModelInterface
      * Gets locks
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextLocks
      */
-    public function getLocks(): SmartTransactionsApplicationContextLocks
+    public function getLocks(): SmartTransactionsApplicationContextLocks|null
     {
-        return $this->container['locks'];
+        return $this->container['locks'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class SmartTransactionsApplicationContext implements ArrayAccess, ModelInterface
      * Gets return_urls
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextReturnUrls
      */
-    public function getReturnUrls(): SmartTransactionsApplicationContextReturnUrls
+    public function getReturnUrls(): SmartTransactionsApplicationContextReturnUrls|null
     {
-        return $this->container['return_urls'];
+        return $this->container['return_urls'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class SmartTransactionsApplicationContext implements ArrayAccess, ModelInterface
      * Gets iframe_opts
      * @return \Secuconnect\Client\Model\SmartTransactionsApplicationContextIframeOpts
      */
-    public function getIframeOpts(): SmartTransactionsApplicationContextIframeOpts
+    public function getIframeOpts(): SmartTransactionsApplicationContextIframeOpts|null
     {
-        return $this->container['iframe_opts'];
+        return $this->container['iframe_opts'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class SmartTransactionsApplicationContext implements ArrayAccess, ModelInterface
      * Gets checkout_template
      * @return string
      */
-    public function getCheckoutTemplate(): string
+    public function getCheckoutTemplate(): string|null
     {
-        return $this->container['checkout_template'];
+        return $this->container['checkout_template'] ?? null;
     }
 
     /**

@@ -146,9 +146,9 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess, ModelInterface
      * Gets has_accepted_disclaimer
      * @return string
      */
-    public function getHasAcceptedDisclaimer(): string
+    public function getHasAcceptedDisclaimer(): string|null
     {
-        return $this->container['has_accepted_disclaimer'];
+        return $this->container['has_accepted_disclaimer'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SecupayTransactionProductDTOOptData implements ArrayAccess, ModelInterface
      * Gets language
      * @return string
      */
-    public function getLanguage(): string
+    public function getLanguage(): string|null
     {
-        return $this->container['language'];
+        return $this->container['language'] ?? null;
     }
 
     /**

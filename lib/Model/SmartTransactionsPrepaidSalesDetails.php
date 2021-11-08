@@ -152,9 +152,9 @@ class SmartTransactionsPrepaidSalesDetails implements ArrayAccess, ModelInterfac
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartTransactionsPrepaidSalesDetails implements ArrayAccess, ModelInterfac
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartTransactionsPrepaidSalesDetails implements ArrayAccess, ModelInterfac
      * Gets error_details
      * @return string
      */
-    public function getErrorDetails(): string
+    public function getErrorDetails(): string|null
     {
-        return $this->container['error_details'];
+        return $this->container['error_details'] ?? null;
     }
 
     /**

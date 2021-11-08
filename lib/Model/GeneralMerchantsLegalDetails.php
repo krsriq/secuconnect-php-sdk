@@ -158,9 +158,9 @@ class GeneralMerchantsLegalDetails implements ArrayAccess, ModelInterface
      * Gets url
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): string|null
     {
-        return $this->container['url'];
+        return $this->container['url'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class GeneralMerchantsLegalDetails implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class GeneralMerchantsLegalDetails implements ArrayAccess, ModelInterface
      * Gets content_type
      * @return string
      */
-    public function getContentType(): string
+    public function getContentType(): string|null
     {
-        return $this->container['content_type'];
+        return $this->container['content_type'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class GeneralMerchantsLegalDetails implements ArrayAccess, ModelInterface
      * Gets language
      * @return string
      */
-    public function getLanguage(): string
+    public function getLanguage(): string|null
     {
-        return $this->container['language'];
+        return $this->container['language'] ?? null;
     }
 
     /**

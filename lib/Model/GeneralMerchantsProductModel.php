@@ -182,9 +182,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets id_old
      * @return int
      */
-    public function getIdOld(): int
+    public function getIdOld(): int|null
     {
-        return $this->container['id_old'];
+        return $this->container['id_old'] ?? null;
     }
 
     /**
@@ -203,9 +203,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -224,9 +224,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets user
      * @return \Secuconnect\Client\Model\GeneralMerchantsUser
      */
-    public function getUser(): GeneralMerchantsUser
+    public function getUser(): GeneralMerchantsUser|null
     {
-        return $this->container['user'];
+        return $this->container['user'] ?? null;
     }
 
     /**
@@ -245,9 +245,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets parent
      * @return \Secuconnect\Client\Model\ParentModel
      */
-    public function getParent(): ParentModel
+    public function getParent(): ParentModel|null
     {
-        return $this->container['parent'];
+        return $this->container['parent'] ?? null;
     }
 
     /**
@@ -266,9 +266,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets assigned_by
      * @return \Secuconnect\Client\Model\AssignedBy[]
      */
-    public function getAssignedBy(): array
+    public function getAssignedBy(): array|null
     {
-        return $this->container['assigned_by'];
+        return $this->container['assigned_by'] ?? null;
     }
 
     /**
@@ -287,9 +287,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets invited_by
      * @return \Secuconnect\Client\Model\InvitedBy[]
      */
-    public function getInvitedBy(): array
+    public function getInvitedBy(): array|null
     {
-        return $this->container['invited_by'];
+        return $this->container['invited_by'] ?? null;
     }
 
     /**
@@ -308,9 +308,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails(): array
+    public function getLegalDetails(): array|null
     {
-        return $this->container['legal_details'];
+        return $this->container['legal_details'] ?? null;
     }
 
     /**
@@ -329,9 +329,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getUrls(): array
+    public function getUrls(): array|null
     {
-        return $this->container['urls'];
+        return $this->container['urls'] ?? null;
     }
 
     /**
@@ -350,9 +350,9 @@ class GeneralMerchantsProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName(): string
+    public function getStoreName(): string|null
     {
-        return $this->container['store_name'];
+        return $this->container['store_name'] ?? null;
     }
 
     /**

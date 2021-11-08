@@ -146,9 +146,9 @@ class PaymentSubscriptionsProductModelBillingCycles implements ArrayAccess, Mode
      * Gets cycle_executions
      * @return \Secuconnect\Client\Model\BillingCyclesItem[]
      */
-    public function getCycleExecutions(): array
+    public function getCycleExecutions(): array|null
     {
-        return $this->container['cycle_executions'];
+        return $this->container['cycle_executions'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class PaymentSubscriptionsProductModelBillingCycles implements ArrayAccess, Mode
      * Gets next_billing_time
      * @return string
      */
-    public function getNextBillingTime(): string
+    public function getNextBillingTime(): string|null
     {
-        return $this->container['next_billing_time'];
+        return $this->container['next_billing_time'] ?? null;
     }
 
     /**

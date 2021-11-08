@@ -206,9 +206,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets salutation
      * @return string
      */
-    public function getSalutation(): string
+    public function getSalutation(): string|null
     {
-        return $this->container['salutation'];
+        return $this->container['salutation'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets companyname
      * @return string
      */
-    public function getCompanyname(): string
+    public function getCompanyname(): string|null
     {
-        return $this->container['companyname'];
+        return $this->container['companyname'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets forename
      * @return string
      */
-    public function getForename(): string
+    public function getForename(): string|null
     {
-        return $this->container['forename'];
+        return $this->container['forename'] ?? null;
     }
 
     /**
@@ -269,9 +269,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets surname
      * @return string
      */
-    public function getSurname(): string
+    public function getSurname(): string|null
     {
-        return $this->container['surname'];
+        return $this->container['surname'] ?? null;
     }
 
     /**
@@ -290,9 +290,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets dob
      * @return string
      */
-    public function getDob(): string
+    public function getDob(): string|null
     {
-        return $this->container['dob'];
+        return $this->container['dob'] ?? null;
     }
 
     /**
@@ -311,9 +311,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets homepage
      * @return string
      */
-    public function getHomepage(): string
+    public function getHomepage(): string|null
     {
-        return $this->container['homepage'];
+        return $this->container['homepage'] ?? null;
     }
 
     /**
@@ -332,9 +332,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets email
      * @return string
      */
-    public function getEmail(): string
+    public function getEmail(): string|null
     {
-        return $this->container['email'];
+        return $this->container['email'] ?? null;
     }
 
     /**
@@ -353,9 +353,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets phone
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): string|null
     {
-        return $this->container['phone'];
+        return $this->container['phone'] ?? null;
     }
 
     /**
@@ -374,9 +374,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**
@@ -395,9 +395,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets payment_data
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getPaymentData(): PaymentInformation
+    public function getPaymentData(): PaymentInformation|null
     {
-        return $this->container['payment_data'];
+        return $this->container['payment_data'] ?? null;
     }
 
     /**
@@ -416,9 +416,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails(): array
+    public function getLegalDetails(): array|null
     {
-        return $this->container['legal_details'];
+        return $this->container['legal_details'] ?? null;
     }
 
     /**
@@ -437,9 +437,9 @@ class GeneralMerchantsDTO implements ArrayAccess, ModelInterface
      * Gets urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getUrls(): array
+    public function getUrls(): array|null
     {
-        return $this->container['urls'];
+        return $this->container['urls'] ?? null;
     }
 
     /**

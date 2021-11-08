@@ -15,55 +15,28 @@ use Secuconnect\Client\Model\PaymentCustomersProductModel;
  */
 class PaymentCustomersApiTest extends TestCase
 {
-    /**
-     * @var PaymentCustomersApi
-     */
-    private $api;
+    private ?PaymentCustomersApi $api;
 
-    /**
-     * @var string
-     */
-    private static $customerId;
+    private static ?string $customerId;
 
-    /**
-     * @var Contact
-     */
-    private static $contact;
+    private static ?Contact $contact;
 
-    /**
-     * @var Address
-     */
-    private static $contactAddress;
+    private static ?Address $contactAddress;
 
-    /**
-     * @var string
-     */
-    private static $created;
+    private static ?string $created;
 
-    /**
-     * @var string
-     */
-    private static $updated;
+    private static ?string $updated;
 
-    /**
-     * @var PaymentCustomersProductModel
-     */
-    private static $testCustomer1;
+    private static PaymentCustomersProductModel $testCustomer1;
 
-    /**
-     * @var PaymentCustomersProductModel
-     */
-    private static $testCustomer2;
+    private static PaymentCustomersProductModel $testCustomer2;
 
-    /**
-     * @var PaymentCustomersProductModel
-     */
-    private static $testCustomer3;
+    private static PaymentCustomersProductModel $testCustomer3;
 
     /**
      * Setup before running any test cases
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$customerId = '';
@@ -97,7 +70,7 @@ class PaymentCustomersApiTest extends TestCase
      *
      * @throws ApiException
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         SecuconnectObjects::getInstance()->authenticateByClientCredentials();
@@ -107,7 +80,7 @@ class PaymentCustomersApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -116,7 +89,7 @@ class PaymentCustomersApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$customerId = null;
         self::$contact = null;
@@ -288,7 +261,7 @@ class PaymentCustomersApiTest extends TestCase
         }
 
         $this->assertNotEmpty($response);
-        $this->assertInternalType('array', $response);
+        $this->assertIsArray($response);
         $this->assertContainsOnlyInstancesOf(PaymentCustomersProductModel::class, $response);
         $this->assertEquals('payment.customers', $response[0]->getObject());
         $this->assertEquals(self::$customerId, $response[0]->getId());
@@ -327,7 +300,7 @@ class PaymentCustomersApiTest extends TestCase
 
         $this->assertNotEmpty($response);
         $this->assertInstanceOf(PaymentCustomersList::class, $response);
-        $this->assertInternalType('int', $response->getCount());
+        $this->assertIsInt($response->getCount());
 
         if (is_int($response->getCount()) && $response->getCount() > 0) {
             foreach ($response->getData() as $customer) {

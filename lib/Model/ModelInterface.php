@@ -2,8 +2,6 @@
 /**
  * ModelInterface
  *
- * PHP version 5
- *
  * @category Class
  * @package  Secuconnect\Client\Model
  * @author   Swagger Codegen team

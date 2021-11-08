@@ -146,9 +146,9 @@ class PaymentPlanInterval implements ArrayAccess, ModelInterface
      * Gets unit
      * @return string
      */
-    public function getUnit(): string
+    public function getUnit(): string|null
     {
-        return $this->container['unit'];
+        return $this->container['unit'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class PaymentPlanInterval implements ArrayAccess, ModelInterface
      * Gets count
      * @return int
      */
-    public function getCount(): int
+    public function getCount(): int|null
     {
-        return $this->container['count'];
+        return $this->container['count'] ?? null;
     }
 
     /**

@@ -152,9 +152,9 @@ class AddressComponents implements ArrayAccess, ModelInterface
      * Gets long_name
      * @return string
      */
-    public function getLongName(): string
+    public function getLongName(): string|null
     {
-        return $this->container['long_name'];
+        return $this->container['long_name'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class AddressComponents implements ArrayAccess, ModelInterface
      * Gets short_name
      * @return string
      */
-    public function getShortName(): string
+    public function getShortName(): string|null
     {
-        return $this->container['short_name'];
+        return $this->container['short_name'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class AddressComponents implements ArrayAccess, ModelInterface
      * Gets types
      * @return string[]
      */
-    public function getTypes(): array
+    public function getTypes(): array|null
     {
-        return $this->container['types'];
+        return $this->container['types'] ?? null;
     }
 
     /**

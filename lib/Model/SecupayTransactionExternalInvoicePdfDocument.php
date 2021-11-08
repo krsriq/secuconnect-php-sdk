@@ -164,9 +164,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, Model
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, Model
      * Gets mime_type
      * @return string
      */
-    public function getMimeType(): string
+    public function getMimeType(): string|null
     {
-        return $this->container['mime_type'];
+        return $this->container['mime_type'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, Model
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, Model
      * Gets size
      * @return int
      */
-    public function getSize(): int
+    public function getSize(): int|null
     {
-        return $this->container['size'];
+        return $this->container['size'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SecupayTransactionExternalInvoicePdfDocument implements ArrayAccess, Model
      * Gets url
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): string|null
     {
-        return $this->container['url'];
+        return $this->container['url'] ?? null;
     }
 
     /**

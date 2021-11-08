@@ -3,6 +3,7 @@
 namespace Secuconnect\Client\Api;
 
 use DateTime;
+use JetBrains\PhpStorm\ArrayShape;
 use PHPUnit\Framework\TestCase;
 use Secuconnect\Client\ApiException;
 use Secuconnect\Client\Model\Address;
@@ -11,11 +12,8 @@ use Secuconnect\Client\Model\LoyaltyCardgroupsProductModel;
 use Secuconnect\Client\Model\LoyaltyCardsProductModel;
 use Secuconnect\Client\Model\LoyaltyCustomersDTO;
 use Secuconnect\Client\Model\LoyaltyCustomersProductModel;
-use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOCardsAmount;
-use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOCheckPasscode;
 use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOLock;
 use Secuconnect\Client\Model\LoyaltyMerchantcardsDTONewPasscode;
-use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOResetPasscode;
 use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOTransaction;
 use Secuconnect\Client\Model\LoyaltyMerchantcardsDTOValidateMerchantCard;
 use Secuconnect\Client\Model\LoyaltyMerchantcardsList;
@@ -29,46 +27,17 @@ use Secuconnect\Client\Model\VirtualTerminalDataModel;
  */
 class LoyaltyMerchantcardsApiTest extends TestCase
 {
-    /**
-     * @var LoyaltyMerchantcardsApi
-     */
-    private static $api;
+    private static ?LoyaltyMerchantcardsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $instance;
+    private static ?SecuconnectObjects $instance;
 
-    /**
-     * @var LoyaltyMerchantcardsProductModel
-     */
-    private static $LoyaltyMerchantcardsProductModel;
-
-    /**
-     * @var string
-     */
-    private static $merchantId;
-
-    /**
-     * @var string
-     */
-    private static $cardId;
-
-    /**
-     * @var string
-     */
-    private static $cardGroupId;
-
-    /**
-     * @var LoyaltyMerchantcardsDTONewPasscode
-     */
-    private static $newPasscode;
+    private static ?LoyaltyMerchantcardsProductModel $LoyaltyMerchantcardsProductModel;
 
     /**
      * Setup before running any test cases
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$instance = SecuconnectObjects::getInstance();
@@ -136,29 +105,24 @@ class LoyaltyMerchantcardsApiTest extends TestCase
         $newPasscode->setMerchant($LoyaltyMerchantcardsProductModel->getMerchant()->getId());
         $newPasscode->setCardnumber($LoyaltyMerchantcardsProductModel->getCard()->getCardnumber());
         $newPasscode->setPasscode($passcode);
-
-        self::$newPasscode = $newPasscode;
     }
 
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$instance = null;
         self::$api = null;
         self::$LoyaltyMerchantcardsProductModel = null;
-        self::$merchantId = null;
-        self::$cardId = null;
-        self::$cardGroupId = null;
-        self::$newPasscode = null;
         parent::tearDownAfterClass();
     }
 
     /**
      * @return array
      */
-    public function prepareCustomerData()
+    #[ArrayShape(['contact' => "\Secuconnect\Client\Model\Contact", 'customer' => "\Secuconnect\Client\Model\LoyaltyCustomersDTO"])]
+    public function prepareCustomerData(): array
     {
         $address = new Address();
         $address->setStreet('Example Street');
@@ -177,7 +141,7 @@ class LoyaltyMerchantcardsApiTest extends TestCase
         $loyaltyCustomerContact->setSalutation('Mr.');
         $loyaltyCustomerContact->setGender('m');
         $loyaltyCustomerContact->setTitle('Dr.');
-        $loyaltyCustomerContact->setDob($dob);
+        $loyaltyCustomerContact->setDob($dob->format('Y-m-d'));
         $loyaltyCustomerContact->setUrlWebsite('example.com');
         $loyaltyCustomerContact->setBirthplace('New Examplecity');
         $loyaltyCustomerContact->setNationality('german');
@@ -257,10 +221,6 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                 );
                 $this->assertTrue(is_numeric($loyaltyMerchantcardsProductModel->getPasscode()));
             }
-
-            self::$merchantId = $response->getData()[0]->getMerchant()->getId();
-            self::$cardId = $response->getData()[0]->getCard()->getId();
-            self::$cardGroupId = $response->getData()[0]->getCardgroup()->getId();
         }
     }
 
@@ -272,10 +232,7 @@ class LoyaltyMerchantcardsApiTest extends TestCase
     {
         try {
             $response = self::$api->getAll(
-                1,
-                null,
-                null,
-                null
+                1
             );
         } catch (ApiException $e) {
             print_r($e->getResponseBody());
@@ -375,30 +332,6 @@ class LoyaltyMerchantcardsApiTest extends TestCase
     }
 
     /**
-     * Test case for updating Loyalty Card Group of Loyalty Merchant Card for specific Loyalty Merchant Card id.
-     * @throws ApiException
-     */
-    public function testUpdateLoyaltyCardGroupOfLoyaltyMerchantCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $LoyaltyMerchantcardsProductModel = self::$LoyaltyMerchantcardsProductModel;
-        $merchantCardId = $LoyaltyMerchantcardsProductModel->getId();
-        $newLoyaltyCardGroupId = $LoyaltyMerchantcardsProductModel->getCardgroup()->getId();
-
-        try {
-            $response = self::$api->updateCardGroupOfMerchantCard(
-                $merchantCardId,
-                $newLoyaltyCardGroupId
-            );
-        } catch (ApiException $e) {
-            print_r($e->getResponseBody());
-            throw $e;
-        }
-        $this->assertEquals($newLoyaltyCardGroupId, $response->getCardgroup()->getId());
-    }
-
-    /**
      * Test case of failing updating Loyalty Merchant Card Card Group for specific Loyalty Merchant Card id.
      * @throws ApiException
      */
@@ -458,15 +391,16 @@ class LoyaltyMerchantcardsApiTest extends TestCase
      */
     public function testSetLoyaltyCustomerForASpecificLoyaltyMerchantCard()
     {
-        //TO DO dont do the getAll just have variable MCD_ and CUS_
+        //TO DO don't do the getAll just have variable MCD_ and CUS_
         $currentLoyaltyMerchantCardId = self::$LoyaltyMerchantcardsProductModel->getId();
         $currentLoyaltyCustomer = self::$LoyaltyMerchantcardsProductModel->getCustomer();
 
-        self::$api = new LoyaltyCustomersApi();
+        $api = new LoyaltyCustomersApi();
 
         try {
-            $response = self::$api->getAll(100);
+            $response = $api->getAll(100);
         } catch (ApiException $e) {
+            print_r($e->getResponseBody());
             throw $e;
         }
 
@@ -480,7 +414,6 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                     break;
                 }
             }
-            self::$api = new LoyaltyMerchantcardsApi();
 
             try {
                 $response = self::$api->setCustomer(
@@ -488,6 +421,7 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                     $newLoyaltyCustomer->getId()
                 );
             } catch (ApiException $e) {
+                print_r($e->getResponseBody());
                 throw $e;
             }
 
@@ -521,63 +455,6 @@ class LoyaltyMerchantcardsApiTest extends TestCase
     }
 
     /**
-     * Test case for registering new Loyalty Customer for a specific Loyalty Merchant Card id.
-     *
-     * @throws ApiException
-     */
-    public function testRegisterLoyaltyCustomerForASpecificLoyaltyMerchantCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $merchantIdToCreateMerchantcard = self::$LoyaltyMerchantcardsProductModel->getMerchant()->getId();
-        $cardgroupIdToCreateMerchantcard = self::$LoyaltyMerchantcardsProductModel->getCardgroup()->getId();//'CRG_WQ5B7K6WHVEP8YFB333MCX3RE0K9S4';
-        $cardsAmount = new LoyaltyMerchantcardsDTOCardsAmount();
-        $cardsAmount->setCardsAmount(1);
-        $merchantCard = null;
-
-        try {
-            $merchantCards = self::$api->createMerchantcards($merchantIdToCreateMerchantcard, $cardgroupIdToCreateMerchantcard, $cardsAmount);
-            $merchantCard = $merchantCards[0];
-        } catch (ApiException $e) {
-            throw $e;
-        }
-
-        $loyaltyMerchantCardId = $merchantCard->getId();
-        $CustomerData = $this->prepareCustomerData();
-        $CustomerData = $CustomerData['customer'];
-        $CustomerData->setMerchant($merchantIdToCreateMerchantcard);
-        $CustomerData->setCustomernumber('testnr');
-        $CustomerData->setNote('test note');
-        // TO DO  registerCustomer neads  body parameter
-        try {
-            $response = self::$api->registerCustomer(
-                $loyaltyMerchantCardId,
-                $CustomerData
-            );
-        } catch (ApiException $e) {
-            throw $e;
-        }
-
-        $this->assertInstanceOf(LoyaltyMerchantcardsProductModel::class, $response);
-        $this->assertEquals($merchantIdToCreateMerchantcard, $response->getMerchant()->getId());
-        $newLoyaltyCustomerContact = $response->getCustomer()->getContact();
-        $loyaltyCustomerContact = $CustomerData->getMerchantContact();
-        $this->assertEquals($loyaltyCustomerContact->getForename(), $newLoyaltyCustomerContact->getForename());
-        $this->assertEquals($loyaltyCustomerContact->getSurname(), $newLoyaltyCustomerContact->getSurname());
-        $this->assertEquals($loyaltyCustomerContact->getCompanyname(), $newLoyaltyCustomerContact->getCompanyname());
-        $this->assertEquals($loyaltyCustomerContact->getGender(), $newLoyaltyCustomerContact->getGender());
-        $this->assertEquals($loyaltyCustomerContact->getTitle(), $newLoyaltyCustomerContact->getTitle());
-        $this->assertEquals($loyaltyCustomerContact->getUrlWebsite(), $newLoyaltyCustomerContact->getUrlWebsite());
-        $this->assertEquals($loyaltyCustomerContact->getBirthplace(), $newLoyaltyCustomerContact->getBirthplace());
-        $this->assertEquals($loyaltyCustomerContact->getNationality(), $newLoyaltyCustomerContact->getNationality());
-        $this->assertEquals($loyaltyCustomerContact->getEmail(), $newLoyaltyCustomerContact->getEmail());
-        $this->assertEquals($loyaltyCustomerContact->getPhone(), $newLoyaltyCustomerContact->getPhone());
-        $this->assertEquals($loyaltyCustomerContact->getMobile(), $newLoyaltyCustomerContact->getMobile());
-        $this->assertEquals($loyaltyCustomerContact->getFax(), $newLoyaltyCustomerContact->getFax());
-        $this->assertEquals($loyaltyCustomerContact->getAddress(), $newLoyaltyCustomerContact->getAddress());
-    }
-
-    /**
      * Test case for executing transaction from SDK.
      * @throws ApiException
      */
@@ -598,6 +475,7 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                 $loyaltyMerchantCardDTOTransaction
             );
         } catch (ApiException $e) {
+            print_r($e->getResponseBody());
             throw $e;
         }
 
@@ -640,56 +518,11 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                 "passcode:2"
             );
         } catch (ApiException $e) {
+            print_r($e->getResponseBody());
             throw $e;
         }
 
         $this->assertEquals(2, $response->getData()[0]->getPasscode());
-    }
-
-    /**
-     * Test case for saving newly given passcode for Loyalty Card.
-     *
-     * @throws ApiException
-     */
-    public function testSaveNewPasscodeForTheLoyaltyCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $merchantCardId = self::$LoyaltyMerchantcardsProductModel->getId();
-        try {
-            $response = self::$api->newPassCode($merchantCardId, self::$newPasscode);
-
-            $this->assertTrue($response['result']);
-        } catch (ApiException $e) {
-            throw $e;
-        }
-    }
-
-    /**
-     * Test case for checking newly given passcode for Loyalty Card.
-     *
-     * @throws ApiException
-     */
-    public function testCheckNewPasscodeForTheLoyaltyCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $merchantCardId = self::$LoyaltyMerchantcardsProductModel->getId();
-        self::$newPasscode->getMerchant();
-        $cardNumber = self::$newPasscode->getCardnumber();
-        $passcode = self::$newPasscode->getPasscode();
-
-        $checkPasscode = new LoyaltyMerchantcardsDTOCheckPasscode();
-        $checkPasscode->setCardnumber($cardNumber);
-        $checkPasscode->setPin($passcode);
-
-        try {
-            $response = self::$api->checkPassCode($merchantCardId, $checkPasscode);
-
-            $this->assertTrue($response['result']);
-        } catch (ApiException $e) {
-            throw $e;
-        }
     }
 
     /**
@@ -709,62 +542,13 @@ class LoyaltyMerchantcardsApiTest extends TestCase
                 $validateMerchant
             );
         } catch (ApiException $e) {
+            print_r($e->getResponseBody());
             throw $e;
         }
 
         $this->assertTrue($response->getIsValid());
-        $this->assertInternalType('boolean', $response->getHasPasscode());
+        $this->assertIsBool($response->getHasPasscode());
         $this->assertTrue(is_bool($response->getIsLocked()));
     }
 
-    /**
-     * Test case for resetting Loyalty Card passcode.
-     *
-     * @throws ApiException
-     */
-    public function testResetPasscodeForSpecificLoyaltyCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $resetPasscode = new LoyaltyMerchantcardsDTOResetPasscode();
-        $resetPasscode->setCardnumber(self::$newPasscode->getCardnumber());
-        $resetPasscode->setPasscode(self::$newPasscode->getPasscode());
-
-        try {
-            $response = self::$api->resetPassCode(
-                self::$LoyaltyMerchantcardsProductModel->getId(),
-                $resetPasscode
-            );
-
-            $this->assertNotNull($response['result']);
-        } catch (ApiException $e) {
-            throw $e;
-        }
-    }
-
-    /**
-     * Test case for creating merchant card.
-     * @throws ApiException
-     */
-    public function testCreateMerchantCard()
-    {
-        $this->markTestIncomplete('Needs to be fixed.');
-
-        $merchantIdToCreateMerchantcard = self::$LoyaltyMerchantcardsProductModel->getMerchant()->getId();
-        $cardgroupIdToCreateMerchantcard = self::$LoyaltyMerchantcardsProductModel->getCardgroup()->getId();//'CRG_WQ5B7K6WHVEP8YFB333MCX3RE0K9S4';
-        $cardsAmount = new LoyaltyMerchantcardsDTOCardsAmount();
-        $cardsAmount->setCardsAmount(1);
-        $merchantCard = null;
-
-        try {
-            $merchantCards = self::$api->createMerchantcards($merchantIdToCreateMerchantcard, $cardgroupIdToCreateMerchantcard, $cardsAmount);
-            $merchantCard = $merchantCards[0];
-        } catch (ApiException $e) {
-            throw $e;
-        }
-
-        $this->assertInstanceOf(LoyaltyMerchantcardsProductModel::class, $merchantCard);
-        $this->assertNotEmpty($merchantCard);
-        $this->assertEquals($merchantIdToCreateMerchantcard, $merchantCard->getMerchant()->getId());
-    }
 }

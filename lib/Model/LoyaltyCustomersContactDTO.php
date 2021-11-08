@@ -164,9 +164,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
      * Gets forename
      * @return string
      */
-    public function getForename(): string
+    public function getForename(): string|null
     {
-        return $this->container['forename'];
+        return $this->container['forename'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
      * Gets surname
      * @return string
      */
-    public function getSurname(): string
+    public function getSurname(): string|null
     {
-        return $this->container['surname'];
+        return $this->container['surname'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
      * Gets phone
      * @return string
      */
-    public function getPhone(): string
+    public function getPhone(): string|null
     {
-        return $this->container['phone'];
+        return $this->container['phone'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class LoyaltyCustomersContactDTO implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\Address
      */
-    public function getAddress(): Address
+    public function getAddress(): Address|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**

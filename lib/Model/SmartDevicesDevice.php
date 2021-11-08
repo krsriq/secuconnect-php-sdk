@@ -152,9 +152,9 @@ class SmartDevicesDevice implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class SmartDevicesDevice implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class SmartDevicesDevice implements ArrayAccess, ModelInterface
      * Gets serial_number
      * @return string
      */
-    public function getSerialNumber(): string
+    public function getSerialNumber(): string|null
     {
-        return $this->container['serial_number'];
+        return $this->container['serial_number'] ?? null;
     }
 
     /**

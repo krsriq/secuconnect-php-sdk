@@ -4,6 +4,7 @@ namespace Secuconnect\Client\Api;
 
 use PHPUnit\Framework\TestCase;
 use Secuconnect\Client\ApiException;
+use Secuconnect\Client\Model\Contact;
 use Secuconnect\Client\Model\PaymentContractsDTOClone;
 use Secuconnect\Client\Model\PaymentContractsDTORequestId;
 use Secuconnect\Client\Model\PaymentContractsProductModel;
@@ -14,17 +15,14 @@ use Secuconnect\Client\Model\PaymentInformation;
  */
 class PaymentContractsApiTest extends TestCase
 {
-    /**
-     * @var PaymentContractsApi
-     */
-    private $api;
+    private ?PaymentContractsApi $api;
 
     /**
      * Setup before running each test case
      *
      * @throws ApiException
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         SecuconnectObjects::getInstance()->authenticateByApplicationUser();
@@ -34,7 +32,7 @@ class PaymentContractsApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -55,8 +53,10 @@ class PaymentContractsApiTest extends TestCase
         }
 
         $this->assertInstanceOf(PaymentContractsProductModel::class, $response);
-        $this->assertEquals('payment.contracts', $response->getObject());
+        $this->assertEquals('general.contracts', $response->getObject());
         $this->assertEquals('PCR_WDYMYB6CY2N5WNHTD3H587G20Q8KAH', $response->getId());
+//        $this->assertEquals('general.contracts', $response->getObject());
+//        $this->assertEquals('GCR_2H69XY35227V2VKP9WRA3SJ0W95RP0', $response->getId());
         $this->assertNull($response->getParent());
         $this->assertNotEmpty($response->getCreated());
     }
@@ -76,7 +76,7 @@ class PaymentContractsApiTest extends TestCase
         }
 
         $this->assertNotEmpty($response);
-        $this->assertInternalType('int', $response->getCount());
+        $this->assertIsInt($response->getCount());
 
         foreach ($response->getData() as $contract) {
             $this->assertInstanceOf(PaymentContractsProductModel::class, $contract);
@@ -183,7 +183,7 @@ class PaymentContractsApiTest extends TestCase
     {
         SecuconnectObjects::getInstance()->authenticateByClientCredentials();
         $body = new PaymentContractsDTORequestId();
-        $body->setContact('CNT_36UTTTRGQ2MNT4BY52TSD57X5VTYAJ');
+        $body->setContact(new Contact(['id' => 'CNT_36UTTTRGQ2MNT4BY52TSD57X5VTYAJ']));
         $body->setProject('test_' . microtime());
 
         $account = new PaymentInformation(

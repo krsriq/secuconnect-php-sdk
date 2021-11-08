@@ -170,9 +170,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets store
      * @return object
      */
-    public function getStore(): object
+    public function getStore(): object|null
     {
-        return $this->container['store'];
+        return $this->container['store'] ?? null;
     }
 
     /**
@@ -191,9 +191,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets tid
      * @return string
      */
-    public function getTid(): string
+    public function getTid(): string|null
     {
-        return $this->container['tid'];
+        return $this->container['tid'] ?? null;
     }
 
     /**
@@ -212,9 +212,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets actions
      * @return string[]
      */
-    public function getActions(): array
+    public function getActions(): array|null
     {
-        return $this->container['actions'];
+        return $this->container['actions'] ?? null;
     }
 
     /**
@@ -233,9 +233,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets gift_terminal
      * @return int
      */
-    public function getGiftTerminal(): int
+    public function getGiftTerminal(): int|null
     {
-        return $this->container['gift_terminal'];
+        return $this->container['gift_terminal'] ?? null;
     }
 
     /**
@@ -254,9 +254,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets amount_split_enabled
      * @return int
      */
-    public function getAmountSplitEnabled(): int
+    public function getAmountSplitEnabled(): int|null
     {
-        return $this->container['amount_split_enabled'];
+        return $this->container['amount_split_enabled'] ?? null;
     }
 
     /**
@@ -275,9 +275,9 @@ class VirtualTerminalDataModel implements ArrayAccess, ModelInterface
      * Gets disabled
      * @return int
      */
-    public function getDisabled(): int
+    public function getDisabled(): int|null
     {
-        return $this->container['disabled'];
+        return $this->container['disabled'] ?? null;
     }
 
     /**

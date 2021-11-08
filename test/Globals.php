@@ -13,12 +13,12 @@ class Globals
     ];
 
     const OAuthApplicationUserCredentials = [
-        'clientId' => '...',
-        'clientSecret' => '...',
-        'username' => '...',
-        'password' => '...',
-        'device' => '...',
-        'deviceName' => '...'
+        'clientId' => 'app.main.secucard',
+        'clientSecret' => 'not set',
+        'username' => 'r.simlinger@secupay.ag',
+        'password' => '$8vM*o68xEr8B',
+        'device' => 'XYZ',
+        'deviceName' => 'value'
     ];
 
     const OAuthDeviceCredentials = [

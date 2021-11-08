@@ -152,9 +152,9 @@ class LoyaltyMerchantcardsValidateMerchantCard implements ArrayAccess, ModelInte
      * Gets is_valid
      * @return bool
      */
-    public function getIsValid(): bool
+    public function getIsValid(): bool|null
     {
-        return $this->container['is_valid'];
+        return $this->container['is_valid'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class LoyaltyMerchantcardsValidateMerchantCard implements ArrayAccess, ModelInte
      * Gets has_passcode
      * @return bool
      */
-    public function getHasPasscode(): bool
+    public function getHasPasscode(): bool|null
     {
-        return $this->container['has_passcode'];
+        return $this->container['has_passcode'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class LoyaltyMerchantcardsValidateMerchantCard implements ArrayAccess, ModelInte
      * Gets is_locked
      * @return bool
      */
-    public function getIsLocked(): bool
+    public function getIsLocked(): bool|null
     {
-        return $this->container['is_locked'];
+        return $this->container['is_locked'] ?? null;
     }
 
     /**

@@ -140,9 +140,9 @@ class UploadMandateDTO implements ArrayAccess, ModelInterface
      * Gets document_id
      * @return string
      */
-    public function getDocumentId(): string
+    public function getDocumentId(): string|null
     {
-        return $this->container['document_id'];
+        return $this->container['document_id'] ?? null;
     }
 
     /**

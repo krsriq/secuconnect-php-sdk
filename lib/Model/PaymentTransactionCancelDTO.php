@@ -158,9 +158,9 @@ class PaymentTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets reason
      * @return string
      */
-    public function getReason(): string
+    public function getReason(): string|null
     {
-        return $this->container['reason'];
+        return $this->container['reason'] ?? null;
     }
 
     /**
@@ -179,9 +179,9 @@ class PaymentTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -200,9 +200,9 @@ class PaymentTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets reduce_stakeholder_payment
      * @return bool
      */
-    public function getReduceStakeholderPayment(): bool
+    public function getReduceStakeholderPayment(): bool|null
     {
-        return $this->container['reduce_stakeholder_payment'];
+        return $this->container['reduce_stakeholder_payment'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PaymentTransactionCancelDTO implements ArrayAccess, ModelInterface
      * Gets container_id
      * @return string
      */
-    public function getContainerId(): string
+    public function getContainerId(): string|null
     {
-        return $this->container['container_id'];
+        return $this->container['container_id'] ?? null;
     }
 
     /**

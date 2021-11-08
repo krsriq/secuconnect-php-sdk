@@ -164,9 +164,9 @@ class SmartTransactionsShippingModel implements ArrayAccess, ModelInterface, One
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SmartTransactionsShippingModel implements ArrayAccess, ModelInterface, One
      * Gets shipped_at
      * @return string
      */
-    public function getShippedAt(): string
+    public function getShippedAt(): string|null
     {
-        return $this->container['shipped_at'];
+        return $this->container['shipped_at'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SmartTransactionsShippingModel implements ArrayAccess, ModelInterface, One
      * Gets shipped_by
      * @return string
      */
-    public function getShippedBy(): string
+    public function getShippedBy(): string|null
     {
-        return $this->container['shipped_by'];
+        return $this->container['shipped_by'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartTransactionsShippingModel implements ArrayAccess, ModelInterface, One
      * Gets tracking_code
      * @return string
      */
-    public function getTrackingCode(): string
+    public function getTrackingCode(): string|null
     {
-        return $this->container['tracking_code'];
+        return $this->container['tracking_code'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartTransactionsShippingModel implements ArrayAccess, ModelInterface, One
      * Gets invoice_number
      * @return string
      */
-    public function getInvoiceNumber(): string
+    public function getInvoiceNumber(): string|null
     {
-        return $this->container['invoice_number'];
+        return $this->container['invoice_number'] ?? null;
     }
 
     /**

@@ -146,9 +146,9 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets legal_details
      * @return \Secuconnect\Client\Model\GeneralMerchantsLegalDetails[]
      */
-    public function getLegalDetails(): array
+    public function getLegalDetails(): array|null
     {
-        return $this->container['legal_details'];
+        return $this->container['legal_details'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets company
      * @return \Secuconnect\Client\Model\GeneralMerchantsPublicDataCompany
      */
-    public function getCompany(): GeneralMerchantsPublicDataCompany
+    public function getCompany(): GeneralMerchantsPublicDataCompany|null
     {
-        return $this->container['company'];
+        return $this->container['company'] ?? null;
     }
 
     /**
@@ -188,9 +188,9 @@ class GeneralMerchantsPublicDataModel extends BaseProductModel
      * Gets merchant_urls
      * @return \Secuconnect\Client\Model\GeneralMerchantsUrls[]
      */
-    public function getMerchantUrls(): array
+    public function getMerchantUrls(): array|null
     {
-        return $this->container['merchant_urls'];
+        return $this->container['merchant_urls'] ?? null;
     }
 
     /**

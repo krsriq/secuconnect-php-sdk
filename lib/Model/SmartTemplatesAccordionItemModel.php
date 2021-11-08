@@ -164,9 +164,9 @@ class SmartTemplatesAccordionItemModel implements ArrayAccess, ModelInterface
      * Gets id
      * @return int
      */
-    public function getId(): int
+    public function getId(): int|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class SmartTemplatesAccordionItemModel implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class SmartTemplatesAccordionItemModel implements ArrayAccess, ModelInterface
      * Gets config
      * @return object
      */
-    public function getConfig(): object
+    public function getConfig(): object|null
     {
-        return $this->container['config'];
+        return $this->container['config'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class SmartTemplatesAccordionItemModel implements ArrayAccess, ModelInterface
      * Gets condition
      * @return object
      */
-    public function getCondition(): object
+    public function getCondition(): object|null
     {
-        return $this->container['condition'];
+        return $this->container['condition'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class SmartTemplatesAccordionItemModel implements ArrayAccess, ModelInterface
      * Gets elements
      * @return \Secuconnect\Client\Model\SmartTemplatesElementModel[]
      */
-    public function getElements(): array
+    public function getElements(): array|null
     {
-        return $this->container['elements'];
+        return $this->container['elements'] ?? null;
     }
 
     /**

@@ -140,9 +140,9 @@ class LoyaltyMerchantcardsDTOCardsAmount implements ArrayAccess, ModelInterface
      * Gets cards_amount
      * @return int
      */
-    public function getCardsAmount(): int
+    public function getCardsAmount(): int|null
     {
-        return $this->container['cards_amount'];
+        return $this->container['cards_amount'] ?? null;
     }
 
     /**

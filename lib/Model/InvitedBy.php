@@ -152,9 +152,9 @@ class InvitedBy implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class InvitedBy implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class InvitedBy implements ArrayAccess, ModelInterface
      * Gets invited
      * @return string
      */
-    public function getInvited(): string
+    public function getInvited(): string|null
     {
-        return $this->container['invited'];
+        return $this->container['invited'] ?? null;
     }
 
     /**

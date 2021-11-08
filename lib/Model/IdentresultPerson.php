@@ -176,9 +176,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets identificationprocess
      * @return \Secuconnect\Client\Model\IdentificationProcess
      */
-    public function getIdentificationprocess(): IdentificationProcess
+    public function getIdentificationprocess(): IdentificationProcess|null
     {
-        return $this->container['identificationprocess'];
+        return $this->container['identificationprocess'] ?? null;
     }
 
     /**
@@ -197,9 +197,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets customdata
      * @return \Secuconnect\Client\Model\IdentificationCustomData
      */
-    public function getCustomdata(): IdentificationCustomData
+    public function getCustomdata(): IdentificationCustomData|null
     {
-        return $this->container['customdata'];
+        return $this->container['customdata'] ?? null;
     }
 
     /**
@@ -218,9 +218,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets contactdata
      * @return \Secuconnect\Client\Model\ContactData
      */
-    public function getContactdata(): ContactData
+    public function getContactdata(): ContactData|null
     {
-        return $this->container['contactdata'];
+        return $this->container['contactdata'] ?? null;
     }
 
     /**
@@ -239,9 +239,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets userdata
      * @return \Secuconnect\Client\Model\UserData
      */
-    public function getUserdata(): UserData
+    public function getUserdata(): UserData|null
     {
-        return $this->container['userdata'];
+        return $this->container['userdata'] ?? null;
     }
 
     /**
@@ -260,9 +260,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets attachments
      * @return \Secuconnect\Client\Model\IdentDocument[]
      */
-    public function getAttachments(): array
+    public function getAttachments(): array|null
     {
-        return $this->container['attachments'];
+        return $this->container['attachments'] ?? null;
     }
 
     /**
@@ -281,9 +281,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets identificationdocument
      * @return \Secuconnect\Client\Model\IdentDocumentData
      */
-    public function getIdentificationdocument(): IdentDocumentData
+    public function getIdentificationdocument(): IdentDocumentData|null
     {
-        return $this->container['identificationdocument'];
+        return $this->container['identificationdocument'] ?? null;
     }
 
     /**
@@ -302,9 +302,9 @@ class IdentresultPerson implements ArrayAccess, ModelInterface
      * Gets video
      * @return string
      */
-    public function getVideo(): string
+    public function getVideo(): string|null
     {
-        return $this->container['video'];
+        return $this->container['video'] ?? null;
     }
 
     /**

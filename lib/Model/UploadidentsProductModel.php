@@ -140,9 +140,9 @@ class UploadidentsProductModel implements ArrayAccess, ModelInterface
      * Gets service_issue_id
      * @return int
      */
-    public function getServiceIssueId(): int
+    public function getServiceIssueId(): int|null
     {
-        return $this->container['service_issue_id'];
+        return $this->container['service_issue_id'] ?? null;
     }
 
     /**

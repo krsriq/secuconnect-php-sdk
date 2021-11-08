@@ -12,5 +12,5 @@ interface Printer
      *
      * @param object $token
      */
-    public function printUserCode($token);
+    public function printUserCode(object $token): void;
 }

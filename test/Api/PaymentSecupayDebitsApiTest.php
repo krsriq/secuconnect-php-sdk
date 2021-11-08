@@ -17,67 +17,37 @@ use Secuconnect\Client\Model\SecupayTransactionProductModelUsedPaymentInstrument
  */
 class PaymentSecupayDebitsApiTest extends TestCase
 {
-    /**
-     * @var PaymentSecupayDebitsApi
-     */
-    private $api;
+    private ?PaymentSecupayDebitsApi $api;
 
-    /**
-     * @var SecuconnectObjects
-     */
-    private static $secuconnectObjects;
+    private static ?SecuconnectObjects $secuconnectObjects;
 
-    /**
-     * @var string
-     */
-    private static $containerId;
+    private static ?string $containerId;
 
-    /**
-     * @var string
-     */
-    private static $customerId;
+    private static ?string $customerId;
 
-    /**
-     * @var int
-     */
-    private static $amount;
+    private static ?int $amount;
 
-    /**
-     * @var string
-     */
-    private static $currency;
+    private static ?string $currency;
 
-    /**
-     * @var string
-     */
-    private static $purpose;
+    private static ?string $purpose;
 
-    /**
-     * @var string
-     */
-    private static $orderId;
+    private static ?string $orderId;
 
-    /**
-     * @var array
-     */
-    private static $optData;
+    private static ?array $optData;
 
     /**
      * @var SecupayBasketItem[]
      */
-    private static $basket;
+    private static ?array $basket;
 
-    /**
-     * @var string
-     */
-    private static $debitTransactionId;
+    private static string $debitTransactionId;
 
     /**
      * Setup before running any test cases
      *
      * @throws ApiException
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$secuconnectObjects = SecuconnectObjects::getInstance();
@@ -94,7 +64,7 @@ class PaymentSecupayDebitsApiTest extends TestCase
     /**
      * Setup before running each test case
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->api = new PaymentSecupayDebitsApi();
@@ -103,7 +73,7 @@ class PaymentSecupayDebitsApiTest extends TestCase
     /**
      * Clean up after running each test case
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->api = null;
         parent::tearDown();
@@ -112,7 +82,7 @@ class PaymentSecupayDebitsApiTest extends TestCase
     /**
      * Clean up after running all test cases
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$secuconnectObjects = null;
         self::$containerId = null;

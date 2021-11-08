@@ -11,19 +11,16 @@ use PHPUnit\Framework\TestCase;
  */
 class CacheItemTest extends TestCase
 {
-    /**
-     * @var CacheItem
-     */
-    private static $cacheItem;
+    private static ?CacheItem $cacheItem;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$cacheItem = new CacheItem('simpleKey');
         self::$cacheItem->set('simpleValue');
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$cacheItem = null;
         parent::tearDownAfterClass();

@@ -146,9 +146,9 @@ class SmartTransactionsTimeSlot implements ArrayAccess, ModelInterface
      * Gets start_date
      * @return string
      */
-    public function getStartDate(): string
+    public function getStartDate(): string|null
     {
-        return $this->container['start_date'];
+        return $this->container['start_date'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsTimeSlot implements ArrayAccess, ModelInterface
      * Gets end_date
      * @return string
      */
-    public function getEndDate(): string
+    public function getEndDate(): string|null
     {
-        return $this->container['end_date'];
+        return $this->container['end_date'] ?? null;
     }
 
     /**

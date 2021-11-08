@@ -164,9 +164,9 @@ class GeneralMerchantsUser implements ArrayAccess, ModelInterface
      * Gets object
      * @return string
      */
-    public function getObject(): string
+    public function getObject(): string|null
     {
-        return $this->container['object'];
+        return $this->container['object'] ?? null;
     }
 
     /**
@@ -185,9 +185,9 @@ class GeneralMerchantsUser implements ArrayAccess, ModelInterface
      * Gets id
      * @return string
      */
-    public function getId(): string
+    public function getId(): string|null
     {
-        return $this->container['id'];
+        return $this->container['id'] ?? null;
     }
 
     /**
@@ -206,9 +206,9 @@ class GeneralMerchantsUser implements ArrayAccess, ModelInterface
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -227,9 +227,9 @@ class GeneralMerchantsUser implements ArrayAccess, ModelInterface
      * Gets companyname
      * @return string
      */
-    public function getCompanyname(): string
+    public function getCompanyname(): string|null
     {
-        return $this->container['companyname'];
+        return $this->container['companyname'] ?? null;
     }
 
     /**
@@ -248,9 +248,9 @@ class GeneralMerchantsUser implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\GeoAddress[]
      */
-    public function getAddress(): array
+    public function getAddress(): array|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**

@@ -145,9 +145,9 @@ class LoyaltyCardgroupsList implements ArrayAccess, ModelInterface
      * Gets count
      * @return int
      */
-    public function getCount(): int
+    public function getCount(): int|null
     {
-        return $this->container['count'];
+        return $this->container['count'] ?? null;
     }
 
     /**
@@ -166,9 +166,9 @@ class LoyaltyCardgroupsList implements ArrayAccess, ModelInterface
      * Gets data
      * @return \Secuconnect\Client\Model\LoyaltyCardgroupsProductModel[]
      */
-    public function getData(): array
+    public function getData(): array|null
     {
-        return $this->container['data'];
+        return $this->container['data'] ?? null;
     }
 
     /**

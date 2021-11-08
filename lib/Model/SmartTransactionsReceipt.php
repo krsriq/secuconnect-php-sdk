@@ -146,9 +146,9 @@ class SmartTransactionsReceipt implements ArrayAccess, ModelInterface
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsReceipt implements ArrayAccess, ModelInterface
      * Gets value
      * @return \Secuconnect\Client\Model\SmartTransactionsReceiptValue
      */
-    public function getValue(): SmartTransactionsReceiptValue
+    public function getValue(): SmartTransactionsReceiptValue|null
     {
-        return $this->container['value'];
+        return $this->container['value'] ?? null;
     }
 
     /**

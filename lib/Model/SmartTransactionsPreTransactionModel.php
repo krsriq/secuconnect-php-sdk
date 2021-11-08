@@ -146,9 +146,9 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess, ModelInterfac
      * Gets missing_sum
      * @return int
      */
-    public function getMissingSum(): int
+    public function getMissingSum(): int|null
     {
-        return $this->container['missing_sum'];
+        return $this->container['missing_sum'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class SmartTransactionsPreTransactionModel implements ArrayAccess, ModelInterfac
      * Gets bonus_products
      * @return \Secuconnect\Client\Model\SmartTransactionsBonusProducts[]
      */
-    public function getBonusProducts(): array
+    public function getBonusProducts(): array|null
     {
-        return $this->container['bonus_products'];
+        return $this->container['bonus_products'] ?? null;
     }
 
     /**

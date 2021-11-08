@@ -194,9 +194,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets retail_price
      * @return int
      */
-    public function getRetailPrice(): int
+    public function getRetailPrice(): int|null
     {
-        return $this->container['retail_price'];
+        return $this->container['retail_price'] ?? null;
     }
 
     /**
@@ -215,9 +215,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -236,9 +236,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets description
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): string|null
     {
-        return $this->container['description'];
+        return $this->container['description'] ?? null;
     }
 
     /**
@@ -257,9 +257,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets logo
      * @return string
      */
-    public function getLogo(): string
+    public function getLogo(): string|null
     {
-        return $this->container['logo'];
+        return $this->container['logo'] ?? null;
     }
 
     /**
@@ -278,9 +278,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets commission
      * @return int
      */
-    public function getCommission(): int
+    public function getCommission(): int|null
     {
-        return $this->container['commission'];
+        return $this->container['commission'] ?? null;
     }
 
     /**
@@ -299,9 +299,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets vtc_id
      * @return string
      */
-    public function getVtcId(): string
+    public function getVtcId(): string|null
     {
-        return $this->container['vtc_id'];
+        return $this->container['vtc_id'] ?? null;
     }
 
     /**
@@ -320,9 +320,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets itemgroup
      * @return \Secuconnect\Client\Model\ItemGroup
      */
-    public function getItemgroup(): ItemGroup
+    public function getItemgroup(): ItemGroup|null
     {
-        return $this->container['itemgroup'];
+        return $this->container['itemgroup'] ?? null;
     }
 
     /**
@@ -341,9 +341,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets stock_limit_max
      * @return int
      */
-    public function getStockLimitMax(): int
+    public function getStockLimitMax(): int|null
     {
-        return $this->container['stock_limit_max'];
+        return $this->container['stock_limit_max'] ?? null;
     }
 
     /**
@@ -362,9 +362,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets stock_limit_min
      * @return int
      */
-    public function getStockLimitMin(): int
+    public function getStockLimitMin(): int|null
     {
-        return $this->container['stock_limit_min'];
+        return $this->container['stock_limit_min'] ?? null;
     }
 
     /**
@@ -383,9 +383,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets taxable
      * @return bool
      */
-    public function getTaxable(): bool
+    public function getTaxable(): bool|null
     {
-        return $this->container['taxable'];
+        return $this->container['taxable'] ?? null;
     }
 
     /**
@@ -404,9 +404,9 @@ class PrepaidItemsProductModel extends BaseProductModel
      * Gets type
      * @return string
      */
-    public function getType(): string
+    public function getType(): string|null
     {
-        return $this->container['type'];
+        return $this->container['type'] ?? null;
     }
 
     /**

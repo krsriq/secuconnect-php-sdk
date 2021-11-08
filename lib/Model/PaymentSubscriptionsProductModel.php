@@ -200,9 +200,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets created
      * @return string
      */
-    public function getCreated(): string
+    public function getCreated(): string|null
     {
-        return $this->container['created'];
+        return $this->container['created'] ?? null;
     }
 
     /**
@@ -221,9 +221,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets updated
      * @return string
      */
-    public function getUpdated(): string
+    public function getUpdated(): string|null
     {
-        return $this->container['updated'];
+        return $this->container['updated'] ?? null;
     }
 
     /**
@@ -242,9 +242,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets smart_transaction
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getSmartTransaction(): BaseProductModel
+    public function getSmartTransaction(): BaseProductModel|null
     {
-        return $this->container['smart_transaction'];
+        return $this->container['smart_transaction'] ?? null;
     }
 
     /**
@@ -263,9 +263,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getMerchant(): BaseProductModel
+    public function getMerchant(): BaseProductModel|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -284,9 +284,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets contract
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getContract(): BaseProductModel
+    public function getContract(): BaseProductModel|null
     {
-        return $this->container['contract'];
+        return $this->container['contract'] ?? null;
     }
 
     /**
@@ -305,9 +305,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets customer
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getCustomer(): BaseProductModel
+    public function getCustomer(): BaseProductModel|null
     {
-        return $this->container['customer'];
+        return $this->container['customer'] ?? null;
     }
 
     /**
@@ -326,9 +326,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets container
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getContainer(): BaseProductModel
+    public function getContainer(): BaseProductModel|null
     {
-        return $this->container['container'];
+        return $this->container['container'] ?? null;
     }
 
     /**
@@ -347,9 +347,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets plan
      * @return \Secuconnect\Client\Model\BaseProductModel
      */
-    public function getPlan(): BaseProductModel
+    public function getPlan(): BaseProductModel|null
     {
-        return $this->container['plan'];
+        return $this->container['plan'] ?? null;
     }
 
     /**
@@ -368,9 +368,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets start_at
      * @return string
      */
-    public function getStartAt(): string
+    public function getStartAt(): string|null
     {
-        return $this->container['start_at'];
+        return $this->container['start_at'] ?? null;
     }
 
     /**
@@ -389,9 +389,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -410,9 +410,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets paypal_subscription_id
      * @return string
      */
-    public function getPaypalSubscriptionId(): string
+    public function getPaypalSubscriptionId(): string|null
     {
-        return $this->container['paypal_subscription_id'];
+        return $this->container['paypal_subscription_id'] ?? null;
     }
 
     /**
@@ -431,9 +431,9 @@ class PaymentSubscriptionsProductModel extends BaseProductModel
      * Gets billing_cycles
      * @return \Secuconnect\Client\Model\PaymentSubscriptionsProductModelBillingCycles
      */
-    public function getBillingCycles(): PaymentSubscriptionsProductModelBillingCycles
+    public function getBillingCycles(): PaymentSubscriptionsProductModelBillingCycles|null
     {
-        return $this->container['billing_cycles'];
+        return $this->container['billing_cycles'] ?? null;
     }
 
     /**

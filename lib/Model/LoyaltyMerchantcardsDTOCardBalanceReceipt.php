@@ -146,9 +146,9 @@ class LoyaltyMerchantcardsDTOCardBalanceReceipt implements ArrayAccess, ModelInt
      * Gets cardnumber
      * @return int
      */
-    public function getCardnumber(): int
+    public function getCardnumber(): int|null
     {
-        return $this->container['cardnumber'];
+        return $this->container['cardnumber'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class LoyaltyMerchantcardsDTOCardBalanceReceipt implements ArrayAccess, ModelInt
      * Gets terminal_id
      * @return string
      */
-    public function getTerminalId(): string
+    public function getTerminalId(): string|null
     {
-        return $this->container['terminal_id'];
+        return $this->container['terminal_id'] ?? null;
     }
 
     /**

@@ -152,9 +152,9 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets transaction_id
      * @return string
      */
-    public function getTransactionId(): string
+    public function getTransactionId(): string|null
     {
-        return $this->container['transaction_id'];
+        return $this->container['transaction_id'] ?? null;
     }
 
     /**
@@ -173,9 +173,9 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets redirect_url
      * @return string
      */
-    public function getRedirectUrl(): string
+    public function getRedirectUrl(): string|null
     {
-        return $this->container['redirect_url'];
+        return $this->container['redirect_url'] ?? null;
     }
 
     /**
@@ -194,9 +194,9 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -215,9 +215,9 @@ class IdentrequestPerson extends IdentrequestPersonDTO
      * Gets provider
      * @return string
      */
-    public function getProvider(): string
+    public function getProvider(): string|null
     {
-        return $this->container['provider'];
+        return $this->container['provider'] ?? null;
     }
 
     /**

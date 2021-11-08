@@ -290,9 +290,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets id_old
      * @return string
      */
-    public function getIdOld(): string
+    public function getIdOld(): string|null
     {
-        return $this->container['id_old'];
+        return $this->container['id_old'] ?? null;
     }
 
     /**
@@ -311,9 +311,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets merchant
      * @return \Secuconnect\Client\Model\ProductInstanceUID
      */
-    public function getMerchant(): ProductInstanceUID
+    public function getMerchant(): ProductInstanceUID|null
     {
-        return $this->container['merchant'];
+        return $this->container['merchant'] ?? null;
     }
 
     /**
@@ -332,9 +332,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets store_name
      * @return string
      */
-    public function getStoreName(): string
+    public function getStoreName(): string|null
     {
-        return $this->container['store_name'];
+        return $this->container['store_name'] ?? null;
     }
 
     /**
@@ -353,9 +353,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets facebook_id
      * @return string
      */
-    public function getFacebookId(): string
+    public function getFacebookId(): string|null
     {
-        return $this->container['facebook_id'];
+        return $this->container['facebook_id'] ?? null;
     }
 
     /**
@@ -374,9 +374,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets source
      * @return string
      */
-    public function getSource(): string
+    public function getSource(): string|null
     {
-        return $this->container['source'];
+        return $this->container['source'] ?? null;
     }
 
     /**
@@ -395,9 +395,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets key
      * @return string
      */
-    public function getKey(): string
+    public function getKey(): string|null
     {
-        return $this->container['key'];
+        return $this->container['key'] ?? null;
     }
 
     /**
@@ -416,9 +416,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets hash
      * @return string
      */
-    public function getHash(): string
+    public function getHash(): string|null
     {
-        return $this->container['hash'];
+        return $this->container['hash'] ?? null;
     }
 
     /**
@@ -437,9 +437,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets address_components
      * @return \Secuconnect\Client\Model\AddressComponents[]
      */
-    public function getAddressComponents(): array
+    public function getAddressComponents(): array|null
     {
-        return $this->container['address_components'];
+        return $this->container['address_components'] ?? null;
     }
 
     /**
@@ -458,9 +458,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets address_formatted
      * @return string
      */
-    public function getAddressFormatted(): string
+    public function getAddressFormatted(): string|null
     {
-        return $this->container['address_formatted'];
+        return $this->container['address_formatted'] ?? null;
     }
 
     /**
@@ -479,9 +479,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets phone_number_formatted
      * @return string
      */
-    public function getPhoneNumberFormatted(): string
+    public function getPhoneNumberFormatted(): string|null
     {
-        return $this->container['phone_number_formatted'];
+        return $this->container['phone_number_formatted'] ?? null;
     }
 
     /**
@@ -500,9 +500,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets geometry
      * @return \Secuconnect\Client\Model\GeoAddressGeometry
      */
-    public function getGeometry(): GeoAddressGeometry
+    public function getGeometry(): GeoAddressGeometry|null
     {
-        return $this->container['geometry'];
+        return $this->container['geometry'] ?? null;
     }
 
     /**
@@ -521,9 +521,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets name
      * @return string
      */
-    public function getName(): string
+    public function getName(): string|null
     {
-        return $this->container['name'];
+        return $this->container['name'] ?? null;
     }
 
     /**
@@ -542,9 +542,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets name_raw
      * @return string
      */
-    public function getNameRaw(): string
+    public function getNameRaw(): string|null
     {
-        return $this->container['name_raw'];
+        return $this->container['name_raw'] ?? null;
     }
 
     /**
@@ -563,9 +563,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets photo_main
      * @return string
      */
-    public function getPhotoMain(): string
+    public function getPhotoMain(): string|null
     {
-        return $this->container['photo_main'];
+        return $this->container['photo_main'] ?? null;
     }
 
     /**
@@ -584,9 +584,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets photo
      * @return string[]
      */
-    public function getPhoto(): array
+    public function getPhoto(): array|null
     {
-        return $this->container['photo'];
+        return $this->container['photo'] ?? null;
     }
 
     /**
@@ -605,9 +605,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets category_main
      * @return string
      */
-    public function getCategoryMain(): string
+    public function getCategoryMain(): string|null
     {
-        return $this->container['category_main'];
+        return $this->container['category_main'] ?? null;
     }
 
     /**
@@ -626,9 +626,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets category
      * @return string[]
      */
-    public function getCategory(): array
+    public function getCategory(): array|null
     {
-        return $this->container['category'];
+        return $this->container['category'] ?? null;
     }
 
     /**
@@ -647,9 +647,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets url_googleplus
      * @return string
      */
-    public function getUrlGoogleplus(): string
+    public function getUrlGoogleplus(): string|null
     {
-        return $this->container['url_googleplus'];
+        return $this->container['url_googleplus'] ?? null;
     }
 
     /**
@@ -668,9 +668,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets url_website
      * @return string
      */
-    public function getUrlWebsite(): string
+    public function getUrlWebsite(): string|null
     {
-        return $this->container['url_website'];
+        return $this->container['url_website'] ?? null;
     }
 
     /**
@@ -689,9 +689,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_hours
      * @return \Secuconnect\Client\Model\OpenHours[]
      */
-    public function getOpenHours(): array
+    public function getOpenHours(): array|null
     {
-        return $this->container['open_hours'];
+        return $this->container['open_hours'] ?? null;
     }
 
     /**
@@ -710,9 +710,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_now
      * @return bool
      */
-    public function getOpenNow(): bool
+    public function getOpenNow(): bool|null
     {
-        return $this->container['open_now'];
+        return $this->container['open_now'] ?? null;
     }
 
     /**
@@ -731,9 +731,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets open_time
      * @return string
      */
-    public function getOpenTime(): string
+    public function getOpenTime(): string|null
     {
-        return $this->container['open_time'];
+        return $this->container['open_time'] ?? null;
     }
 
     /**
@@ -752,9 +752,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets utc_offset
      * @return string
      */
-    public function getUtcOffset(): string
+    public function getUtcOffset(): string|null
     {
-        return $this->container['utc_offset'];
+        return $this->container['utc_offset'] ?? null;
     }
 
     /**
@@ -773,9 +773,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets assigned_by
      * @return \Secuconnect\Client\Model\AssignedBy[]
      */
-    public function getAssignedBy(): array
+    public function getAssignedBy(): array|null
     {
-        return $this->container['assigned_by'];
+        return $this->container['assigned_by'] ?? null;
     }
 
     /**
@@ -794,9 +794,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets invited_by
      * @return \Secuconnect\Client\Model\InvitedBy[]
      */
-    public function getInvitedBy(): array
+    public function getInvitedBy(): array|null
     {
-        return $this->container['invited_by'];
+        return $this->container['invited_by'] ?? null;
     }
 
     /**
@@ -815,9 +815,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets has_beacon
      * @return bool
      */
-    public function getHasBeacon(): bool
+    public function getHasBeacon(): bool|null
     {
-        return $this->container['has_beacon'];
+        return $this->container['has_beacon'] ?? null;
     }
 
     /**
@@ -836,9 +836,9 @@ class GeneralStoresProductModel extends BaseProductModel
      * Gets acceptance_point
      * @return bool
      */
-    public function getAcceptancePoint(): bool
+    public function getAcceptancePoint(): bool|null
     {
-        return $this->container['acceptance_point'];
+        return $this->container['acceptance_point'] ?? null;
     }
 
     /**

@@ -188,9 +188,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets trans_id
      * @return int
      */
-    public function getTransId(): int
+    public function getTransId(): int|null
     {
-        return $this->container['trans_id'];
+        return $this->container['trans_id'] ?? null;
     }
 
     /**
@@ -209,9 +209,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets status
      * @return string
      */
-    public function getStatus(): string
+    public function getStatus(): string|null
     {
-        return $this->container['status'];
+        return $this->container['status'] ?? null;
     }
 
     /**
@@ -230,9 +230,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets amount
      * @return int
      */
-    public function getAmount(): int
+    public function getAmount(): int|null
     {
-        return $this->container['amount'];
+        return $this->container['amount'] ?? null;
     }
 
     /**
@@ -251,9 +251,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets currency
      * @return string
      */
-    public function getCurrency(): string
+    public function getCurrency(): string|null
     {
-        return $this->container['currency'];
+        return $this->container['currency'] ?? null;
     }
 
     /**
@@ -272,9 +272,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets purpose
      * @return string
      */
-    public function getPurpose(): string
+    public function getPurpose(): string|null
     {
-        return $this->container['purpose'];
+        return $this->container['purpose'] ?? null;
     }
 
     /**
@@ -293,9 +293,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets order_id
      * @return string
      */
-    public function getOrderId(): string
+    public function getOrderId(): string|null
     {
-        return $this->container['order_id'];
+        return $this->container['order_id'] ?? null;
     }
 
     /**
@@ -314,9 +314,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets transaction_status
      * @return string
      */
-    public function getTransactionStatus(): string
+    public function getTransactionStatus(): string|null
     {
-        return $this->container['transaction_status'];
+        return $this->container['transaction_status'] ?? null;
     }
 
     /**
@@ -335,9 +335,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets transaction_list
      * @return \Secuconnect\Client\Model\SecupayTransactionListItem[]
      */
-    public function getTransactionList(): array
+    public function getTransactionList(): array|null
     {
-        return $this->container['transaction_list'];
+        return $this->container['transaction_list'] ?? null;
     }
 
     /**
@@ -356,9 +356,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets transfer_purpose
      * @return string
      */
-    public function getTransferPurpose(): string
+    public function getTransferPurpose(): string|null
     {
-        return $this->container['transfer_purpose'];
+        return $this->container['transfer_purpose'] ?? null;
     }
 
     /**
@@ -377,9 +377,9 @@ class SecupayPayoutProductModel extends BaseProductModel
      * Gets transfer_account
      * @return \Secuconnect\Client\Model\PaymentInformation
      */
-    public function getTransferAccount(): PaymentInformation
+    public function getTransferAccount(): PaymentInformation|null
     {
-        return $this->container['transfer_account'];
+        return $this->container['transfer_account'] ?? null;
     }
 
     /**

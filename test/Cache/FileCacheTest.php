@@ -3,6 +3,7 @@
 namespace Secuconnect\Client\Cache;
 
 use DateTime;
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\InvalidArgumentException;
 use Secuconnect\Client\ApiException;
@@ -14,18 +15,15 @@ use Secuconnect\Client\Globals;
  */
 class FileCacheTest extends TestCase
 {
-    /**
-     * @var FileCache
-     */
-    private static $fileCache;
+    private static ?FileCache $fileCache;
 
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         parent::setUpBeforeClass();
         self::$fileCache = new FileCache();
     }
 
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         self::$fileCache = null;
         parent::tearDownAfterClass();
@@ -48,6 +46,7 @@ class FileCacheTest extends TestCase
 
     /**
      * @throws InvalidArgumentException
+     * @throws Exception
      */
     public function testGetItem()
     {
@@ -57,7 +56,7 @@ class FileCacheTest extends TestCase
         $tomorrow = $now->modify('+1 day');
         $cacheItem->expiresAt($tomorrow);
 
-        $this->assertEquals($cacheItem, self::$fileCache->getItem('simpleKey'));
+        $this->assertEqualsWithDelta($cacheItem, self::$fileCache->getItem('simpleKey'), 0.1);
     }
 
     /**
@@ -99,9 +98,9 @@ class FileCacheTest extends TestCase
      */
     public function testSaveTokenToCache()
     {
-        $accessToken = Authenticator::authenticateByClientCredentials(...array_values(Globals::OAuthClientCredentials));
+        $accessToken1 = Authenticator::authenticateByClientCredentials(...array_values(Globals::OAuthClientCredentials));
         $accessToken2 = Authenticator::authenticateByClientCredentials(...array_values(Globals::OAuthClientCredentials));
 
-        $this->assertEquals($accessToken, $accessToken2);
+        $this->assertEquals($accessToken1, $accessToken2);
     }
 }

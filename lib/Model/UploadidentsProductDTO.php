@@ -170,9 +170,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets merchant_id
      * @return string
      */
-    public function getMerchantId(): string
+    public function getMerchantId(): string|null
     {
-        return $this->container['merchant_id'];
+        return $this->container['merchant_id'] ?? null;
     }
 
     /**
@@ -191,9 +191,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets payment_id
      * @return string
      */
-    public function getPaymentId(): string
+    public function getPaymentId(): string|null
     {
-        return $this->container['payment_id'];
+        return $this->container['payment_id'] ?? null;
     }
 
     /**
@@ -212,9 +212,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets contract_id
      * @return string
      */
-    public function getContractId(): string
+    public function getContractId(): string|null
     {
-        return $this->container['contract_id'];
+        return $this->container['contract_id'] ?? null;
     }
 
     /**
@@ -233,9 +233,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets apikey
      * @return string
      */
-    public function getApikey(): string
+    public function getApikey(): string|null
     {
-        return $this->container['apikey'];
+        return $this->container['apikey'] ?? null;
     }
 
     /**
@@ -254,9 +254,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets service_issue_id
      * @return int
      */
-    public function getServiceIssueId(): int
+    public function getServiceIssueId(): int|null
     {
-        return $this->container['service_issue_id'];
+        return $this->container['service_issue_id'] ?? null;
     }
 
     /**
@@ -275,9 +275,9 @@ class UploadidentsProductDTO implements ArrayAccess, ModelInterface
      * Gets document_ids
      * @return string[]
      */
-    public function getDocumentIds(): array
+    public function getDocumentIds(): array|null
     {
-        return $this->container['document_ids'];
+        return $this->container['document_ids'] ?? null;
     }
 
     /**

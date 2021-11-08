@@ -140,9 +140,9 @@ class SecupayTransactionDTOExternalInvoicePdf implements ArrayAccess, ModelInter
      * Gets update_existing
      * @return bool
      */
-    public function getUpdateExisting(): bool
+    public function getUpdateExisting(): bool|null
     {
-        return $this->container['update_existing'];
+        return $this->container['update_existing'] ?? null;
     }
 
     /**

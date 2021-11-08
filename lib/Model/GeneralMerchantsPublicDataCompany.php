@@ -146,9 +146,9 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess, ModelInterface
      * Gets companyname
      * @return string
      */
-    public function getCompanyname(): string
+    public function getCompanyname(): string|null
     {
-        return $this->container['companyname'];
+        return $this->container['companyname'] ?? null;
     }
 
     /**
@@ -167,9 +167,9 @@ class GeneralMerchantsPublicDataCompany implements ArrayAccess, ModelInterface
      * Gets address
      * @return \Secuconnect\Client\Model\GeoAddress
      */
-    public function getAddress(): GeoAddress
+    public function getAddress(): GeoAddress|null
     {
-        return $this->container['address'];
+        return $this->container['address'] ?? null;
     }
 
     /**
